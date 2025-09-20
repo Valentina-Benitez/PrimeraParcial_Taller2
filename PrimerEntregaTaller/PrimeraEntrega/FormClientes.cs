@@ -156,5 +156,9 @@ namespace Taller_AppRestaurante
         private void dvgClientes_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
         private void panel2_Paint_1(object sender, PaintEventArgs e) { }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

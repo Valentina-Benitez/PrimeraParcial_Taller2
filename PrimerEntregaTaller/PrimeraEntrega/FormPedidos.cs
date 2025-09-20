@@ -48,5 +48,10 @@ namespace Taller_AppRestaurante
         {
 
         }
+
+        private void FormPedidos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
