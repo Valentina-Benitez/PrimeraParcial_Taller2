@@ -40,7 +40,7 @@ namespace PrimeraEntrega
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    dgvProductos.DataSource = dt;
+                    //dgvProductos.DataSource = dt;
                 }
             }
             catch (Exception ex)

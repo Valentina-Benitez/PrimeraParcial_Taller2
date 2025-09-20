@@ -1,4 +1,5 @@
 ﻿using gerente;
+using PrimeraEntrega;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,25 @@ namespace Taller_AppRestaurante
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // 1. Verifica si hay una fila seleccionada en el DataGridView
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // 2. Obtén el ID del pedido de la fila seleccionada
+                int pedidoId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["No Pedido"].Value);
 
+                // 3. Crea una instancia del formulario de detalle
+                FormDetallePedido formDetalle = new FormDetallePedido();
+
+                // 4. Asigna el ID del pedido a la propiedad del formulario de detalle
+                formDetalle.PedidoId = pedidoId;
+
+                // 5. Muestra el formulario de detalle como una ventana modal
+                formDetalle.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un pedido de la lista.");
+            }
         }
 
         private void bPedido_Click(object sender, EventArgs e)
