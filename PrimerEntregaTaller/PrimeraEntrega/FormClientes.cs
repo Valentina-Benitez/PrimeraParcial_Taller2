@@ -155,6 +155,16 @@ namespace Taller_AppRestaurante
         {
 
         }
+
+        private void FormClientes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dvgClientes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
