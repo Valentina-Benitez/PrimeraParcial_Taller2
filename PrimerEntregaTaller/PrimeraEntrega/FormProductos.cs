@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace gerente
 {
-    public partial class Productos : Form
+    public partial class FormProductos : Form
     {
-        public Productos()
+        public FormProductos()
         {
             InitializeComponent();
         }

@@ -67,7 +67,7 @@ namespace gerente
             panelContenedor.Controls.Clear();
 
             // Crea una nueva instancia del formulario que voy a mostrar
-            Productos formSecundario = new Productos();
+            FormProductos formSecundario = new FormProductos();
 
             // Configura el formulario para que se comporte como un control
             formSecundario.TopLevel = false;
@@ -104,7 +104,7 @@ namespace gerente
         {
             panelContenedor.Controls.Clear();
 
-            Ventas formSecundario = new Ventas();
+            FormVentas formSecundario = new FormVentas();
 
             // Configura el formulario para que se comporte como un control
             formSecundario.TopLevel = false;

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PrimeraEntrega
 {
-    public partial class Ventas : Form
+    public partial class FormProductosVistas : Form
     {
-        public Ventas()
+        public FormProductosVistas()
         {
             InitializeComponent();
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

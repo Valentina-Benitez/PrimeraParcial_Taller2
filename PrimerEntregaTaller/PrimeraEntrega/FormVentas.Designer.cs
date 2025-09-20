@@ -1,6 +1,6 @@
 ﻿namespace PrimeraEntrega
 {
-    partial class Ventas
+    partial class FormVentas
     {
         /// <summary>
         /// Required designer variable.

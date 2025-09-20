@@ -79,17 +79,23 @@
     <Compile Include="FormVentasAdmin.Designer.cs">
       <DependentUpon>FormVentasAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrincipalAdmi.cs">
+    <Compile Include="FormPrincipalAdmi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrincipalAdmi.Designer.cs">
-      <DependentUpon>PrincipalAdmi.cs</DependentUpon>
+    <Compile Include="FormPrincipalAdmi.Designer.cs">
+      <DependentUpon>FormPrincipalAdmi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas.cs">
+    <Compile Include="FormProductosVistas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventas.Designer.cs">
-      <DependentUpon>Ventas.cs</DependentUpon>
+    <Compile Include="FormProductosVistas.Designer.cs">
+      <DependentUpon>FormProductosVistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVentas.Designer.cs">
+      <DependentUpon>FormVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="FormClientes.cs">
       <SubType>Form</SubType>
@@ -121,11 +127,11 @@
     <Compile Include="FormRecepcionista.Designer.cs">
       <DependentUpon>FormRecepcionista.cs</DependentUpon>
     </Compile>
-    <Compile Include="Productos.cs">
+    <Compile Include="FormProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Productos.Designer.cs">
-      <DependentUpon>Productos.cs</DependentUpon>
+    <Compile Include="FormProductos.Designer.cs">
+      <DependentUpon>FormProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,11 +165,11 @@
     <EmbeddedResource Include="FormVentasAdmin.resx">
       <DependentUpon>FormVentasAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrincipalAdmi.resx">
-      <DependentUpon>PrincipalAdmi.cs</DependentUpon>
+    <EmbeddedResource Include="FormPrincipalAdmi.resx">
+      <DependentUpon>FormPrincipalAdmi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Productos.resx">
-      <DependentUpon>Productos.cs</DependentUpon>
+    <EmbeddedResource Include="FormProductos.resx">
+      <DependentUpon>FormProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -174,8 +180,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Ventas.resx">
-      <DependentUpon>Ventas.cs</DependentUpon>
+    <EmbeddedResource Include="FormVentas.resx">
+      <DependentUpon>FormVentas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

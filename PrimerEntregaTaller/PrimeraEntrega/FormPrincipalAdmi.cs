@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace PrimeraEntrega
 {
-    public partial class PrincipalAdmi : Form
+    public partial class FormPrincipalAdmi : Form
     {
-        public PrincipalAdmi()
+        public FormPrincipalAdmi()
         {
             InitializeComponent();
         }
@@ -42,7 +42,7 @@ namespace PrimeraEntrega
             panelAdmin.Controls.Clear();
 
             // Crea una nueva instancia del formulario que voy a mostrar
-            Productos formSecundario = new Productos();
+            FormProductos formSecundario = new FormProductos();
 
             // Configura el formulario para que se comporte como un control
             formSecundario.TopLevel = false;
