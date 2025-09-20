@@ -35,22 +35,6 @@ namespace RestauranteApp
             formSecundario.Show();
         }
 
-        private void bFacturacion_Click(object sender, EventArgs e)
-        {
-            panelContenedor.Controls.Clear();
-
-            FormFacturas formSecundario = new FormFacturas();
-
-
-            formSecundario.TopLevel = false;
-            formSecundario.FormBorderStyle = FormBorderStyle.None;
-            formSecundario.Dock = DockStyle.Fill;
-
-            panelContenedor.Controls.Add(formSecundario);
-
-            formSecundario.Show();
-        }
-
         private void bPedido_Click(object sender, EventArgs e)
         {
             panelContenedor.Controls.Clear();
@@ -91,6 +75,11 @@ namespace RestauranteApp
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void panelContenedor_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -34,8 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bCliente = new System.Windows.Forms.Button();
             this.bPedido = new System.Windows.Forms.Button();
-            this.lProductos = new System.Windows.Forms.Label();
-            this.bFacturacion = new System.Windows.Forms.Button();
             this.bReservas = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lVentas = new System.Windows.Forms.Label();
@@ -51,10 +49,11 @@
             // 
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 80);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4);
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1077, 494);
             this.panelContenedor.TabIndex = 2;
+            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint_1);
             // 
             // panel4
             // 
@@ -62,8 +61,6 @@
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.bCliente);
             this.panel4.Controls.Add(this.bPedido);
-            this.panel4.Controls.Add(this.lProductos);
-            this.panel4.Controls.Add(this.bFacturacion);
             this.panel4.Controls.Add(this.bReservas);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.lVentas);
@@ -72,7 +69,7 @@
             this.panel4.Controls.Add(this.ltitulo);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1077, 80);
             this.panel4.TabIndex = 1;
@@ -95,7 +92,7 @@
             this.bCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCliente.Location = new System.Drawing.Point(742, 31);
-            this.bCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bCliente.Margin = new System.Windows.Forms.Padding(4);
             this.bCliente.Name = "bCliente";
             this.bCliente.Size = new System.Drawing.Size(45, 46);
             this.bCliente.TabIndex = 8;
@@ -108,38 +105,13 @@
             this.bPedido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bPedido.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bPedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPedido.Location = new System.Drawing.Point(408, 30);
-            this.bPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bPedido.Location = new System.Drawing.Point(492, 30);
+            this.bPedido.Margin = new System.Windows.Forms.Padding(4);
             this.bPedido.Name = "bPedido";
             this.bPedido.Size = new System.Drawing.Size(45, 47);
             this.bPedido.TabIndex = 0;
             this.bPedido.UseVisualStyleBackColor = true;
             this.bPedido.Click += new System.EventHandler(this.bPedido_Click);
-            // 
-            // lProductos
-            // 
-            this.lProductos.AutoSize = true;
-            this.lProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lProductos.Location = new System.Drawing.Point(619, 44);
-            this.lProductos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lProductos.Name = "lProductos";
-            this.lProductos.Size = new System.Drawing.Size(86, 18);
-            this.lProductos.TabIndex = 4;
-            this.lProductos.Text = "Facturacion";
-            // 
-            // bFacturacion
-            // 
-            this.bFacturacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bFacturacion.BackgroundImage")));
-            this.bFacturacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bFacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bFacturacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bFacturacion.Location = new System.Drawing.Point(566, 30);
-            this.bFacturacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bFacturacion.Name = "bFacturacion";
-            this.bFacturacion.Size = new System.Drawing.Size(45, 46);
-            this.bFacturacion.TabIndex = 0;
-            this.bFacturacion.UseVisualStyleBackColor = true;
-            this.bFacturacion.Click += new System.EventHandler(this.bFacturacion_Click);
             // 
             // bReservas
             // 
@@ -149,7 +121,7 @@
             this.bReservas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bReservas.Location = new System.Drawing.Point(247, 30);
-            this.bReservas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bReservas.Margin = new System.Windows.Forms.Padding(4);
             this.bReservas.Name = "bReservas";
             this.bReservas.Size = new System.Drawing.Size(39, 46);
             this.bReservas.TabIndex = 7;
@@ -160,7 +132,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(1025, 15);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -172,7 +144,7 @@
             // 
             this.lVentas.AutoSize = true;
             this.lVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lVentas.Location = new System.Drawing.Point(461, 44);
+            this.lVentas.Location = new System.Drawing.Point(545, 44);
             this.lVentas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lVentas.Name = "lVentas";
             this.lVentas.Size = new System.Drawing.Size(62, 18);
@@ -183,7 +155,7 @@
             // 
             this.pictureBox1_Usuario.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1_Usuario.Image")));
             this.pictureBox1_Usuario.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1_Usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1_Usuario.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1_Usuario.Name = "pictureBox1_Usuario";
             this.pictureBox1_Usuario.Size = new System.Drawing.Size(40, 38);
             this.pictureBox1_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,11 +207,9 @@
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button bPedido;
-        private System.Windows.Forms.Button bFacturacion;
         private System.Windows.Forms.Button bReservas;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lVentas;
-        private System.Windows.Forms.Label lProductos;
         private System.Windows.Forms.PictureBox pictureBox1_Usuario;
         private System.Windows.Forms.Label lEmpleados;
         private System.Windows.Forms.Label ltitulo;

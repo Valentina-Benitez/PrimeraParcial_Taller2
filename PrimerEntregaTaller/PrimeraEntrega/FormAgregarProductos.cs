@@ -84,7 +84,7 @@ namespace Taller_AppRestaurante
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAgregarProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.UseWaitCursor = true;
+            //this.UseWaitCursor = true;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
