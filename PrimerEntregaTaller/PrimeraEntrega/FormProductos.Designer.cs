@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,16 +58,16 @@
             this.textEstadoP = new System.Windows.Forms.TextBox();
             this.bModificar = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvProductos
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreProducto,
             this.Categoria,
             this.Descuento,
@@ -78,12 +78,12 @@
             this.id_descripcion,
             this.Editar,
             this.Eliminar});
-            this.dataGridView1.GridColor = System.Drawing.Color.LightBlue;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 251);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 129);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvProductos.GridColor = System.Drawing.Color.LightBlue;
+            this.dgvProductos.Location = new System.Drawing.Point(58, 251);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.RowHeadersWidth = 51;
+            this.dgvProductos.Size = new System.Drawing.Size(672, 129);
+            this.dgvProductos.TabIndex = 0;
             // 
             // NombreProducto
             // 
@@ -154,7 +154,6 @@
             this.lProductos.Size = new System.Drawing.Size(90, 20);
             this.lProductos.TabIndex = 1;
             this.lProductos.Text = "Productos";
-            this.lProductos.Click += new System.EventHandler(this.lProductos_Click);
             // 
             // pictureBox1
             // 
@@ -183,7 +182,6 @@
             this.lCategoria.Size = new System.Drawing.Size(52, 13);
             this.lCategoria.TabIndex = 4;
             this.lCategoria.Text = "Categoria";
-            this.lCategoria.Click += new System.EventHandler(this.lCategoria_Click);
             // 
             // lDescuento
             // 
@@ -232,7 +230,6 @@
             this.bAgregar.TabIndex = 10;
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = false;
-            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
             // 
             // bEliminar
             // 
@@ -333,12 +330,11 @@
             this.Controls.Add(this.lNombreProducto);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lProductos);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormProductos";
             this.Text = "Productos";
-            this.Load += new System.EventHandler(this.Productos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -347,7 +343,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
