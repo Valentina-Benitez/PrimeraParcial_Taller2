@@ -19,11 +19,11 @@ namespace Taller_AppRestaurante
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormRecepcionista());
-            //Application.Run(new Form1());
+            Application.Run(new PrimeraEntrega.Form1());
             //Application.Run(new Ventas());
             //Application.Run(new Form2());
             //Application.Run(new FormClientes());
-            Application.Run(new Form3());
+            //Application.Run(new Form3());
         }
     }
 }
