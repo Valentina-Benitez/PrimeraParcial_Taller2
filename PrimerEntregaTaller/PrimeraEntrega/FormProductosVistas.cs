@@ -13,7 +13,6 @@ namespace PrimeraEntrega
 {
     public partial class FormProductosVistas : Form
     {
-        private DataTable productosDataTable;
 
         public FormProductosVistas()
         {
@@ -63,9 +62,9 @@ namespace PrimeraEntrega
                     conn.Open();
                     string query = "SELECT * FROM Productos";
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                    productosDataTable = new DataTable();
-                    da.Fill(productosDataTable);
-                    dgvProductos.DataSource = productosDataTable;
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgvProductos.DataSource = dt;
                 }
             }
             catch (Exception ex)
