@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrincipalAdmi));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelAdmin = new System.Windows.Forms.Panel();
             this.bVentas = new System.Windows.Forms.Button();
             this.bProductos = new System.Windows.Forms.Button();
             this.bEmpleados = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panelAdmin, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -80,13 +80,13 @@
             this.panel1.Size = new System.Drawing.Size(794, 54);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // panelAdmin
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 63);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(794, 384);
-            this.panel2.TabIndex = 1;
+            this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAdmin.Location = new System.Drawing.Point(3, 63);
+            this.panelAdmin.Name = "panelAdmin";
+            this.panelAdmin.Size = new System.Drawing.Size(794, 384);
+            this.panelAdmin.TabIndex = 1;
             // 
             // bVentas
             // 
@@ -99,6 +99,7 @@
             this.bVentas.Size = new System.Drawing.Size(34, 38);
             this.bVentas.TabIndex = 8;
             this.bVentas.UseVisualStyleBackColor = true;
+            this.bVentas.Click += new System.EventHandler(this.bVentas_Click);
             // 
             // bProductos
             // 
@@ -111,6 +112,7 @@
             this.bProductos.Size = new System.Drawing.Size(34, 37);
             this.bProductos.TabIndex = 9;
             this.bProductos.UseVisualStyleBackColor = true;
+            this.bProductos.Click += new System.EventHandler(this.bProductos_Click);
             // 
             // bEmpleados
             // 
@@ -124,6 +126,7 @@
             this.bEmpleados.Size = new System.Drawing.Size(29, 37);
             this.bEmpleados.TabIndex = 16;
             this.bEmpleados.UseVisualStyleBackColor = false;
+            this.bEmpleados.Click += new System.EventHandler(this.bEmpleados_Click);
             // 
             // pictureBox2
             // 
@@ -134,6 +137,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // lVentas
             // 
@@ -206,7 +210,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelAdmin;
         private System.Windows.Forms.Button bVentas;
         private System.Windows.Forms.Button bProductos;
         private System.Windows.Forms.Button bEmpleados;
