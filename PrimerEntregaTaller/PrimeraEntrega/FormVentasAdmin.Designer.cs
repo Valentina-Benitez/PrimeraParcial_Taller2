@@ -117,7 +117,7 @@
             this.bDetalles.BackColor = System.Drawing.Color.LightCyan;
             this.bDetalles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bDetalles.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bDetalles.Location = new System.Drawing.Point(440, 195);
+            this.bDetalles.Location = new System.Drawing.Point(435, 195);
             this.bDetalles.Name = "bDetalles";
             this.bDetalles.Size = new System.Drawing.Size(79, 32);
             this.bDetalles.TabIndex = 4;

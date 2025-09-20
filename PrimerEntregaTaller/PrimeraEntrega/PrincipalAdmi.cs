@@ -38,11 +38,38 @@ namespace PrimeraEntrega
 
         private void bProductos_Click(object sender, EventArgs e)
         {
+            // se asegura de que no haya otros formularios abiertos
+            panelAdmin.Controls.Clear();
 
+            // Crea una nueva instancia del formulario que voy a mostrar
+            Productos formSecundario = new Productos();
+
+            // Configura el formulario para que se comporte como un control
+            formSecundario.TopLevel = false;
+            formSecundario.FormBorderStyle = FormBorderStyle.None;
+            formSecundario.Dock = DockStyle.Fill;
+
+            // Agrega el formulario al panel
+            panelAdmin.Controls.Add(formSecundario);
+
+            // Muestra el formulario
+            formSecundario.Show();
         }
 
         private void bVentas_Click(object sender, EventArgs e)
         {
+            panelAdmin.Controls.Clear();
+
+            Form4 formSecundario = new Form4();
+
+
+            formSecundario.TopLevel = false;
+            formSecundario.FormBorderStyle = FormBorderStyle.None;
+            formSecundario.Dock = DockStyle.Fill;
+
+            panelAdmin.Controls.Add(formSecundario);
+
+            formSecundario.Show();
 
         }
 
