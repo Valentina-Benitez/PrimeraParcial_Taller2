@@ -55,7 +55,7 @@ namespace Taller_AppRestaurante
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
             string apellido = txtApellido.Text.Trim();
@@ -104,7 +104,7 @@ namespace Taller_AppRestaurante
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
@@ -155,5 +155,6 @@ namespace Taller_AppRestaurante
         private void FormClientes_Load(object sender, EventArgs e) { }
         private void dvgClientes_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
         private void panel2_Paint_1(object sender, PaintEventArgs e) { }
+
     }
 }

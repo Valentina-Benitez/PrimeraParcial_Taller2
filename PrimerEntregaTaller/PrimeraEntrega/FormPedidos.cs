@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gerente;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,27 @@ namespace Taller_AppRestaurante
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bPedido_Click(object sender, EventArgs e)
+        {
+            FormAgregarProductos formAgregarProductos = new FormAgregarProductos();
+            formAgregarProductos.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

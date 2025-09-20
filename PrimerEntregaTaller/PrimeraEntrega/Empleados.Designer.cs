@@ -31,28 +31,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Empleados));
             this.lNombre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lApellido = new System.Windows.Forms.Label();
-            this.lDni = new System.Windows.Forms.Label();
-            this.lFechaNacimiento = new System.Windows.Forms.Label();
-            this.lDomicilio = new System.Windows.Forms.Label();
-            this.lTelefono = new System.Windows.Forms.Label();
-            this.lGmail = new System.Windows.Forms.Label();
-            this.lTipoUsuario = new System.Windows.Forms.Label();
-            this.lContraseña = new System.Windows.Forms.Label();
-            this.lRepContraseña = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.bAgregar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bAgregar = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lRepContraseña = new System.Windows.Forms.Label();
+            this.lContraseña = new System.Windows.Forms.Label();
+            this.lTipoUsuario = new System.Windows.Forms.Label();
+            this.lGmail = new System.Windows.Forms.Label();
+            this.lTelefono = new System.Windows.Forms.Label();
+            this.lDomicilio = new System.Windows.Forms.Label();
+            this.lFechaNacimiento = new System.Windows.Forms.Label();
+            this.lDni = new System.Windows.Forms.Label();
+            this.lApellido = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +63,6 @@
             this.Gmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edicion = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -112,157 +110,25 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // lApellido
+            // label1
             // 
-            this.lApellido.AutoSize = true;
-            this.lApellido.Location = new System.Drawing.Point(31, 75);
-            this.lApellido.Name = "lApellido";
-            this.lApellido.Size = new System.Drawing.Size(44, 13);
-            this.lApellido.TabIndex = 1;
-            this.lApellido.Text = "Apellido";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(638, 177);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 18);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Empleados";
             // 
-            // lDni
+            // pictureBox1
             // 
-            this.lDni.AutoSize = true;
-            this.lDni.Location = new System.Drawing.Point(31, 105);
-            this.lDni.Name = "lDni";
-            this.lDni.Size = new System.Drawing.Size(26, 13);
-            this.lDni.TabIndex = 2;
-            this.lDni.Text = "DNI";
-            // 
-            // lFechaNacimiento
-            // 
-            this.lFechaNacimiento.AutoSize = true;
-            this.lFechaNacimiento.Location = new System.Drawing.Point(31, 132);
-            this.lFechaNacimiento.Name = "lFechaNacimiento";
-            this.lFechaNacimiento.Size = new System.Drawing.Size(108, 13);
-            this.lFechaNacimiento.TabIndex = 3;
-            this.lFechaNacimiento.Text = "Fecha de Nacimiento";
-            // 
-            // lDomicilio
-            // 
-            this.lDomicilio.AutoSize = true;
-            this.lDomicilio.Location = new System.Drawing.Point(31, 161);
-            this.lDomicilio.Name = "lDomicilio";
-            this.lDomicilio.Size = new System.Drawing.Size(49, 13);
-            this.lDomicilio.TabIndex = 4;
-            this.lDomicilio.Text = "Domicilio";
-            // 
-            // lTelefono
-            // 
-            this.lTelefono.AutoSize = true;
-            this.lTelefono.Location = new System.Drawing.Point(336, 36);
-            this.lTelefono.Name = "lTelefono";
-            this.lTelefono.Size = new System.Drawing.Size(49, 13);
-            this.lTelefono.TabIndex = 5;
-            this.lTelefono.Text = "Telefono";
-            // 
-            // lGmail
-            // 
-            this.lGmail.AutoSize = true;
-            this.lGmail.Location = new System.Drawing.Point(336, 67);
-            this.lGmail.Name = "lGmail";
-            this.lGmail.Size = new System.Drawing.Size(33, 13);
-            this.lGmail.TabIndex = 6;
-            this.lGmail.Text = "Gmail";
-            // 
-            // lTipoUsuario
-            // 
-            this.lTipoUsuario.AutoSize = true;
-            this.lTipoUsuario.Location = new System.Drawing.Point(336, 95);
-            this.lTipoUsuario.Name = "lTipoUsuario";
-            this.lTipoUsuario.Size = new System.Drawing.Size(82, 13);
-            this.lTipoUsuario.TabIndex = 7;
-            this.lTipoUsuario.Text = "Tipo de Usuario";
-            // 
-            // lContraseña
-            // 
-            this.lContraseña.AutoSize = true;
-            this.lContraseña.Location = new System.Drawing.Point(336, 126);
-            this.lContraseña.Name = "lContraseña";
-            this.lContraseña.Size = new System.Drawing.Size(61, 13);
-            this.lContraseña.TabIndex = 8;
-            this.lContraseña.Text = "Contraseña";
-            // 
-            // lRepContraseña
-            // 
-            this.lRepContraseña.AutoSize = true;
-            this.lRepContraseña.Location = new System.Drawing.Point(336, 161);
-            this.lRepContraseña.Name = "lRepContraseña";
-            this.lRepContraseña.Size = new System.Drawing.Size(98, 13);
-            this.lRepContraseña.TabIndex = 9;
-            this.lRepContraseña.Text = "Repetir Contraseña";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(141, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 10;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(141, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(152, 20);
-            this.textBox2.TabIndex = 11;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(141, 98);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(151, 20);
-            this.textBox3.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(141, 158);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(151, 20);
-            this.textBox4.TabIndex = 13;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(446, 33);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(151, 20);
-            this.textBox5.TabIndex = 14;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(446, 60);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(151, 20);
-            this.textBox6.TabIndex = 15;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(446, 119);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(151, 20);
-            this.textBox7.TabIndex = 16;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(446, 161);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(151, 20);
-            this.textBox8.TabIndex = 17;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(446, 92);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 18;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(141, 126);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
-            this.dateTimePicker1.TabIndex = 19;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(633, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 123);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // bAgregar
             // 
@@ -275,25 +141,157 @@
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // dateTimePicker1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(633, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 123);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(141, 126);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
+            this.dateTimePicker1.TabIndex = 19;
             // 
-            // label1
+            // comboBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Bright", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(638, 177);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 18);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Empleados";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(446, 92);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 21);
+            this.comboBox1.TabIndex = 18;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(446, 161);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(151, 20);
+            this.textBox8.TabIndex = 17;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(446, 119);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(151, 20);
+            this.textBox7.TabIndex = 16;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(446, 60);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(151, 20);
+            this.textBox6.TabIndex = 15;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(446, 33);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(151, 20);
+            this.textBox5.TabIndex = 14;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(141, 158);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(151, 20);
+            this.textBox4.TabIndex = 13;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(141, 98);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(151, 20);
+            this.textBox3.TabIndex = 12;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(141, 68);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(152, 20);
+            this.textBox2.TabIndex = 11;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(141, 34);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(152, 20);
+            this.textBox1.TabIndex = 10;
+            // 
+            // lRepContraseña
+            // 
+            this.lRepContraseña.AutoSize = true;
+            this.lRepContraseña.Location = new System.Drawing.Point(336, 161);
+            this.lRepContraseña.Name = "lRepContraseña";
+            this.lRepContraseña.Size = new System.Drawing.Size(98, 13);
+            this.lRepContraseña.TabIndex = 9;
+            this.lRepContraseña.Text = "Repetir Contraseña";
+            // 
+            // lContraseña
+            // 
+            this.lContraseña.AutoSize = true;
+            this.lContraseña.Location = new System.Drawing.Point(336, 126);
+            this.lContraseña.Name = "lContraseña";
+            this.lContraseña.Size = new System.Drawing.Size(61, 13);
+            this.lContraseña.TabIndex = 8;
+            this.lContraseña.Text = "Contraseña";
+            // 
+            // lTipoUsuario
+            // 
+            this.lTipoUsuario.AutoSize = true;
+            this.lTipoUsuario.Location = new System.Drawing.Point(336, 95);
+            this.lTipoUsuario.Name = "lTipoUsuario";
+            this.lTipoUsuario.Size = new System.Drawing.Size(82, 13);
+            this.lTipoUsuario.TabIndex = 7;
+            this.lTipoUsuario.Text = "Tipo de Usuario";
+            // 
+            // lGmail
+            // 
+            this.lGmail.AutoSize = true;
+            this.lGmail.Location = new System.Drawing.Point(336, 67);
+            this.lGmail.Name = "lGmail";
+            this.lGmail.Size = new System.Drawing.Size(33, 13);
+            this.lGmail.TabIndex = 6;
+            this.lGmail.Text = "Gmail";
+            // 
+            // lTelefono
+            // 
+            this.lTelefono.AutoSize = true;
+            this.lTelefono.Location = new System.Drawing.Point(336, 36);
+            this.lTelefono.Name = "lTelefono";
+            this.lTelefono.Size = new System.Drawing.Size(49, 13);
+            this.lTelefono.TabIndex = 5;
+            this.lTelefono.Text = "Telefono";
+            // 
+            // lDomicilio
+            // 
+            this.lDomicilio.AutoSize = true;
+            this.lDomicilio.Location = new System.Drawing.Point(31, 161);
+            this.lDomicilio.Name = "lDomicilio";
+            this.lDomicilio.Size = new System.Drawing.Size(49, 13);
+            this.lDomicilio.TabIndex = 4;
+            this.lDomicilio.Text = "Domicilio";
+            // 
+            // lFechaNacimiento
+            // 
+            this.lFechaNacimiento.AutoSize = true;
+            this.lFechaNacimiento.Location = new System.Drawing.Point(31, 132);
+            this.lFechaNacimiento.Name = "lFechaNacimiento";
+            this.lFechaNacimiento.Size = new System.Drawing.Size(108, 13);
+            this.lFechaNacimiento.TabIndex = 3;
+            this.lFechaNacimiento.Text = "Fecha de Nacimiento";
+            // 
+            // lDni
+            // 
+            this.lDni.AutoSize = true;
+            this.lDni.Location = new System.Drawing.Point(31, 105);
+            this.lDni.Name = "lDni";
+            this.lDni.Size = new System.Drawing.Size(26, 13);
+            this.lDni.TabIndex = 2;
+            this.lDni.Text = "DNI";
+            // 
+            // lApellido
+            // 
+            this.lApellido.AutoSize = true;
+            this.lApellido.Location = new System.Drawing.Point(31, 75);
+            this.lApellido.Name = "lApellido";
+            this.lApellido.Size = new System.Drawing.Size(44, 13);
+            this.lApellido.TabIndex = 1;
+            this.lApellido.Text = "Apellido";
             // 
             // dataGridView1
             // 
@@ -309,9 +307,7 @@
             this.Telefono,
             this.Gmail,
             this.Rol,
-            this.Contraseña,
-            this.Edicion,
-            this.Eliminar});
+            this.Contraseña});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 241);
             this.dataGridView1.Name = "dataGridView1";
@@ -363,20 +359,6 @@
             // 
             this.Contraseña.HeaderText = "Contraseña";
             this.Contraseña.Name = "Contraseña";
-            // 
-            // Edicion
-            // 
-            this.Edicion.HeaderText = "Edicion";
-            this.Edicion.Name = "Edicion";
-            this.Edicion.Text = "Editar";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Eliminar.Text = "Eliminar";
             // 
             // Empleados
             // 
@@ -432,7 +414,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Gmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contraseña;
-        private System.Windows.Forms.DataGridViewButtonColumn Edicion;
-        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }
