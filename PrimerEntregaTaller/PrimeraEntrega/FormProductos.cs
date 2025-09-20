@@ -42,23 +42,7 @@ namespace gerente
         }
 
 
-        private void BtnGuardar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textNombreP.Text) ||
-                string.IsNullOrWhiteSpace(textCategoriaP.Text) ||
-                string.IsNullOrWhiteSpace(textDescuentoP.Text) ||
-                string.IsNullOrWhiteSpace(textProvinciaP.Text) ||
-                string.IsNullOrWhiteSpace(textEstadoP.Text) ||
-                string.IsNullOrWhiteSpace(textPrecioP.Text))
-                {
-                MessageBox.Show("Debe completar todos los campos antes de guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-          
-
-            MessageBox.Show("Producto guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        
 
         private void lProductos_Click(object sender, EventArgs e)
         {
@@ -73,6 +57,24 @@ namespace gerente
         private void lCategoria_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bAgregar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textNombreP.Text) ||
+                string.IsNullOrWhiteSpace(textCategoriaP.Text) ||
+                string.IsNullOrWhiteSpace(textDescuentoP.Text) ||
+                string.IsNullOrWhiteSpace(textProvinciaP.Text) ||
+                string.IsNullOrWhiteSpace(textEstadoP.Text) ||
+                string.IsNullOrWhiteSpace(textPrecioP.Text))
+            {
+                MessageBox.Show("Debe completar todos los campos antes de guardar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+
+            MessageBox.Show("Producto guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

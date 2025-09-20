@@ -56,6 +56,8 @@
             this.textProvinciaP = new System.Windows.Forms.TextBox();
             this.textPrecioP = new System.Windows.Forms.TextBox();
             this.textEstadoP = new System.Windows.Forms.TextBox();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -224,18 +226,19 @@
             this.bAgregar.BackColor = System.Drawing.Color.LightGreen;
             this.bAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAgregar.Location = new System.Drawing.Point(435, 102);
+            this.bAgregar.Location = new System.Drawing.Point(436, 45);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(76, 24);
             this.bAgregar.TabIndex = 10;
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = false;
+            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
             // 
             // bEliminar
             // 
             this.bEliminar.BackColor = System.Drawing.Color.Red;
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEliminar.Location = new System.Drawing.Point(436, 182);
+            this.bEliminar.Location = new System.Drawing.Point(437, 138);
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(75, 23);
             this.bEliminar.TabIndex = 11;
@@ -284,12 +287,36 @@
             this.textEstadoP.Size = new System.Drawing.Size(100, 20);
             this.textEstadoP.TabIndex = 17;
             // 
+            // bModificar
+            // 
+            this.bModificar.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bModificar.Location = new System.Drawing.Point(437, 91);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(75, 24);
+            this.bModificar.TabIndex = 18;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = false;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bBuscar.Location = new System.Drawing.Point(182, 194);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(84, 30);
+            this.bBuscar.TabIndex = 19;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
+            // 
             // FormProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(811, 392);
+            this.Controls.Add(this.bBuscar);
+            this.Controls.Add(this.bModificar);
             this.Controls.Add(this.textEstadoP);
             this.Controls.Add(this.textPrecioP);
             this.Controls.Add(this.textProvinciaP);
@@ -347,5 +374,7 @@
         private System.Windows.Forms.TextBox textProvinciaP;
         private System.Windows.Forms.TextBox textPrecioP;
         private System.Windows.Forms.TextBox textEstadoP;
+        private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.Button bBuscar;
     }
 }
