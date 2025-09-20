@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-
 namespace Taller_AppRestaurante
 {
     public partial class FormClientes : Form
@@ -11,7 +10,23 @@ namespace Taller_AppRestaurante
         public FormClientes()
         {
             InitializeComponent();
-            CargarClientes(); // carga inicial de los clientes al abrir el formulario
+
+            // Desactivar generación automática de columnas
+            dvgClientes.AutoGenerateColumns = false;
+
+            // Asignar DataPropertyName a cada columna
+            Column1.DataPropertyName = "nombre";
+            Column5.DataPropertyName = "apellido";
+            Column3.DataPropertyName = "fecha_nacimiento";
+            Colum4.DataPropertyName = "dni";
+            Column6.DataPropertyName = "telefono";
+            Column2.DataPropertyName = "Gmail";
+            Column4.DataPropertyName = "tipo_cliente";
+
+            // Cargar clientes
+            CargarClientes();
+
+            // Evento de búsqueda
             txtBusqueda.TextChanged += txtBusqueda_TextChanged;
         }
 
@@ -40,7 +55,7 @@ namespace Taller_AppRestaurante
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
             string apellido = txtApellido.Text.Trim();
@@ -89,7 +104,7 @@ namespace Taller_AppRestaurante
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
@@ -128,43 +143,18 @@ namespace Taller_AppRestaurante
             }
         }
 
-
-        private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Por ahora no necesitamos hacer nada
-        }
-
+        private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void panel1_Paint(object sender, PaintEventArgs e) { }
-
         private void panel2_Paint(object sender, PaintEventArgs e) { }
-
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e) { }
-
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e) { }
-
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) { }
-
         private void txtCorreo_TextChanged(object sender, EventArgs e) { }
+        private void txtNombre_TextChanged(object sender, EventArgs e) { }
+        private void txtApellido_TextChanged(object sender, EventArgs e) { }
+        private void FormClientes_Load(object sender, EventArgs e) { }
+        private void dvgClientes_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
+        private void panel2_Paint_1(object sender, PaintEventArgs e) { }
 
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtApellido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormClientes_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dvgClientes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
-

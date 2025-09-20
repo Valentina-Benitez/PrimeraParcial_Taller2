@@ -40,10 +40,10 @@
             this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,54 +65,65 @@
             this.Rol,
             this.Contraseña});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 299);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 368);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 151);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(1067, 186);
             this.dataGridView1.TabIndex = 5;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
             this.Nombre.Name = "Nombre";
             // 
             // Apellido
             // 
             this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 6;
             this.Apellido.Name = "Apellido";
             // 
             // DNI
             // 
             this.DNI.HeaderText = "DNI";
+            this.DNI.MinimumWidth = 6;
             this.DNI.Name = "DNI";
             // 
             // Fecha_Nacimiento
             // 
             this.Fecha_Nacimiento.HeaderText = "Fecha de nacimiento";
+            this.Fecha_Nacimiento.MinimumWidth = 6;
             this.Fecha_Nacimiento.Name = "Fecha_Nacimiento";
             // 
             // Domicilio
             // 
             this.Domicilio.HeaderText = "Domicilio";
+            this.Domicilio.MinimumWidth = 6;
             this.Domicilio.Name = "Domicilio";
             // 
             // Telefono
             // 
             this.Telefono.HeaderText = "Telefono";
+            this.Telefono.MinimumWidth = 6;
             this.Telefono.Name = "Telefono";
             // 
             // Gmail
             // 
             this.Gmail.HeaderText = "Gmail";
+            this.Gmail.MinimumWidth = 6;
             this.Gmail.Name = "Gmail";
             // 
             // Rol
             // 
             this.Rol.HeaderText = "Tipo de Usuario";
+            this.Rol.MinimumWidth = 6;
             this.Rol.Name = "Rol";
             // 
             // Contraseña
             // 
             this.Contraseña.HeaderText = "Contraseña";
+            this.Contraseña.MinimumWidth = 6;
             this.Contraseña.Name = "Contraseña";
             // 
             // panel1
@@ -124,61 +135,68 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 304);
+            this.panel1.Size = new System.Drawing.Size(1067, 374);
             this.panel1.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(333, 182);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 33);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Empleados";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(324, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 167);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(226, 239);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 36);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.PaleTurquoise;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(471, 239);
+            this.button2.Location = new System.Drawing.Point(628, 294);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 36);
+            this.button2.Size = new System.Drawing.Size(108, 44);
             this.button2.TabIndex = 5;
             this.button2.Text = "Desactivar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(301, 294);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 44);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(444, 224);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 43);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Empleados";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(432, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(168, 206);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // FormEmpleadosVistas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormEmpleadosVistas";
             this.Text = "FormEmpleadosVistas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

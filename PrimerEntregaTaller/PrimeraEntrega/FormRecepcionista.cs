@@ -21,7 +21,7 @@ namespace Taller_AppRestaurante
         private void button5_Click(object sender, EventArgs e)
         {
             // Crea una nueva instancia del formulario de nueva reserva
-            FormNuevaReserva formularioReserva = new FormNuevaReserva();
+            FormAgregarProductos formularioReserva = new FormAgregarProductos();
 
             // Muestra el formulario en pantalla
             formularioReserva.ShowDialog();
