@@ -96,7 +96,7 @@ namespace PrimeraEntrega
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
+            this.pictureBox1.BackColor = System.Drawing.Color.PowderBlue;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(39, 72);
             this.pictureBox1.Name = "pictureBox1";

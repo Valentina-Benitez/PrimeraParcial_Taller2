@@ -131,6 +131,26 @@ namespace Taller_AppRestaurante
 
         }
 
-      
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
+
+
+        private void textBox3_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
     }
 }

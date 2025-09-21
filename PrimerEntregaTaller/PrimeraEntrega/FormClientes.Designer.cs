@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.txtTipo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtTipo = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,13 +130,6 @@
             this.dtpFechaNac.Size = new System.Drawing.Size(212, 22);
             this.dtpFechaNac.TabIndex = 20;
             // 
-            // txtTipo
-            // 
-            this.txtTipo.Location = new System.Drawing.Point(666, 128);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(212, 22);
-            this.txtTipo.TabIndex = 19;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -164,6 +157,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(212, 22);
             this.txtTelefono.TabIndex = 14;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // label5
             // 
@@ -181,6 +175,7 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(212, 22);
             this.txtCorreo.TabIndex = 15;
+            this.txtCorreo.Leave += new System.EventHandler(this.txtCorreo_Leave);
             // 
             // label10
             // 
@@ -198,6 +193,7 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(212, 22);
             this.txtDNI.TabIndex = 16;
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // label6
             // 
@@ -215,6 +211,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(212, 22);
             this.txtNombre.TabIndex = 13;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label4
             // 
@@ -253,6 +250,8 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(212, 22);
             this.txtApellido.TabIndex = 25;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged_1);
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtNomCliente
             // 
@@ -277,14 +276,14 @@
             this.Column6,
             this.Column2,
             this.Column4});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgClientes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgClientes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dvgClientes.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dvgClientes.Location = new System.Drawing.Point(0, 304);
             this.dvgClientes.Name = "dvgClientes";
@@ -349,6 +348,14 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // txtTipo
+            // 
+            this.txtTipo.Location = new System.Drawing.Point(666, 128);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(212, 22);
+            this.txtTipo.TabIndex = 19;
+            this.txtTipo.TextChanged += new System.EventHandler(this.txtTipo_TextChanged);
+            // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -377,7 +384,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.DateTimePicker dtpFechaNac;
-        private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtTelefono;
@@ -399,5 +405,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtTipo;
     }
 }

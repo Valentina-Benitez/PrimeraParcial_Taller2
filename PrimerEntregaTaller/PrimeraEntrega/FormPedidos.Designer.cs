@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPedidos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPedidos));
             this.txtBuscoPedido = new System.Windows.Forms.TextBox();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +49,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.bPedido = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -69,11 +71,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscoPedido
@@ -250,6 +250,26 @@
             this.panel2.TabIndex = 8;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(221, 289);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(37, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
+            // comboEstado
+            // 
+            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(668, 106);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(177, 24);
+            this.comboEstado.TabIndex = 29;
+            // 
             // txtBusqueda
             // 
             this.txtBusqueda.Location = new System.Drawing.Point(258, 289);
@@ -407,6 +427,8 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(123, 22);
             this.textBox3.TabIndex = 16;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.textBox3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox3_PreviewKeyDown);
             // 
             // textBox4
             // 
@@ -415,6 +437,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(212, 22);
             this.textBox4.TabIndex = 14;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // label8
             // 
@@ -456,26 +479,6 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Nuevo Pedido";
             // 
-            // comboEstado
-            // 
-            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(668, 106);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(177, 24);
-            this.comboEstado.TabIndex = 29;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(221, 289);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(37, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 30;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -488,8 +491,8 @@
             this.Load += new System.EventHandler(this.FormPedidos_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
