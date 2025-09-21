@@ -165,5 +165,10 @@ namespace Taller_AppRestaurante
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
