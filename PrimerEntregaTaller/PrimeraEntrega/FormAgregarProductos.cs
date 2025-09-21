@@ -2,93 +2,104 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Taller_AppRestaurante
+
+namespace PrimeraEntrega
 {
     public partial class FormAgregarProductos : Form
     {
+
         public FormAgregarProductos()
         {
-            InitializeComponent();
+            InitializeComponent(); // Esto lo maneja el Designer.cs
+            this.Load += FormAgregarProductos_Load;
         }
 
-        private void InitializeComponent()
+        private void FormAgregarProductos_Load(object sender, EventArgs e)
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtBuscaP = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtBuscaP);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(409, 100);
-            this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Constantia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Seleccionar Productos";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(331, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtBuscaP
-            // 
-            this.txtBuscaP.Location = new System.Drawing.Point(57, 55);
-            this.txtBuscaP.Name = "txtBuscaP";
-            this.txtBuscaP.Size = new System.Drawing.Size(277, 22);
-            this.txtBuscaP.TabIndex = 2;
-            this.txtBuscaP.TextChanged += new System.EventHandler(this.txtBuscaP_TextChanged);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 100);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(409, 212);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // FormAgregarProductos
-            // 
-            this.ClientSize = new System.Drawing.Size(409, 312);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "FormAgregarProductos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            //this.UseWaitCursor = true;
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
+            CargarProductos();
+        }
 
+        private void CargarProductos(string filtro = "")
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
+                {
+                    conexion.Open();
+
+                    // ¡MEJORA! Agregamos 'id_producto' a la consulta
+                    string consulta = "SELECT id_producto, nombre, precio FROM producto";
+                    if (!string.IsNullOrEmpty(filtro))
+                    {
+                        consulta += " WHERE nombre LIKE @filtro";
+                    }
+
+                    SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                    if (!string.IsNullOrEmpty(filtro))
+                    {
+                        adaptador.SelectCommand.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
+                    }
+
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
+
+                    flowLayoutPanel1.Controls.Clear();
+
+                    // ¡MEJORA! Reemplazamos los Labels por Botones
+                    foreach (DataRow fila in tabla.Rows)
+                    {
+                        string nombre = fila["nombre"].ToString();
+                        decimal precio = Convert.ToDecimal(fila["precio"]);
+                        int idProducto = Convert.ToInt32(fila["id_producto"]);
+
+                        Button btnProducto = new Button();
+                        btnProducto.Text = $"{nombre}\n${precio}";
+                        btnProducto.Tag = idProducto;
+                        btnProducto.Size = new System.Drawing.Size(150, 60);
+                        btnProducto.BackColor = System.Drawing.Color.LightGreen;
+                        btnProducto.Margin = new Padding(5);
+                        btnProducto.Font = new System.Drawing.Font("Segoe UI", 9, System.Drawing.FontStyle.Bold);
+                        btnProducto.FlatStyle = FlatStyle.Flat;
+                        btnProducto.FlatAppearance.BorderSize = 0;
+                        btnProducto.Cursor = Cursors.Hand;
+
+                        btnProducto.Click += BtnProducto_Click;
+
+                        flowLayoutPanel1.Controls.Add(btnProducto);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar productos: " + ex.Message);
+            }
+        }
+
+        private void BtnProducto_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                int idProducto = (int)btn.Tag;
+                string[] infoProducto = btn.Text.Split('\n');
+                string nombre = infoProducto[0];
+                string precio = infoProducto[1];
+
+                MessageBox.Show($"Producto seleccionado:\nID: {idProducto}\nNombre: {nombre}\nPrecio: {precio}");
+            }
+        }
+
+        // Aquí van los manejadores de eventos existentes para los controles
+        private void txtBuscaP_TextChanged(object sender, EventArgs e)
+        {
+            CargarProductos(txtBuscaP.Text.Trim());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,14 +107,14 @@ namespace Taller_AppRestaurante
             Close();
         }
 
-        private void txtBuscaP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
+            // Puedes dejarlo vacío o borrarlo si no hace nada
+        }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

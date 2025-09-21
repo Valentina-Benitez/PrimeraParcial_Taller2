@@ -54,7 +54,10 @@ namespace Taller_AppRestaurante
 
         private void bPedido_Click(object sender, EventArgs e)
         {
+            // Crea una INSTANCIA de tu formulario
             FormAgregarProductos formAgregarProductos = new FormAgregarProductos();
+
+            // Llama a ShowDialog() en la INSTANCIA, no en la clase.
             formAgregarProductos.ShowDialog();
         }
 

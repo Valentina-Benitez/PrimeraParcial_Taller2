@@ -135,10 +135,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(60, 159);
+            this.label7.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(60, 168);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 31);
+            this.label7.Size = new System.Drawing.Size(102, 24);
             this.label7.TabIndex = 9;
             this.label7.Text = "Fecha-Nac";
             // 
@@ -163,10 +163,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(547, 47);
+            this.label5.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(547, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 31);
+            this.label5.Size = new System.Drawing.Size(86, 24);
             this.label5.TabIndex = 7;
             this.label5.Text = "Teléfono";
             // 
@@ -197,10 +197,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(547, 81);
+            this.label6.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(545, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 31);
+            this.label6.Size = new System.Drawing.Size(71, 24);
             this.label6.TabIndex = 8;
             this.label6.Text = "Correo";
             // 
@@ -214,20 +214,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(60, 84);
+            this.label4.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(58, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 31);
+            this.label4.Size = new System.Drawing.Size(84, 24);
             this.label4.TabIndex = 24;
             this.label4.Text = "Apellido";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(60, 119);
+            this.label9.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(60, 128);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 31);
+            this.label9.Size = new System.Drawing.Size(47, 24);
             this.label9.TabIndex = 11;
             this.label9.Text = "DNI";
             // 
@@ -252,10 +252,10 @@
             // txtNomCliente
             // 
             this.txtNomCliente.AutoSize = true;
-            this.txtNomCliente.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomCliente.Location = new System.Drawing.Point(60, 47);
+            this.txtNomCliente.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomCliente.Location = new System.Drawing.Point(60, 53);
             this.txtNomCliente.Name = "txtNomCliente";
-            this.txtNomCliente.Size = new System.Drawing.Size(86, 31);
+            this.txtNomCliente.Size = new System.Drawing.Size(82, 24);
             this.txtNomCliente.TabIndex = 23;
             this.txtNomCliente.Text = "Nombre";
             // 

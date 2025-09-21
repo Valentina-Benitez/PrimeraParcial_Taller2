@@ -73,13 +73,13 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgReserva = new System.Windows.Forms.DataGridView();
+            this.Nombre4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Personas5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mesa3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hora2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -87,7 +87,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgReserva)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -355,7 +355,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(199, 157);
+            this.textBox3.Location = new System.Drawing.Point(199, 154);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(186, 22);
             this.textBox3.TabIndex = 28;
@@ -384,26 +384,26 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(551, 56);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 31);
+            this.label12.Size = new System.Drawing.Size(61, 24);
             this.label12.TabIndex = 21;
             this.label12.Text = "Fecha";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(96, 151);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 31);
+            this.label3.Size = new System.Drawing.Size(69, 24);
             this.label3.TabIndex = 27;
             this.label3.Text = "Estado";
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(275, 112);
+            this.numericUpDown3.Location = new System.Drawing.Point(272, 109);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(78, 22);
             this.numericUpDown3.TabIndex = 26;
@@ -411,17 +411,17 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(557, 151);
+            this.label11.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(551, 151);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 31);
+            this.label11.Size = new System.Drawing.Size(56, 24);
             this.label11.TabIndex = 25;
             this.label11.Text = "Mesa";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.IndianRed;
-            this.button1.Location = new System.Drawing.Point(557, 224);
+            this.button1.Location = new System.Drawing.Point(334, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 38);
             this.button1.TabIndex = 24;
@@ -431,7 +431,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.button2.Location = new System.Drawing.Point(338, 224);
+            this.button2.Location = new System.Drawing.Point(555, 224);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 38);
             this.button2.TabIndex = 23;
@@ -441,36 +441,36 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(557, 105);
+            this.label13.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(551, 105);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 31);
+            this.label13.Size = new System.Drawing.Size(55, 24);
             this.label13.TabIndex = 20;
             this.label13.Text = "Hora";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(96, 105);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(150, 31);
+            this.label14.Size = new System.Drawing.Size(140, 24);
             this.label14.TabIndex = 19;
             this.label14.Text = "Cant. Personas";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe Print", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(96, 59);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 31);
+            this.label15.Size = new System.Drawing.Size(82, 24);
             this.label15.TabIndex = 18;
             this.label15.Text = "Nombre";
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(641, 157);
+            this.numericUpDown4.Location = new System.Drawing.Point(641, 153);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(69, 22);
             this.numericUpDown4.TabIndex = 15;
@@ -486,7 +486,7 @@
             // 
             this.dateTimePicker3.CustomFormat = "HH:mm";
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker3.Location = new System.Drawing.Point(641, 114);
+            this.dateTimePicker3.Location = new System.Drawing.Point(641, 106);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.ShowUpDown = true;
             this.dateTimePicker3.Size = new System.Drawing.Size(89, 22);
@@ -501,18 +501,18 @@
             this.dateTimePicker4.TabIndex = 12;
             this.dateTimePicker4.Value = new System.DateTime(2025, 9, 12, 0, 0, 0, 0);
             // 
-            // dataGridView2
+            // dvgReserva
             // 
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
+            this.dvgReserva.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgReserva.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dvgReserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgReserva.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre4,
+            this.Personas5,
+            this.Mesa3,
+            this.Fecha1,
+            this.Hora2,
+            this.Estado6});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Sans Serif Collection", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -520,52 +520,53 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 346);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
+            this.dvgReserva.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dvgReserva.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dvgReserva.Location = new System.Drawing.Point(0, 346);
+            this.dvgReserva.Name = "dvgReserva";
+            this.dvgReserva.RowHeadersWidth = 51;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1099, 152);
-            this.dataGridView2.TabIndex = 0;
+            this.dvgReserva.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dvgReserva.RowTemplate.Height = 24;
+            this.dvgReserva.Size = new System.Drawing.Size(1099, 152);
+            this.dvgReserva.TabIndex = 0;
+            this.dvgReserva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellContentClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // Nombre4
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.Nombre4.HeaderText = "Nombre";
+            this.Nombre4.MinimumWidth = 6;
+            this.Nombre4.Name = "Nombre4";
             // 
-            // dataGridViewTextBoxColumn2
+            // Personas5
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Hora";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.Personas5.HeaderText = "Personas";
+            this.Personas5.MinimumWidth = 6;
+            this.Personas5.Name = "Personas5";
             // 
-            // dataGridViewTextBoxColumn3
+            // Mesa3
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Mesa";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.Mesa3.HeaderText = "Mesa";
+            this.Mesa3.MinimumWidth = 6;
+            this.Mesa3.Name = "Mesa3";
             // 
-            // dataGridViewTextBoxColumn4
+            // Fecha1
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.Fecha1.HeaderText = "Fecha";
+            this.Fecha1.MinimumWidth = 6;
+            this.Fecha1.Name = "Fecha1";
             // 
-            // dataGridViewTextBoxColumn5
+            // Hora2
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Personas";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.Hora2.HeaderText = "Hora";
+            this.Hora2.MinimumWidth = 6;
+            this.Hora2.Name = "Hora2";
             // 
-            // dataGridViewTextBoxColumn6
+            // Estado6
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Estado";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.Estado6.HeaderText = "Estado";
+            this.Estado6.MinimumWidth = 6;
+            this.Estado6.Name = "Estado6";
             // 
             // FormRecepcionista
             // 
@@ -574,7 +575,7 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1099, 498);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dvgReserva);
             this.Name = "FormRecepcionista";
             this.Text = "FormRecepcionista";
             this.Load += new System.EventHandler(this.FormRecepcionista_Load);
@@ -587,7 +588,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgReserva)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -634,13 +635,13 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridView dvgReserva;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Personas5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mesa3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hora2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado6;
     }
 }

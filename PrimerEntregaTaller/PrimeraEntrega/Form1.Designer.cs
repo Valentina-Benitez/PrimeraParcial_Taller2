@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lDniInicio = new System.Windows.Forms.Label();
-            this.lContraseñaInicio = new System.Windows.Forms.Label();
-            this.bInicio = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lContraseñaInicio = new System.Windows.Forms.Label();
+            this.lDniInicio = new System.Windows.Forms.Label();
+            this.bInicio = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,16 +58,19 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // lDniInicio
+            // textBox4
             // 
-            this.lDniInicio.AutoSize = true;
-            this.lDniInicio.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lDniInicio.Location = new System.Drawing.Point(3, 19);
-            this.lDniInicio.Name = "lDniInicio";
-            this.lDniInicio.Size = new System.Drawing.Size(35, 23);
-            this.lDniInicio.TabIndex = 0;
-            this.lDniInicio.Text = "DNI";
-            this.lDniInicio.Click += new System.EventHandler(this.label1_Click);
+            this.textBox4.Location = new System.Drawing.Point(106, 76);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(164, 22);
+            this.textBox4.TabIndex = 3;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(90, 22);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(164, 22);
+            this.textBox3.TabIndex = 2;
             // 
             // lContraseñaInicio
             // 
@@ -75,9 +78,20 @@
             this.lContraseñaInicio.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lContraseñaInicio.Location = new System.Drawing.Point(3, 68);
             this.lContraseñaInicio.Name = "lContraseñaInicio";
-            this.lContraseñaInicio.Size = new System.Drawing.Size(86, 23);
+            this.lContraseñaInicio.Size = new System.Drawing.Size(110, 30);
             this.lContraseñaInicio.TabIndex = 1;
             this.lContraseñaInicio.Text = "Contraseña";
+            // 
+            // lDniInicio
+            // 
+            this.lDniInicio.AutoSize = true;
+            this.lDniInicio.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lDniInicio.Location = new System.Drawing.Point(3, 19);
+            this.lDniInicio.Name = "lDniInicio";
+            this.lDniInicio.Size = new System.Drawing.Size(46, 30);
+            this.lDniInicio.TabIndex = 0;
+            this.lDniInicio.Text = "DNI";
+            this.lDniInicio.Click += new System.EventHandler(this.label1_Click);
             // 
             // bInicio
             // 
@@ -91,20 +105,6 @@
             this.bInicio.Text = "Iniciar";
             this.bInicio.UseVisualStyleBackColor = false;
             this.bInicio.Click += new System.EventHandler(this.bInicio_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(90, 22);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 20);
-            this.textBox3.TabIndex = 2;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(90, 71);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(164, 20);
-            this.textBox4.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 
@@ -123,6 +123,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(942, 488);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.bInicio);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Location = new System.Drawing.Point(287, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(395, 287);
+            this.panel2.TabIndex = 4;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -135,17 +146,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
-            this.panel2.Controls.Add(this.bInicio);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(287, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(395, 287);
-            this.panel2.TabIndex = 4;
-            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(942, 488);
@@ -155,8 +155,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
