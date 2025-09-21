@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRecepcionista));
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Columna1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +59,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -75,12 +75,15 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dvgReserva = new System.Windows.Forms.DataGridView();
+            this.comboEstad = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Nombre4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Personas5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mesa3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -89,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgReserva)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -332,8 +336,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.comboEstad);
             this.panel1.Controls.Add(this.txtBusqueda);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label12);
@@ -354,21 +359,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1099, 346);
             this.panel1.TabIndex = 6;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(226, 318);
+            this.txtBusqueda.Location = new System.Drawing.Point(262, 308);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
             this.txtBusqueda.TabIndex = 7;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(199, 154);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 22);
-            this.textBox3.TabIndex = 28;
             // 
             // label16
             // 
@@ -491,6 +490,8 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(186, 22);
             this.textBox4.TabIndex = 14;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // dateTimePicker3
             // 
@@ -522,7 +523,8 @@
             this.Mesa3,
             this.Fecha1,
             this.Hora2,
-            this.Estado6});
+            this.Estado6,
+            this.Modificar});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Sans Serif Collection", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -541,6 +543,27 @@
             this.dvgReserva.Size = new System.Drawing.Size(1099, 152);
             this.dvgReserva.TabIndex = 0;
             this.dvgReserva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellContentClick);
+            // 
+            // comboEstad
+            // 
+            this.comboEstad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboEstad.FormattingEnabled = true;
+            this.comboEstad.Location = new System.Drawing.Point(199, 154);
+            this.comboEstad.Name = "comboEstad";
+            this.comboEstad.Size = new System.Drawing.Size(186, 24);
+            this.comboEstad.TabIndex = 28;
+            this.comboEstad.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(233, 308);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
             // 
             // Nombre4
             // 
@@ -578,6 +601,14 @@
             this.Estado6.MinimumWidth = 6;
             this.Estado6.Name = "Estado6";
             // 
+            // Modificar
+            // 
+            this.Modificar.HeaderText = "Modificar";
+            this.Modificar.MinimumWidth = 6;
+            this.Modificar.Name = "Modificar";
+            this.Modificar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Modificar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // FormRecepcionista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -599,6 +630,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgReserva)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -630,7 +662,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label3;
@@ -647,12 +678,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dvgReserva;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ComboBox comboEstad;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Personas5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mesa3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado6;
-        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.DataGridViewButtonColumn Modificar;
     }
 }

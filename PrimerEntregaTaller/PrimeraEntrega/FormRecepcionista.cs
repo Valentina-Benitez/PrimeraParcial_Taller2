@@ -76,22 +76,12 @@ namespace Taller_AppRestaurante
             formAgregarProductos.ShowDialog();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -108,7 +98,11 @@ namespace Taller_AppRestaurante
 
         private void FormRecepcionista_Load(object sender, EventArgs e)
         {
-            // ...
+            comboEstad.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboEstad.Items.Clear();
+            comboEstad.Items.Add("confirmada");
+            comboEstad.Items.Add("pendiente");
+            comboEstad.Items.Add("cancelada");
         }
 
         private void dvgReserva_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -145,5 +139,23 @@ namespace Taller_AppRestaurante
             }
         }
 
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo letras, tecla de borrado (Backspace) y espacio
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
     }
 }

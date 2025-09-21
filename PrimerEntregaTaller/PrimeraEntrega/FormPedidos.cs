@@ -17,6 +17,7 @@ namespace Taller_AppRestaurante
             CargarPedidos();
             txtBusqueda.TextChanged += txtBusqueda_TextChanged;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+
         }
 
         private SqlConnection ObtenerConexion()
@@ -67,6 +68,13 @@ namespace Taller_AppRestaurante
         private void FormPedidos_Load(object sender, EventArgs e)
         {
             CargarPedidos();
+
+            comboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboEstado.Items.Clear();
+            comboEstado.Items.Add("pendiente");
+            comboEstado.Items.Add("en preparación");
+            comboEstado.Items.Add("entregado");
+            comboEstado.Items.Add("cancelado");
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -115,6 +123,33 @@ namespace Taller_AppRestaurante
                //ormDetalle.PedidoId = pedidoId; // Asigna el ID del pedido a la propiedad PedidoId.
 
                 formDetalle.ShowDialog();
+            }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
+
+
+        private void textBox3_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
             }
         }
     }

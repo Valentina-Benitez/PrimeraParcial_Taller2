@@ -165,5 +165,61 @@ namespace Taller_AppRestaurante
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
+
+        private void txtApellido_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
+
+        private void txtTipo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // cancela la tecla
+            }
+        }
+
+        private void txtCorreo_Leave(object sender, EventArgs e)
+        {
+            if (!txtCorreo.Text.Contains("@"))
+            {
+                MessageBox.Show("El correo debe contener @", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCorreo.Focus(); // vuelve a poner el cursor en el TextBox
+            }
+        }
     }
 }
