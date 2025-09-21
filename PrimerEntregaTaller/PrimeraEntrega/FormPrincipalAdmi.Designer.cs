@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipalAdmi));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelAdmin = new System.Windows.Forms.Panel();
             this.bVentas = new System.Windows.Forms.Button();
             this.bProductos = new System.Windows.Forms.Button();
             this.bEmpleados = new System.Windows.Forms.Button();
@@ -41,6 +40,7 @@
             this.pictureBox1_Usuario = new System.Windows.Forms.PictureBox();
             this.lEmpleados = new System.Windows.Forms.Label();
             this.ltitulo = new System.Windows.Forms.Label();
+            this.panelAdmin = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,16 +77,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 54);
+            this.panel1.Size = new System.Drawing.Size(794, 53);
             this.panel1.TabIndex = 0;
-            // 
-            // panelAdmin
-            // 
-            this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAdmin.Location = new System.Drawing.Point(3, 63);
-            this.panelAdmin.Name = "panelAdmin";
-            this.panelAdmin.Size = new System.Drawing.Size(794, 384);
-            this.panelAdmin.TabIndex = 1;
             // 
             // bVentas
             // 
@@ -162,9 +154,9 @@
             // pictureBox1_Usuario
             // 
             this.pictureBox1_Usuario.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1_Usuario.Image")));
-            this.pictureBox1_Usuario.Location = new System.Drawing.Point(-2, -4);
+            this.pictureBox1_Usuario.Location = new System.Drawing.Point(3, 8);
             this.pictureBox1_Usuario.Name = "pictureBox1_Usuario";
-            this.pictureBox1_Usuario.Size = new System.Drawing.Size(30, 31);
+            this.pictureBox1_Usuario.Size = new System.Drawing.Size(41, 44);
             this.pictureBox1_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1_Usuario.TabIndex = 12;
             this.pictureBox1_Usuario.TabStop = false;
@@ -183,19 +175,27 @@
             // 
             this.ltitulo.AutoSize = true;
             this.ltitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ltitulo.Location = new System.Drawing.Point(40, 18);
+            this.ltitulo.Location = new System.Drawing.Point(50, 32);
             this.ltitulo.Name = "ltitulo";
-            this.ltitulo.Size = new System.Drawing.Size(140, 20);
+            this.ltitulo.Size = new System.Drawing.Size(120, 20);
             this.ltitulo.TabIndex = 10;
-            this.ltitulo.Text = "Sabor Argentino";
+            this.ltitulo.Text = "Administrador";
             // 
-            // PrincipalAdmi
+            // panelAdmin
+            // 
+            this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAdmin.Location = new System.Drawing.Point(3, 62);
+            this.panelAdmin.Name = "panelAdmin";
+            this.panelAdmin.Size = new System.Drawing.Size(794, 385);
+            this.panelAdmin.TabIndex = 1;
+            // 
+            // FormPrincipalAdmi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "PrincipalAdmi";
+            this.Name = "FormPrincipalAdmi";
             this.Text = "Form4";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
