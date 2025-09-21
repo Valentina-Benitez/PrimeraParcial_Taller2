@@ -57,8 +57,9 @@ namespace Taller_AppRestaurante
                     //dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                     // Ajusta automáticamente la altura de las filas
-                    dvgReserva.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    // dvgReserva.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    // dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dvgReserva.RowTemplate.Height = 30; 
 
                 }
             }
