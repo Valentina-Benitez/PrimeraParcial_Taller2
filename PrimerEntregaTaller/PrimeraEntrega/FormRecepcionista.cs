@@ -108,7 +108,11 @@ namespace Taller_AppRestaurante
 
         private void FormRecepcionista_Load(object sender, EventArgs e)
         {
-            // ...
+            comboEstad.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboEstad.Items.Clear();
+            comboEstad.Items.Add("confirmada");
+            comboEstad.Items.Add("pendiente");
+            comboEstad.Items.Add("cancelada");
         }
 
         private void dvgReserva_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -145,5 +149,14 @@ namespace Taller_AppRestaurante
             }
         }
 
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

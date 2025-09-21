@@ -138,9 +138,9 @@
             // pictureBox1_Usuario
             // 
             this.pictureBox1_Usuario.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1_Usuario.Image")));
-            this.pictureBox1_Usuario.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1_Usuario.Location = new System.Drawing.Point(3, 12);
             this.pictureBox1_Usuario.Name = "pictureBox1_Usuario";
-            this.pictureBox1_Usuario.Size = new System.Drawing.Size(30, 31);
+            this.pictureBox1_Usuario.Size = new System.Drawing.Size(39, 50);
             this.pictureBox1_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1_Usuario.TabIndex = 2;
             this.pictureBox1_Usuario.TabStop = false;
@@ -160,11 +160,11 @@
             // 
             this.ltitulo.AutoSize = true;
             this.ltitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ltitulo.Location = new System.Drawing.Point(42, 22);
+            this.ltitulo.Location = new System.Drawing.Point(48, 36);
             this.ltitulo.Name = "ltitulo";
-            this.ltitulo.Size = new System.Drawing.Size(140, 20);
+            this.ltitulo.Size = new System.Drawing.Size(75, 20);
             this.ltitulo.TabIndex = 0;
-            this.ltitulo.Text = "Sabor Argentino";
+            this.ltitulo.Text = "Gerente";
             // 
             // panelContenedor
             // 

@@ -17,6 +17,7 @@ namespace Taller_AppRestaurante
             CargarPedidos();
             txtBusqueda.TextChanged += txtBusqueda_TextChanged;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+
         }
 
         private SqlConnection ObtenerConexion()
@@ -67,6 +68,13 @@ namespace Taller_AppRestaurante
         private void FormPedidos_Load(object sender, EventArgs e)
         {
             CargarPedidos();
+
+            comboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboEstado.Items.Clear();
+            comboEstado.Items.Add("pendiente");
+            comboEstado.Items.Add("en preparación");
+            comboEstado.Items.Add("entregado");
+            comboEstado.Items.Add("cancelado");
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -117,5 +125,12 @@ namespace Taller_AppRestaurante
                 formDetalle.ShowDialog();
             }
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+      
     }
 }

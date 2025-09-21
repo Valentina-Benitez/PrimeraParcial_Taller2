@@ -58,7 +58,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,6 +80,7 @@
             this.Fecha1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboEstad = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -332,8 +332,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.comboEstad);
             this.panel1.Controls.Add(this.txtBusqueda);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label12);
@@ -354,6 +354,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1099, 346);
             this.panel1.TabIndex = 6;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // txtBusqueda
             // 
@@ -362,13 +363,6 @@
             this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
             this.txtBusqueda.TabIndex = 7;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(199, 154);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 22);
-            this.textBox3.TabIndex = 28;
             // 
             // label16
             // 
@@ -578,6 +572,16 @@
             this.Estado6.MinimumWidth = 6;
             this.Estado6.Name = "Estado6";
             // 
+            // comboEstad
+            // 
+            this.comboEstad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboEstad.FormattingEnabled = true;
+            this.comboEstad.Location = new System.Drawing.Point(199, 154);
+            this.comboEstad.Name = "comboEstad";
+            this.comboEstad.Size = new System.Drawing.Size(186, 24);
+            this.comboEstad.TabIndex = 28;
+            this.comboEstad.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // FormRecepcionista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -630,7 +634,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label3;
@@ -654,5 +657,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado6;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ComboBox comboEstad;
     }
 }

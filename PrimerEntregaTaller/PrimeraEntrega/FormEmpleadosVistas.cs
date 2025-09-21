@@ -17,7 +17,7 @@ namespace PrimeraEntrega
         {
             InitializeComponent();
 
-            CargarProductos();
+            CargarEmpleados();
 
             textNombre.KeyPress += SoloLetras;
             textApellido.KeyPress += SoloLetras;
@@ -29,7 +29,7 @@ namespace PrimeraEntrega
             string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
             return new SqlConnection(cadena);
         }
-        private void CargarProductos()
+        private void CargarEmpleados()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace PrimeraEntrega
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    //dgvProductos.DataSource = dt;
+                   dgvEmpleados.DataSource = dt;
                 }
             }
             catch (Exception ex)
@@ -79,7 +79,7 @@ namespace PrimeraEntrega
             }
 
             // Construir la consulta SQL dinámica
-            string query = "SELECT * FROM Productos WHERE 1=1 ";
+            string query = "SELECT * FROM Empleados WHERE 1=1 ";
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             if (!string.IsNullOrWhiteSpace(textNombre.Text))
@@ -89,7 +89,7 @@ namespace PrimeraEntrega
             }
             if (!string.IsNullOrWhiteSpace(textApellido.Text))
             {
-                query += " AND Categoria LIKE @apellido";
+                query += " AND ApellidoLIKE @apellido";
                 parameters.Add(new SqlParameter("@apeliido", "%" + textApellido.Text + "%"));
             }
 
@@ -97,7 +97,7 @@ namespace PrimeraEntrega
 
             if (!string.IsNullOrWhiteSpace(textDNI.Text))
             {
-                query += " AND Descuento LIKE @dni";
+                query += " AND Dni LIKE @dni";
                 parameters.Add(new SqlParameter("@dni", "%" + textDNI.Text + "%"));
             }
 

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscoPedido = new System.Windows.Forms.TextBox();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +51,6 @@
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.bPedido = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -69,6 +68,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -222,10 +222,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.comboEstado);
             this.panel2.Controls.Add(this.txtBusqueda);
             this.panel2.Controls.Add(this.bPedido);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.dataGridView1);
@@ -244,6 +244,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1097, 481);
             this.panel2.TabIndex = 8;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtBusqueda
             // 
@@ -274,14 +275,6 @@
             this.label13.Size = new System.Drawing.Size(98, 24);
             this.label13.TabIndex = 26;
             this.label13.Text = "Productos";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(668, 110);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(221, 22);
-            this.textBox2.TabIndex = 2;
             // 
             // label1
             // 
@@ -319,21 +312,21 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.btnDetalle});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 326);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1097, 155);
             this.dataGridView1.TabIndex = 0;
@@ -459,6 +452,15 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Nuevo Pedido";
             // 
+            // comboEstado
+            // 
+            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(668, 106);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(177, 24);
+            this.comboEstado.TabIndex = 29;
+            // 
             // FormPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -498,7 +500,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -519,5 +520,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewButtonColumn btnDetalle;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ComboBox comboEstado;
     }
 }
