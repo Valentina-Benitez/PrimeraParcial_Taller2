@@ -1,13 +1,7 @@
-﻿using gerente;
-using PrimeraEntrega;
+﻿using PrimeraEntrega;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Taller_AppRestaurante
@@ -17,33 +11,59 @@ namespace Taller_AppRestaurante
         public FormPedidos()
         {
             InitializeComponent();
+            // Desactivar generación automática de columnas
+            dataGridView1.AutoGenerateColumns = false;
+
+            CargarPedidos();
+            txtBusqueda.TextChanged += txtBusqueda_TextChanged;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private SqlConnection ObtenerConexion()
         {
-
+            string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+            return new SqlConnection(cadena);
         }
 
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        private void CargarPedidos()
         {
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+                    // Consulta que une la tabla Pedido con la tabla Cliente
+                    string consulta = @"
+                SELECT
+                    p.id_pedido AS [Nro Pedido],
+                    c.nombre AS [Cliente],
+                    p.fecha AS [Fecha],
+                    p.estado AS [Estado]
+                FROM
+                    Pedido p
+                JOIN
+                    Cliente c ON p.id_cliente = c.id_cliente;";
 
+                    SqlDataAdapter da = new SqlDataAdapter(consulta, con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar pedidos: " + ex.Message);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. Verifica si hay una fila seleccionada en el DataGridView
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // 2. Obtén el ID del pedido de la fila seleccionada
-                int pedidoId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["No Pedido"].Value);
+                int pedidoId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Nro Pedido"].Value);
 
-                // 3. Crea una instancia del formulario de detalle
                 FormDetallePedido formDetalle = new FormDetallePedido();
-
-                // 4. Asigna el ID del pedido a la propiedad del formulario de detalle
                 formDetalle.PedidoId = pedidoId;
-
-                // 5. Muestra el formulario de detalle como una ventana modal
                 formDetalle.ShowDialog();
             }
             else
@@ -54,26 +74,52 @@ namespace Taller_AppRestaurante
 
         private void bPedido_Click(object sender, EventArgs e)
         {
-            // Crea una INSTANCIA de tu formulario
             FormAgregarProductos formAgregarProductos = new FormAgregarProductos();
-
-            // Llama a ShowDialog() en la INSTANCIA, no en la clase.
             formAgregarProductos.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
+            CargarPedidos();
+        }
 
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtBusqueda.Text.Trim();
+
+            if (string.IsNullOrEmpty(filtro))
+            {
+                CargarPedidos();
+            }
+            else
+            {
+                if (int.TryParse(filtro, out int id_pedido))
+                {
+                    string consulta = "SELECT id_pedido AS [Nro Pedido], ISNULL(nombre,'X') AS [Cliente], fecha AS [Fecha], estado AS [Estado] FROM Pedido WHERE id_pedido = @id_pedido";
+                    using (SqlConnection conexion = ObtenerConexion())
+                    {
+                        SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
+                        da.SelectCommand.Parameters.AddWithValue("@id_pedido", id_pedido);
+
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        dataGridView1.DataSource = dt;
+                    }
+                }
+                else
+                {
+                    string consulta = "SELECT id_pedido AS [Nro Pedido], ISNULL(nombre,'X') AS [Cliente], fecha AS [Fecha], estado AS [Estado] FROM Pedido WHERE nombre LIKE @nombre";
+                    using (SqlConnection conexion = ObtenerConexion())
+                    {
+                        SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
+                        da.SelectCommand.Parameters.AddWithValue("@nombre", "%" + filtro + "%");
+
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        dataGridView1.DataSource = dt;
+                    }
+                }
+            }
         }
     }
 }

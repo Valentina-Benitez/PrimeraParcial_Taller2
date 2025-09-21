@@ -59,21 +59,50 @@ namespace PrimeraEntrega
                         decimal precio = Convert.ToDecimal(fila["precio"]);
                         int idProducto = Convert.ToInt32(fila["id_producto"]);
 
-                        Button btnProducto = new Button();
-                        btnProducto.Text = $"{nombre}\n${precio}";
-                        btnProducto.Tag = idProducto;
-                        btnProducto.Size = new System.Drawing.Size(150, 60);
-                        btnProducto.BackColor = System.Drawing.Color.LightGreen;
-                        btnProducto.Margin = new Padding(5);
-                        btnProducto.Font = new System.Drawing.Font("Segoe UI", 9, System.Drawing.FontStyle.Bold);
-                        btnProducto.FlatStyle = FlatStyle.Flat;
-                        btnProducto.FlatAppearance.BorderSize = 0;
-                        btnProducto.Cursor = Cursors.Hand;
+                        // Panel contenedor tipo fila
+                        TableLayoutPanel filaProducto = new TableLayoutPanel();
+                        filaProducto.ColumnCount = 3;
+                        filaProducto.RowCount = 1;
+                        filaProducto.Width = flowLayoutPanel1.Width - 25;
+                        filaProducto.Height = 35;
+                        filaProducto.Margin = new Padding(2);
+                        filaProducto.BackColor = Color.WhiteSmoke;
 
-                        btnProducto.Click += BtnProducto_Click;
+                        // Configurar columnas (70% nombre, 20% precio, 10% botón)
+                        filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70));
+                        filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+                        filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
 
-                        flowLayoutPanel1.Controls.Add(btnProducto);
+                        // Nombre
+                        Label lblNombre = new Label();
+                        lblNombre.Text = nombre;
+                        lblNombre.Dock = DockStyle.Fill;
+                        lblNombre.TextAlign = ContentAlignment.MiddleLeft;
+                        lblNombre.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+
+                        // Precio
+                        Label lblPrecio = new Label();
+                        lblPrecio.Text = $"${precio}";
+                        lblPrecio.Dock = DockStyle.Fill;
+                        lblPrecio.TextAlign = ContentAlignment.MiddleCenter;
+                        lblPrecio.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+                        // Botón agregar
+                        Button btnAgregar = new Button();
+                        btnAgregar.Text = "+";
+                        btnAgregar.Tag = idProducto;
+                        btnAgregar.Dock = DockStyle.Fill;
+                        btnAgregar.Click += BtnProducto_Click;
+
+                        // Agregar controles al panel fila
+                        filaProducto.Controls.Add(lblNombre, 0, 0);
+                        filaProducto.Controls.Add(lblPrecio, 1, 0);
+                        filaProducto.Controls.Add(btnAgregar, 2, 0);
+
+                        // Agregar fila al FlowLayoutPanel
+                        flowLayoutPanel1.Controls.Add(filaProducto);
                     }
+
                 }
             }
             catch (Exception ex)
@@ -85,15 +114,7 @@ namespace PrimeraEntrega
         private void BtnProducto_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if (btn != null)
-            {
-                int idProducto = (int)btn.Tag;
-                string[] infoProducto = btn.Text.Split('\n');
-                string nombre = infoProducto[0];
-                string precio = infoProducto[1];
-
-                MessageBox.Show($"Producto seleccionado:\nID: {idProducto}\nNombre: {nombre}\nPrecio: {precio}");
-            }
+            
         }
 
         // Aquí van los manejadores de eventos existentes para los controles
@@ -115,6 +136,11 @@ namespace PrimeraEntrega
         private void button1_Click_1(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtBuscaP_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

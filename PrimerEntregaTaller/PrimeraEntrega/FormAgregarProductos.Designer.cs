@@ -57,6 +57,7 @@ namespace PrimeraEntrega
             this.txtBuscaP.Name = "txtBuscaP";
             this.txtBuscaP.Size = new System.Drawing.Size(277, 22);
             this.txtBuscaP.TabIndex = 2;
+            this.txtBuscaP.TextChanged += new System.EventHandler(this.txtBuscaP_TextChanged_1);
             // 
             // button1
             // 

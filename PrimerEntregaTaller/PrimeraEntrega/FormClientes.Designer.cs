@@ -117,6 +117,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
             this.txtBusqueda.TabIndex = 3;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged_1);
             // 
             // dtpFechaNac
             // 

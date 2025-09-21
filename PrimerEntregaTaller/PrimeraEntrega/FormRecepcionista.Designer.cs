@@ -80,6 +80,7 @@
             this.Fecha1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -331,6 +332,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.txtBusqueda);
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label1);
@@ -568,6 +570,14 @@
             this.Estado6.MinimumWidth = 6;
             this.Estado6.Name = "Estado6";
             // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(229, 321);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
+            this.txtBusqueda.TabIndex = 7;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
             // FormRecepcionista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -643,5 +653,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado6;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }

@@ -160,5 +160,10 @@ namespace Taller_AppRestaurante
         {
 
         }
+
+        private void txtBusqueda_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

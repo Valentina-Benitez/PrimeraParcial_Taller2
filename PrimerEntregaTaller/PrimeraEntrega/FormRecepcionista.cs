@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Taller_AppRestaurante;
 
 namespace Taller_AppRestaurante
 {
@@ -51,8 +50,16 @@ namespace Taller_AppRestaurante
                     SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Reserva", con);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    //dvgReserva.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                   // dvgReserva.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dvgReserva.DataSource = dt;
+
+                    // Ajusta automáticamente el ancho de las columnas
+                    //dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                    // Ajusta automáticamente la altura de las filas
+                    dvgReserva.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                 }
             }
             catch (Exception ex)
@@ -108,5 +115,35 @@ namespace Taller_AppRestaurante
         {
 
         }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Si ya tenés un DataTable cargado en el DataGridView
+                DataTable dt = dvgReserva.DataSource as DataTable;
+
+                if (dt != null)
+                {
+                    string filtro = txtBusqueda.Text.Trim();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        // Quita el filtro y muestra todo
+                        dt.DefaultView.RowFilter = string.Empty;
+                    }
+                    else
+                    {
+                        // Filtra por coincidencia parcial en la columna "nombre"
+                        dt.DefaultView.RowFilter = $"nombre LIKE '%{filtro}%'";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la búsqueda: " + ex.Message);
+            }
+        }
+
     }
 }
