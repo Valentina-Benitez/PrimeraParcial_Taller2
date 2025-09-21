@@ -57,6 +57,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.Fecha1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -355,6 +355,14 @@
             this.panel1.Size = new System.Drawing.Size(1099, 346);
             this.panel1.TabIndex = 6;
             // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(226, 318);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
+            this.txtBusqueda.TabIndex = 7;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(199, 154);
@@ -569,14 +577,6 @@
             this.Estado6.HeaderText = "Estado";
             this.Estado6.MinimumWidth = 6;
             this.Estado6.Name = "Estado6";
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.Location = new System.Drawing.Point(229, 321);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
-            this.txtBusqueda.TabIndex = 7;
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // FormRecepcionista
             // 

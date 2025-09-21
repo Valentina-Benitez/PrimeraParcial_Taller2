@@ -56,21 +56,7 @@ namespace Taller_AppRestaurante
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                int pedidoId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Nro Pedido"].Value);
-
-                FormDetallePedido formDetalle = new FormDetallePedido();
-                formDetalle.PedidoId = pedidoId;
-                formDetalle.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecciona un pedido de la lista.");
-            }
-        }
+        
 
         private void bPedido_Click(object sender, EventArgs e)
         {
@@ -87,38 +73,48 @@ namespace Taller_AppRestaurante
         {
             string filtro = txtBusqueda.Text.Trim();
 
-            if (string.IsNullOrEmpty(filtro))
+            // La consulta base siempre se ejecuta, y la cláusula WHERE
+            // se ajusta dinámicamente.
+            string consulta = "SELECT id_pedido AS [Nro Pedido], ISNULL(nombre,'X') AS [Cliente], fecha AS [Fecha], estado AS [Estado] FROM Pedido";
+
+            using (SqlConnection conexion = ObtenerConexion())
             {
-                CargarPedidos();
+                using (SqlDataAdapter da = new SqlDataAdapter(consulta, conexion))
+                {
+                    // Crea un DataTable para almacenar los resultados.
+                    DataTable dt = new DataTable();
+
+                    if (!string.IsNullOrEmpty(filtro))
+                    {
+                        // Si hay un filtro, añade la cláusula WHERE
+                        // y los parámetros.
+                        consulta += " WHERE CAST(id_pedido AS VARCHAR) LIKE @filtro OR nombre LIKE @filtro";
+
+                        // Vuelve a crear el SqlDataAdapter con la consulta completa
+                        da.SelectCommand.CommandText = consulta;
+                        da.SelectCommand.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
+                    }
+
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
             }
-            else
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica si la columna del clic es la del botón "Detalle"
+            // y si no es la cabecera del DataGridView.
+            if (e.ColumnIndex == dataGridView1.Columns["btnDetalle"].Index && e.RowIndex >= 0)
             {
-                if (int.TryParse(filtro, out int id_pedido))
-                {
-                    string consulta = "SELECT id_pedido AS [Nro Pedido], ISNULL(nombre,'X') AS [Cliente], fecha AS [Fecha], estado AS [Estado] FROM Pedido WHERE id_pedido = @id_pedido";
-                    using (SqlConnection conexion = ObtenerConexion())
-                    {
-                        SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
-                        da.SelectCommand.Parameters.AddWithValue("@id_pedido", id_pedido);
+                // Obtiene el ID del pedido de la fila en la que se hizo clic.
+               // int pedidoId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Nro Pedido"].Value);
 
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dataGridView1.DataSource = dt;
-                    }
-                }
-                else
-                {
-                    string consulta = "SELECT id_pedido AS [Nro Pedido], ISNULL(nombre,'X') AS [Cliente], fecha AS [Fecha], estado AS [Estado] FROM Pedido WHERE nombre LIKE @nombre";
-                    using (SqlConnection conexion = ObtenerConexion())
-                    {
-                        SqlDataAdapter da = new SqlDataAdapter(consulta, conexion);
-                        da.SelectCommand.Parameters.AddWithValue("@nombre", "%" + filtro + "%");
+                // Crea la nueva ventana y le pasa el ID del pedido.
+                FormDetallePedido formDetalle = new FormDetallePedido();
+               //ormDetalle.PedidoId = pedidoId; // Asigna el ID del pedido a la propiedad PedidoId.
 
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dataGridView1.DataSource = dt;
-                    }
-                }
+                formDetalle.ShowDialog();
             }
         }
     }

@@ -34,7 +34,7 @@ namespace PrimeraEntrega
                 {
                     conexion.Open();
 
-                    // ¡MEJORA! Agregamos 'id_producto' a la consulta
+                    
                     string consulta = "SELECT id_producto, nombre, precio FROM producto";
                     if (!string.IsNullOrEmpty(filtro))
                     {
