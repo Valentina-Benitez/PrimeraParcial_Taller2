@@ -71,13 +71,15 @@
             this.PrecioProducto,
             this.EstadoProducto,
             this.id_descripcion});
+            this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvProductos.GridColor = System.Drawing.Color.LightBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(77, 309);
+            this.dgvProductos.Location = new System.Drawing.Point(0, 365);
             this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 51;
-            this.dgvProductos.Size = new System.Drawing.Size(896, 159);
+            this.dgvProductos.Size = new System.Drawing.Size(1097, 159);
             this.dgvProductos.TabIndex = 0;
+            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // NombreProducto
             // 
@@ -324,7 +326,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1081, 482);
+            this.ClientSize = new System.Drawing.Size(1097, 524);
             this.Controls.Add(this.cbEstadoP);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.textDescripcion);

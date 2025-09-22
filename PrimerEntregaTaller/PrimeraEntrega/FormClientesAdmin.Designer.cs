@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bModificar = new System.Windows.Forms.Button();
@@ -59,9 +60,19 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dvgClientes);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1067, 554);
+            this.panel1.TabIndex = 9;
             // 
             // panel2
             // 
@@ -91,9 +102,8 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1067, 345);
-            this.panel2.TabIndex = 9;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel2.Size = new System.Drawing.Size(1067, 321);
+            this.panel2.TabIndex = 10;
             // 
             // bCancelar
             // 
@@ -107,7 +117,6 @@
             this.bCancelar.TabIndex = 29;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = false;
-            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bModificar
             // 
@@ -115,7 +124,7 @@
             this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bModificar.Location = new System.Drawing.Point(667, 231);
-            this.bModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bModificar.Margin = new System.Windows.Forms.Padding(4);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(115, 38);
             this.bModificar.TabIndex = 28;
@@ -128,7 +137,7 @@
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.Location = new System.Drawing.Point(139, 231);
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(119, 38);
             this.bBuscar.TabIndex = 27;
@@ -141,16 +150,16 @@
             this.label16.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(12, 9);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(164, 28);
+            this.label16.Size = new System.Drawing.Size(161, 28);
             this.label16.TabIndex = 26;
-            this.label16.Text = "Nuevo Cliente";
+            this.label16.Text = "Datos Cliente";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label2.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 317);
+            this.label2.Location = new System.Drawing.Point(0, 293);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(238, 28);
             this.label2.TabIndex = 2;
@@ -330,13 +339,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dvgClientes.DefaultCellStyle = dataGridViewCellStyle1;
             this.dvgClientes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dvgClientes.Location = new System.Drawing.Point(0, 347);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 325);
             this.dvgClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersWidth = 51;
             this.dvgClientes.RowTemplate.Height = 24;
-            this.dvgClientes.Size = new System.Drawing.Size(1067, 207);
-            this.dvgClientes.TabIndex = 8;
+            this.dvgClientes.Size = new System.Drawing.Size(1067, 229);
+            this.dvgClientes.TabIndex = 11;
             // 
             // Column1
             // 
@@ -386,11 +395,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dvgClientes);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormClientesAdmin";
             this.Text = "FormClientesAdmin";
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).EndInit();
@@ -400,7 +409,19 @@
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dvgClientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Colum4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpFechaNac;
@@ -419,16 +440,5 @@
         private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label txtNomCliente;
-        private System.Windows.Forms.DataGridView dvgClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Colum4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button bModificar;
-        private System.Windows.Forms.Button bBuscar;
-        private System.Windows.Forms.Button bCancelar;
     }
 }

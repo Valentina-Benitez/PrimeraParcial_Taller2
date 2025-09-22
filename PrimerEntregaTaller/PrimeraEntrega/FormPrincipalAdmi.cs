@@ -114,5 +114,21 @@ namespace PrimeraEntrega
         {
 
         }
+
+        private void bBackUp_Click(object sender, EventArgs e)
+        {
+            panelAdmin.Controls.Clear();
+
+            BackUp formSecundario = new BackUp();
+
+
+            formSecundario.TopLevel = false;
+            formSecundario.FormBorderStyle = FormBorderStyle.None;
+            formSecundario.Dock = DockStyle.Fill;
+
+            panelAdmin.Controls.Add(formSecundario);
+
+            formSecundario.Show();
+        }
     }
 }

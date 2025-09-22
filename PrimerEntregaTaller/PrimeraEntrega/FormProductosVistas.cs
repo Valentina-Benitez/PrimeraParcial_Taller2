@@ -157,5 +157,10 @@ namespace PrimeraEntrega
         {
 
         }
+
+        private void textNombreP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

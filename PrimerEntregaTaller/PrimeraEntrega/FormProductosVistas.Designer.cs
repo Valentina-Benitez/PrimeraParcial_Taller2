@@ -119,6 +119,7 @@
             this.textNombreP.Name = "textNombreP";
             this.textNombreP.Size = new System.Drawing.Size(132, 22);
             this.textNombreP.TabIndex = 31;
+            this.textNombreP.TextChanged += new System.EventHandler(this.textNombreP_TextChanged);
             // 
             // lEstado
             // 

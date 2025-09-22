@@ -221,5 +221,15 @@ namespace Taller_AppRestaurante
                 txtCorreo.Focus(); // vuelve a poner el cursor en el TextBox
             }
         }
+
+        private void txtNombre_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

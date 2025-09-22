@@ -43,6 +43,8 @@
             this.lEmpleados = new System.Windows.Forms.Label();
             this.ltitulo = new System.Windows.Forms.Label();
             this.panelAdmin = new System.Windows.Forms.Panel();
+            this.bBackUp = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -57,7 +59,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panelAdmin, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
@@ -68,6 +70,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.bBackUp);
             this.panel1.Controls.Add(this.bProductos);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.bVentas);
@@ -81,7 +85,7 @@
             this.panel1.Controls.Add(this.ltitulo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 65);
             this.panel1.TabIndex = 0;
@@ -92,8 +96,8 @@
             this.bProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bProductos.Location = new System.Drawing.Point(479, 20);
-            this.bProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bProductos.Location = new System.Drawing.Point(398, 16);
+            this.bProductos.Margin = new System.Windows.Forms.Padding(4);
             this.bProductos.Name = "bProductos";
             this.bProductos.Size = new System.Drawing.Size(45, 46);
             this.bProductos.TabIndex = 9;
@@ -104,7 +108,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(877, 39);
+            this.label1.Location = new System.Drawing.Point(601, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 18);
@@ -117,8 +121,8 @@
             this.bVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bVentas.Location = new System.Drawing.Point(669, 16);
-            this.bVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bVentas.Location = new System.Drawing.Point(687, 17);
+            this.bVentas.Margin = new System.Windows.Forms.Padding(4);
             this.bVentas.Name = "bVentas";
             this.bVentas.Size = new System.Drawing.Size(45, 46);
             this.bVentas.TabIndex = 8;
@@ -131,8 +135,8 @@
             this.bCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCliente.Location = new System.Drawing.Point(824, 20);
-            this.bCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bCliente.Location = new System.Drawing.Point(548, 16);
+            this.bCliente.Margin = new System.Windows.Forms.Padding(4);
             this.bCliente.Name = "bCliente";
             this.bCliente.Size = new System.Drawing.Size(45, 46);
             this.bCliente.TabIndex = 17;
@@ -146,8 +150,8 @@
             this.bEmpleados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bEmpleados.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEmpleados.Location = new System.Drawing.Point(289, 16);
-            this.bEmpleados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bEmpleados.Location = new System.Drawing.Point(254, 16);
+            this.bEmpleados.Margin = new System.Windows.Forms.Padding(4);
             this.bEmpleados.Name = "bEmpleados";
             this.bEmpleados.Size = new System.Drawing.Size(39, 46);
             this.bEmpleados.TabIndex = 16;
@@ -158,7 +162,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(1023, 10);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -170,7 +174,7 @@
             // 
             this.lVentas.AutoSize = true;
             this.lVentas.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lVentas.Location = new System.Drawing.Point(723, 39);
+            this.lVentas.Location = new System.Drawing.Point(740, 32);
             this.lVentas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lVentas.Name = "lVentas";
             this.lVentas.Size = new System.Drawing.Size(49, 17);
@@ -181,7 +185,7 @@
             // 
             this.lProductos.AutoSize = true;
             this.lProductos.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lProductos.Location = new System.Drawing.Point(532, 39);
+            this.lProductos.Location = new System.Drawing.Point(451, 32);
             this.lProductos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lProductos.Name = "lProductos";
             this.lProductos.Size = new System.Drawing.Size(75, 18);
@@ -192,7 +196,7 @@
             // 
             this.pictureBox1_Usuario.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1_Usuario.Image")));
             this.pictureBox1_Usuario.Location = new System.Drawing.Point(4, 10);
-            this.pictureBox1_Usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1_Usuario.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1_Usuario.Name = "pictureBox1_Usuario";
             this.pictureBox1_Usuario.Size = new System.Drawing.Size(55, 54);
             this.pictureBox1_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,7 +207,7 @@
             // 
             this.lEmpleados.AutoSize = true;
             this.lEmpleados.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lEmpleados.Location = new System.Drawing.Point(336, 38);
+            this.lEmpleados.Location = new System.Drawing.Point(301, 31);
             this.lEmpleados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lEmpleados.Name = "lEmpleados";
             this.lEmpleados.Size = new System.Drawing.Size(79, 18);
@@ -214,7 +218,7 @@
             // 
             this.ltitulo.AutoSize = true;
             this.ltitulo.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ltitulo.Location = new System.Drawing.Point(67, 33);
+            this.ltitulo.Location = new System.Drawing.Point(67, 20);
             this.ltitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ltitulo.Name = "ltitulo";
             this.ltitulo.Size = new System.Drawing.Size(179, 29);
@@ -225,11 +229,36 @@
             // 
             this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAdmin.Location = new System.Drawing.Point(4, 77);
-            this.panelAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.panelAdmin.Name = "panelAdmin";
             this.panelAdmin.Size = new System.Drawing.Size(1059, 473);
             this.panelAdmin.TabIndex = 1;
             this.panelAdmin.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAdmin_Paint);
+            // 
+            // bBackUp
+            // 
+            this.bBackUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bBackUp.BackgroundImage")));
+            this.bBackUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bBackUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bBackUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bBackUp.Location = new System.Drawing.Point(816, 17);
+            this.bBackUp.Margin = new System.Windows.Forms.Padding(4);
+            this.bBackUp.Name = "bBackUp";
+            this.bBackUp.Size = new System.Drawing.Size(45, 46);
+            this.bBackUp.TabIndex = 19;
+            this.bBackUp.UseVisualStyleBackColor = true;
+            this.bBackUp.Click += new System.EventHandler(this.bBackUp_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(869, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Back Up";
             // 
             // FormPrincipalAdmi
             // 
@@ -237,7 +266,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormPrincipalAdmi";
             this.Text = "Form4";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -265,5 +294,7 @@
         private System.Windows.Forms.Label ltitulo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bCliente;
+        private System.Windows.Forms.Button bBackUp;
+        private System.Windows.Forms.Label label2;
     }
 }

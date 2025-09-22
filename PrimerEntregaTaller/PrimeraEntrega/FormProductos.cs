@@ -336,5 +336,10 @@ namespace gerente
         {
 
         }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

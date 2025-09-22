@@ -58,39 +58,47 @@
             this.Cliente,
             this.Detalles});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(68, 250);
+            this.dataGridView1.Location = new System.Drawing.Point(91, 308);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(663, 175);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(884, 215);
             this.dataGridView1.TabIndex = 0;
             // 
             // Estado
             // 
             this.Estado.HeaderText = "Estado";
+            this.Estado.MinimumWidth = 6;
             this.Estado.Name = "Estado";
             // 
             // Fecha
             // 
             this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
             this.Fecha.Name = "Fecha";
             // 
             // Tipo_de_pedido
             // 
             this.Tipo_de_pedido.HeaderText = "Tipo de Pedido";
+            this.Tipo_de_pedido.MinimumWidth = 6;
             this.Tipo_de_pedido.Name = "Tipo_de_pedido";
             // 
             // Producto
             // 
             this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 6;
             this.Producto.Name = "Producto";
             // 
             // Cliente
             // 
             this.Cliente.HeaderText = "Cliente";
+            this.Cliente.MinimumWidth = 6;
             this.Cliente.Name = "Cliente";
             // 
             // Detalles
             // 
             this.Detalles.HeaderText = "Detalles";
+            this.Detalles.MinimumWidth = 6;
             this.Detalles.Name = "Detalles";
             // 
             // tableLayoutPanel1
@@ -103,11 +111,12 @@
             this.tableLayoutPanel1.Controls.Add(this.chart1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 554);
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -118,23 +127,25 @@
             this.chart1.Dock = System.Windows.Forms.DockStyle.Right;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(447, 3);
+            this.chart1.Location = new System.Drawing.Point(596, 4);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(350, 219);
+            this.chart1.Size = new System.Drawing.Size(467, 269);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
-            // Ventas
+            // FormVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Ventas";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FormVentas";
             this.Text = "Ventas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
