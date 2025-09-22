@@ -71,8 +71,8 @@ namespace PrimeraEntrega
 
         private void bInicio_Click_1(object sender, EventArgs e)
         {
-            string dni = textDni.Text.Trim();
-            string pass = textBox4.Text.Trim();
+            string dni = textDni.Text.Trim(); //obtengo el dni q escribe el usuario
+            string pass = textBox4.Text.Trim(); //obtengo la contraseña 
 
             if (dni == "" || pass == "")
             {
@@ -140,6 +140,11 @@ namespace PrimeraEntrega
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
 
         }

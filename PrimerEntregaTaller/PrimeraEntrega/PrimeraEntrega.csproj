@@ -55,7 +55,6 @@
       <DependentUpon>BackUp.cs</DependentUpon>
     </Compile>
     <Compile Include="ConexionBD.cs" />
-    <Compile Include="Database.cs" />
     <Compile Include="Empleados.cs">
       <SubType>Form</SubType>
     </Compile>

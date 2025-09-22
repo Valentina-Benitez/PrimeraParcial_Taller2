@@ -15,7 +15,6 @@ namespace gerente
 {
     public partial class Empleados : Form
     {
-        // ---------- Ajusta la cadena si tu servidor cambia ----------
         private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         // Roles válidos
