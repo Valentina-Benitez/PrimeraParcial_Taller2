@@ -22,10 +22,10 @@ namespace Taller_AppRestaurante
             //Application.Run(new FormRecepcionista());
             //Application.Run(new PrimeraEntrega.Form1());
             //Application.Run(new PrimeraEntrega.Ventas());
-            Application.Run(new FormVentasAdmin());//es el principal de admin
+            //Application.Run(new FormVentasAdmin());//es el principal de admin
             //Application.Run(new Form2());
            // Application.Run(new FormProductos());
-           // Application.Run(new Form3());
+            Application.Run(new Form1());
         }
     }
 }

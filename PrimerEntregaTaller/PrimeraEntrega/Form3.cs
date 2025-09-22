@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrimeraEntrega;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -74,7 +75,23 @@ namespace RestauranteApp
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult result = MessageBox.Show(
+            "¿Desea cerrar sesión?",
+            "Confirmar",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                // Si querés cerrar todo el programa:
+                //Application.Exit();
+
+                // O si querés volver al formulario de Login en lugar de cerrar todo:
+                this.Hide();
+                Form1 login = new Form1();
+                login.Show();
+            }
         }
 
         private void panelContenedor_Paint_1(object sender, PaintEventArgs e)

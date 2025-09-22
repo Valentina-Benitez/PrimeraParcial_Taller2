@@ -120,7 +120,7 @@ namespace PrimeraEntrega
         // Aquí van los manejadores de eventos existentes para los controles
         private void txtBuscaP_TextChanged(object sender, EventArgs e)
         {
-            CargarProductos(txtBuscaP.Text.Trim());
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,6 +139,11 @@ namespace PrimeraEntrega
         }
 
         private void txtBuscaP_TextChanged_1(object sender, EventArgs e)
+        {
+            CargarProductos(txtBuscaP.Text.Trim());
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

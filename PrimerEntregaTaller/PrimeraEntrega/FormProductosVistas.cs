@@ -152,5 +152,10 @@ namespace PrimeraEntrega
         {
 
         }
+
+        private void FormProductosVistas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

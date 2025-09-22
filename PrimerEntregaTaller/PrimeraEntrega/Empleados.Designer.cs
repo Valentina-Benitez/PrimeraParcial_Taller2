@@ -114,10 +114,11 @@
             this.panel1.Controls.Add(this.lNombre);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1081, 300);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // bCancelar
             // 
@@ -125,7 +126,7 @@
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCancelar.Location = new System.Drawing.Point(231, 246);
-            this.bCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(100, 28);
             this.bCancelar.TabIndex = 24;
@@ -138,7 +139,7 @@
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bEliminar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEliminar.Location = new System.Drawing.Point(679, 246);
-            this.bEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(79, 30);
             this.bEliminar.TabIndex = 23;
@@ -151,7 +152,7 @@
             this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bModificar.Location = new System.Drawing.Point(561, 246);
-            this.bModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bModificar.Margin = new System.Windows.Forms.Padding(4);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(85, 30);
             this.bModificar.TabIndex = 22;
@@ -164,7 +165,7 @@
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.Location = new System.Drawing.Point(85, 247);
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(100, 28);
             this.bBuscar.TabIndex = 21;
@@ -186,7 +187,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(844, 41);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 151);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -199,7 +200,7 @@
             this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bAgregar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAgregar.Location = new System.Drawing.Point(392, 247);
-            this.bAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(100, 28);
             this.bAgregar.TabIndex = 20;
@@ -209,7 +210,7 @@
             // dtpFechaNac
             // 
             this.dtpFechaNac.Location = new System.Drawing.Point(188, 155);
-            this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(201, 22);
             this.dtpFechaNac.TabIndex = 19;
@@ -218,7 +219,7 @@
             // 
             this.cbTipoUsuario.FormattingEnabled = true;
             this.cbTipoUsuario.Location = new System.Drawing.Point(595, 113);
-            this.cbTipoUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTipoUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.cbTipoUsuario.Name = "cbTipoUsuario";
             this.cbTipoUsuario.Size = new System.Drawing.Size(200, 24);
             this.cbTipoUsuario.TabIndex = 18;
@@ -226,7 +227,7 @@
             // textReContraseña
             // 
             this.textReContraseña.Location = new System.Drawing.Point(595, 198);
-            this.textReContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textReContraseña.Margin = new System.Windows.Forms.Padding(4);
             this.textReContraseña.Name = "textReContraseña";
             this.textReContraseña.Size = new System.Drawing.Size(200, 22);
             this.textReContraseña.TabIndex = 17;
@@ -234,7 +235,7 @@
             // textContraseña
             // 
             this.textContraseña.Location = new System.Drawing.Point(595, 146);
-            this.textContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textContraseña.Margin = new System.Windows.Forms.Padding(4);
             this.textContraseña.Name = "textContraseña";
             this.textContraseña.Size = new System.Drawing.Size(200, 22);
             this.textContraseña.TabIndex = 16;
@@ -242,7 +243,7 @@
             // textGmail
             // 
             this.textGmail.Location = new System.Drawing.Point(595, 74);
-            this.textGmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textGmail.Margin = new System.Windows.Forms.Padding(4);
             this.textGmail.Name = "textGmail";
             this.textGmail.Size = new System.Drawing.Size(200, 22);
             this.textGmail.TabIndex = 15;
@@ -250,7 +251,7 @@
             // textTelefono
             // 
             this.textTelefono.Location = new System.Drawing.Point(595, 41);
-            this.textTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.textTelefono.Name = "textTelefono";
             this.textTelefono.Size = new System.Drawing.Size(200, 22);
             this.textTelefono.TabIndex = 14;
@@ -258,7 +259,7 @@
             // textDomicilio
             // 
             this.textDomicilio.Location = new System.Drawing.Point(188, 194);
-            this.textDomicilio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textDomicilio.Margin = new System.Windows.Forms.Padding(4);
             this.textDomicilio.Name = "textDomicilio";
             this.textDomicilio.Size = new System.Drawing.Size(200, 22);
             this.textDomicilio.TabIndex = 13;
@@ -266,7 +267,7 @@
             // textDni
             // 
             this.textDni.Location = new System.Drawing.Point(188, 121);
-            this.textDni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textDni.Margin = new System.Windows.Forms.Padding(4);
             this.textDni.Name = "textDni";
             this.textDni.Size = new System.Drawing.Size(200, 22);
             this.textDni.TabIndex = 12;
@@ -274,7 +275,7 @@
             // textApellido
             // 
             this.textApellido.Location = new System.Drawing.Point(188, 84);
-            this.textApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textApellido.Margin = new System.Windows.Forms.Padding(4);
             this.textApellido.Name = "textApellido";
             this.textApellido.Size = new System.Drawing.Size(201, 22);
             this.textApellido.TabIndex = 11;
@@ -282,7 +283,7 @@
             // textNombre
             // 
             this.textNombre.Location = new System.Drawing.Point(188, 42);
-            this.textNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(201, 22);
             this.textNombre.TabIndex = 10;
@@ -394,7 +395,7 @@
             this.Contraseña});
             this.dgvEmpleados.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvEmpleados.Location = new System.Drawing.Point(0, 296);
-            this.dgvEmpleados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmpleados.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 51;
             this.dgvEmpleados.Size = new System.Drawing.Size(1081, 186);
@@ -463,7 +464,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvEmpleados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Empleados";
             this.Text = "Empleados";
             this.panel1.ResumeLayout(false);

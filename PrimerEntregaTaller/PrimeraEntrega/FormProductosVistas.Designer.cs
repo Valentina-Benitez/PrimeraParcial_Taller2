@@ -64,7 +64,7 @@
             this.bBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bBuscar.Location = new System.Drawing.Point(340, 234);
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(112, 37);
             this.bBuscar.TabIndex = 38;
@@ -75,7 +75,7 @@
             // textEstadoP
             // 
             this.textEstadoP.Location = new System.Drawing.Point(479, 169);
-            this.textEstadoP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textEstadoP.Margin = new System.Windows.Forms.Padding(4);
             this.textEstadoP.Name = "textEstadoP";
             this.textEstadoP.Size = new System.Drawing.Size(132, 22);
             this.textEstadoP.TabIndex = 36;
@@ -83,7 +83,7 @@
             // textPrecioP
             // 
             this.textPrecioP.Location = new System.Drawing.Point(479, 111);
-            this.textPrecioP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textPrecioP.Margin = new System.Windows.Forms.Padding(4);
             this.textPrecioP.Name = "textPrecioP";
             this.textPrecioP.Size = new System.Drawing.Size(132, 22);
             this.textPrecioP.TabIndex = 35;
@@ -91,7 +91,7 @@
             // textProvinciaP
             // 
             this.textProvinciaP.Location = new System.Drawing.Point(479, 55);
-            this.textProvinciaP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textProvinciaP.Margin = new System.Windows.Forms.Padding(4);
             this.textProvinciaP.Name = "textProvinciaP";
             this.textProvinciaP.Size = new System.Drawing.Size(132, 22);
             this.textProvinciaP.TabIndex = 34;
@@ -99,7 +99,7 @@
             // textDescuentoP
             // 
             this.textDescuentoP.Location = new System.Drawing.Point(237, 169);
-            this.textDescuentoP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textDescuentoP.Margin = new System.Windows.Forms.Padding(4);
             this.textDescuentoP.Name = "textDescuentoP";
             this.textDescuentoP.Size = new System.Drawing.Size(132, 22);
             this.textDescuentoP.TabIndex = 33;
@@ -107,7 +107,7 @@
             // textCategoriaP
             // 
             this.textCategoriaP.Location = new System.Drawing.Point(237, 112);
-            this.textCategoriaP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textCategoriaP.Margin = new System.Windows.Forms.Padding(4);
             this.textCategoriaP.Name = "textCategoriaP";
             this.textCategoriaP.Size = new System.Drawing.Size(132, 22);
             this.textCategoriaP.TabIndex = 32;
@@ -115,7 +115,7 @@
             // textNombreP
             // 
             this.textNombreP.Location = new System.Drawing.Point(237, 64);
-            this.textNombreP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textNombreP.Margin = new System.Windows.Forms.Padding(4);
             this.textNombreP.Name = "textNombreP";
             this.textNombreP.Size = new System.Drawing.Size(132, 22);
             this.textNombreP.TabIndex = 31;
@@ -184,7 +184,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(772, 38);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(177, 174);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -220,7 +220,7 @@
             this.Eliminar});
             this.dgvProductos.GridColor = System.Drawing.Color.LightBlue;
             this.dgvProductos.Location = new System.Drawing.Point(92, 329);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.Size = new System.Drawing.Size(896, 159);
@@ -309,9 +309,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lProductos);
             this.Controls.Add(this.dgvProductos);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormProductosVistas";
             this.Text = "ProductosVistas";
+            this.Load += new System.EventHandler(this.FormProductosVistas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);

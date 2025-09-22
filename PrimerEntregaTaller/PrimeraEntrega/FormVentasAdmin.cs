@@ -16,5 +16,10 @@ namespace PrimeraEntrega
         {
             InitializeComponent();
         }
+
+        private void FormVentasAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

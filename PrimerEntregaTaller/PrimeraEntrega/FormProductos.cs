@@ -20,7 +20,7 @@ namespace gerente
 {
     public partial class FormProductos : Form
     {
-        private string connectionString = @"Data Source=DIAMELA\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+        private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         public FormProductos()
         {
@@ -328,6 +328,11 @@ namespace gerente
         #endregion
 
         private void bEliminar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormProductos_Load(object sender, EventArgs e)
         {
 
         }
