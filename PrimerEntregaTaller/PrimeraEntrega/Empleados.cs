@@ -400,7 +400,7 @@ namespace gerente
                     if (dt.Rows.Count == 0)
                     {
                         MessageBox.Show("No hay ningún empleado que tenga esos datos en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvEmpleados.DataSource = null; // opcional: limpiar DataGridView
+                        
                     }
                     else
                     {

@@ -10,210 +10,326 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
 namespace gerente
 {
     public partial class FormProductos : Form
     {
+        private string connectionString = @"Data Source=DIAMELA\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+
         public FormProductos()
         {
             InitializeComponent();
 
-            // Validaciones
+            // ------------------- Configurar DataGridView -------------------
+            dgvProductos.AutoGenerateColumns = false;
+            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProductos.MultiSelect = false;
+            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProductos.AllowUserToAddRows = false;
+            dgvProductos.Columns.Clear();
+            CrearColumnasDgv();
+
+            // ------------------- Validaciones -------------------
             textNombreP.KeyPress += SoloLetras;
             textCategoriaP.KeyPress += SoloLetras;
             textDescuentoP.KeyPress += SoloNumeros;
-            textProvinciaP.KeyPress += SoloLetras;
-            textEstadoP.KeyPress += SoloLetras;
             textPrecioP.KeyPress += SoloNumeros;
 
-           CargarProductos();
+            // ------------------- ComboBox estado -------------------
+            cbEstadoP.Items.Clear();
+            cbEstadoP.Items.Add("Disponible");
+            cbEstadoP.Items.Add("No Disponible");
+            cbEstadoP.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // ------------------- Enlazar botones -------------------
+            bAgregar.Click -= bAgregar_Click; bAgregar.Click += bAgregar_Click;
+            bModificar.Click -= bModificar_Click; bModificar.Click += bModificar_Click;
+            bEliminar.Click -= bEliminar_Click; bEliminar.Click += bEliminar_Click;
+            bBuscar.Click -= bBuscar_Click; bBuscar.Click += bBuscar_Click;
+            bCancelar.Click -= bCancelar_Click; bCancelar.Click += bCancelar_Click;
+            dgvProductos.CellClick -= dgvProductos_CellClick; dgvProductos.CellClick += dgvProductos_CellClick;
+
+            // ------------------- Cargar productos -------------------
+            CargarProductos();
         }
 
-        // =========================
-        // CONEXIÓN A BD
-        // =========================
-        private SqlConnection ObtenerConexion()
+        #region DataGridView Columnas
+        private void CrearColumnasDgv()
         {
-          string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
-        return new SqlConnection(cadena);
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "categoria", DataPropertyName = "categoria", HeaderText = "Categoría" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "descuento", DataPropertyName = "descuento", HeaderText = "Descuento" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "descripcion", DataPropertyName = "descripcion", HeaderText = "Descripción" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "estado", DataPropertyName = "estado", HeaderText = "Estado" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "precio", DataPropertyName = "precio", HeaderText = "Precio" });
         }
+        #endregion
 
-        // =========================
-        // VALIDACIONES
-        // =========================
+        #region Conexión
+        private SqlConnection ObtenerConexion() => new SqlConnection(connectionString);
+        #endregion
+
+        #region Validaciones
         private void SoloLetras(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
-            {
                 e.Handled = true;
-            }
         }
-
-
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+        #endregion
+
+        #region CRUD Productos
+
+        private void CargarProductos()
+        {
+            try
             {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                using (SqlConnection conn = ObtenerConexion())
                 {
-                    e.Handled = true;
+                    conn.Open();
+                    string query = "SELECT nombre, categoria, descuento, descripcion, estado, precio FROM Producto";
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgvProductos.DataSource = dt;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-            // =========================
-            // CARGAR PRODUCTOS EN GRID
-            // =========================
-             private void CargarProductos()
+        private void bAgregar_Click(object sender, EventArgs e)
+        {
+            if (!CamposCompletos())
             {
-              try
-               {
-                   using (SqlConnection conn = ObtenerConexion())
-                   {
-                       conn.Open();
-                       string query = "SELECT * FROM Productos";
-                       SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                       DataTable dt = new DataTable();
-                       da.Fill(dt);
-                       dgvProductos.DataSource = dt;
-                   }
-               }
-               catch (Exception ex)
-               {
-                   MessageBox.Show("Error al cargar productos: " + ex.Message);
-               }
-           }
+                MessageBox.Show("Complete todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-           // =========================
-           // BOTÓN AGREGAR
-           // =========================
-           private void bAgregar_Click(object sender, EventArgs e)
-           {
-               if (string.IsNullOrWhiteSpace(textNombreP.Text) ||
-                   string.IsNullOrWhiteSpace(textCategoriaP.Text) ||
-                   string.IsNullOrWhiteSpace(textDescuentoP.Text) ||
-                   string.IsNullOrWhiteSpace(textProvinciaP.Text) ||
-                   string.IsNullOrWhiteSpace(textEstadoP.Text) ||
-                   string.IsNullOrWhiteSpace(textPrecioP.Text))
-               {
-                   MessageBox.Show("Debe completar todos los campos antes de guardar.",
-                                   "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                   return;
-               }
+            using (SqlConnection conn = ObtenerConexion())
+            {
+                conn.Open();
 
-               using (SqlConnection conn = ObtenerConexion())
-               {
-                   conn.Open();
-                   string query = @"INSERT INTO Productos 
-                                   (Nombre, Categoria, Descuento, Provincia, Estado, Precio) 
-                                   VALUES (@Nombre, @Categoria, @Descuento, @Provincia, @Estado, @Precio)";
-                   SqlCommand cmd = new SqlCommand(query, conn);
-                   cmd.Parameters.AddWithValue("@Nombre", textNombreP.Text);
-                   cmd.Parameters.AddWithValue("@Categoria", textCategoriaP.Text);
-                   cmd.Parameters.AddWithValue("@Descuento", decimal.Parse(textDescuentoP.Text));
-                   cmd.Parameters.AddWithValue("@Provincia", textProvinciaP.Text);
-                   cmd.Parameters.AddWithValue("@Estado", textEstadoP.Text);
-                   cmd.Parameters.AddWithValue("@Precio", decimal.Parse(textPrecioP.Text));
-                   cmd.ExecuteNonQuery();
-               }
+                // Evitar duplicados
+                string checkQuery = "SELECT COUNT(*) FROM Producto WHERE nombre=@nombre AND categoria=@categoria";
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
+                    checkCmd.Parameters.AddWithValue("@categoria", textCategoriaP.Text.Trim());
+                    int existe = (int)checkCmd.ExecuteScalar();
+                    if (existe > 0)
+                    {
+                        MessageBox.Show("El producto ya existe.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
 
-               MessageBox.Show("Producto guardado con éxito.", "Éxito",
-                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Insertar producto
+                string query = @"INSERT INTO Producto (nombre, categoria, descuento, descripcion, estado, precio) 
+                                 VALUES (@nombre, @categoria, @descuento, @descripcion, @estado, @precio)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
+                    cmd.Parameters.AddWithValue("@categoria", textCategoriaP.Text.Trim());
+                    cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text));
+                    cmd.Parameters.AddWithValue("@descripcion", textDescripcion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@precio", decimal.Parse(textPrecioP.Text));
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
-               LimpiarFormulario();
-               CargarProductos();
-           }
+            MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimpiarFormulario();
+            CargarProductos();
+        }
 
-           // =========================
-           // BOTÓN MODIFICAR
-           // =========================
-           private void bModificar_Click(object sender, EventArgs e)
-           {
-               if (dgvProductos.CurrentRow == null) return;
+        private void bModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvProductos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un producto para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-               int id = Convert.ToInt32(dgvProductos.CurrentRow.Cells["Id"].Value);
+            string nombreOriginal = dgvProductos.CurrentRow.Cells["nombre"].Value.ToString();
+            string categoriaOriginal = dgvProductos.CurrentRow.Cells["categoria"].Value.ToString();
 
-               using (SqlConnection conn = ObtenerConexion())
-               {
-                   conn.Open();
-                   string query = @"UPDATE Productos SET 
-                                   Nombre=@Nombre, Categoria=@Categoria, Descuento=@Descuento,
-                                   Provincia=@Provincia, Estado=@Estado, Precio=@Precio
-                                   WHERE Id=@Id";
-                   SqlCommand cmd = new SqlCommand(query, conn);
-                   cmd.Parameters.AddWithValue("@Id", id);
-                   cmd.Parameters.AddWithValue("@Nombre", textNombreP.Text);
-                   cmd.Parameters.AddWithValue("@Categoria", textCategoriaP.Text);
-                   cmd.Parameters.AddWithValue("@Descuento", decimal.Parse(textDescuentoP.Text));
-                   cmd.Parameters.AddWithValue("@Provincia", textProvinciaP.Text);
-                   cmd.Parameters.AddWithValue("@Estado", textEstadoP.Text);
-                   cmd.Parameters.AddWithValue("@Precio", decimal.Parse(textPrecioP.Text));
-                   cmd.ExecuteNonQuery();
-               }
+            using (SqlConnection conn = ObtenerConexion())
+            {
+                conn.Open();
+                string query = @"UPDATE Producto SET 
+                                nombre=@nombre, categoria=@categoria, descuento=@descuento, descripcion=@descripcion, estado=@estado, precio=@precio
+                                WHERE nombre=@nombreOriginal AND categoria=@categoriaOriginal";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
+                    cmd.Parameters.AddWithValue("@categoria", textCategoriaP.Text.Trim());
+                    cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text));
+                    cmd.Parameters.AddWithValue("@descripcion", textDescripcion.Text.Trim());
+                    cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@precio", decimal.Parse(textPrecioP.Text));
+                    cmd.Parameters.AddWithValue("@nombreOriginal", nombreOriginal);
+                    cmd.Parameters.AddWithValue("@categoriaOriginal", categoriaOriginal);
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
-               MessageBox.Show("Producto modificado con éxito.", "Éxito",
-                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Producto modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimpiarFormulario();
+            CargarProductos();
+        }
 
-               CargarProductos();
-           }
+        private void bEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvProductos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un producto para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-           // =========================
-           // BOTÓN ELIMINAR
-           // =========================
-           private void bEliminar_Click(object sender, EventArgs e)
-           {
-               if (dgvProductos.CurrentRow == null) return;
+            string nombre = dgvProductos.CurrentRow.Cells["nombre"].Value.ToString();
+            string categoria = dgvProductos.CurrentRow.Cells["categoria"].Value.ToString();
 
-               int id = Convert.ToInt32(dgvProductos.CurrentRow.Cells["Id"].Value);
+            var dr = MessageBox.Show("¿Está seguro de eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr != DialogResult.Yes) return;
 
-               using (SqlConnection conn = ObtenerConexion())
-               {
-                   conn.Open();
-                   string query = "DELETE FROM Productos WHERE Id=@Id";
-                   SqlCommand cmd = new SqlCommand(query, conn);
-                   cmd.Parameters.AddWithValue("@Id", id);
-                   cmd.ExecuteNonQuery();
-               }
+            using (SqlConnection conn = ObtenerConexion())
+            {
+                conn.Open();
+                string query = "DELETE FROM Producto WHERE nombre=@nombre AND categoria=@categoria";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
-               MessageBox.Show("Producto eliminado con éxito.", "Éxito",
-                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Producto eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimpiarFormulario();
+            CargarProductos();
+        }
 
-               CargarProductos();
-           }
+        #endregion
 
-           // =========================
-           // LIMPIAR FORMULARIO
-           // =========================
-           private void LimpiarFormulario()
-           {
-               textNombreP.Clear();
-               textCategoriaP.Clear();
-               textDescuentoP.Clear();
-               textProvinciaP.Clear();
-               textEstadoP.Clear();
-               textPrecioP.Clear();
-           }
+        #region Buscar y Cancelar
 
-           // =========================
-           // AL SELECCIONAR FILA EN GRID
-           // =========================
-           private void dgvProductos_SelectionChanged(object sender, EventArgs e)
-           {
-               if (dgvProductos.CurrentRow != null)
-               {
-                   textNombreP.Text = dgvProductos.CurrentRow.Cells["Nombre"].Value.ToString();
-                   textCategoriaP.Text = dgvProductos.CurrentRow.Cells["Categoria"].Value.ToString();
-                   textDescuentoP.Text = dgvProductos.CurrentRow.Cells["Descuento"].Value.ToString();
-                   textProvinciaP.Text = dgvProductos.CurrentRow.Cells["Provincia"].Value.ToString();
-                   textEstadoP.Text = dgvProductos.CurrentRow.Cells["Estado"].Value.ToString();
-                   textPrecioP.Text = dgvProductos.CurrentRow.Cells["Precio"].Value.ToString();
-               }
-           }
+        private void bBuscar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textNombreP.Text) &&
+                string.IsNullOrWhiteSpace(textCategoriaP.Text) &&
+                string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
+                string.IsNullOrWhiteSpace(textDescripcion.Text) &&
+                string.IsNullOrWhiteSpace(textPrecioP.Text) &&
+                cbEstadoP.SelectedIndex == -1)
+            {
+                MessageBox.Show("Rellene uno o más campos para buscar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        private void FormProductos_Load(object sender, EventArgs e)
+            try
+            {
+                using (SqlConnection conn = ObtenerConexion())
+                {
+                    conn.Open();
+                    string query = "SELECT nombre, categoria, descuento, descripcion, estado, precio FROM Producto WHERE 1=1";
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+
+                    if (!string.IsNullOrWhiteSpace(textNombreP.Text)) { query += " AND nombre LIKE @nombre"; cmd.Parameters.AddWithValue("@nombre", "%" + textNombreP.Text.Trim() + "%"); }
+                    if (!string.IsNullOrWhiteSpace(textCategoriaP.Text)) { query += " AND categoria LIKE @categoria"; cmd.Parameters.AddWithValue("@categoria", "%" + textCategoriaP.Text.Trim() + "%"); }
+                    if (!string.IsNullOrWhiteSpace(textDescuentoP.Text)) { query += " AND descuento=@descuento"; cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text)); }
+                    if (!string.IsNullOrWhiteSpace(textDescripcion.Text)) { query += " AND descripcion LIKE @descripcion"; cmd.Parameters.AddWithValue("@descripcion", "%" + textDescripcion.Text.Trim() + "%"); }
+                    if (cbEstadoP.SelectedIndex != -1) { query += " AND estado=@estado"; cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString()); }
+                    if (!string.IsNullOrWhiteSpace(textPrecioP.Text)) { query += " AND precio=@precio"; cmd.Parameters.AddWithValue("@precio", decimal.Parse(textPrecioP.Text)); }
+
+                    cmd.CommandText = query;
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron productos con esos datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
+                    }
+                    else
+                    {
+                        dgvProductos.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+            MessageBox.Show("Formulario limpiado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        #region Helpers UI
+
+        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
+
+            textNombreP.Text = fila.Cells["nombre"].Value?.ToString();
+            textCategoriaP.Text = fila.Cells["categoria"].Value?.ToString();
+            textDescuentoP.Text = fila.Cells["descuento"].Value?.ToString();
+            textDescripcion.Text = fila.Cells["descripcion"].Value?.ToString();
+            textPrecioP.Text = fila.Cells["precio"].Value?.ToString();
+
+            var estado = fila.Cells["estado"].Value?.ToString();
+            cbEstadoP.SelectedItem = estado;
+        }
+
+        private bool CamposCompletos()
+        {
+            return !string.IsNullOrWhiteSpace(textNombreP.Text) &&
+                   !string.IsNullOrWhiteSpace(textCategoriaP.Text) &&
+                   !string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
+                   !string.IsNullOrWhiteSpace(textDescripcion.Text) &&
+                   !string.IsNullOrWhiteSpace(textPrecioP.Text) &&
+                   cbEstadoP.SelectedIndex != -1;
+        }
+
+        private void LimpiarFormulario()
+        {
+            textNombreP.Clear();
+            textCategoriaP.Clear();
+            textDescuentoP.Clear();
+            textDescripcion.Clear();
+            textPrecioP.Clear();
+            cbEstadoP.SelectedIndex = -1;
+            dgvProductos.ClearSelection();
+        }
+
+        #endregion
+
+        private void bEliminar_Click_1(object sender, EventArgs e)
         {
 
         }
     }
-    }
-
-
+}

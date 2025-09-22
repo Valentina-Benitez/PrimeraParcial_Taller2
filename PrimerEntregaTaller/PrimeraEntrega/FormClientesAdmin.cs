@@ -168,6 +168,13 @@ namespace PrimeraEntrega
             }
         }
 
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+
+            LimpiarFormulario();
+            MessageBox.Show("Formulario limpiado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         // ----------------- GUARDAR CLIENTE NUEVO -----------------
         private void bGuardar_Click(object sender, EventArgs e)
         {
@@ -227,7 +234,7 @@ namespace PrimeraEntrega
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("El cliente fue agregado con éxito.");
-                    ClearForm();    // Limpia los campos del formulario
+                    LimpiarFormulario();    // Limpia los campos del formulario
                     CargarClientes(); // Refresca la grilla
                 }
             }
@@ -284,7 +291,7 @@ namespace PrimeraEntrega
                     else
                         MessageBox.Show("No se encontró el cliente para actualizar.");
 
-                    ClearForm();
+                    LimpiarFormulario();
                     CargarClientes();
                 }
             }
@@ -325,7 +332,7 @@ namespace PrimeraEntrega
                     else
                         MessageBox.Show("No se encontró el cliente para eliminar.");
 
-                    ClearForm();
+                    LimpiarFormulario();
                     CargarClientes();
                 }
             }
@@ -368,7 +375,7 @@ namespace PrimeraEntrega
         }
 
         // Limpia todos los campos del formulario
-        private void ClearForm()
+        private void LimpiarFormulario()
         {
             txtNombre.Clear();
             txtApellido.Clear();
@@ -384,7 +391,10 @@ namespace PrimeraEntrega
         {
 
         }
+
+        
     }
-}
+    }
+
 
 
