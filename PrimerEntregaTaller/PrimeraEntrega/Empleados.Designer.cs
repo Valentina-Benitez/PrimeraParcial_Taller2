@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Empleados));
             this.lNombre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bEliminar = new System.Windows.Forms.Button();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bAgregar = new System.Windows.Forms.Button();
@@ -63,9 +66,7 @@
             this.Gmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bBuscar = new System.Windows.Forms.Button();
-            this.bModificar = new System.Windows.Forms.Button();
-            this.bEliminar = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
@@ -83,6 +84,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel1.Controls.Add(this.bCancelar);
             this.panel1.Controls.Add(this.bEliminar);
             this.panel1.Controls.Add(this.bModificar);
             this.panel1.Controls.Add(this.bBuscar);
@@ -114,7 +116,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(811, 244);
             this.panel1.TabIndex = 1;
-           // this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bEliminar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bEliminar.Location = new System.Drawing.Point(509, 200);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(59, 24);
+            this.bEliminar.TabIndex = 23;
+            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.UseVisualStyleBackColor = false;
+            // 
+            // bModificar
+            // 
+            this.bModificar.BackColor = System.Drawing.Color.SkyBlue;
+            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bModificar.Location = new System.Drawing.Point(421, 200);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(64, 24);
+            this.bModificar.TabIndex = 22;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = false;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.BackColor = System.Drawing.Color.SkyBlue;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(64, 201);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(75, 23);
+            this.bBuscar.TabIndex = 21;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -141,13 +178,12 @@
             this.bAgregar.BackColor = System.Drawing.Color.LightGreen;
             this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bAgregar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAgregar.Location = new System.Drawing.Point(218, 202);
+            this.bAgregar.Location = new System.Drawing.Point(294, 201);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(75, 23);
             this.bAgregar.TabIndex = 20;
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = false;
-//            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
             // 
             // dtpFechaNac
             // 
@@ -321,7 +357,6 @@
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.Size = new System.Drawing.Size(811, 151);
             this.dgvEmpleados.TabIndex = 4;
-//            this.dgvEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Nombre
             // 
@@ -368,41 +403,17 @@
             this.Contraseña.HeaderText = "Contraseña";
             this.Contraseña.Name = "Contraseña";
             // 
-            // bBuscar
+            // bCancelar
             // 
-            this.bBuscar.BackColor = System.Drawing.Color.SkyBlue;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(64, 201);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(75, 23);
-            this.bBuscar.TabIndex = 21;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
-            // 
-            // bModificar
-            // 
-            this.bModificar.BackColor = System.Drawing.Color.SkyBlue;
-            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bModificar.Location = new System.Drawing.Point(360, 203);
-            this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(58, 21);
-            this.bModificar.TabIndex = 22;
-            this.bModificar.Text = "Modificar";
-            this.bModificar.UseVisualStyleBackColor = false;
-            // 
-            // bEliminar
-            // 
-            this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
-            this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bEliminar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEliminar.Location = new System.Drawing.Point(509, 200);
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(59, 24);
-            this.bEliminar.TabIndex = 23;
-            this.bEliminar.Text = "Eliminar";
-            this.bEliminar.UseVisualStyleBackColor = false;
+            this.bCancelar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bCancelar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bCancelar.Location = new System.Drawing.Point(173, 200);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(75, 23);
+            this.bCancelar.TabIndex = 24;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = false;
             // 
             // Empleados
             // 
@@ -461,5 +472,6 @@
         private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.Button bModificar;
         private System.Windows.Forms.Button bBuscar;
+        private System.Windows.Forms.Button bCancelar;
     }
 }
