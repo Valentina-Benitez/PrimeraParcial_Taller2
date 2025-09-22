@@ -24,7 +24,7 @@ namespace Taller_AppRestaurante
             //Application.Run(new PrimeraEntrega.Ventas());
             //Application.Run(new FormPrincipalAdmi ());//es el principal de admin
             //Application.Run(new Form2());
-            Application.Run(new Empleados());
+            Application.Run(new FormProductos());
            // Application.Run(new Form3());
         }
     }
