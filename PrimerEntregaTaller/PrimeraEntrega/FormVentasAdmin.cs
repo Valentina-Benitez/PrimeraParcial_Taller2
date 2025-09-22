@@ -17,9 +17,32 @@ namespace PrimeraEntrega
             InitializeComponent();
         }
 
+
         private void FormVentasAdmin_Load(object sender, EventArgs e)
         {
+            // Evitar que se autogenere si ya tenés columnas diseñadas en el diseñador
+            dgvVentas.AutoGenerateColumns = false;
 
+            // Crear un DataTable para simular los datos
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Nro Venta");
+            dt.Columns.Add("NroPedido");
+            dt.Columns.Add("Empleado");
+            dt.Columns.Add("Cliente");
+            dt.Columns.Add("Mesa");
+            dt.Columns.Add("Fecha");
+            dt.Columns.Add("Total");
+            dt.Columns.Add("TipoPago");
+            dt.Columns.Add("Descripcion");
+
+            // Agregar filas estáticas de ejemplo
+            dt.Rows.Add("1", "1001", "Juan Pérez", "María López", "5", "22/09/2025", "2500", "Efectivo", "Pago completo");
+            dt.Rows.Add("2", "1002", "Ana García", "Pedro Gómez", "2", "21/09/2025", "3800", "Tarjeta", "Con propina");
+            dt.Rows.Add("3", "1003", "Carlos Ruiz", "Laura Díaz", "8", "20/09/2025", "1500", "MercadoPago", "Promo 2x1");
+            dt.Rows.Add("4", "1004", "Luis Torres", "Claudia Fernández", "1", "19/09/2025", "5000", "Efectivo", "Cumpleaños");
+
+            // Asignar al DataGridView
+            dgvVentas.DataSource = dt;
         }
 
         private void txtPedido_TextChanged(object sender, EventArgs e)

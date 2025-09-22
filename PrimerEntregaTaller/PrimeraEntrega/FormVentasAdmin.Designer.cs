@@ -147,7 +147,7 @@
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCancelar.Location = new System.Drawing.Point(306, 241);
-            this.bCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(100, 28);
             this.bCancelar.TabIndex = 34;
@@ -160,7 +160,7 @@
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bBuscar.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.Location = new System.Drawing.Point(104, 241);
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(100, 28);
             this.bBuscar.TabIndex = 33;
@@ -173,7 +173,7 @@
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bEliminar.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEliminar.Location = new System.Drawing.Point(764, 241);
-            this.bEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(100, 28);
             this.bEliminar.TabIndex = 32;
@@ -186,7 +186,7 @@
             this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bModificar.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bModificar.Location = new System.Drawing.Point(526, 241);
-            this.bModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bModificar.Margin = new System.Windows.Forms.Padding(4);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(100, 28);
             this.bModificar.TabIndex = 31;
@@ -196,7 +196,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Location = new System.Drawing.Point(418, 187);
-            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(265, 22);
             this.dtpFecha.TabIndex = 29;
@@ -204,7 +204,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(828, 189);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(212, 22);
             this.txtDescripcion.TabIndex = 28;
@@ -212,7 +212,7 @@
             // txtTotal
             // 
             this.txtTotal.Location = new System.Drawing.Point(828, 100);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(132, 22);
             this.txtTotal.TabIndex = 27;
@@ -221,7 +221,7 @@
             // txtPago
             // 
             this.txtPago.Location = new System.Drawing.Point(828, 145);
-            this.txtPago.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPago.Margin = new System.Windows.Forms.Padding(4);
             this.txtPago.Name = "txtPago";
             this.txtPago.Size = new System.Drawing.Size(132, 22);
             this.txtPago.TabIndex = 26;
@@ -230,7 +230,7 @@
             // txtEmpleado
             // 
             this.txtEmpleado.Location = new System.Drawing.Point(125, 182);
-            this.txtEmpleado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmpleado.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmpleado.Name = "txtEmpleado";
             this.txtEmpleado.Size = new System.Drawing.Size(132, 22);
             this.txtEmpleado.TabIndex = 25;
@@ -239,7 +239,7 @@
             // txtMesa
             // 
             this.txtMesa.Location = new System.Drawing.Point(125, 141);
-            this.txtMesa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMesa.Margin = new System.Windows.Forms.Padding(4);
             this.txtMesa.Name = "txtMesa";
             this.txtMesa.Size = new System.Drawing.Size(132, 22);
             this.txtMesa.TabIndex = 24;
@@ -249,7 +249,7 @@
             // txtPedido
             // 
             this.txtPedido.Location = new System.Drawing.Point(418, 143);
-            this.txtPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPedido.Margin = new System.Windows.Forms.Padding(4);
             this.txtPedido.Name = "txtPedido";
             this.txtPedido.Size = new System.Drawing.Size(132, 22);
             this.txtPedido.TabIndex = 23;
@@ -275,7 +275,7 @@
             this.dgvVentas.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvVentas.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvVentas.Location = new System.Drawing.Point(0, 382);
-            this.dgvVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvVentas.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.RowHeadersWidth = 51;
             this.dgvVentas.Size = new System.Drawing.Size(1107, 172);
@@ -335,54 +335,63 @@
             // 
             // NroVenta
             // 
+            this.NroVenta.DataPropertyName = "Nro Venta";
             this.NroVenta.HeaderText = "Nro Venta";
             this.NroVenta.MinimumWidth = 6;
             this.NroVenta.Name = "NroVenta";
             // 
             // NroPedido
             // 
+            this.NroPedido.DataPropertyName = "NroPedido";
             this.NroPedido.HeaderText = "Nro Pedido";
             this.NroPedido.MinimumWidth = 6;
             this.NroPedido.Name = "NroPedido";
             // 
             // Empleado
             // 
+            this.Empleado.DataPropertyName = "Empleado";
             this.Empleado.HeaderText = "Empleado";
             this.Empleado.MinimumWidth = 6;
             this.Empleado.Name = "Empleado";
             // 
             // Cliente
             // 
+            this.Cliente.DataPropertyName = "Cliente";
             this.Cliente.HeaderText = "Cliente";
             this.Cliente.MinimumWidth = 6;
             this.Cliente.Name = "Cliente";
             // 
             // Mesa
             // 
+            this.Mesa.DataPropertyName = "Mesa";
             this.Mesa.HeaderText = "Mesa Nro";
             this.Mesa.MinimumWidth = 6;
             this.Mesa.Name = "Mesa";
             // 
             // Fecha
             // 
+            this.Fecha.DataPropertyName = "Fecha";
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.MinimumWidth = 6;
             this.Fecha.Name = "Fecha";
             // 
             // total
             // 
+            this.total.DataPropertyName = "total";
             this.total.HeaderText = "Total";
             this.total.MinimumWidth = 6;
             this.total.Name = "total";
             // 
             // TipoPago
             // 
+            this.TipoPago.DataPropertyName = "TipoPago";
             this.TipoPago.HeaderText = "Tipo Pago";
             this.TipoPago.MinimumWidth = 6;
             this.TipoPago.Name = "TipoPago";
             // 
             // descripcion
             // 
+            this.descripcion.DataPropertyName = "descripcion";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.MinimumWidth = 6;
             this.descripcion.Name = "descripcion";
@@ -417,7 +426,7 @@
             this.Controls.Add(this.txtPedido);
             this.Controls.Add(this.dgvVentas);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormVentasAdmin";
             this.Text = "FormVentasAdmin";
             this.Load += new System.EventHandler(this.FormVentasAdmin_Load);

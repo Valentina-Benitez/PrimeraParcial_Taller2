@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.bInicio = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -38,7 +39,6 @@
             this.textDni = new System.Windows.Forms.TextBox();
             this.lContraseñaInicio = new System.Windows.Forms.Label();
             this.lDniInicio = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,8 +66,19 @@
             this.panel2.Location = new System.Drawing.Point(297, 48);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.panel2.Size = new System.Drawing.Size(350, 400);
+            this.panel2.Size = new System.Drawing.Size(347, 400);
             this.panel2.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(62, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(234, 41);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Inicio de sesión";
             // 
             // bInicio
             // 
@@ -76,7 +87,7 @@
             this.bInicio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bInicio.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bInicio.ForeColor = System.Drawing.Color.White;
-            this.bInicio.Location = new System.Drawing.Point(115, 338);
+            this.bInicio.Location = new System.Drawing.Point(113, 338);
             this.bInicio.Name = "bInicio";
             this.bInicio.Size = new System.Drawing.Size(112, 44);
             this.bInicio.TabIndex = 2;
@@ -88,7 +99,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(115, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(113, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -103,14 +114,14 @@
             this.panel3.Controls.Add(this.textDni);
             this.panel3.Controls.Add(this.lContraseñaInicio);
             this.panel3.Controls.Add(this.lDniInicio);
-            this.panel3.Location = new System.Drawing.Point(32, 204);
+            this.panel3.Location = new System.Drawing.Point(21, 204);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(293, 128);
+            this.panel3.Size = new System.Drawing.Size(304, 128);
             this.panel3.TabIndex = 0;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(126, 76);
+            this.textBox4.Location = new System.Drawing.Point(137, 78);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(164, 22);
             this.textBox4.TabIndex = 3;
@@ -118,7 +129,7 @@
             // 
             // textDni
             // 
-            this.textDni.Location = new System.Drawing.Point(126, 27);
+            this.textDni.Location = new System.Drawing.Point(137, 29);
             this.textDni.Name = "textDni";
             this.textDni.Size = new System.Drawing.Size(164, 22);
             this.textDni.TabIndex = 2;
@@ -145,17 +156,6 @@
             this.lDniInicio.Size = new System.Drawing.Size(49, 28);
             this.lDniInicio.TabIndex = 0;
             this.lDniInicio.Text = "DNI";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(62, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 41);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Inicio de sesión";
             // 
             // Form1
             // 
