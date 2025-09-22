@@ -60,7 +60,7 @@ namespace PrimeraEntrega
         {
             panelAdmin.Controls.Clear();
 
-            Form4 formSecundario = new Form4();
+            FormVentasAdmin formSecundario = new FormVentasAdmin();
 
 
             formSecundario.TopLevel = false;

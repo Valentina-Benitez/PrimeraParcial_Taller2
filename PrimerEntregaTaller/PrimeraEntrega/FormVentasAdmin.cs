@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace PrimeraEntrega
 {
-    public partial class Form4 : Form
+    public partial class FormVentasAdmin : Form
     {
-        public Form4()
+        public FormVentasAdmin()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
