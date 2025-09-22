@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lProductos = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lNombreProducto = new System.Windows.Forms.Label();
@@ -45,12 +51,6 @@
             this.textPrecioP = new System.Windows.Forms.TextBox();
             this.bModificar = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.textDescripcion = new System.Windows.Forms.TextBox();
             this.bCancelar = new System.Windows.Forms.Button();
@@ -77,153 +77,6 @@
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.Size = new System.Drawing.Size(672, 129);
             this.dgvProductos.TabIndex = 0;
-            // 
-            // lProductos
-            // 
-            this.lProductos.AutoSize = true;
-            this.lProductos.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lProductos.Location = new System.Drawing.Point(649, 156);
-            this.lProductos.Name = "lProductos";
-            this.lProductos.Size = new System.Drawing.Size(87, 19);
-            this.lProductos.TabIndex = 1;
-            this.lProductos.Text = "Productos";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(625, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 141);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lNombreProducto
-            // 
-            this.lNombreProducto.AutoSize = true;
-            this.lNombreProducto.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lNombreProducto.Location = new System.Drawing.Point(38, 63);
-            this.lNombreProducto.Name = "lNombreProducto";
-            this.lNombreProducto.Size = new System.Drawing.Size(50, 14);
-            this.lNombreProducto.TabIndex = 3;
-            this.lNombreProducto.Text = "Nombre";
-            // 
-            // lCategoria
-            // 
-            this.lCategoria.AutoSize = true;
-            this.lCategoria.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lCategoria.Location = new System.Drawing.Point(38, 102);
-            this.lCategoria.Name = "lCategoria";
-            this.lCategoria.Size = new System.Drawing.Size(57, 14);
-            this.lCategoria.TabIndex = 4;
-            this.lCategoria.Text = "Categoria";
-            // 
-            // lDescuento
-            // 
-            this.lDescuento.AutoSize = true;
-            this.lDescuento.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lDescuento.Location = new System.Drawing.Point(38, 148);
-            this.lDescuento.Name = "lDescuento";
-            this.lDescuento.Size = new System.Drawing.Size(63, 14);
-            this.lDescuento.TabIndex = 5;
-            this.lDescuento.Text = "Descuento";
-            // 
-            // lPrecio
-            // 
-            this.lPrecio.AutoSize = true;
-            this.lPrecio.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lPrecio.Location = new System.Drawing.Point(229, 63);
-            this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(40, 14);
-            this.lPrecio.TabIndex = 7;
-            this.lPrecio.Text = "Precio";
-            // 
-            // lEstado
-            // 
-            this.lEstado.AutoSize = true;
-            this.lEstado.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lEstado.Location = new System.Drawing.Point(229, 102);
-            this.lEstado.Name = "lEstado";
-            this.lEstado.Size = new System.Drawing.Size(42, 14);
-            this.lEstado.TabIndex = 8;
-            this.lEstado.Text = "Estado";
-            // 
-            // bAgregar
-            // 
-            this.bAgregar.BackColor = System.Drawing.Color.LightGreen;
-            this.bAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAgregar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAgregar.Location = new System.Drawing.Point(436, 45);
-            this.bAgregar.Name = "bAgregar";
-            this.bAgregar.Size = new System.Drawing.Size(76, 24);
-            this.bAgregar.TabIndex = 10;
-            this.bAgregar.Text = "Agregar";
-            this.bAgregar.UseVisualStyleBackColor = false;
-            // 
-            // bEliminar
-            // 
-            this.bEliminar.BackColor = System.Drawing.Color.Red;
-            this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEliminar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEliminar.Location = new System.Drawing.Point(437, 138);
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(75, 23);
-            this.bEliminar.TabIndex = 11;
-            this.bEliminar.Text = "Eliminar";
-            this.bEliminar.UseVisualStyleBackColor = false;
-            // 
-            // textNombreP
-            // 
-            this.textNombreP.Location = new System.Drawing.Point(105, 56);
-            this.textNombreP.Name = "textNombreP";
-            this.textNombreP.Size = new System.Drawing.Size(100, 20);
-            this.textNombreP.TabIndex = 12;
-            // 
-            // textCategoriaP
-            // 
-            this.textCategoriaP.Location = new System.Drawing.Point(105, 95);
-            this.textCategoriaP.Name = "textCategoriaP";
-            this.textCategoriaP.Size = new System.Drawing.Size(100, 20);
-            this.textCategoriaP.TabIndex = 13;
-            // 
-            // textDescuentoP
-            // 
-            this.textDescuentoP.Location = new System.Drawing.Point(105, 141);
-            this.textDescuentoP.Name = "textDescuentoP";
-            this.textDescuentoP.Size = new System.Drawing.Size(100, 20);
-            this.textDescuentoP.TabIndex = 14;
-            // 
-            // textPrecioP
-            // 
-            this.textPrecioP.Location = new System.Drawing.Point(304, 60);
-            this.textPrecioP.Name = "textPrecioP";
-            this.textPrecioP.Size = new System.Drawing.Size(100, 20);
-            this.textPrecioP.TabIndex = 16;
-            // 
-            // bModificar
-            // 
-            this.bModificar.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bModificar.Location = new System.Drawing.Point(437, 91);
-            this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(75, 24);
-            this.bModificar.TabIndex = 18;
-            this.bModificar.Text = "Modificar";
-            this.bModificar.UseVisualStyleBackColor = false;
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(121, 199);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(84, 30);
-            this.bBuscar.TabIndex = 19;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
             // 
             // NombreProducto
             // 
@@ -261,11 +114,159 @@
             this.id_descripcion.MinimumWidth = 6;
             this.id_descripcion.Name = "id_descripcion";
             // 
+            // lProductos
+            // 
+            this.lProductos.AutoSize = true;
+            this.lProductos.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lProductos.Location = new System.Drawing.Point(605, 152);
+            this.lProductos.Name = "lProductos";
+            this.lProductos.Size = new System.Drawing.Size(87, 19);
+            this.lProductos.TabIndex = 1;
+            this.lProductos.Text = "Productos";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(581, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(133, 141);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lNombreProducto
+            // 
+            this.lNombreProducto.AutoSize = true;
+            this.lNombreProducto.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lNombreProducto.Location = new System.Drawing.Point(66, 51);
+            this.lNombreProducto.Name = "lNombreProducto";
+            this.lNombreProducto.Size = new System.Drawing.Size(50, 14);
+            this.lNombreProducto.TabIndex = 3;
+            this.lNombreProducto.Text = "Nombre";
+            // 
+            // lCategoria
+            // 
+            this.lCategoria.AutoSize = true;
+            this.lCategoria.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lCategoria.Location = new System.Drawing.Point(66, 90);
+            this.lCategoria.Name = "lCategoria";
+            this.lCategoria.Size = new System.Drawing.Size(57, 14);
+            this.lCategoria.TabIndex = 4;
+            this.lCategoria.Text = "Categoria";
+            // 
+            // lDescuento
+            // 
+            this.lDescuento.AutoSize = true;
+            this.lDescuento.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lDescuento.Location = new System.Drawing.Point(66, 136);
+            this.lDescuento.Name = "lDescuento";
+            this.lDescuento.Size = new System.Drawing.Size(63, 14);
+            this.lDescuento.TabIndex = 5;
+            this.lDescuento.Text = "Descuento";
+            // 
+            // lPrecio
+            // 
+            this.lPrecio.AutoSize = true;
+            this.lPrecio.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lPrecio.Location = new System.Drawing.Point(257, 51);
+            this.lPrecio.Name = "lPrecio";
+            this.lPrecio.Size = new System.Drawing.Size(40, 14);
+            this.lPrecio.TabIndex = 7;
+            this.lPrecio.Text = "Precio";
+            // 
+            // lEstado
+            // 
+            this.lEstado.AutoSize = true;
+            this.lEstado.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lEstado.Location = new System.Drawing.Point(257, 90);
+            this.lEstado.Name = "lEstado";
+            this.lEstado.Size = new System.Drawing.Size(42, 14);
+            this.lEstado.TabIndex = 8;
+            this.lEstado.Text = "Estado";
+            // 
+            // bAgregar
+            // 
+            this.bAgregar.BackColor = System.Drawing.Color.LightGreen;
+            this.bAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAgregar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAgregar.Location = new System.Drawing.Point(341, 199);
+            this.bAgregar.Name = "bAgregar";
+            this.bAgregar.Size = new System.Drawing.Size(91, 30);
+            this.bAgregar.TabIndex = 10;
+            this.bAgregar.Text = "Agregar";
+            this.bAgregar.UseVisualStyleBackColor = false;
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.BackColor = System.Drawing.Color.Red;
+            this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bEliminar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bEliminar.Location = new System.Drawing.Point(591, 199);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(89, 30);
+            this.bEliminar.TabIndex = 11;
+            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.UseVisualStyleBackColor = false;
+            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click_1);
+            // 
+            // textNombreP
+            // 
+            this.textNombreP.Location = new System.Drawing.Point(133, 44);
+            this.textNombreP.Name = "textNombreP";
+            this.textNombreP.Size = new System.Drawing.Size(100, 20);
+            this.textNombreP.TabIndex = 12;
+            // 
+            // textCategoriaP
+            // 
+            this.textCategoriaP.Location = new System.Drawing.Point(133, 83);
+            this.textCategoriaP.Name = "textCategoriaP";
+            this.textCategoriaP.Size = new System.Drawing.Size(100, 20);
+            this.textCategoriaP.TabIndex = 13;
+            // 
+            // textDescuentoP
+            // 
+            this.textDescuentoP.Location = new System.Drawing.Point(133, 129);
+            this.textDescuentoP.Name = "textDescuentoP";
+            this.textDescuentoP.Size = new System.Drawing.Size(100, 20);
+            this.textDescuentoP.TabIndex = 14;
+            // 
+            // textPrecioP
+            // 
+            this.textPrecioP.Location = new System.Drawing.Point(332, 48);
+            this.textPrecioP.Name = "textPrecioP";
+            this.textPrecioP.Size = new System.Drawing.Size(100, 20);
+            this.textPrecioP.TabIndex = 16;
+            // 
+            // bModificar
+            // 
+            this.bModificar.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bModificar.Location = new System.Drawing.Point(473, 199);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(89, 30);
+            this.bModificar.TabIndex = 18;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = false;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(68, 199);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(89, 30);
+            this.bBuscar.TabIndex = 19;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(229, 148);
+            this.label1.Location = new System.Drawing.Point(257, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 14);
             this.label1.TabIndex = 20;
@@ -273,7 +274,7 @@
             // 
             // textDescripcion
             // 
-            this.textDescripcion.Location = new System.Drawing.Point(304, 145);
+            this.textDescripcion.Location = new System.Drawing.Point(332, 133);
             this.textDescripcion.Name = "textDescripcion";
             this.textDescripcion.Size = new System.Drawing.Size(100, 20);
             this.textDescripcion.TabIndex = 21;
@@ -283,9 +284,9 @@
             this.bCancelar.BackColor = System.Drawing.Color.DarkSalmon;
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancelar.Location = new System.Drawing.Point(281, 199);
+            this.bCancelar.Location = new System.Drawing.Point(206, 199);
             this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(84, 30);
+            this.bCancelar.Size = new System.Drawing.Size(93, 30);
             this.bCancelar.TabIndex = 22;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = false;
@@ -293,7 +294,7 @@
             // cbEstadoP
             // 
             this.cbEstadoP.FormattingEnabled = true;
-            this.cbEstadoP.Location = new System.Drawing.Point(304, 102);
+            this.cbEstadoP.Location = new System.Drawing.Point(332, 90);
             this.cbEstadoP.Name = "cbEstadoP";
             this.cbEstadoP.Size = new System.Drawing.Size(100, 21);
             this.cbEstadoP.TabIndex = 23;

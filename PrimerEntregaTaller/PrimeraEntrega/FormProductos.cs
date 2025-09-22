@@ -326,5 +326,10 @@ namespace gerente
         }
 
         #endregion
+
+        private void bEliminar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
