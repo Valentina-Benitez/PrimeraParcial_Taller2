@@ -18,6 +18,7 @@ namespace PrimeraEntrega
         public Form1()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,6 +38,38 @@ namespace PrimeraEntrega
         }
 
         private void bInicio_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textDni_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bInicio_Click_1(object sender, EventArgs e)
         {
             string dni = textDni.Text.Trim();
             string pass = textBox4.Text.Trim();
@@ -101,29 +134,12 @@ namespace PrimeraEntrega
             }
         }
 
-
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void textDni_TextChanged_1(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textDni_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
