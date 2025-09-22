@@ -111,7 +111,7 @@ namespace gerente
             }
 
             // Bloquea vocales acentuadas y otros caracteres especiales
-            string noPermitidos = "áéíóúÁÉÍÓÚüÜñÑ";
+            string noPermitidos = "áéíóúÁÉÍÓÚüÜ";
             if (noPermitidos.Contains(e.KeyChar))
             {
                 e.Handled = true;
