@@ -136,7 +136,7 @@ namespace gerente
         private bool ValidarCorreo(string correo)
         {
             // Validación simple que exige dominio gmail.com (según tu requerimiento)
-            string patron = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+            string patron = @"^[a-zA-Z0-9._%+-]+@";
             return Regex.IsMatch(correo, patron);
         }
 
