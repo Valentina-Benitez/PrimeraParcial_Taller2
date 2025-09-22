@@ -147,5 +147,10 @@ namespace PrimeraEntrega
                 MessageBox.Show("Error al buscar productos: " + ex.Message);
             }
         }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

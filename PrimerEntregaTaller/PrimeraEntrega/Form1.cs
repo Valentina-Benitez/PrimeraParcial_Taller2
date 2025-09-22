@@ -60,17 +60,15 @@ namespace PrimeraEntrega
 
                     object result = cmd.ExecuteScalar();
 
-                    if (result != null) // Significa que encontró usuario
+                    if (result != null) // encontró usuario
                     {
                         string rol = result.ToString();
-
-                        MessageBox.Show("Bienvenido, " + rol);
 
                         Form siguienteForm = null;
 
                         switch (rol.ToLower())
                         {
-                            case "recepcionista":
+                            case "empleado":
                                 siguienteForm = new Form3();
                                 break;
                             case "administrador":
@@ -83,6 +81,10 @@ namespace PrimeraEntrega
                                 MessageBox.Show("Rol no reconocido.");
                                 return;
                         }
+
+                        // 👇 esto es lo importante
+                        // cuando se cierre el form de rol, volver a mostrar el login
+                        siguienteForm.FormClosed += (s, args) => this.Show();
 
                         siguienteForm.Show();
                         this.Hide();
@@ -98,6 +100,7 @@ namespace PrimeraEntrega
                 MessageBox.Show("Error de conexión: " + ex.Message);
             }
         }
+
 
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -116,6 +119,11 @@ namespace PrimeraEntrega
         }
 
         private void textDni_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

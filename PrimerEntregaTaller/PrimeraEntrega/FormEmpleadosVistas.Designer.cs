@@ -40,15 +40,15 @@
             this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bBuscar = new System.Windows.Forms.Button();
             this.textDNI = new System.Windows.Forms.TextBox();
             this.textApellido = new System.Windows.Forms.TextBox();
             this.textNombre = new System.Windows.Forms.TextBox();
             this.lDni = new System.Windows.Forms.Label();
             this.lApellido = new System.Windows.Forms.Label();
             this.lNombre = new System.Windows.Forms.Label();
+            this.bBuscar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,10 +70,11 @@
             this.Rol,
             this.Contraseña});
             this.dgvEmpleados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvEmpleados.Location = new System.Drawing.Point(0, 270);
+            this.dgvEmpleados.Location = new System.Drawing.Point(0, 332);
+            this.dgvEmpleados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 51;
-            this.dgvEmpleados.Size = new System.Drawing.Size(800, 180);
+            this.dgvEmpleados.Size = new System.Drawing.Size(1067, 222);
             this.dgvEmpleados.TabIndex = 5;
             // 
             // Nombre
@@ -144,96 +145,108 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 273);
+            this.panel1.Size = new System.Drawing.Size(1067, 336);
             this.panel1.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(521, 213);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 33);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Empleados";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(512, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 167);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bBuscar.Location = new System.Drawing.Point(171, 204);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(94, 42);
-            this.bBuscar.TabIndex = 6;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // textDNI
             // 
-            this.textDNI.Location = new System.Drawing.Point(195, 144);
+            this.textDNI.Location = new System.Drawing.Point(260, 177);
+            this.textDNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textDNI.Name = "textDNI";
-            this.textDNI.Size = new System.Drawing.Size(151, 20);
+            this.textDNI.Size = new System.Drawing.Size(200, 22);
             this.textDNI.TabIndex = 18;
             // 
             // textApellido
             // 
-            this.textApellido.Location = new System.Drawing.Point(195, 114);
+            this.textApellido.Location = new System.Drawing.Point(260, 140);
+            this.textApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textApellido.Name = "textApellido";
-            this.textApellido.Size = new System.Drawing.Size(152, 20);
+            this.textApellido.Size = new System.Drawing.Size(201, 22);
             this.textApellido.TabIndex = 17;
             // 
             // textNombre
             // 
-            this.textNombre.Location = new System.Drawing.Point(195, 80);
+            this.textNombre.Location = new System.Drawing.Point(260, 98);
+            this.textNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textNombre.Name = "textNombre";
-            this.textNombre.Size = new System.Drawing.Size(152, 20);
+            this.textNombre.Size = new System.Drawing.Size(201, 22);
             this.textNombre.TabIndex = 16;
             // 
             // lDni
             // 
             this.lDni.AutoSize = true;
-            this.lDni.Location = new System.Drawing.Point(85, 151);
+            this.lDni.Location = new System.Drawing.Point(113, 186);
+            this.lDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lDni.Name = "lDni";
-            this.lDni.Size = new System.Drawing.Size(26, 13);
+            this.lDni.Size = new System.Drawing.Size(30, 16);
             this.lDni.TabIndex = 15;
             this.lDni.Text = "DNI";
             // 
             // lApellido
             // 
             this.lApellido.AutoSize = true;
-            this.lApellido.Location = new System.Drawing.Point(85, 121);
+            this.lApellido.Location = new System.Drawing.Point(113, 149);
+            this.lApellido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lApellido.Name = "lApellido";
-            this.lApellido.Size = new System.Drawing.Size(44, 13);
+            this.lApellido.Size = new System.Drawing.Size(57, 16);
             this.lApellido.TabIndex = 14;
             this.lApellido.Text = "Apellido";
             // 
             // lNombre
             // 
             this.lNombre.AutoSize = true;
-            this.lNombre.Location = new System.Drawing.Point(85, 87);
+            this.lNombre.Location = new System.Drawing.Point(113, 107);
+            this.lNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lNombre.Name = "lNombre";
-            this.lNombre.Size = new System.Drawing.Size(44, 13);
+            this.lNombre.Size = new System.Drawing.Size(56, 16);
             this.lNombre.TabIndex = 13;
             this.lNombre.Text = "Nombre";
             // 
+            // bBuscar
+            // 
+            this.bBuscar.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bBuscar.Location = new System.Drawing.Point(228, 251);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(125, 52);
+            this.bBuscar.TabIndex = 6;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(695, 262);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 43);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Empleados";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(683, 30);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(168, 206);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormEmpleadosVistas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvEmpleados);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormEmpleadosVistas";
             this.Text = "FormEmpleadosVistas";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();

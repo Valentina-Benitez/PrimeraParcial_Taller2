@@ -94,6 +94,9 @@ namespace PrimeraEntrega
             Close();
         }
 
-       
+        private void panelAdmin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

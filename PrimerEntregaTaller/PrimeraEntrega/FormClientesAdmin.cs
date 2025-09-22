@@ -17,7 +17,7 @@ namespace PrimeraEntrega
     {
         // Cadena de conexión a SQL Server
         private string connectionString =
-            @"Data Source=DIAMELA\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+            @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         public FormClientesAdmin()
         {
@@ -378,6 +378,11 @@ namespace PrimeraEntrega
             txtTipo.Clear();
             dtpFechaNac.Value = DateTime.Today;
             dvgClientes.ClearSelection();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

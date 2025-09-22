@@ -209,7 +209,11 @@ namespace gerente
                }
            }
 
+        private void FormProductos_Load(object sender, EventArgs e)
+        {
+
         }
+    }
     }
 
 
