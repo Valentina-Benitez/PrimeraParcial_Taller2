@@ -72,10 +72,28 @@ namespace PrimeraEntrega
             formSecundario.Show();
 
         }
+        private void bCliente_Click(object sender, EventArgs e)
+        {
 
+            panelAdmin.Controls.Clear();
+
+            FormClientesAdmin formSecundario = new FormClientesAdmin();
+
+
+            formSecundario.TopLevel = false;
+            formSecundario.FormBorderStyle = FormBorderStyle.None;
+            formSecundario.Dock = DockStyle.Fill;
+
+            panelAdmin.Controls.Add(formSecundario);
+
+            formSecundario.Show();
+
+        }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+       
     }
 }

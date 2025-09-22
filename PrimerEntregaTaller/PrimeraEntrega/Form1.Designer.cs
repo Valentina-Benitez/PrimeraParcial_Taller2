@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textDni = new System.Windows.Forms.TextBox();
             this.lContraseñaInicio = new System.Windows.Forms.Label();
             this.lDniInicio = new System.Windows.Forms.Label();
             this.bInicio = new System.Windows.Forms.Button();
@@ -49,28 +49,29 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.SkyBlue;
             this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.textDni);
             this.panel1.Controls.Add(this.lContraseñaInicio);
             this.panel1.Controls.Add(this.lDniInicio);
-            this.panel1.Location = new System.Drawing.Point(72, 122);
+            this.panel1.Location = new System.Drawing.Point(52, 122);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 113);
+            this.panel1.Size = new System.Drawing.Size(293, 113);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(106, 76);
+            this.textBox4.Location = new System.Drawing.Point(109, 76);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(164, 22);
             this.textBox4.TabIndex = 3;
             // 
-            // textBox3
+            // textDni
             // 
-            this.textBox3.Location = new System.Drawing.Point(90, 22);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 22);
-            this.textBox3.TabIndex = 2;
+            this.textDni.Location = new System.Drawing.Point(109, 23);
+            this.textDni.Name = "textDni";
+            this.textDni.Size = new System.Drawing.Size(164, 22);
+            this.textDni.TabIndex = 2;
+            this.textDni.TextChanged += new System.EventHandler(this.textDni_TextChanged);
             // 
             // lContraseñaInicio
             // 
@@ -122,6 +123,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.88903F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(942, 488);
             this.tableLayoutPanel1.TabIndex = 3;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // panel2
             // 
@@ -182,7 +184,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lDniInicio;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textDni;
         private System.Windows.Forms.Label lContraseñaInicio;
         private System.Windows.Forms.Button bInicio;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
