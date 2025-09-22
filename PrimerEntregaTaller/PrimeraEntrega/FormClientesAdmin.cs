@@ -8,35 +8,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace PrimeraEntrega
 {
     public partial class FormClientesAdmin : Form
     {
-        private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+        // Cadena de conexión a SQL Server
+        private string connectionString =
+            @"Data Source=DIAMELA\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         public FormClientesAdmin()
         {
             InitializeComponent();
 
-            // Cargar clientes al iniciar
-            CargarClientes();
+            // ⚙️ Configuración inicial del DataGridView
+            dvgClientes.AutoGenerateColumns = false;           // Evita que SQL cree columnas duplicadas automáticamente
+            dvgClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Selección de filas completas
+            dvgClientes.MultiSelect = false;                   // Permite seleccionar solo una fila
+            dvgClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Ajuste automático de columnas
+            dvgClientes.AllowUserToAddRows = false;            // No deja al usuario agregar filas manualmente
 
-            // Restricciones en campos
+            // Se eliminan las columnas del diseñador y se crean programáticamente las correctas
+            dvgClientes.Columns.Clear();
+            CrearColumnasDgv();
+
+            // 🔒 Restricciones en campos (solo letras o solo números)
             txtNombre.KeyPress += SoloLetras;
             txtApellido.KeyPress += SoloLetras;
             txtTipo.KeyPress += SoloLetras;
             txtDNI.KeyPress += SoloNumeros;
             txtTelefono.KeyPress += SoloNumeros;
 
+            // 🔗 Conectar los botones y eventos con sus métodos
+            bBuscar.Click += bBuscar_Click;
+            bGuardar.Click += bGuardar_Click;
+            bModificar.Click += bModificar_Click;
+            bEliminar.Click += bEliminar_Click;
             dvgClientes.CellClick += dvgClientes_CellClick;
+
+            // 📥 Cargar la lista de clientes al iniciar
+            CargarClientes();
         }
 
+        // ----------------- CREACIÓN DE COLUMNAS -----------------
+        private void CrearColumnasDgv()
+        {
+            // Se crean columnas con el mismo nombre que en la tabla SQL
+            var cId = new DataGridViewTextBoxColumn { Name = "id_cliente", DataPropertyName = "id_cliente", HeaderText = "ID", ReadOnly = true };
+            var cNombre = new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" };
+            var cApellido = new DataGridViewTextBoxColumn { Name = "apellido", DataPropertyName = "apellido", HeaderText = "Apellido" };
+            var cFecha = new DataGridViewTextBoxColumn { Name = "fecha_nacimiento", DataPropertyName = "fecha_nacimiento", HeaderText = "Fecha Nac." };
+            var cDni = new DataGridViewTextBoxColumn { Name = "dni", DataPropertyName = "dni", HeaderText = "DNI" };
+            var cTelefono = new DataGridViewTextBoxColumn { Name = "telefono", DataPropertyName = "telefono", HeaderText = "Teléfono" };
+            var cGmail = new DataGridViewTextBoxColumn { Name = "Gmail", DataPropertyName = "Gmail", HeaderText = "Correo" };
+            var cTipo = new DataGridViewTextBoxColumn { Name = "tipo_cliente", DataPropertyName = "tipo_cliente", HeaderText = "Tipo" };
+
+            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { cId, cNombre, cApellido, cFecha, cDni, cTelefono, cGmail, cTipo });
+        }
+
+        // ----------------- CONEXIÓN A BASE DE DATOS -----------------
         private SqlConnection ObtenerConexion()
         {
             return new SqlConnection(connectionString);
         }
 
+        // ----------------- CARGAR CLIENTES -----------------
         private void CargarClientes()
         {
             try
@@ -44,44 +82,44 @@ namespace PrimeraEntrega
                 using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
-                    string query = "SELECT * FROM Clientes";
+                    string query = "SELECT * FROM Cliente"; // Obtiene todos los clientes
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    dvgClientes.DataSource = dt;
+                    dvgClientes.DataSource = dt; // Se cargan los datos en la grilla
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar clientes " + ex.Message);
+                MessageBox.Show("Error al cargar clientes: " + ex.Message);
             }
         }
 
-        // -------- Restricciones --------
+        // ----------------- RESTRICCIONES DE INPUT -----------------
         private void SoloLetras(object sender, KeyPressEventArgs e)
         {
+            // Solo permite letras, espacio o teclas de control (backspace, etc.)
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
-            {
                 e.Handled = true;
-            }
         }
 
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
-            {
+            // Solo permite números y teclas de control
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
-            }
         }
 
         private bool CorreoValido(string correo)
         {
+            // Verifica que el correo tenga un formato válido con Regex
             return Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         }
 
-        // -------- Buscar --------
-        private void btnBuscar_Click(object sender, EventArgs e)
+        // ----------------- BUSCAR CLIENTE -----------------
+        private void bBuscar_Click(object sender, EventArgs e)
         {
+            // Verifica que haya al menos un campo de búsqueda completado
             if (string.IsNullOrWhiteSpace(txtNombre.Text) &&
                 string.IsNullOrWhiteSpace(txtApellido.Text) &&
                 string.IsNullOrWhiteSpace(txtDNI.Text) &&
@@ -98,29 +136,30 @@ namespace PrimeraEntrega
                 using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
-                    string query = "SELECT * FROM Clientes WHERE " +
-                                   "(Nombre LIKE @Nombre OR @Nombre = '') AND " +
-                                   "(Apellido LIKE @Apellido OR @Apellido = '') AND " +
-                                   "(DNI LIKE @DNI OR @DNI = '') AND " +
-                                   "(Telefono LIKE @Telefono OR @Telefono = '') AND " +
-                                   "(Correo LIKE @Correo OR @Correo = '') AND " +
-                                   "(Tipo LIKE @Tipo OR @Tipo = '')";
+                    // Se buscan coincidencias en la tabla con filtros parciales (LIKE)
+                    string query = "SELECT * FROM Cliente WHERE " +
+                                   "(nombre LIKE @Nombre OR @Nombre = '') AND " +
+                                   "(apellido LIKE @Apellido OR @Apellido = '') AND " +
+                                   "(dni LIKE @DNI OR @DNI = '') AND " +
+                                   "(telefono LIKE @Telefono OR @Telefono = '') AND " +
+                                   "(Gmail LIKE @Gmail OR @Gmail = '') AND " +
+                                   "(tipo_cliente LIKE @Tipo OR @Tipo = '')";
 
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                    da.SelectCommand.Parameters.AddWithValue("@Nombre", "%" + txtNombre.Text + "%");
-                    da.SelectCommand.Parameters.AddWithValue("@Apellido", "%" + txtApellido.Text + "%");
-                    da.SelectCommand.Parameters.AddWithValue("@DNI", "%" + txtDNI.Text + "%");
-                    da.SelectCommand.Parameters.AddWithValue("@Telefono", "%" + txtTelefono.Text + "%");
-                    da.SelectCommand.Parameters.AddWithValue("@Correo", "%" + txtCorreo.Text + "%");
-                    da.SelectCommand.Parameters.AddWithValue("@Tipo", "%" + txtTipo.Text + "%");
+                    da.SelectCommand.Parameters.AddWithValue("@Nombre", "%" + txtNombre.Text.Trim() + "%");
+                    da.SelectCommand.Parameters.AddWithValue("@Apellido", "%" + txtApellido.Text.Trim() + "%");
+                    da.SelectCommand.Parameters.AddWithValue("@DNI", "%" + txtDNI.Text.Trim() + "%");
+                    da.SelectCommand.Parameters.AddWithValue("@Telefono", "%" + txtTelefono.Text.Trim() + "%");
+                    da.SelectCommand.Parameters.AddWithValue("@Gmail", "%" + txtCorreo.Text.Trim() + "%");
+                    da.SelectCommand.Parameters.AddWithValue("@Tipo", "%" + txtTipo.Text.Trim() + "%");
 
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
-                    if (dt.Rows.Count > 0)
-                        dvgClientes.DataSource = dt;
-                    else
-                        MessageBox.Show("No se tiene registrado a ese cliente.");
+                    dvgClientes.DataSource = dt;
+
+                    if (dt.Rows.Count == 0)
+                        MessageBox.Show("No se encontró ningún cliente.");
                 }
             }
             catch (Exception ex)
@@ -129,9 +168,10 @@ namespace PrimeraEntrega
             }
         }
 
-        // -------- Guardar --------
-        private void btnGuardar_Click(object sender, EventArgs e)
+        // ----------------- GUARDAR CLIENTE NUEVO -----------------
+        private void bGuardar_Click(object sender, EventArgs e)
         {
+            // Validación de campos obligatorios
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellido.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
@@ -139,10 +179,11 @@ namespace PrimeraEntrega
                 string.IsNullOrWhiteSpace(txtCorreo.Text) ||
                 string.IsNullOrWhiteSpace(txtTipo.Text))
             {
-                MessageBox.Show("Debe rellenar todos los campos antes de agregar.");
+                MessageBox.Show("Debe rellenar todos los campos.");
                 return;
             }
 
+            // Validación del correo
             if (!CorreoValido(txtCorreo.Text))
             {
                 MessageBox.Show("El correo no es válido.");
@@ -155,10 +196,10 @@ namespace PrimeraEntrega
                 {
                     conn.Open();
 
-                    // Validar si ya existe cliente
-                    string checkQuery = "SELECT COUNT(*) FROM Clientes WHERE DNI = @DNI";
+                    // Verifica que no exista otro cliente con el mismo DNI
+                    string checkQuery = "SELECT COUNT(*) FROM Cliente WHERE dni = @DNI";
                     SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
-                    checkCmd.Parameters.AddWithValue("@DNI", txtDNI.Text);
+                    checkCmd.Parameters.AddWithValue("@DNI", txtDNI.Text.Trim());
                     int existe = (int)checkCmd.ExecuteScalar();
 
                     if (existe > 0)
@@ -167,25 +208,27 @@ namespace PrimeraEntrega
                         return;
                     }
 
-                    DialogResult dr = MessageBox.Show("¿Desea agregar un nuevo cliente?", "Confirmación", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
-                    {
-                        string insertQuery = "INSERT INTO Clientes (Nombre, Apellido, FechaNac, DNI, Telefono, Correo, Tipo) " +
-                                             "VALUES (@Nombre, @Apellido, @FechaNac, @DNI, @Telefono, @Correo, @Tipo)";
-                        SqlCommand cmd = new SqlCommand(insertQuery, conn);
-                        cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                        cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text);
-                        cmd.Parameters.AddWithValue("@FechaNac", dtpFechaNac.Value);
-                        cmd.Parameters.AddWithValue("@DNI", txtDNI.Text);
-                        cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
-                        cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
-                        cmd.Parameters.AddWithValue("@Tipo", txtTipo.Text);
+                    // Confirmación del usuario
+                    var dr = MessageBox.Show("¿Desea agregar un nuevo cliente?", "Confirmación", MessageBoxButtons.YesNo);
+                    if (dr != DialogResult.Yes) return;
 
-                        cmd.ExecuteNonQuery();
+                    // Inserta nuevo cliente en la BD
+                    string insertQuery = "INSERT INTO Cliente (nombre, apellido, fecha_nacimiento, dni, telefono, Gmail, tipo_cliente) " +
+                                         "VALUES (@Nombre, @Apellido, @FechaNac, @DNI, @Telefono, @Gmail, @Tipo)";
+                    SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                    cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text.Trim());
+                    cmd.Parameters.AddWithValue("@FechaNac", dtpFechaNac.Value.Date);
+                    cmd.Parameters.AddWithValue("@DNI", txtDNI.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Gmail", txtCorreo.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Tipo", txtTipo.Text.Trim());
 
-                        MessageBox.Show("El cliente fue agregado con éxito.");
-                        CargarClientes();
-                    }
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("El cliente fue agregado con éxito.");
+                    ClearForm();    // Limpia los campos del formulario
+                    CargarClientes(); // Refresca la grilla
                 }
             }
             catch (Exception ex)
@@ -194,8 +237,8 @@ namespace PrimeraEntrega
             }
         }
 
-        // -------- Modificar --------
-        private void btnModificar_Click(object sender, EventArgs e)
+        // ----------------- MODIFICAR CLIENTE -----------------
+        private void bModificar_Click(object sender, EventArgs e)
         {
             if (dvgClientes.SelectedRows.Count == 0)
             {
@@ -203,6 +246,7 @@ namespace PrimeraEntrega
                 return;
             }
 
+            // Validación de campos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellido.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
@@ -214,38 +258,44 @@ namespace PrimeraEntrega
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("¿Desea guardar las modificaciones?", "Confirmación", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                try
-                {
-                    using (SqlConnection conn = ObtenerConexion())
-                    {
-                        conn.Open();
-                        string updateQuery = "UPDATE Clientes SET Nombre=@Nombre, Apellido=@Apellido, FechaNac=@FechaNac, Telefono=@Telefono, Correo=@Correo, Tipo=@Tipo WHERE DNI=@DNI";
-                        SqlCommand cmd = new SqlCommand(updateQuery, conn);
-                        cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                        cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text);
-                        cmd.Parameters.AddWithValue("@FechaNac", dtpFechaNac.Value);
-                        cmd.Parameters.AddWithValue("@DNI", txtDNI.Text);
-                        cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
-                        cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
-                        cmd.Parameters.AddWithValue("@Tipo", txtTipo.Text);
+            var dr = MessageBox.Show("¿Desea guardar las modificaciones?", "Confirmación", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes) return;
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Se actualizaron los datos del cliente.");
-                        CargarClientes();
-                    }
-                }
-                catch (Exception ex)
+            try
+            {
+                using (SqlConnection conn = ObtenerConexion())
                 {
-                    MessageBox.Show("Error al modificar cliente: " + ex.Message);
+                    conn.Open();
+
+                    // Actualiza los datos del cliente según el DNI
+                    string updateQuery = "UPDATE Cliente SET nombre=@Nombre, apellido=@Apellido, fecha_nacimiento=@FechaNac, telefono=@Telefono, Gmail=@Gmail, tipo_cliente=@Tipo WHERE dni=@DNI";
+                    SqlCommand cmd = new SqlCommand(updateQuery, conn);
+                    cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Apellido", txtApellido.Text.Trim());
+                    cmd.Parameters.AddWithValue("@FechaNac", dtpFechaNac.Value.Date);
+                    cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Gmail", txtCorreo.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Tipo", txtTipo.Text.Trim());
+                    cmd.Parameters.AddWithValue("@DNI", txtDNI.Text.Trim());
+
+                    int filas = cmd.ExecuteNonQuery();
+                    if (filas > 0)
+                        MessageBox.Show("Se actualizaron los datos del cliente.");
+                    else
+                        MessageBox.Show("No se encontró el cliente para actualizar.");
+
+                    ClearForm();
+                    CargarClientes();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar cliente: " + ex.Message);
             }
         }
 
-        // -------- Eliminar --------
-        private void btnEliminar_Click(object sender, EventArgs e)
+        // ----------------- ELIMINAR CLIENTE -----------------
+        private void bEliminar_Click(object sender, EventArgs e)
         {
             if (dvgClientes.SelectedRows.Count == 0)
             {
@@ -253,45 +303,83 @@ namespace PrimeraEntrega
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("¿Desea eliminar al cliente?", "Confirmación", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                try
-                {
-                    using (SqlConnection conn = ObtenerConexion())
-                    {
-                        conn.Open();
-                        string dni = dvgClientes.SelectedRows[0].Cells["DNI"].Value.ToString();
-                        string deleteQuery = "DELETE FROM Clientes WHERE DNI=@DNI";
-                        SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                        cmd.Parameters.AddWithValue("@DNI", dni);
+            var dr = MessageBox.Show("¿Desea eliminar al cliente?", "Confirmación", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes) return;
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("El cliente fue eliminado.");
-                        CargarClientes();
-                    }
-                }
-                catch (Exception ex)
+            try
+            {
+                using (SqlConnection conn = ObtenerConexion())
                 {
-                    MessageBox.Show("Error al eliminar cliente: " + ex.Message);
+                    conn.Open();
+                    // Obtiene el DNI del cliente seleccionado
+                    string dni = GetCellString(dvgClientes.SelectedRows[0], "dni");
+
+                    // Elimina el cliente de la base de datos
+                    string deleteQuery = "DELETE FROM Cliente WHERE dni=@DNI";
+                    SqlCommand cmd = new SqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@DNI", dni);
+
+                    int filas = cmd.ExecuteNonQuery();
+                    if (filas > 0)
+                        MessageBox.Show("El cliente fue eliminado.");
+                    else
+                        MessageBox.Show("No se encontró el cliente para eliminar.");
+
+                    ClearForm();
+                    CargarClientes();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar cliente: " + ex.Message);
             }
         }
 
-        // -------- Autocompletar al seleccionar --------
+        // ----------------- AUTOCOMPLETAR CAMPOS AL SELECCIONAR UNA FILA -----------------
         private void dvgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dvgClientes.Rows[e.RowIndex];
-                txtNombre.Text = row.Cells["Nombre"].Value.ToString();
-                txtApellido.Text = row.Cells["Apellido"].Value.ToString();
-                dtpFechaNac.Text = row.Cells["FechaNac"].Value.ToString();
-                txtDNI.Text = row.Cells["DNI"].Value.ToString();
-                txtTelefono.Text = row.Cells["Telefono"].Value.ToString();
-                txtCorreo.Text = row.Cells["Correo"].Value.ToString();
-                txtTipo.Text = row.Cells["Tipo"].Value.ToString();
-            }
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dvgClientes.Rows[e.RowIndex];
+
+            // Rellena los TextBox con los datos de la fila seleccionada
+            txtNombre.Text = GetCellString(row, "nombre");
+            txtApellido.Text = GetCellString(row, "apellido");
+            txtDNI.Text = GetCellString(row, "dni");
+            txtTelefono.Text = GetCellString(row, "telefono");
+            txtCorreo.Text = GetCellString(row, "Gmail");
+            txtTipo.Text = GetCellString(row, "tipo_cliente");
+
+            // Manejo de la fecha de nacimiento
+            var val = row.Cells["fecha_nacimiento"].Value;
+            if (val != null && val != DBNull.Value && DateTime.TryParse(val.ToString(), out DateTime fecha))
+                dtpFechaNac.Value = fecha;
+            else
+                dtpFechaNac.Value = DateTime.Today;
+        }
+
+        // ----------------- HELPERS -----------------
+        private string GetCellString(DataGridViewRow row, string columnName)
+        {
+            if (row == null) return string.Empty;
+            var cell = row.Cells[columnName];
+            if (cell == null || cell.Value == null || cell.Value == DBNull.Value) return string.Empty;
+            return cell.Value.ToString();
+        }
+
+        // Limpia todos los campos del formulario
+        private void ClearForm()
+        {
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtDNI.Clear();
+            txtTelefono.Clear();
+            txtCorreo.Clear();
+            txtTipo.Clear();
+            dtpFechaNac.Value = DateTime.Today;
+            dvgClientes.ClearSelection();
         }
     }
 }
+
+

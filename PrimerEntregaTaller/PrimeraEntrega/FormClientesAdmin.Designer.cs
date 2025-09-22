@@ -57,7 +57,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bModificar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Azure;
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.bModificar);
             this.panel2.Controls.Add(this.bBuscar);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label2);
@@ -359,17 +359,17 @@
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // bModificar
             // 
-            this.button2.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(415, 188);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 31);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bModificar.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bModificar.Location = new System.Drawing.Point(415, 188);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(86, 31);
+            this.bModificar.TabIndex = 28;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = false;
             // 
             // FormClientesAdmin
             // 
@@ -416,7 +416,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bModificar;
         private System.Windows.Forms.Button bBuscar;
     }
 }
