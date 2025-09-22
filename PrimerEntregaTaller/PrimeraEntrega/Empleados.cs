@@ -111,7 +111,7 @@ namespace gerente
             }
 
             // Bloquea vocales acentuadas y otros caracteres especiales
-            string noPermitidos = "áéíóúÁÉÍÓÚüÜñÑ";
+            string noPermitidos = "@?¿'%&/()·!¡-_.:,;";
             if (noPermitidos.Contains(e.KeyChar))
             {
                 e.Handled = true;
@@ -414,6 +414,7 @@ namespace gerente
                     else
                     {
                         dgvEmpleados.DataSource = dt;
+                        
                     }
                 }
             }
@@ -444,6 +445,7 @@ namespace gerente
 
             ClearForm();
             MessageBox.Show("Formulario limpiado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CargarUsuarios();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
