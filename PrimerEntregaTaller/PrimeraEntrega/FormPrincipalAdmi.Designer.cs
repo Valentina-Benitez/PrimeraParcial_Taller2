@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipalAdmi));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bBackUp = new System.Windows.Forms.Button();
             this.bProductos = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.bVentas = new System.Windows.Forms.Button();
@@ -43,8 +45,6 @@
             this.lEmpleados = new System.Windows.Forms.Label();
             this.ltitulo = new System.Windows.Forms.Label();
             this.panelAdmin = new System.Windows.Forms.Panel();
-            this.bBackUp = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -89,6 +89,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 65);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(869, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Back Up";
+            // 
+            // bBackUp
+            // 
+            this.bBackUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bBackUp.BackgroundImage")));
+            this.bBackUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bBackUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bBackUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bBackUp.Location = new System.Drawing.Point(816, 17);
+            this.bBackUp.Margin = new System.Windows.Forms.Padding(4);
+            this.bBackUp.Name = "bBackUp";
+            this.bBackUp.Size = new System.Drawing.Size(45, 46);
+            this.bBackUp.TabIndex = 19;
+            this.bBackUp.UseVisualStyleBackColor = true;
+            this.bBackUp.Click += new System.EventHandler(this.bBackUp_Click);
             // 
             // bProductos
             // 
@@ -161,7 +186,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1023, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(978, 14);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 34);
@@ -234,31 +259,6 @@
             this.panelAdmin.Size = new System.Drawing.Size(1059, 473);
             this.panelAdmin.TabIndex = 1;
             this.panelAdmin.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAdmin_Paint);
-            // 
-            // bBackUp
-            // 
-            this.bBackUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bBackUp.BackgroundImage")));
-            this.bBackUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bBackUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bBackUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bBackUp.Location = new System.Drawing.Point(816, 17);
-            this.bBackUp.Margin = new System.Windows.Forms.Padding(4);
-            this.bBackUp.Name = "bBackUp";
-            this.bBackUp.Size = new System.Drawing.Size(45, 46);
-            this.bBackUp.TabIndex = 19;
-            this.bBackUp.UseVisualStyleBackColor = true;
-            this.bBackUp.Click += new System.EventHandler(this.bBackUp_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(869, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 17);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Back Up";
             // 
             // FormPrincipalAdmi
             // 

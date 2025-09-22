@@ -17,6 +17,9 @@ namespace PrimeraEntrega
         {
             InitializeComponent();
 
+            // Desactivar generación automática de columnas
+            dgvEmpleados.AutoGenerateColumns = false;
+
             CargarEmpleados();
 
             textNombre.KeyPress += SoloLetras;
@@ -36,7 +39,7 @@ namespace PrimeraEntrega
                 using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
-                    string query = "SELECT * FROM Productos";
+                    string query = "SELECT * FROM Usuario";
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -45,7 +48,7 @@ namespace PrimeraEntrega
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar productos: " + ex.Message);
+                MessageBox.Show("Error al cargar usuarios " + ex.Message);
             }
         }
         private void SoloLetras(object sender, KeyPressEventArgs e)
@@ -79,7 +82,7 @@ namespace PrimeraEntrega
             }
 
             // Construir la consulta SQL dinámica
-            string query = "SELECT * FROM Empleados WHERE 1=1 ";
+            string query = "SELECT * FROM Usuario WHERE 1=1 ";
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             if (!string.IsNullOrWhiteSpace(textNombre.Text))
@@ -89,7 +92,7 @@ namespace PrimeraEntrega
             }
             if (!string.IsNullOrWhiteSpace(textApellido.Text))
             {
-                query += " AND ApellidoLIKE @apellido";
+                query += " AND Apellido LIKE @apellido";
                 parameters.Add(new SqlParameter("@apeliido", "%" + textApellido.Text + "%"));
             }
 
@@ -118,7 +121,7 @@ namespace PrimeraEntrega
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar al empleado: " + ex.Message);
+                MessageBox.Show("Error al buscar al usuario: " + ex.Message);
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -127,6 +130,21 @@ namespace PrimeraEntrega
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvEmpleados_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

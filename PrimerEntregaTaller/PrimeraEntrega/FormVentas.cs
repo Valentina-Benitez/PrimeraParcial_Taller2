@@ -21,5 +21,15 @@ namespace PrimeraEntrega
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FormVentas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

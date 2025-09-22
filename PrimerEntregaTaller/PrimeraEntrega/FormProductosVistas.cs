@@ -60,7 +60,7 @@ namespace PrimeraEntrega
                 using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
-                    string query = "SELECT * FROM Productos";
+                    string query = "SELECT * FROM Producto";
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -92,7 +92,7 @@ namespace PrimeraEntrega
             }
 
             // Construir la consulta SQL dinámica
-            string query = "SELECT * FROM Productos WHERE 1=1 ";
+            string query = "SELECT * FROM Producto WHERE 1=1 ";
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             if (!string.IsNullOrWhiteSpace(textNombreP.Text))

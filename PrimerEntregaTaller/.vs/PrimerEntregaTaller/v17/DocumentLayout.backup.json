@@ -3,559 +3,286 @@
   "WorkspaceRootPath": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formclientesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formventasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formclientesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formprincipaladmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formprincipaladmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formprincipaladmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formprincipaladmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formventasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\backup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\backup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\backup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\backup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formdetallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formdetallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formdetallepedido.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formdetallepedido.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formempleadosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formempleadosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formempleadosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formagregarproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formagregarproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formagregarproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formagregarproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formpedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formpedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formdetallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formdetallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formempleadosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formempleadosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formempleadosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formpedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formpedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\conexionbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\conexionbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formprincipaladmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formprincipaladmi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formproductosvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formventasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formclientesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formdetallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formdetallepedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\reporteproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\reporteproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formagregarproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formagregarproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\empleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formrecepcionista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formagregarproductos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formagregarproductos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formpedidos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formpedidos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\formclientes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formclientes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\empleados.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\empleados.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\formventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|PrimeraEntrega||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\primeraentrega\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|solutionrelative:primeraentrega\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC91014A-7007-45A1-B4F5-EE01EA83CA9E}|PrimeraEntrega\\PrimeraEntrega.csproj|c:\\users\\valen\\source\\repos\\primeraparcial_taller2\\primerentregataller\\primeraentrega\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|984ae51a-4b21-44e7-822c-dd5e046893ef"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 202,
+      "VerticalTabListWidth": 237,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 20,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\App.config",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\App.config",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\App.config",
-              "RelativeToolTip": "PrimeraEntrega\\App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-22T11:34:22.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "BackUp.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\BackUp.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\BackUp.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\BackUp.cs",
-              "RelativeToolTip": "PrimeraEntrega\\BackUp.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T11:32:16.477Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BackUp.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\BackUp.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\BackUp.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\BackUp.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\BackUp.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T11:29:54.726Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form1.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Form1.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form1.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T02:37:38.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FormVentasAdmin.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentasAdmin.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentasAdmin.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentasAdmin.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormVentasAdmin.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAswGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T03:08:33.713Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "FormVentas.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentas.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormVentas.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA7wBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T03:08:28.833Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "FormProductosVistas.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductosVistas.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormProductosVistas.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductosVistas.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormProductosVistas.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T03:08:20.358Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "FormProductos.cs",
               "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductos.cs",
               "RelativeDocumentMoniker": "PrimeraEntrega\\FormProductos.cs",
               "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductos.cs",
               "RelativeToolTip": "PrimeraEntrega\\FormProductos.cs",
-              "ViewState": "AgIAACEBAAAAAAAAAAAowFUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAcwFUBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T03:08:09.466Z",
+              "WhenOpened": "2025-09-22T15:10:07.027Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FormPrincipalAdmi.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPrincipalAdmi.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormPrincipalAdmi.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPrincipalAdmi.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormPrincipalAdmi.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAswEAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T03:08:01.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FormClientesAdmin.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientesAdmin.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientesAdmin.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientesAdmin.cs*",
-              "RelativeToolTip": "PrimeraEntrega\\FormClientesAdmin.cs*",
-              "ViewState": "AgIAAHkBAAAAAAAAAAAowIoBAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T03:07:33.752Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormClientesAdmin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientesAdmin.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientesAdmin.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientesAdmin.cs [Dise\u00F1o]*",
-              "RelativeToolTip": "PrimeraEntrega\\FormClientesAdmin.cs [Dise\u00F1o]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T02:16:25.853Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "FormRecepcionista.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormRecepcionista.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormRecepcionista.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T13:09:18.533Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FormPrincipalAdmi.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPrincipalAdmi.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormPrincipalAdmi.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPrincipalAdmi.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormPrincipalAdmi.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T20:10:40.201Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "FormDetallePedido.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormDetallePedido.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormDetallePedido.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T21:57:02.706Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "FormAgregarProductos.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormAgregarProductos.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormAgregarProductos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T05:05:41.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "FormDetallePedido.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormDetallePedido.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormDetallePedido.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T22:08:15.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "FormPedidos.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPedidos.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormPedidos.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPedidos.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormPedidos.Designer.cs",
-              "ViewState": "AgIAAEQBAAAAAAAAAAAuwFMBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:59:37.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "FormPedidos.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPedidos.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormPedidos.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPedidos.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormPedidos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:52:01.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormClientes.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientes.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormClientes.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T05:36:28.338Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "FormAgregarProductos.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormAgregarProductos.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormAgregarProductos.Designer.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAADwv4MAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T05:06:19.975Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "FormDetallePedido.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormDetallePedido.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormDetallePedido.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T05:06:11.201Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "FormAgregarProductos.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormAgregarProductos.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormAgregarProductos.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T05:05:36.669Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "FormEmpleadosVistas.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormEmpleadosVistas.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormEmpleadosVistas.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T17:49:02.758Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "FormPedidos.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPedidos.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormPedidos.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPedidos.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormPedidos.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:52:05.637Z",
-              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FormVentasAdmin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentasAdmin.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentasAdmin.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentasAdmin.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormVentasAdmin.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T19:31:52.976Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "FormVentas.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentas.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormVentas.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T19:31:50.948Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "FormProductos.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductos.cs",
               "RelativeDocumentMoniker": "PrimeraEntrega\\FormProductos.cs",
               "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductos.cs [Dise\u00F1o]",
               "RelativeToolTip": "PrimeraEntrega\\FormProductos.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T19:31:42.922Z",
+              "WhenOpened": "2025-09-22T15:09:58.743Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Form3.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\Form3.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\Form3.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T15:01:26.196Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormVentasAdmin.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentasAdmin.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentasAdmin.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentasAdmin.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormVentasAdmin.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T15:00:47.768Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FormRecepcionista.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormRecepcionista.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs",
+              "RelativeToolTip": "PrimeraEntrega\\FormRecepcionista.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:52:58.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FormClientes.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientes.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs",
+              "RelativeToolTip": "PrimeraEntrega\\FormClientes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:48:45.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FormClientes.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientes.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormClientes.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:48:43.831Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Empleados.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\Empleados.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs",
+              "RelativeToolTip": "PrimeraEntrega\\Empleados.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:44:41.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Empleados.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\Empleados.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\Empleados.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:44:39.854Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormEmpleadosVistas.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormEmpleadosVistas.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs*",
+              "RelativeToolTip": "PrimeraEntrega\\FormEmpleadosVistas.cs*",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAgwJIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:44:06.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormPrincipalAdmi.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPrincipalAdmi.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormPrincipalAdmi.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormPrincipalAdmi.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormPrincipalAdmi.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:43:09.267Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FormDetallePedido.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormDetallePedido.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormDetallePedido.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormDetallePedido.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:43:05.972Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormProductosVistas.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductosVistas.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormProductosVistas.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductosVistas.cs",
+              "RelativeToolTip": "PrimeraEntrega\\FormProductosVistas.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA7wD4AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:37:44.425Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -566,222 +293,155 @@
               "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormProductosVistas.cs [Dise\u00F1o]",
               "RelativeToolTip": "PrimeraEntrega\\FormProductosVistas.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T17:49:11.748Z",
+              "WhenOpened": "2025-09-22T14:37:30.161Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "FormEmpleadosVistas.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormEmpleadosVistas.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormEmpleadosVistas.cs [Dise\u00F1o]",
+              "DocumentIndex": 10,
+              "Title": "FormClientesAdmin.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientesAdmin.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientesAdmin.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientesAdmin.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormClientesAdmin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T17:44:40.535Z",
+              "WhenOpened": "2025-09-22T14:14:03.852Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FormAgregarProductos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormAgregarProductos.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormAgregarProductos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormAgregarProductos.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:13:58.051Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "FormClientes.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientes.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormClientes.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAowL8AAAANAAAAAAAAAA==",
+              "Title": "ReporteProductos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\ReporteProductos.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\ReporteProductos.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\ReporteProductos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\ReporteProductos.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:50:04.135Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "FormClientes.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormClientes.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormClientes.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\FormClientes.Designer.cs",
-              "ViewState": "AgIAAG4BAAAAAAAAAAAAAHYBAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T13:29:28.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "Form3.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Form3.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Form3.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T13:21:34.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Empleados.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Empleados.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Empleados.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0CAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T13:08:11.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-22T14:13:52.54Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "Form3.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Form3.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Form3.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAmwF0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T00:04:39.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Form2.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form2.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Form2.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form2.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Form2.Designer.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T00:05:15.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
               "Title": "Form2.cs",
               "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form2.cs",
               "RelativeDocumentMoniker": "PrimeraEntrega\\Form2.cs",
               "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form2.cs",
               "RelativeToolTip": "PrimeraEntrega\\Form2.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAmwG4AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAcwEwAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T00:04:25.593Z",
+              "WhenOpened": "2025-09-22T14:09:49.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Empleados.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Empleados.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Empleados.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:59:05.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Empleados.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Empleados.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Empleados.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\Empleados.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:59:00.813Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Program.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Program.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Program.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAQwBgAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:52:55.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "FormRecepcionista.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\FormRecepcionista.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\FormRecepcionista.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:50:49.116Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Form3.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Form3.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form3.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PrimeraEntrega\\Form3.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:50:01.809Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 15,
               "Title": "Form2.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form2.cs",
               "RelativeDocumentMoniker": "PrimeraEntrega\\Form2.cs",
               "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form2.cs [Dise\u00F1o]",
               "RelativeToolTip": "PrimeraEntrega\\Form2.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:49:49.882Z",
+              "WhenOpened": "2025-09-22T14:09:45.025Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "ConexionBD.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\ConexionBD.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\ConexionBD.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\ConexionBD.cs",
-              "RelativeToolTip": "PrimeraEntrega\\ConexionBD.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "FormEmpleadosVistas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormEmpleadosVistas.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormEmpleadosVistas.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "PrimeraEntrega\\FormEmpleadosVistas.cs [Dise\u00F1o]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:49:13.48Z"
+              "WhenOpened": "2025-09-22T14:09:35.081Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "PrimeraEntrega\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form1.Designer.cs",
-              "RelativeToolTip": "PrimeraEntrega\\Form1.Designer.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAuwMEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 24,
+              "Title": "FormVentas.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentas.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs",
+              "RelativeToolTip": "PrimeraEntrega\\FormVentas.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAiwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:48:57.582Z",
+              "WhenOpened": "2025-09-22T14:05:11.96Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 22,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Program.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\Program.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Program.cs",
+              "RelativeToolTip": "PrimeraEntrega\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:03:06.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FormRecepcionista.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormRecepcionista.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormRecepcionista.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormRecepcionista.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:54:45.582Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FormVentas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\FormVentas.cs",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\FormVentas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PrimeraEntrega\\FormVentas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:15:33.113Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form1.cs",
               "RelativeDocumentMoniker": "PrimeraEntrega\\Form1.cs",
               "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "PrimeraEntrega\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T23:43:15.642Z",
+              "WhenOpened": "2025-09-22T13:14:43.419Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PrimeraEntrega",
+              "DocumentMoniker": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\PrimeraEntrega.csproj",
+              "RelativeDocumentMoniker": "PrimeraEntrega\\PrimeraEntrega.csproj",
+              "ToolTip": "C:\\Users\\valen\\source\\repos\\PrimeraParcial_Taller2\\PrimerEntregaTaller\\PrimeraEntrega\\PrimeraEntrega.csproj",
+              "RelativeToolTip": "PrimeraEntrega\\PrimeraEntrega.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-22T13:11:53.703Z",
+              "EditorCaption": ""
             }
           ]
         }

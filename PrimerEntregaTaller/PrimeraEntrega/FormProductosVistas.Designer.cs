@@ -220,7 +220,7 @@
             this.Editar,
             this.Eliminar});
             this.dgvProductos.GridColor = System.Drawing.Color.LightBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(92, 329);
+            this.dgvProductos.Location = new System.Drawing.Point(97, 361);
             this.dgvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 51;
