@@ -106,8 +106,18 @@ namespace gerente
         {
             // Permite letras, espacio y teclas de control
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
                 e.Handled = true;
+            }
+
+            // Bloquea vocales acentuadas y otros caracteres especiales
+            string noPermitidos = "áéíóúÁÉÍÓÚüÜñÑ";
+            if (noPermitidos.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
+
 
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
