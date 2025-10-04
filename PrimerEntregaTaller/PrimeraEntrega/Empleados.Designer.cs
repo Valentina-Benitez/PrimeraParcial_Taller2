@@ -223,6 +223,7 @@
             this.cbTipoUsuario.Name = "cbTipoUsuario";
             this.cbTipoUsuario.Size = new System.Drawing.Size(200, 24);
             this.cbTipoUsuario.TabIndex = 18;
+            this.cbTipoUsuario.SelectedIndexChanged += new System.EventHandler(this.cbTipoUsuario_SelectedIndexChanged);
             // 
             // textReContraseña
             // 

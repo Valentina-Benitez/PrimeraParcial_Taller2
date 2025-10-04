@@ -24,17 +24,16 @@ namespace gerente
         {
             InitializeComponent();
 
-            // ------------------- Preparación del DataGridView -------------------
-            // Evitamos la generación automática de columnas y limpiamos las columnas del diseñador
+            // Preparación del DataGridView 
             dgvEmpleados.AutoGenerateColumns = false;
             dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmpleados.MultiSelect = false;
             dgvEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmpleados.AllowUserToAddRows = false;
             dgvEmpleados.Columns.Clear();
-            CrearColumnasDgv(); // creamos columnas programáticamente para evitar duplicadas
+            CrearColumnasDgv(); // creamos columnas
 
-            // ------------------- Vincular validaciones de teclado -------------------
+            // Vincular validaciones de teclado 
             textNombre.KeyPress += SoloLetras;
             textApellido.KeyPress += SoloLetras;
             textDni.KeyPress += SoloNumeros;
@@ -43,13 +42,13 @@ namespace gerente
             textContraseña.KeyPress += SinEspacios;
             textReContraseña.KeyPress += SinEspacios;
 
-            // ------------------- Poblamos combo de roles -------------------
+            // Poblamos combo de roles 
             cbTipoUsuario.Items.Clear();
             cbTipoUsuario.Items.AddRange(RolesValidos);
 
-            // ------------------- Aseguramos que los botones tengan sus handlers -------------------
-            // (esto enlaza los botones en runtime en caso de que no estén enlazados desde el diseñador)
-            bAgregar.Click -= btnAgregar_Click; // quitar por seguridad antes de agregar
+            
+            // enlaza los botonescon las funciones
+            bAgregar.Click -= btnAgregar_Click; 
             bAgregar.Click += btnAgregar_Click;
             bModificar.Click -= btnModificar_Click;
             bModificar.Click += btnModificar_Click;
@@ -60,18 +59,11 @@ namespace gerente
             bBuscar.Click -= bBuscar_Click; bBuscar.Click += bBuscar_Click;
             bCancelar.Click -= bCancelar_Click; bCancelar.Click += bCancelar_Click;
 
-            // ------------------- Cargar datos -------------------
+            
             CargarUsuarios();
         }
 
-        #region DataGridView Columnas (creación programática)
-
-        /// <summary>
-        /// Crea las columnas del DataGridView con DataPropertyName que coincida
-        /// con el resultado del SELECT (ver CargarUsuarios).
-        /// NOTA: en la consulta SELECT aliasamos la columna 'contraseña' como 'contrasena'
-        /// para evitar problemas con caracteres especiales en los nombres.
-        /// </summary>
+        
         private void CrearColumnasDgv()
         {
             var cId = new DataGridViewTextBoxColumn { Name = "id_usuario", DataPropertyName = "id_usuario", HeaderText = "ID", ReadOnly = true };
@@ -89,7 +81,7 @@ namespace gerente
             dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { cId, cNombre, cApellido, cDni, cTelefono, cGmail, cRol, cFecha, cDomicilio, cContra });
         }
 
-        #endregion
+        
 
         #region Conexión
 
@@ -104,13 +96,13 @@ namespace gerente
 
         private void SoloLetras(object sender, KeyPressEventArgs e)
         {
-            // Permite letras, espacio y teclas de control
+            
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
             }
 
-            // Bloquea vocales acentuadas y otros caracteres especiales
+            
             string noPermitidos = "@?¿'%&/()·!¡-_.:,;";
             if (noPermitidos.Contains(e.KeyChar))
             {
@@ -121,21 +113,21 @@ namespace gerente
 
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
-            // Permite números y teclas de control
+            
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 e.Handled = true;
         }
 
         private void SinEspacios(object sender, KeyPressEventArgs e)
         {
-            // Evita espacios en campos como gmail/contraseña
+            // Evita espacios en campos como correo/contraseña
             if (char.IsWhiteSpace(e.KeyChar))
                 e.Handled = true;
         }
 
         private bool ValidarCorreo(string correo)
         {
-            // Validación simple que exige dominio gmail.com (según tu requerimiento)
+            
             string patron = @"^[a-zA-Z0-9._%+-]+@";
             return Regex.IsMatch(correo, patron);
         }
@@ -219,7 +211,7 @@ namespace gerente
                 {
                     con.Open();
 
-                    // Evitar duplicados por DNI o Gmail
+                    // Evitar duplicados por DNI o correo
                     string check = "SELECT COUNT(*) FROM Usuario WHERE dni = @dni OR Gmail = @gmail";
                     using (SqlCommand checkCmd = new SqlCommand(check, con))
                     {
@@ -281,10 +273,10 @@ namespace gerente
 
                 if (!ValidarCorreo(textGmail.Text))
                 {
-                    MessageBox.Show("El correo debe ser válido y terminar en @gmail.com.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El correo debe ser válido y tener @.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                
                 if (!ValidarContraseñasIguales())
                 {
                     MessageBox.Show("Las contraseñas no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -565,6 +557,11 @@ namespace gerente
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
