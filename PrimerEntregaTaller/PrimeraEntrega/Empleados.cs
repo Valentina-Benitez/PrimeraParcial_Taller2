@@ -102,8 +102,13 @@ namespace gerente
                 e.Handled = true;
             }
 
+<<<<<<< HEAD
             
             string noPermitidos = "@?¿'%&/()·!¡-_.:,;";
+=======
+            // Bloquea vocales acentuadas y otros caracteres especiales
+            string noPermitidos = "áéíóúÁÉÍÓÚüÜ";
+>>>>>>> 6854fbce0faf6a431793c585b0bd221004c00ce4
             if (noPermitidos.Contains(e.KeyChar))
             {
                 e.Handled = true;
