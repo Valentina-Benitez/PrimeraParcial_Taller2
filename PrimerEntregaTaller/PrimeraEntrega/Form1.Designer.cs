@@ -52,7 +52,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 488);
+            this.panel1.Size = new System.Drawing.Size(886, 488);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -64,10 +64,10 @@
             this.panel2.Controls.Add(this.bInicio);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(297, 48);
+            this.panel2.Location = new System.Drawing.Point(223, 46);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.panel2.Size = new System.Drawing.Size(347, 400);
+            this.panel2.Size = new System.Drawing.Size(419, 400);
             this.panel2.TabIndex = 6;
             // 
             // label1
@@ -75,7 +75,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(62, 125);
+            this.label1.Location = new System.Drawing.Point(91, 125);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(234, 41);
             this.label1.TabIndex = 4;
@@ -88,7 +88,7 @@
             this.bInicio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bInicio.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bInicio.ForeColor = System.Drawing.Color.White;
-            this.bInicio.Location = new System.Drawing.Point(113, 338);
+            this.bInicio.Location = new System.Drawing.Point(149, 338);
             this.bInicio.Name = "bInicio";
             this.bInicio.Size = new System.Drawing.Size(112, 44);
             this.bInicio.TabIndex = 2;
@@ -100,7 +100,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(113, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(149, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -115,10 +115,11 @@
             this.panel3.Controls.Add(this.textDni);
             this.panel3.Controls.Add(this.lContraseñaInicio);
             this.panel3.Controls.Add(this.lDniInicio);
-            this.panel3.Location = new System.Drawing.Point(21, 204);
+            this.panel3.Location = new System.Drawing.Point(37, 204);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(304, 128);
+            this.panel3.Size = new System.Drawing.Size(348, 128);
             this.panel3.TabIndex = 0;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // textBox4
             // 
@@ -127,6 +128,7 @@
             this.textBox4.PasswordChar = '*';
             this.textBox4.Size = new System.Drawing.Size(164, 22);
             this.textBox4.TabIndex = 3;
+            this.textBox4.UseSystemPasswordChar = true;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textDni
@@ -161,7 +163,7 @@
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(942, 488);
+            this.ClientSize = new System.Drawing.Size(886, 488);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
