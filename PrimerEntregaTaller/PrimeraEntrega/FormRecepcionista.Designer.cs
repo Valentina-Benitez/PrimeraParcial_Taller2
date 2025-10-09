@@ -58,6 +58,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboEstad = new System.Windows.Forms.ComboBox();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
@@ -77,13 +78,12 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dvgReserva = new System.Windows.Forms.DataGridView();
-            this.Nombre4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Personas5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mesa3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -336,6 +336,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.comboEstad);
             this.panel1.Controls.Add(this.txtBusqueda);
@@ -361,6 +362,17 @@
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button3.Location = new System.Drawing.Point(173, 224);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(119, 38);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "Modificar";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Azure;
@@ -376,7 +388,7 @@
             // 
             this.comboEstad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEstad.FormattingEnabled = true;
-            this.comboEstad.Location = new System.Drawing.Point(199, 154);
+            this.comboEstad.Location = new System.Drawing.Point(233, 154);
             this.comboEstad.Name = "comboEstad";
             this.comboEstad.Size = new System.Drawing.Size(186, 24);
             this.comboEstad.TabIndex = 28;
@@ -451,22 +463,24 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.IndianRed;
-            this.button1.Location = new System.Drawing.Point(334, 224);
+            this.button1.Location = new System.Drawing.Point(405, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 38);
             this.button1.TabIndex = 24;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.button2.Location = new System.Drawing.Point(555, 224);
+            this.button2.Location = new System.Drawing.Point(653, 223);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 38);
             this.button2.TabIndex = 23;
             this.button2.Text = "Guardar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label13
             // 
@@ -494,9 +508,9 @@
             this.label15.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(96, 59);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(82, 24);
+            this.label15.Size = new System.Drawing.Size(116, 24);
             this.label15.TabIndex = 18;
-            this.label15.Text = "Nombre";
+            this.label15.Text = "DNI Cliente";
             // 
             // numericUpDown4
             // 
@@ -507,7 +521,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(199, 62);
+            this.textBox4.Location = new System.Drawing.Point(233, 62);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(186, 22);
             this.textBox4.TabIndex = 14;
@@ -539,13 +553,12 @@
             this.dvgReserva.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dvgReserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgReserva.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre4,
+            this.dni,
             this.Personas5,
             this.Mesa3,
             this.Fecha1,
             this.Hora2,
-            this.Estado6,
-            this.Modificar});
+            this.Estado6});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Sans Serif Collection", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -563,51 +576,50 @@
             this.dvgReserva.RowTemplate.Height = 24;
             this.dvgReserva.Size = new System.Drawing.Size(1099, 152);
             this.dvgReserva.TabIndex = 0;
+            this.dvgReserva.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellClick);
             this.dvgReserva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellContentClick);
             // 
-            // Nombre4
+            // dni
             // 
-            this.Nombre4.HeaderText = "Nombre";
-            this.Nombre4.MinimumWidth = 6;
-            this.Nombre4.Name = "Nombre4";
+            this.dni.DataPropertyName = "dni";
+            this.dni.HeaderText = "DNI Cliente";
+            this.dni.MinimumWidth = 6;
+            this.dni.Name = "dni";
             // 
             // Personas5
             // 
+            this.Personas5.DataPropertyName = "personas";
             this.Personas5.HeaderText = "Personas";
             this.Personas5.MinimumWidth = 6;
             this.Personas5.Name = "Personas5";
             // 
             // Mesa3
             // 
+            this.Mesa3.DataPropertyName = "mesa";
             this.Mesa3.HeaderText = "Mesa";
             this.Mesa3.MinimumWidth = 6;
             this.Mesa3.Name = "Mesa3";
             // 
             // Fecha1
             // 
+            this.Fecha1.DataPropertyName = "fecha_reserva";
             this.Fecha1.HeaderText = "Fecha";
             this.Fecha1.MinimumWidth = 6;
             this.Fecha1.Name = "Fecha1";
             // 
             // Hora2
             // 
+            this.Hora2.DataPropertyName = "hora";
             this.Hora2.HeaderText = "Hora";
             this.Hora2.MinimumWidth = 6;
             this.Hora2.Name = "Hora2";
             // 
             // Estado6
             // 
+            this.Estado6.DataPropertyName = "estado";
             this.Estado6.HeaderText = "Estado";
             this.Estado6.MinimumWidth = 6;
             this.Estado6.Name = "Estado6";
-            // 
-            // Modificar
-            // 
-            this.Modificar.HeaderText = "Modificar";
-            this.Modificar.MinimumWidth = 6;
-            this.Modificar.Name = "Modificar";
-            this.Modificar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Modificar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FormRecepcionista
             // 
@@ -677,16 +689,16 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dvgReserva;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.ComboBox comboEstad;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Personas5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mesa3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado6;
-        private System.Windows.Forms.DataGridViewButtonColumn Modificar;
     }
 }
