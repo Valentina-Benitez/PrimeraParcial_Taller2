@@ -114,8 +114,28 @@ namespace PrimeraEntrega
         private void BtnProducto_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            
+            if (btn != null)
+            {
+                int idProducto = (int)btn.Tag;
+
+                // Buscar los datos del producto en el panel
+                TableLayoutPanel fila = btn.Parent as TableLayoutPanel;
+                string nombre = (fila.Controls[0] as Label).Text;
+                string precioTexto = (fila.Controls[1] as Label).Text.Replace("$", "").Trim();
+                decimal precio = decimal.Parse(precioTexto);
+
+                // Agregar a la lista seleccionada
+                ProductosSeleccionados.Add(new ProductoSeleccionado
+                {
+                    IdProducto = idProducto,
+                    Nombre = nombre,
+                    Precio = precio
+                });
+
+                MessageBox.Show($"Producto agregado: {nombre}");
+            }
         }
+
 
         // Aquí van los manejadores de eventos existentes para los controles
         private void txtBuscaP_TextChanged(object sender, EventArgs e)
@@ -125,8 +145,10 @@ namespace PrimeraEntrega
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -147,5 +169,8 @@ namespace PrimeraEntrega
         {
 
         }
+        
+        public List<ProductoSeleccionado> ProductosSeleccionados { get; private set; } = new List<ProductoSeleccionado>();
+
     }
 }

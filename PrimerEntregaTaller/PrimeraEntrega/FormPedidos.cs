@@ -1,7 +1,9 @@
 ﻿using PrimeraEntrega;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Taller_AppRestaurante
@@ -57,13 +59,23 @@ namespace Taller_AppRestaurante
             }
         }
 
-        
+
+
+        private List<ProductoSeleccionado> productosEnPedido = new List<ProductoSeleccionado>();
 
         private void bPedido_Click(object sender, EventArgs e)
         {
-            FormAgregarProductos formAgregarProductos = new FormAgregarProductos();
-            formAgregarProductos.ShowDialog();
+            using (FormAgregarProductos formAgregarProductos = new FormAgregarProductos())
+            {
+                if (formAgregarProductos.ShowDialog() == DialogResult.OK)
+                {
+                    // Recuperar los productos seleccionados
+                    productosEnPedido.AddRange(formAgregarProductos.ProductosSeleccionados);
+                    MostrarProductosEnPedido();
+                }
+            }
         }
+
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
@@ -152,5 +164,19 @@ namespace Taller_AppRestaurante
                 e.Handled = true; // cancela la tecla
             }
         }
+
+        private void MostrarProductosEnPedido()
+        {
+            dataGridView1.Rows.Clear();
+
+            foreach (var p in productosEnPedido)
+            {
+                dataGridView1.Rows.Add(p.IdProducto, p.Nombre, p.Precio);
+            }
+
+            decimal total = productosEnPedido.Sum(x => x.Precio);
+            txtTotal.Text = total.ToString("C");
+        }
+
     }
 }

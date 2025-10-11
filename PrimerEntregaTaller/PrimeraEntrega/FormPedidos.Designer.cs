@@ -475,9 +475,9 @@
             this.label11.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(97, 60);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 24);
+            this.label11.Size = new System.Drawing.Size(116, 24);
             this.label11.TabIndex = 7;
-            this.label11.Text = "Cliente";
+            this.label11.Text = "DNI Cliente";
             // 
             // label12
             // 
