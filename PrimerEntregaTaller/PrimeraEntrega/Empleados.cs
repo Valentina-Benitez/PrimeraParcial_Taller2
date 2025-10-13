@@ -5,10 +5,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace gerente
@@ -16,7 +19,6 @@ namespace gerente
     public partial class Empleados : Form
     {
         private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
-
         // Roles válidos
         private readonly string[] RolesValidos = new[] { "Empleado", "Gerente", "Administrador" };
 
@@ -39,16 +41,14 @@ namespace gerente
             textDni.KeyPress += SoloNumeros;
             textTelefono.KeyPress += SoloNumeros;
             textGmail.KeyPress += SinEspacios;
-            textContraseña.KeyPress += SinEspacios;
-            textReContraseña.KeyPress += SinEspacios;
+            // Nota: textContraseña y textReContraseña fueron eliminados (ahora la contraseña se genera automáticamente)
 
             // Poblamos combo de roles 
             cbTipoUsuario.Items.Clear();
             cbTipoUsuario.Items.AddRange(RolesValidos);
 
-            
-            // enlaza los botonescon las funciones
-            bAgregar.Click -= btnAgregar_Click; 
+            // enlaza los botones con las funciones (asegurate que los nombres de botones coincidan con tu diseñador)
+            bAgregar.Click -= btnAgregar_Click;
             bAgregar.Click += btnAgregar_Click;
             bModificar.Click -= btnModificar_Click;
             bModificar.Click += btnModificar_Click;
@@ -59,11 +59,9 @@ namespace gerente
             bBuscar.Click -= bBuscar_Click; bBuscar.Click += bBuscar_Click;
             bCancelar.Click -= bCancelar_Click; bCancelar.Click += bCancelar_Click;
 
-            
             CargarUsuarios();
         }
 
-        
         private void CrearColumnasDgv()
         {
             var cId = new DataGridViewTextBoxColumn { Name = "id_usuario", DataPropertyName = "id_usuario", HeaderText = "ID", ReadOnly = true };
@@ -75,13 +73,11 @@ namespace gerente
             var cRol = new DataGridViewTextBoxColumn { Name = "rol", DataPropertyName = "rol", HeaderText = "Rol" };
             var cFecha = new DataGridViewTextBoxColumn { Name = "fecha_nacimiento", DataPropertyName = "fecha_nacimiento", HeaderText = "Fecha Nac." };
             var cDomicilio = new DataGridViewTextBoxColumn { Name = "domicilio", DataPropertyName = "domicilio", HeaderText = "Domicilio" };
-            // contraseña la traemos con alias "contrasena" (sin ñ) para evitar problemas con nombres
-            var cContra = new DataGridViewTextBoxColumn { Name = "contrasena", DataPropertyName = "contrasena", HeaderText = "Contraseña", Visible = false }; // ocultamos la contraseña en la grilla
+            // contraseña la traemos con alias "contraseña" (sin ñ) para evitar problemas con nombres
+            var cContra = new DataGridViewTextBoxColumn { Name = "contraseña", DataPropertyName = "contraseña", HeaderText = "Contraseña", Visible = false }; // ocultamos la contraseña en la grilla
 
             dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { cId, cNombre, cApellido, cDni, cTelefono, cGmail, cRol, cFecha, cDomicilio, cContra });
         }
-
-        
 
         #region Conexión
 
@@ -92,54 +88,96 @@ namespace gerente
 
         #endregion
 
+        // ============================
+        // MÉTODO PARA GENERAR CONTRASEÑA ALEATORIA
+        // ============================
+        private string GenerarContraseña(int longitud = 10)
+        {
+            const string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
+            var sb = new StringBuilder();
+            // usar RNGCryptoServiceProvider sería más seguro, pero Random es suficiente para propósito interno
+            var rnd = new Random();
+            for (int i = 0; i < longitud; i++)
+            {
+                sb.Append(caracteres[rnd.Next(caracteres.Length)]);
+            }
+            return sb.ToString();
+        }
+
+        // ============================
+        // MÉTODO PARA ENVIAR EL CORREO
+        // ============================
+        private void EnviarCorreoContraseña(string destinatario, string nombreEmpleado, string contraseñaGenerada)
+        {
+            try
+            {
+                // 🔹 Datos del remitente (CAMBIA ESTOS DATOS por tu cuenta y clave de aplicación)
+                string remitente = "tucorreo@gmail.com";   // tu correo Gmail
+                string claveApp = "tu_clave_de_aplicacion"; // contraseña de aplicación generada en Google
+
+                // 🔹 Configurar mensaje
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(remitente, "Restaurante Taller");
+                mail.To.Add(destinatario);
+                mail.Subject = "Credenciales de acceso - Restaurante Taller";
+                mail.Body =
+                    $"Hola {nombreEmpleado},\r\n\r\n" +
+                    $"Se ha creado tu cuenta en el sistema del Restaurante.\r\n\r\n" +
+                    $"Tu contraseña generada automáticamente es: {contraseñaGenerada}\r\n\r\n" +
+                    $"Por favor, cámbiala luego de iniciar sesión.\r\n\r\n" +
+                    $"Saludos,\r\nEquipo de Administración.";
+                mail.IsBodyHtml = false;
+
+                // 🔹 Configurar el cliente SMTP
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential(remitente, claveApp);
+                smtp.EnableSsl = true;
+
+                // 🔹 Enviar el correo
+                smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                // Si falla el envío, mostramos la contraseña en pantalla
+                MessageBox.Show($"El correo no pudo enviarse.\nError: {ex.Message}\n\n" +
+                                $"👉 La contraseña generada para el empleado es:\n{contraseñaGenerada}",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         #region Validaciones de entrada
 
         private void SoloLetras(object sender, KeyPressEventArgs e)
         {
-            
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
             }
 
-
-            
             string noPermitidos = "@?¿'%&/()·!¡-_.:,;";
-
-            // Bloquea vocales acentuadas y otros caracteres especiales
-            //string noPermitidos = "áéíóúÁÉÍÓÚüÜ";
-
             if (noPermitidos.Contains(e.KeyChar))
             {
                 e.Handled = true;
             }
         }
 
-
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
-            
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 e.Handled = true;
         }
 
         private void SinEspacios(object sender, KeyPressEventArgs e)
         {
-            // Evita espacios en campos como correo/contraseña
+            // Evita espacios en campos como correo
             if (char.IsWhiteSpace(e.KeyChar))
                 e.Handled = true;
         }
 
         private bool ValidarCorreo(string correo)
         {
-            
             string patron = @"^[a-zA-Z0-9._%+-]+@";
             return Regex.IsMatch(correo, patron);
-        }
-
-        private bool ValidarContraseñasIguales()
-        {
-            return textContraseña.Text == textReContraseña.Text;
         }
 
         private bool ValidarRolSeleccionado()
@@ -155,7 +193,7 @@ namespace gerente
 
         /// <summary>
         /// Carga todos los usuarios desde la tabla Usuario.
-        /// NOTA: aliasamos [contraseña] AS contrasena para evitar caracteres especiales.
+        /// NOTA: aliasamos [contraseña] AS contraseña para evitar caracteres especiales.
         /// </summary>
         private void CargarUsuarios()
         {
@@ -166,14 +204,13 @@ namespace gerente
                     conn.Open();
 
                     string query =
-                        "SELECT id_usuario, nombre, apellido, dni, telefono, Gmail, rol, fecha_nacimiento, domicilio, [contraseña] AS contrasena " +
+                        "SELECT id_usuario, nombre, apellido, dni, telefono, Gmail, rol, fecha_nacimiento, domicilio, [contraseña] AS contraseña " +
                         "FROM Usuario";
 
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
-                    // Asignamos la fuente (liberamos primero para evitar referencias antiguas)
                     dgvEmpleados.DataSource = null;
                     dgvEmpleados.DataSource = dt;
                 }
@@ -196,13 +233,7 @@ namespace gerente
 
                 if (!ValidarCorreo(textGmail.Text))
                 {
-                    MessageBox.Show("El correo debe ser válido y terminar en @gmail.com.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!ValidarContraseñasIguales())
-                {
-                    MessageBox.Show("Las contraseñas no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El correo debe ser válido y terminar en @.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -211,6 +242,8 @@ namespace gerente
                     MessageBox.Show("Seleccione un rol válido (Empleado, Gerente, Administrador).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                string contraseñaGenerada = GenerarContraseña();
 
                 using (SqlConnection con = ObtenerConexion())
                 {
@@ -233,7 +266,7 @@ namespace gerente
                     // Insert (usamos [contraseña] entre corchetes porque tiene ñ)
                     string insert =
                         "INSERT INTO Usuario (nombre, apellido, dni, telefono, Gmail, rol, fecha_nacimiento, domicilio, [contraseña]) " +
-                        "VALUES (@nombre, @apellido, @dni, @telefono, @gmail, @rol, @fecha_nacimiento, @domicilio, @contrasena)";
+                        "VALUES (@nombre, @apellido, @dni, @telefono, @gmail, @rol, @fecha_nacimiento, @domicilio, @contraseña)";
 
                     using (SqlCommand cmd = new SqlCommand(insert, con))
                     {
@@ -245,12 +278,16 @@ namespace gerente
                         cmd.Parameters.AddWithValue("@rol", cbTipoUsuario.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@fecha_nacimiento", dtpFechaNac.Value.Date);
                         cmd.Parameters.AddWithValue("@domicilio", textDomicilio.Text.Trim());
-                        cmd.Parameters.AddWithValue("@contrasena", textContraseña.Text); // en produccion, guardar hash en lugar de texto
+                        cmd.Parameters.AddWithValue("@contraseña", contraseñaGenerada); // en produccion, guardar hash en lugar de texto
                         cmd.ExecuteNonQuery();
                     }
                 }
 
-                MessageBox.Show("Usuario agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Enviar contraseña al correo (si falla, el método mostrará la contraseña)
+                EnviarCorreoContraseña(textGmail.Text.Trim(), textNombre.Text.Trim(), contraseñaGenerada);
+
+                MessageBox.Show($"Usuario agregado correctamente.\nSe envió la contraseña al correo {textGmail.Text}.",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
                 CargarUsuarios();
             }
@@ -281,12 +318,6 @@ namespace gerente
                     MessageBox.Show("El correo debe ser válido y tener @.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
-                if (!ValidarContraseñasIguales())
-                {
-                    MessageBox.Show("Las contraseñas no coinciden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
                 if (!ValidarRolSeleccionado())
                 {
@@ -300,8 +331,9 @@ namespace gerente
                 {
                     con.Open();
 
+                    // Nota: no modificamos la contraseña aquí. Para cambiarla, usar ResetearContraseñaSeleccionada()
                     string update =
-                        "UPDATE Usuario SET nombre=@nombre, apellido=@apellido, dni=@dni, telefono=@telefono, Gmail=@gmail, rol=@rol, fecha_nacimiento=@fecha_nacimiento, domicilio=@domicilio, [contraseña]=@contrasena " +
+                        "UPDATE Usuario SET nombre=@nombre, apellido=@apellido, dni=@dni, telefono=@telefono, Gmail=@gmail, rol=@rol, fecha_nacimiento=@fecha_nacimiento, domicilio=@domicilio " +
                         "WHERE id_usuario=@id";
 
                     using (SqlCommand cmd = new SqlCommand(update, con))
@@ -314,7 +346,6 @@ namespace gerente
                         cmd.Parameters.AddWithValue("@rol", cbTipoUsuario.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@fecha_nacimiento", dtpFechaNac.Value.Date);
                         cmd.Parameters.AddWithValue("@domicilio", textDomicilio.Text.Trim());
-                        cmd.Parameters.AddWithValue("@contrasena", textContraseña.Text);
                         cmd.Parameters.AddWithValue("@id", id);
 
                         int filas = cmd.ExecuteNonQuery();
@@ -333,6 +364,52 @@ namespace gerente
                 MessageBox.Show("Error al modificar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // Método público para resetear la contraseña de la fila seleccionada (puede enlazarse a un botón aparte)
+        public void ResetearContraseñaSeleccionada()
+        {
+            if (dgvEmpleados.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un usuario para resetear la contraseña.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
+            string nombre = GetCellString(dgvEmpleados.CurrentRow, "nombre");
+            string mail = GetCellString(dgvEmpleados.CurrentRow, "Gmail");
+
+            string nuevaContra = GenerarContraseña();
+
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+                    string update = "UPDATE Usuario SET [contraseña]=@contraseña WHERE id_usuario=@id";
+                    using (SqlCommand cmd = new SqlCommand(update, con))
+                    {
+                        cmd.Parameters.AddWithValue("@contraseña", nuevaContra);
+                        cmd.Parameters.AddWithValue("@id", id);
+                        int filas = cmd.ExecuteNonQuery();
+                        if (filas > 0)
+                        {
+                            EnviarCorreoContraseña(mail, nombre, nuevaContra);
+                            MessageBox.Show("Contraseña reseteada y enviada al correo del usuario.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarUsuarios();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el usuario para resetear la contraseña.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al resetear la contraseña: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         // ---------------------- BOTÓN BUSCAR ----------------------
         private void bBuscar_Click(object sender, EventArgs e)
         {
@@ -356,7 +433,7 @@ namespace gerente
                     con.Open();
 
                     // Construimos la consulta dinámicamente
-                    string query = "SELECT id_usuario, nombre, apellido, dni, telefono, Gmail, rol, fecha_nacimiento, domicilio, [contraseña] AS contrasena FROM Usuario WHERE 1=1";
+                    string query = "SELECT id_usuario, nombre, apellido, dni, telefono, Gmail, rol, fecha_nacimiento, domicilio, [contraseña] AS contraseña FROM Usuario WHERE 1=1";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -406,12 +483,10 @@ namespace gerente
                     if (dt.Rows.Count == 0)
                     {
                         MessageBox.Show("No hay ningún empleado que tenga esos datos en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
                     }
                     else
                     {
                         dgvEmpleados.DataSource = dt;
-                        
                     }
                 }
             }
@@ -432,8 +507,6 @@ namespace gerente
                 string.IsNullOrWhiteSpace(textTelefono.Text) &&
                 string.IsNullOrWhiteSpace(textGmail.Text) &&
                 cbTipoUsuario.SelectedIndex == -1 &&
-                string.IsNullOrWhiteSpace(textContraseña.Text) &&
-                string.IsNullOrWhiteSpace(textReContraseña.Text) &&
                 string.IsNullOrWhiteSpace(textDomicilio.Text))
             {
                 MessageBox.Show("El formulario ya está limpio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -495,8 +568,6 @@ namespace gerente
                    !string.IsNullOrWhiteSpace(textTelefono.Text) &&
                    !string.IsNullOrWhiteSpace(textGmail.Text) &&
                    cbTipoUsuario.SelectedIndex != -1 &&
-                   !string.IsNullOrWhiteSpace(textContraseña.Text) &&
-                   !string.IsNullOrWhiteSpace(textReContraseña.Text) &&
                    !string.IsNullOrWhiteSpace(textDomicilio.Text);
         }
 
@@ -521,10 +592,7 @@ namespace gerente
 
             textDomicilio.Text = GetCellString(fila, "domicilio");
 
-            // contraseña viene del alias 'contrasena'
-            string contra = GetCellString(fila, "contrasena");
-            textContraseña.Text = contra;
-            textReContraseña.Text = contra;
+            // No cargamos la contraseña en campos (la mantenemos oculta en la grilla)
         }
 
         /// <summary>
@@ -546,8 +614,6 @@ namespace gerente
             textDni.Clear();
             textTelefono.Clear();
             textGmail.Clear();
-            textContraseña.Clear();
-            textReContraseña.Clear();
             textDomicilio.Clear();
             cbTipoUsuario.SelectedIndex = -1;
             dtpFechaNac.Value = DateTime.Today;
@@ -572,4 +638,3 @@ namespace gerente
         }
     }
 }
-
