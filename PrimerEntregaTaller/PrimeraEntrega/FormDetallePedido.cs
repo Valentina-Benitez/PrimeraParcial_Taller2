@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace PrimeraEntrega
 {
@@ -19,21 +17,107 @@ namespace PrimeraEntrega
 
         public int PedidoId { get; set; }
 
+        public class ProductoDetalle
+        {
+            // Propiedades que se usarán como DataPropertyName
+            public string Nombre { get; set; } 
+            public int Cantidad { get; set; } 
+            public decimal Precio { get; set; }  // Precio Unitario (Calculado)
+            public decimal Total { get; set; }   // Total/Subtotal de la línea
+        }
+
         private void FormDetallePedido_Load(object sender, EventArgs e)
         {
-            // Aquí debes agregar el código para cargar los datos en el DataGridView del formulario de detalle.
-            // Ejemplo de pseudo-código:
-            // var listaDeProductos = ObtenerProductosDelPedido(PedidoId);
-            // dataGridView1.DataSource = listaDeProductos;
+            // Diagnóstico 1: Confirmación de ID
+            // MessageBox.Show("PedidoId recibido: " + PedidoId); 
+
+            if (PedidoId <= 0)
+            {
+                MessageBox.Show("Error: El ID del pedido no es válido.");
+                this.Close();
+                return;
+            }
+
+            var listaDeProductos = ObtenerProductosDelPedido(PedidoId);
+
+            // Diagnóstico 2: Confirmación de datos obtenidos de la DB
+            MessageBox.Show($"Se encontraron {listaDeProductos.Count} productos. Intentando mapear..."); 
+
+            if (listaDeProductos.Count == 0)
+            {
+                MessageBox.Show("Este pedido no tiene detalles cargados.");
+            }
+
+            // Desactivar Autogenerar columnas 
+            dataGridView1.AutoGenerateColumns = false;
+
+            try
+            {
+                // 🛑 CORRECCIÓN CLAVE: Mapeamos los nombres de columna del DGV (los que ves en el diseñador) 
+                // a las propiedades de la clase ProductoDetalle.
+                // ASUMO que los NOMBRES (propiedad 'Name') de tus 4 columnas son: Nombre, Cantidad, Precio y Total.
+                dataGridView1.Columns["Nombre"].DataPropertyName = "Nombre";
+                dataGridView1.Columns["Cantidad"].DataPropertyName = "Cantidad";
+                dataGridView1.Columns["PrecioUnitario"].DataPropertyName = "Precio";
+                dataGridView1.Columns["TotalLinea"].DataPropertyName = "Total";
+            }
+            catch (Exception ex)
+            {
+                // Este mensaje aparecerá SI NO ENCUENTRA las columnas por nombre (ej: no existe la columna llamada "Precio")
+                MessageBox.Show("ERROR DE MAPEO DE COLUMNAS. Verifique el nombre (Propiedad 'Name') de las columnas en el diseñador: " + ex.Message);
+                return;
+            }
+
+            // Asignar la lista al DataGridView
+            dataGridView1.DataSource = listaDeProductos;
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        public List<ProductoDetalle> ObtenerProductosDelPedido(int pedidoId)
         {
+            var lista = new List<ProductoDetalle>();
 
-        }
+            // Usamos la cadena de conexión
+            using (SqlConnection con = new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
+            {
+                try
+                {
+                    con.Open();
+                    string query = @"
+                        SELECT 
+                            p.nombre, 
+                            dp.cantidad, 
+                            (dp.subtotal / NULLIF(dp.cantidad, 0)) AS PrecioUnitario, 
+                            dp.subtotal AS TotalLinea
+                        FROM Detalle_Pedido dp
+                        INNER JOIN Producto p ON dp.id_producto = p.id_producto
+                        WHERE dp.id_pedido = @pedidoId";
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@pedidoId", pedidoId);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            lista.Add(new ProductoDetalle
+                            {
+                                Nombre = reader["nombre"].ToString(),
+                                Cantidad = Convert.ToInt32(reader["cantidad"]),
 
+                                // 🛑 CAMBIO CLAVE: Usar InvariantCulture para forzar la conversión
+                                Precio = Convert.ToDecimal(reader["PrecioUnitario"], CultureInfo.InvariantCulture),
+                                Total = Convert.ToDecimal(reader["TotalLinea"], CultureInfo.InvariantCulture)
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Esto capturaría errores de DB o errores de conversión (ej: si precio unitario es NULL)
+                    MessageBox.Show("Error de Base de Datos/Conversión: " + ex.Message);
+                }
+            }
+
+            return lista;
         }
     }
 }

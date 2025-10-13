@@ -111,30 +111,25 @@ namespace PrimeraEntrega
             }
         }
 
+        public List<ProductoSeleccionado> ProductosSeleccionados { get; private set; } = new List<ProductoSeleccionado>();
+
         private void BtnProducto_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if (btn != null)
+            int idProducto = (int)btn.Tag;
+            string nombre = ((Label)((TableLayoutPanel)btn.Parent).Controls[0]).Text;
+            decimal precio = decimal.Parse(((Label)((TableLayoutPanel)btn.Parent).Controls[1]).Text.Replace("$", ""));
+
+            ProductosSeleccionados.Add(new ProductoSeleccionado
             {
-                int idProducto = (int)btn.Tag;
+                IdProducto = idProducto,
+                Nombre = nombre,
+                Precio = precio
+            });
+            MessageBox.Show($"Producto agregado: {nombre}");
 
-                // Buscar los datos del producto en el panel
-                TableLayoutPanel fila = btn.Parent as TableLayoutPanel;
-                string nombre = (fila.Controls[0] as Label).Text;
-                string precioTexto = (fila.Controls[1] as Label).Text.Replace("$", "").Trim();
-                decimal precio = decimal.Parse(precioTexto);
-
-                // Agregar a la lista seleccionada
-                ProductosSeleccionados.Add(new ProductoSeleccionado
-                {
-                    IdProducto = idProducto,
-                    Nombre = nombre,
-                    Precio = precio
-                });
-
-                MessageBox.Show($"Producto agregado: {nombre}");
-            }
         }
+
 
 
         // Aquí van los manejadores de eventos existentes para los controles
@@ -145,7 +140,6 @@ namespace PrimeraEntrega
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -153,11 +147,6 @@ namespace PrimeraEntrega
         private void label1_Click(object sender, EventArgs e)
         {
             // Puedes dejarlo vacío o borrarlo si no hace nada
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void txtBuscaP_TextChanged_1(object sender, EventArgs e)
@@ -170,7 +159,7 @@ namespace PrimeraEntrega
 
         }
         
-        public List<ProductoSeleccionado> ProductosSeleccionados { get; private set; } = new List<ProductoSeleccionado>();
+       // public List<ProductoSeleccionado> ProductosSeleccionados { get; private set; } = new List<ProductoSeleccionado>();
 
     }
 }
