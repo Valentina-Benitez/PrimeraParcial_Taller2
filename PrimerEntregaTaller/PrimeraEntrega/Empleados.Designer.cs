@@ -40,14 +40,14 @@
             this.bAgregar = new System.Windows.Forms.Button();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
-            this.textGmail = new System.Windows.Forms.TextBox();
+            this.textCorreo = new System.Windows.Forms.TextBox();
             this.textTelefono = new System.Windows.Forms.TextBox();
             this.textDomicilio = new System.Windows.Forms.TextBox();
             this.textDni = new System.Windows.Forms.TextBox();
             this.textApellido = new System.Windows.Forms.TextBox();
             this.textNombre = new System.Windows.Forms.TextBox();
             this.lTipoUsuario = new System.Windows.Forms.Label();
-            this.lGmail = new System.Windows.Forms.Label();
+            this.lCorreo = new System.Windows.Forms.Label();
             this.lTelefono = new System.Windows.Forms.Label();
             this.lDomicilio = new System.Windows.Forms.Label();
             this.lFechaNacimiento = new System.Windows.Forms.Label();
@@ -89,14 +89,14 @@
             this.panel1.Controls.Add(this.bAgregar);
             this.panel1.Controls.Add(this.dtpFechaNac);
             this.panel1.Controls.Add(this.cbTipoUsuario);
-            this.panel1.Controls.Add(this.textGmail);
+            this.panel1.Controls.Add(this.textCorreo);
             this.panel1.Controls.Add(this.textTelefono);
             this.panel1.Controls.Add(this.textDomicilio);
             this.panel1.Controls.Add(this.textDni);
             this.panel1.Controls.Add(this.textApellido);
             this.panel1.Controls.Add(this.textNombre);
             this.panel1.Controls.Add(this.lTipoUsuario);
-            this.panel1.Controls.Add(this.lGmail);
+            this.panel1.Controls.Add(this.lCorreo);
             this.panel1.Controls.Add(this.lTelefono);
             this.panel1.Controls.Add(this.lDomicilio);
             this.panel1.Controls.Add(this.lFechaNacimiento);
@@ -206,12 +206,12 @@
             this.cbTipoUsuario.TabIndex = 18;
             this.cbTipoUsuario.SelectedIndexChanged += new System.EventHandler(this.cbTipoUsuario_SelectedIndexChanged);
             // 
-            // textGmail
+            // textCorreo
             // 
-            this.textGmail.Location = new System.Drawing.Point(453, 61);
-            this.textGmail.Name = "textGmail";
-            this.textGmail.Size = new System.Drawing.Size(151, 20);
-            this.textGmail.TabIndex = 15;
+            this.textCorreo.Location = new System.Drawing.Point(453, 61);
+            this.textCorreo.Name = "textCorreo";
+            this.textCorreo.Size = new System.Drawing.Size(151, 20);
+            this.textCorreo.TabIndex = 15;
             // 
             // textTelefono
             // 
@@ -257,14 +257,14 @@
             this.lTipoUsuario.TabIndex = 7;
             this.lTipoUsuario.Text = "Tipo de Usuario";
             // 
-            // lGmail
+            // lCorreo
             // 
-            this.lGmail.AutoSize = true;
-            this.lGmail.Location = new System.Drawing.Point(343, 68);
-            this.lGmail.Name = "lGmail";
-            this.lGmail.Size = new System.Drawing.Size(33, 13);
-            this.lGmail.TabIndex = 6;
-            this.lGmail.Text = "Gmail";
+            this.lCorreo.AutoSize = true;
+            this.lCorreo.Location = new System.Drawing.Point(343, 68);
+            this.lCorreo.Name = "lCorreo";
+            this.lCorreo.Size = new System.Drawing.Size(38, 13);
+            this.lCorreo.TabIndex = 6;
+            this.lCorreo.Text = "Correo";
             // 
             // lTelefono
             // 
@@ -411,13 +411,13 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lTipoUsuario;
-        private System.Windows.Forms.Label lGmail;
+        private System.Windows.Forms.Label lCorreo;
         private System.Windows.Forms.Label lTelefono;
         private System.Windows.Forms.Label lDomicilio;
         private System.Windows.Forms.Label lFechaNacimiento;
         private System.Windows.Forms.Label lDni;
         private System.Windows.Forms.Label lApellido;
-        private System.Windows.Forms.TextBox textGmail;
+        private System.Windows.Forms.TextBox textCorreo;
         private System.Windows.Forms.TextBox textTelefono;
         private System.Windows.Forms.TextBox textDomicilio;
         private System.Windows.Forms.TextBox textDni;
