@@ -35,6 +35,7 @@
             this.bInicio = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textDni = new System.Windows.Forms.TextBox();
             this.lContraseñaInicio = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(886, 488);
+            this.panel1.Size = new System.Drawing.Size(464, 410);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -64,10 +65,10 @@
             this.panel2.Controls.Add(this.bInicio);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(223, 46);
+            this.panel2.Location = new System.Drawing.Point(46, 12);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.panel2.Size = new System.Drawing.Size(419, 400);
+            this.panel2.Size = new System.Drawing.Size(358, 363);
             this.panel2.TabIndex = 6;
             // 
             // label1
@@ -77,7 +78,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(91, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 41);
+            this.label1.Size = new System.Drawing.Size(192, 32);
             this.label1.TabIndex = 4;
             this.label1.Text = "Inicio de sesión";
             // 
@@ -88,7 +89,7 @@
             this.bInicio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bInicio.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bInicio.ForeColor = System.Drawing.Color.White;
-            this.bInicio.Location = new System.Drawing.Point(149, 338);
+            this.bInicio.Location = new System.Drawing.Point(134, 319);
             this.bInicio.Name = "bInicio";
             this.bInicio.Size = new System.Drawing.Size(112, 44);
             this.bInicio.TabIndex = 2;
@@ -100,7 +101,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(149, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(134, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -111,31 +112,44 @@
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel3.Controls.Add(this.checkBox1);
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.textDni);
             this.panel3.Controls.Add(this.lContraseñaInicio);
             this.panel3.Controls.Add(this.lDniInicio);
-            this.panel3.Location = new System.Drawing.Point(37, 204);
+            this.panel3.Location = new System.Drawing.Point(7, 185);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(348, 128);
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.Transparent;
+            this.checkBox1.Location = new System.Drawing.Point(282, 78);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(42, 19);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Ver";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(137, 78);
+            this.textBox4.Location = new System.Drawing.Point(112, 75);
             this.textBox4.Name = "textBox4";
-            this.textBox4.PasswordChar = '*';
-            this.textBox4.Size = new System.Drawing.Size(164, 22);
+            this.textBox4.Size = new System.Drawing.Size(164, 20);
             this.textBox4.TabIndex = 3;
             this.textBox4.UseSystemPasswordChar = true;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textDni
             // 
-            this.textDni.Location = new System.Drawing.Point(137, 29);
+            this.textDni.Location = new System.Drawing.Point(112, 26);
             this.textDni.Name = "textDni";
-            this.textDni.Size = new System.Drawing.Size(164, 22);
+            this.textDni.Size = new System.Drawing.Size(164, 20);
             this.textDni.TabIndex = 2;
             this.textDni.TextChanged += new System.EventHandler(this.textDni_TextChanged_1);
             // 
@@ -146,7 +160,7 @@
             this.lContraseñaInicio.ForeColor = System.Drawing.Color.White;
             this.lContraseñaInicio.Location = new System.Drawing.Point(3, 72);
             this.lContraseñaInicio.Name = "lContraseñaInicio";
-            this.lContraseñaInicio.Size = new System.Drawing.Size(118, 28);
+            this.lContraseñaInicio.Size = new System.Drawing.Size(96, 21);
             this.lContraseñaInicio.TabIndex = 1;
             this.lContraseñaInicio.Text = "Contraseña";
             // 
@@ -157,14 +171,15 @@
             this.lDniInicio.ForeColor = System.Drawing.Color.White;
             this.lDniInicio.Location = new System.Drawing.Point(3, 23);
             this.lDniInicio.Name = "lDniInicio";
-            this.lDniInicio.Size = new System.Drawing.Size(49, 28);
+            this.lDniInicio.Size = new System.Drawing.Size(40, 21);
             this.lDniInicio.TabIndex = 0;
             this.lDniInicio.Text = "DNI";
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(886, 488);
+            this.ClientSize = new System.Drawing.Size(464, 410);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -205,6 +220,7 @@
         private System.Windows.Forms.Label lContraseñaInicio;
         private System.Windows.Forms.Label lDniInicio;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

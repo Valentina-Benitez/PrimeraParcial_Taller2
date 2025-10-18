@@ -149,11 +149,24 @@ namespace PrimeraEntrega
 
         }
 
-        private bool mostrarContraseña = false;
+        
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox4.UseSystemPasswordChar = false;
+
+            }
+            else
+            {
+                textBox4.UseSystemPasswordChar = true;
+            }
         }
     }
 }
