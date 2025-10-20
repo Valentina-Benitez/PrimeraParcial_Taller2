@@ -13,6 +13,7 @@ namespace PrimeraEntrega
         public FormDetallePedido()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
             // Suscribir el evento Load para que se ejecute la lógica de carga
             this.Load += FormDetallePedido_Load;
         }

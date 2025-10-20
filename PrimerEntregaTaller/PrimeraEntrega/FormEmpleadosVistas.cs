@@ -93,7 +93,7 @@ namespace PrimeraEntrega
             if (!string.IsNullOrWhiteSpace(textApellido.Text))
             {
                 query += " AND Apellido LIKE @apellido";
-                parameters.Add(new SqlParameter("@apeliido", "%" + textApellido.Text + "%"));
+                parameters.Add(new SqlParameter("@apellido", "%" + textApellido.Text + "%"));
             }
 
            
@@ -124,10 +124,6 @@ namespace PrimeraEntrega
                 MessageBox.Show("Error al buscar al usuario: " + ex.Message);
             }
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -145,6 +141,26 @@ namespace PrimeraEntrega
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void masMesas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menosMesas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void horasTrabajo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void antiguedad_Click(object sender, EventArgs e)
         {
 
         }

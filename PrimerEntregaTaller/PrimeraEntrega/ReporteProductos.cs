@@ -1,78 +1,101 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace PrimeraEntrega
 {
     public partial class ReporteProductos : Form
     {
+        private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+
         public ReporteProductos()
         {
             InitializeComponent();
             this.Load += ReporteProductos_Load;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            // Asegurar que el botón Filtrar invoque al método correcto
+            this.button1.Click += btnFiltrar_Click;
         }
 
         private void ReporteProductos_Load(object sender, EventArgs e)
         {
-            dataGridView1.AutoGenerateColumns = false;
-
-            // Crear tabla de ejemplo
-            DataTable dt = new DataTable();
-            dt.Columns.Add("id_producto");
-            dt.Columns.Add("Nombre");
-            dt.Columns.Add("Nro_ventas");
-
-            // Agregar filas estáticas de prueba
-            dt.Rows.Add("1", "Pizza Napolitana", "120");
-            dt.Rows.Add("2", "Milanesa con papas", "95");
-            dt.Rows.Add("3", "Empanadas", "150");
-            dt.Rows.Add("4", "Hamburguesa completa", "80");
-            dt.Rows.Add("5", "Lomito", "110");
-
-            // Cargar al DataGridView
-            dataGridView1.DataSource = dt;
+            CargarProductos();
         }
 
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void CargarProductos(string filtro = "")
         {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            p.id_producto,
+                            p.nombre AS nombre,
+                            COUNT(*) AS nro_ventas
+                        FROM ventas v
+                        INNER JOIN producto p ON v.id_producto = p.id_producto
+                        WHERE (@desde IS NULL OR v.fecha >= @desde)
+                          AND (@hasta IS NULL OR v.fecha <= @hasta)
+                        GROUP BY p.id_producto, p.nombre_producto " + filtro;
 
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Si quieres posibilidad de "sin filtro" cambia la lógica de estos parámetros.
+                        object desde = dateTimePicker1 != null ? (object)dateTimePicker1.Value.Date : DBNull.Value;
+                        object hasta = dateTimePicker2 != null ? (object)dateTimePicker2.Value.Date : DBNull.Value;
+
+                        cmd.Parameters.AddWithValue("@desde", desde ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@hasta", hasta ?? DBNull.Value);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar reporte: " + ex.Message);
+            }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void btnFiltrar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void menosVendido_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bajaProductos_Click(object sender, EventArgs e)
-        {
-
+            // Filtra por fechas
+            CargarProductos();
         }
 
         private void masVendido_Click(object sender, EventArgs e)
         {
+            // Ordena descendente por ventas
+            CargarProductos("ORDER BY nro_ventas DESC");
+        }
 
+        private void menosVendido_Click(object sender, EventArgs e)
+        {
+            // Ordena ascendente por ventas
+            CargarProductos("ORDER BY nro_ventas ASC");
         }
 
         private void altaProductos_Click(object sender, EventArgs e)
         {
+            // Ejemplo: productos con más de 100 ventas
+            CargarProductos("HAVING COUNT(*) >= 100 ORDER BY nro_ventas DESC");
+        }
 
+        private void bajaProductos_Click(object sender, EventArgs e)
+        {
+            // Ejemplo: productos con menos de 50 ventas
+            CargarProductos("HAVING COUNT(*) < 50 ORDER BY nro_ventas ASC");
+        }
+
+        // Método de Paint ya existente en el diseñador
+        private void panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
         }
     }
 }
