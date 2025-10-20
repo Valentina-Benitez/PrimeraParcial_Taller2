@@ -81,6 +81,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(497, 150);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Nombre
             // 
@@ -91,14 +92,14 @@
             // 
             // Cantidad
             // 
-            this.Cantidad.DataPropertyName = "cantidad";
+            this.Cantidad.DataPropertyName = "Cantidad";
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.MinimumWidth = 6;
             this.Cantidad.Name = "Cantidad";
             // 
             // PrecioUnitario
             // 
-            this.PrecioUnitario.DataPropertyName = "precio";
+            this.PrecioUnitario.DataPropertyName = "Precio";
             this.PrecioUnitario.HeaderText = "Precio";
             this.PrecioUnitario.MinimumWidth = 6;
             this.PrecioUnitario.Name = "PrecioUnitario";

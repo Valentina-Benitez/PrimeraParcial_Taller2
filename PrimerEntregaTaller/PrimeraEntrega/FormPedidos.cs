@@ -92,10 +92,10 @@ namespace Taller_AppRestaurante
 
             comboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEstado.Items.Clear();
-            comboEstado.Items.Add("pendiente");
-            comboEstado.Items.Add("en preparación");
-            comboEstado.Items.Add("entregado");
-            comboEstado.Items.Add("cancelado");
+            //comboEstado.Items.Add("pendiente");
+            //comboEstado.Items.Add("en preparación");
+            comboEstado.Items.Add("Entregado");
+            comboEstado.Items.Add("Cancelado");
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)

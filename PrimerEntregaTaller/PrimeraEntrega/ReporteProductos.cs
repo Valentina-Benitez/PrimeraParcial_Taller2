@@ -49,5 +49,30 @@ namespace PrimeraEntrega
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menosVendido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bajaProductos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void masVendido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void altaProductos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

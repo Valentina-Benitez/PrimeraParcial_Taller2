@@ -13,6 +13,8 @@ namespace PrimeraEntrega
         public FormDetallePedido()
         {
             InitializeComponent();
+            // Suscribir el evento Load para que se ejecute la lógica de carga
+            this.Load += FormDetallePedido_Load;
         }
 
         public int PedidoId { get; set; }
@@ -28,9 +30,6 @@ namespace PrimeraEntrega
 
         private void FormDetallePedido_Load(object sender, EventArgs e)
         {
-            // Diagnóstico 1: Confirmación de ID
-            // MessageBox.Show("PedidoId recibido: " + PedidoId); 
-
             if (PedidoId <= 0)
             {
                 MessageBox.Show("Error: El ID del pedido no es válido.");
@@ -40,22 +39,12 @@ namespace PrimeraEntrega
 
             var listaDeProductos = ObtenerProductosDelPedido(PedidoId);
 
-            // Diagnóstico 2: Confirmación de datos obtenidos de la DB
-            MessageBox.Show($"Se encontraron {listaDeProductos.Count} productos. Intentando mapear..."); 
-
-            if (listaDeProductos.Count == 0)
-            {
-                MessageBox.Show("Este pedido no tiene detalles cargados.");
-            }
-
             // Desactivar Autogenerar columnas 
             dataGridView1.AutoGenerateColumns = false;
 
             try
             {
-                // 🛑 CORRECCIÓN CLAVE: Mapeamos los nombres de columna del DGV (los que ves en el diseñador) 
-                // a las propiedades de la clase ProductoDetalle.
-                // ASUMO que los NOMBRES (propiedad 'Name') de tus 4 columnas son: Nombre, Cantidad, Precio y Total.
+                // Mapear los nombres de columna del DGV (propiedad 'Name' en el diseñador)
                 dataGridView1.Columns["Nombre"].DataPropertyName = "Nombre";
                 dataGridView1.Columns["Cantidad"].DataPropertyName = "Cantidad";
                 dataGridView1.Columns["PrecioUnitario"].DataPropertyName = "Precio";
@@ -63,7 +52,6 @@ namespace PrimeraEntrega
             }
             catch (Exception ex)
             {
-                // Este mensaje aparecerá SI NO ENCUENTRA las columnas por nombre (ej: no existe la columna llamada "Precio")
                 MessageBox.Show("ERROR DE MAPEO DE COLUMNAS. Verifique el nombre (Propiedad 'Name') de las columnas en el diseñador: " + ex.Message);
                 return;
             }
@@ -76,7 +64,6 @@ namespace PrimeraEntrega
         {
             var lista = new List<ProductoDetalle>();
 
-            // Usamos la cadena de conexión
             using (SqlConnection con = new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
             {
                 try
@@ -102,8 +89,6 @@ namespace PrimeraEntrega
                             {
                                 Nombre = reader["nombre"].ToString(),
                                 Cantidad = Convert.ToInt32(reader["cantidad"]),
-
-                                // 🛑 CAMBIO CLAVE: Usar InvariantCulture para forzar la conversión
                                 Precio = Convert.ToDecimal(reader["PrecioUnitario"], CultureInfo.InvariantCulture),
                                 Total = Convert.ToDecimal(reader["TotalLinea"], CultureInfo.InvariantCulture)
                             });
@@ -112,12 +97,16 @@ namespace PrimeraEntrega
                 }
                 catch (Exception ex)
                 {
-                    // Esto capturaría errores de DB o errores de conversión (ej: si precio unitario es NULL)
                     MessageBox.Show("Error de Base de Datos/Conversión: " + ex.Message);
                 }
             }
 
             return lista;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
