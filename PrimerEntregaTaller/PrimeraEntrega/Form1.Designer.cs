@@ -48,7 +48,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -85,7 +85,7 @@
             // bInicio
             // 
             this.bInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bInicio.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bInicio.BackColor = System.Drawing.Color.CadetBlue;
             this.bInicio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bInicio.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bInicio.ForeColor = System.Drawing.Color.White;
@@ -179,7 +179,7 @@
             // 
             this.ClientSize = new System.Drawing.Size(464, 410);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
