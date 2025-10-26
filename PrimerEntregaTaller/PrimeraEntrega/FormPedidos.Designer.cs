@@ -81,7 +81,7 @@
             // 
             this.txtBuscoPedido.Location = new System.Drawing.Point(92, 80);
             this.txtBuscoPedido.Name = "txtBuscoPedido";
-            this.txtBuscoPedido.Size = new System.Drawing.Size(221, 22);
+            this.txtBuscoPedido.Size = new System.Drawing.Size(221, 20);
             this.txtBuscoPedido.TabIndex = 2;
             // 
             // Numero
@@ -129,7 +129,7 @@
             // 
             this.txtTotal.Location = new System.Drawing.Point(141, 256);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(96, 22);
+            this.txtTotal.Size = new System.Drawing.Size(96, 20);
             this.txtTotal.TabIndex = 25;
             // 
             // label3
@@ -166,21 +166,21 @@
             // 
             this.dtpFecha.Location = new System.Drawing.Point(103, 174);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(261, 22);
+            this.dtpFecha.Size = new System.Drawing.Size(261, 20);
             this.dtpFecha.TabIndex = 20;
             // 
             // txtEstado
             // 
             this.txtEstado.Location = new System.Drawing.Point(141, 336);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(212, 22);
+            this.txtEstado.Size = new System.Drawing.Size(212, 20);
             this.txtEstado.TabIndex = 16;
             // 
             // txtNomCliente
             // 
             this.txtNomCliente.Location = new System.Drawing.Point(141, 105);
             this.txtNomCliente.Name = "txtNomCliente";
-            this.txtNomCliente.Size = new System.Drawing.Size(212, 22);
+            this.txtNomCliente.Size = new System.Drawing.Size(212, 20);
             this.txtNomCliente.TabIndex = 14;
             // 
             // label9
@@ -245,9 +245,9 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1097, 481);
+            this.panel2.Size = new System.Drawing.Size(823, 391);
             this.panel2.TabIndex = 8;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -255,9 +255,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Azure;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(221, 289);
+            this.pictureBox1.Location = new System.Drawing.Point(166, 235);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(37, 22);
+            this.pictureBox1.Size = new System.Drawing.Size(28, 18);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
@@ -266,26 +267,30 @@
             // 
             this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(668, 106);
+            this.comboEstado.Location = new System.Drawing.Point(501, 86);
+            this.comboEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(177, 24);
+            this.comboEstado.Size = new System.Drawing.Size(134, 21);
             this.comboEstado.TabIndex = 29;
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(258, 289);
+            this.txtBusqueda.Location = new System.Drawing.Point(194, 235);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(262, 22);
+            this.txtBusqueda.Size = new System.Drawing.Size(198, 20);
             this.txtBusqueda.TabIndex = 28;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // bPedido
             // 
             this.bPedido.BackColor = System.Drawing.Color.LightGreen;
-            this.bPedido.Location = new System.Drawing.Point(221, 103);
-            this.bPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bPedido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bPedido.Location = new System.Drawing.Point(166, 90);
+            this.bPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bPedido.Name = "bPedido";
-            this.bPedido.Size = new System.Drawing.Size(121, 36);
+            this.bPedido.Size = new System.Drawing.Size(75, 23);
             this.bPedido.TabIndex = 27;
             this.bPedido.Text = "Agregar";
             this.bPedido.UseVisualStyleBackColor = false;
@@ -294,20 +299,22 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(97, 107);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(76, 94);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 24);
+            this.label13.Size = new System.Drawing.Size(61, 15);
             this.label13.TabIndex = 26;
             this.label13.Text = "Productos";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(97, 146);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(76, 126);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 24);
+            this.label1.Size = new System.Drawing.Size(32, 15);
             this.label1.TabIndex = 24;
             this.label1.Text = "Total";
             // 
@@ -316,19 +323,20 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.AliceBlue;
             this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label7.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label7.Location = new System.Drawing.Point(0, 298);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label7.Location = new System.Drawing.Point(0, 240);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label7.Size = new System.Drawing.Size(187, 28);
+            this.label7.Size = new System.Drawing.Size(155, 25);
             this.label7.TabIndex = 1;
             this.label7.Text = "Lista de pedidos";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -347,14 +355,14 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 326);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 265);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1097, 155);
+            this.dataGridView1.Size = new System.Drawing.Size(823, 126);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -403,11 +411,13 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.IndianRed;
-            this.button1.Location = new System.Drawing.Point(381, 194);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(286, 158);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 38);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 22;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
@@ -415,11 +425,13 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.button2.Location = new System.Drawing.Point(581, 194);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.BackColor = System.Drawing.Color.SkyBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(436, 158);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 38);
+            this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 21;
             this.button2.Text = "Guardar";
             this.button2.UseVisualStyleBackColor = false;
@@ -427,28 +439,28 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(668, 66);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(501, 54);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(261, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(197, 20);
             this.dateTimePicker1.TabIndex = 20;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(221, 155);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Location = new System.Drawing.Point(166, 126);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(123, 22);
+            this.textBox3.Size = new System.Drawing.Size(93, 20);
             this.textBox3.TabIndex = 16;
             this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             this.textBox3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox3_PreviewKeyDown);
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(221, 66);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox4.Location = new System.Drawing.Point(166, 54);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(212, 22);
+            this.textBox4.Size = new System.Drawing.Size(160, 20);
             this.textBox4.TabIndex = 14;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
@@ -457,9 +469,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(585, 107);
+            this.label8.Location = new System.Drawing.Point(439, 87);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 24);
+            this.label8.Size = new System.Drawing.Size(56, 19);
             this.label8.TabIndex = 11;
             this.label8.Text = "Estado";
             // 
@@ -467,39 +480,43 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(585, 60);
+            this.label10.Location = new System.Drawing.Point(439, 49);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 24);
+            this.label10.Size = new System.Drawing.Size(49, 19);
             this.label10.TabIndex = 8;
             this.label10.Text = "Fecha";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(97, 60);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(76, 56);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(116, 24);
+            this.label11.Size = new System.Drawing.Size(67, 15);
             this.label11.TabIndex = 7;
             this.label11.Text = "DNI Cliente";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(21, 11);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label12.Location = new System.Drawing.Point(16, 9);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(161, 28);
+            this.label12.Size = new System.Drawing.Size(138, 25);
             this.label12.TabIndex = 5;
             this.label12.Text = "Nuevo Pedido";
             // 
             // FormPedidos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 481);
+            this.ClientSize = new System.Drawing.Size(823, 391);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormPedidos";
             this.Text = "FormPedidos";
             this.Load += new System.EventHandler(this.FormPedidos_Load);

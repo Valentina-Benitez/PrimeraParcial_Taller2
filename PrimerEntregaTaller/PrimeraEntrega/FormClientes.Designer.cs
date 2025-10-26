@@ -66,7 +66,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Azure;
+            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label2);
@@ -322,7 +322,7 @@
             // dvgClientes
             // 
             this.dvgClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgClientes.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dvgClientes.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dvgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
