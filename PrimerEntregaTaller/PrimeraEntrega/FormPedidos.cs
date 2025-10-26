@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using System.Globalization;
 
 namespace Taller_AppRestaurante
 {
@@ -58,6 +59,7 @@ namespace Taller_AppRestaurante
             {
                 MessageBox.Show("Error al cargar pedidos: " + ex.Message);
             }
+
         }
 
 
@@ -82,7 +84,7 @@ namespace Taller_AppRestaurante
 
         private void ActualizarTotal()
         {
-            decimal total = productosSeleccionados.Sum(p => p.Precio);
+            decimal total = productosSeleccionados.Sum(p => p.Cantidad * p.Precio);
             txtTotal.Text = total.ToString("0.00");
         }
 
@@ -90,12 +92,25 @@ namespace Taller_AppRestaurante
         {
             CargarPedidos();
 
-            comboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboEstado.Items.Clear();
+            if (!dataGridView1.Columns.Contains("btnEntregar"))
+            {
+                DataGridViewButtonColumn btnEntregar = new DataGridViewButtonColumn();
+                btnEntregar.Name = "btnEntregar";
+                btnEntregar.HeaderText = "Entregar";
+                btnEntregar.Text = "✔";
+                btnEntregar.UseColumnTextForButtonValue = true;
+                btnEntregar.DefaultCellStyle.BackColor = Color.LightGreen;
+                btnEntregar.Width = 80;
+                dataGridView1.Columns.Add(btnEntregar);
+            }
+
+            txtTotal.ReadOnly = true;
+           // comboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            //comboEstado.Items.Clear();
             //comboEstado.Items.Add("pendiente");
-            //comboEstado.Items.Add("en preparación");
-            comboEstado.Items.Add("Entregado");
-            comboEstado.Items.Add("Cancelado");
+           // comboEstado.Items.Add("en preparación");
+           // comboEstado.Items.Add("Entregado");
+           // comboEstado.Items.Add("Cancelado");
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -180,6 +195,9 @@ namespace Taller_AppRestaurante
         {
             if (e.RowIndex < 0) return;
 
+            string estadoActual = dataGridView1.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn4"].Value.ToString().ToLower();
+            int pedidoId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["nroPedido"].Value);
+
             if (dataGridView1.Columns[e.ColumnIndex].Name == "btnDetalle")
             {
                 object cellValue = dataGridView1.Rows[e.RowIndex].Cells["nroPedido"].Value;
@@ -202,10 +220,28 @@ namespace Taller_AppRestaurante
                 {
                     MessageBox.Show("No se pudo obtener el ID del pedido.");
                 }
+
             }
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "btnEntregar")
+            {
+                if (estadoActual.Contains("entregado"))
+                {
+                    MessageBox.Show("Este pedido ya está entregado ✅");
+                    return;
+                }
+
+                using (var pagoForm = new FormSeleccionarPago())
+                {
+                    if (pagoForm.ShowDialog() == DialogResult.OK)
+                    {
+                        RegistrarVenta(pedidoId, pagoForm.TipoDePagoSeleccionado);
+                    }
+                }
+            }
+
         }
 
-   
+
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
@@ -259,36 +295,38 @@ namespace Taller_AppRestaurante
 
                 try
                 {
-                    // Insertar pedido
+                    
                     string insertPedido = @"
-                INSERT INTO Pedido (id_cliente, fecha, estado, total)
-                VALUES (@id_cliente, @fecha, @estado, @total);
-                SELECT SCOPE_IDENTITY();";
+                    INSERT INTO Pedido (id_cliente, fecha, estado)
+                    VALUES (@id_cliente, @fecha, 'en preparación');
+                    SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmdPedido = new SqlCommand(insertPedido, con, tran);
                     cmdPedido.Parameters.AddWithValue("@id_cliente", ObtenerIdClientePorDni(textBox4.Text, con, tran));
                     cmdPedido.Parameters.AddWithValue("@fecha", DateTime.Now);
-                    cmdPedido.Parameters.AddWithValue("@estado", comboEstado.SelectedItem.ToString());
-                    cmdPedido.Parameters.AddWithValue("@total", decimal.Parse(txtTotal.Text));
+                   // cmdPedido.Parameters.AddWithValue("@estado", comboEstado.SelectedItem.ToString());
 
                     int idPedido = Convert.ToInt32(cmdPedido.ExecuteScalar());
 
-                    // Insertar detalles
+                    // Insertar detalles del pedido ✅
                     foreach (var prod in productosSeleccionados)
                     {
                         string insertDetalle = @"
                     INSERT INTO Detalle_Pedido (id_pedido, id_producto, cantidad, subtotal)
-                    VALUES (@id_pedido, @id_producto, 1, @precio);";
+                    VALUES (@id_pedido, @id_producto, @cantidad, @subtotal);";
 
                         SqlCommand cmdDetalle = new SqlCommand(insertDetalle, con, tran);
                         cmdDetalle.Parameters.AddWithValue("@id_pedido", idPedido);
                         cmdDetalle.Parameters.AddWithValue("@id_producto", prod.IdProducto);
-                        cmdDetalle.Parameters.AddWithValue("@precio", prod.Precio);
+                        cmdDetalle.Parameters.AddWithValue("@cantidad", prod.Cantidad);
+                        cmdDetalle.Parameters.AddWithValue("@subtotal", prod.Cantidad * prod.Precio);
+
                         cmdDetalle.ExecuteNonQuery();
                     }
 
                     tran.Commit();
                     MessageBox.Show("Pedido guardado correctamente.");
+
                     productosSeleccionados.Clear();
                     MostrarProductosEnPedido();
                     ActualizarTotal();
@@ -300,6 +338,7 @@ namespace Taller_AppRestaurante
                 }
             }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -317,11 +356,11 @@ namespace Taller_AppRestaurante
             }
 
             // Estado (control 'comboEstado')
-            if (comboEstado != null)
-            {
+            //if (comboEstado != null)
+           // {
                 // Esto deselecciona cualquier opción.
-                comboEstado.SelectedIndex = -1;
-            }
+                //comboEstado.SelectedIndex = -1;
+           // }
 
             if (txtTotal != null)
             {
@@ -336,6 +375,61 @@ namespace Taller_AppRestaurante
             {
                 textBox4.Focus();
             }
+        }
+
+
+        private void RegistrarVenta(int pedidoId, string tipoPago)
+        {
+            using (SqlConnection con = ObtenerConexion())
+            {
+                con.Open();
+                SqlTransaction tran = con.BeginTransaction();
+
+                try
+                {
+                    // ✅ Calcular total real desde DB
+                    string queryTotal = @"
+                SELECT SUM(subtotal) 
+                FROM Detalle_Pedido 
+                WHERE id_pedido = @id_pedido";
+
+                    SqlCommand cmdTotal = new SqlCommand(queryTotal, con, tran);
+                    cmdTotal.Parameters.AddWithValue("@id_pedido", pedidoId);
+                    decimal total = Convert.ToDecimal(cmdTotal.ExecuteScalar());
+
+                    // ✅ Insertar en Ventas
+                    string insertVenta = @"
+                INSERT INTO Ventas (id_pedido, fecha, hora, total, tipo_pago, id_usuario)
+                VALUES (@id_pedido, GETDATE(), CONVERT(time, GETDATE()), @total, @pago, @usuario);";
+
+                    SqlCommand cmdVenta = new SqlCommand(insertVenta, con, tran);
+                    cmdVenta.Parameters.AddWithValue("@id_pedido", pedidoId);
+                    cmdVenta.Parameters.AddWithValue("@total", total);
+                    cmdVenta.Parameters.AddWithValue("@pago", tipoPago);
+
+                    // ⚠️ por ahora usuario = 1, después lo cambiamos por el logueado
+                    cmdVenta.Parameters.AddWithValue("@usuario", 1);
+
+                    cmdVenta.ExecuteNonQuery();
+
+                    // ✅ Cambiar estado del pedido
+                    string updatePedido = "UPDATE Pedido SET estado = 'entregado' WHERE id_pedido = @id";
+                    SqlCommand cmdPedido = new SqlCommand(updatePedido, con, tran);
+                    cmdPedido.Parameters.AddWithValue("@id", pedidoId);
+                    cmdPedido.ExecuteNonQuery();
+
+                    tran.Commit();
+                    MessageBox.Show("✅ Pedido entregado y venta registrada correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    MessageBox.Show("❌ Error en la venta: " + ex.Message);
+                }
+            }
+
+            // ✅ Refrescar grilla
+            CargarPedidos();
         }
 
     }

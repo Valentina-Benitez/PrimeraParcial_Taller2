@@ -47,8 +47,8 @@ namespace PrimeraEntrega
             // 
             this.panel1.BackColor = System.Drawing.Color.PowderBlue;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.txtBuscaP);
             this.panel1.Controls.Add(this.btnAceptar);
+            this.panel1.Controls.Add(this.txtBuscaP);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -79,11 +79,11 @@ namespace PrimeraEntrega
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.SpringGreen;
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAceptar.Location = new System.Drawing.Point(257, 3);
+            this.btnAceptar.Location = new System.Drawing.Point(244, 4);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(94, 34);
             this.btnAceptar.TabIndex = 1;
-            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.Text = "Agregar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             // 
             // label1

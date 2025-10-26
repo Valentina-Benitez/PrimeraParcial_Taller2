@@ -39,6 +39,11 @@ namespace PrimeraEntrega
             }
 
             var listaDeProductos = ObtenerProductosDelPedido(PedidoId);
+            // ✅ Calcular el total sumando todos los subtotales
+            decimal totalGeneral = listaDeProductos.Sum(x => x.Total);
+
+            // ✅ Mostrar el total abajo
+            lblTotalValor.Text = totalGeneral.ToString("C2");
 
             // Desactivar Autogenerar columnas 
             dataGridView1.AutoGenerateColumns = false;
