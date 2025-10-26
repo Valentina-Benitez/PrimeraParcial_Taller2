@@ -59,9 +59,8 @@
             this.panel1.Controls.Add(this.ltitulo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1081, 80);
+            this.panel1.Size = new System.Drawing.Size(811, 64);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -71,10 +70,9 @@
             this.bVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bVentas.Location = new System.Drawing.Point(662, 31);
-            this.bVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bVentas.Location = new System.Drawing.Point(496, 25);
             this.bVentas.Name = "bVentas";
-            this.bVentas.Size = new System.Drawing.Size(55, 47);
+            this.bVentas.Size = new System.Drawing.Size(41, 38);
             this.bVentas.TabIndex = 0;
             this.bVentas.UseVisualStyleBackColor = true;
             this.bVentas.Click += new System.EventHandler(this.bVentas_Click);
@@ -85,10 +83,9 @@
             this.bProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bProductos.Location = new System.Drawing.Point(472, 31);
-            this.bProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bProductos.Location = new System.Drawing.Point(354, 25);
             this.bProductos.Name = "bProductos";
-            this.bProductos.Size = new System.Drawing.Size(54, 46);
+            this.bProductos.Size = new System.Drawing.Size(41, 38);
             this.bProductos.TabIndex = 0;
             this.bProductos.UseVisualStyleBackColor = true;
             this.bProductos.Click += new System.EventHandler(this.bProductos_Click);
@@ -100,10 +97,9 @@
             this.bEmpleados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bEmpleados.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEmpleados.Location = new System.Drawing.Point(276, 31);
-            this.bEmpleados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bEmpleados.Location = new System.Drawing.Point(210, 25);
             this.bEmpleados.Name = "bEmpleados";
-            this.bEmpleados.Size = new System.Drawing.Size(55, 46);
+            this.bEmpleados.Size = new System.Drawing.Size(38, 38);
             this.bEmpleados.TabIndex = 7;
             this.bEmpleados.UseVisualStyleBackColor = false;
             this.bEmpleados.Click += new System.EventHandler(this.bEmpleados_Click);
@@ -111,10 +107,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1025, 15);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(769, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox2.Size = new System.Drawing.Size(30, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -123,32 +118,29 @@
             // lVentas
             // 
             this.lVentas.AutoSize = true;
-            this.lVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lVentas.Location = new System.Drawing.Point(725, 43);
-            this.lVentas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lVentas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lVentas.Location = new System.Drawing.Point(544, 35);
             this.lVentas.Name = "lVentas";
-            this.lVentas.Size = new System.Drawing.Size(53, 18);
+            this.lVentas.Size = new System.Drawing.Size(41, 15);
             this.lVentas.TabIndex = 5;
             this.lVentas.Text = "Ventas";
             // 
             // lProductos
             // 
             this.lProductos.AutoSize = true;
-            this.lProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lProductos.Location = new System.Drawing.Point(535, 44);
-            this.lProductos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lProductos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lProductos.Location = new System.Drawing.Point(401, 36);
             this.lProductos.Name = "lProductos";
-            this.lProductos.Size = new System.Drawing.Size(77, 18);
+            this.lProductos.Size = new System.Drawing.Size(61, 15);
             this.lProductos.TabIndex = 4;
             this.lProductos.Text = "Productos";
             // 
             // pictureBox1_Usuario
             // 
             this.pictureBox1_Usuario.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1_Usuario.Image")));
-            this.pictureBox1_Usuario.Location = new System.Drawing.Point(4, 15);
-            this.pictureBox1_Usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1_Usuario.Location = new System.Drawing.Point(3, 12);
             this.pictureBox1_Usuario.Name = "pictureBox1_Usuario";
-            this.pictureBox1_Usuario.Size = new System.Drawing.Size(52, 62);
+            this.pictureBox1_Usuario.Size = new System.Drawing.Size(44, 56);
             this.pictureBox1_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1_Usuario.TabIndex = 2;
             this.pictureBox1_Usuario.TabStop = false;
@@ -156,11 +148,10 @@
             // lEmpleados
             // 
             this.lEmpleados.AutoSize = true;
-            this.lEmpleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lEmpleados.Location = new System.Drawing.Point(339, 43);
-            this.lEmpleados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lEmpleados.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lEmpleados.Location = new System.Drawing.Point(254, 35);
             this.lEmpleados.Name = "lEmpleados";
-            this.lEmpleados.Size = new System.Drawing.Size(83, 18);
+            this.lEmpleados.Size = new System.Drawing.Size(65, 15);
             this.lEmpleados.TabIndex = 1;
             this.lEmpleados.Text = "Empleados";
             this.lEmpleados.Click += new System.EventHandler(this.lEmpleados_Click);
@@ -168,32 +159,30 @@
             // ltitulo
             // 
             this.ltitulo.AutoSize = true;
-            this.ltitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ltitulo.Location = new System.Drawing.Point(64, 44);
-            this.ltitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ltitulo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ltitulo.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.ltitulo.Location = new System.Drawing.Point(48, 28);
             this.ltitulo.Name = "ltitulo";
-            this.ltitulo.Size = new System.Drawing.Size(89, 25);
+            this.ltitulo.Size = new System.Drawing.Size(83, 25);
             this.ltitulo.TabIndex = 0;
             this.ltitulo.Text = "Gerente";
             // 
             // panelContenedor
             // 
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(0, 80);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelContenedor.Location = new System.Drawing.Point(0, 64);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1081, 486);
+            this.panelContenedor.Size = new System.Drawing.Size(811, 396);
             this.panelContenedor.TabIndex = 1;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 566);
+            this.ClientSize = new System.Drawing.Size(811, 460);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";

@@ -71,9 +71,11 @@
             // lNombre
             // 
             this.lNombre.AutoSize = true;
-            this.lNombre.Location = new System.Drawing.Point(31, 41);
+            this.lNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lNombre.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lNombre.Location = new System.Drawing.Point(12, 39);
             this.lNombre.Name = "lNombre";
-            this.lNombre.Size = new System.Drawing.Size(44, 13);
+            this.lNombre.Size = new System.Drawing.Size(51, 15);
             this.lNombre.TabIndex = 0;
             this.lNombre.Text = "Nombre";
             // 
@@ -106,7 +108,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(811, 234);
+            this.panel1.Size = new System.Drawing.Size(811, 245);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -115,21 +117,21 @@
             this.bCancelar.BackColor = System.Drawing.Color.DarkSalmon;
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancelar.Location = new System.Drawing.Point(173, 200);
+            this.bCancelar.Location = new System.Drawing.Point(629, 34);
             this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 23);
+            this.bCancelar.Size = new System.Drawing.Size(25, 20);
             this.bCancelar.TabIndex = 24;
-            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.Text = "X";
             this.bCancelar.UseVisualStyleBackColor = false;
             // 
             // bEliminar
             // 
             this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bEliminar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEliminar.Location = new System.Drawing.Point(509, 200);
+            this.bEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bEliminar.Location = new System.Drawing.Point(579, 200);
             this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(59, 24);
+            this.bEliminar.Size = new System.Drawing.Size(75, 23);
             this.bEliminar.TabIndex = 23;
             this.bEliminar.Text = "Eliminar";
             this.bEliminar.UseVisualStyleBackColor = false;
@@ -138,10 +140,10 @@
             // 
             this.bModificar.BackColor = System.Drawing.Color.SkyBlue;
             this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bModificar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bModificar.Location = new System.Drawing.Point(421, 200);
+            this.bModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bModificar.Location = new System.Drawing.Point(413, 200);
             this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(64, 24);
+            this.bModificar.Size = new System.Drawing.Size(75, 23);
             this.bModificar.TabIndex = 22;
             this.bModificar.Text = "Modificar";
             this.bModificar.UseVisualStyleBackColor = false;
@@ -150,8 +152,8 @@
             // 
             this.bBuscar.BackColor = System.Drawing.Color.SkyBlue;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bBuscar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(64, 201);
+            this.bBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(105, 199);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(75, 23);
             this.bBuscar.TabIndex = 21;
@@ -161,17 +163,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(638, 177);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label1.Location = new System.Drawing.Point(681, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(130, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Empleados";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(633, 33);
+            this.pictureBox1.Location = new System.Drawing.Point(699, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 123);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -181,13 +184,13 @@
             // bAgregar
             // 
             this.bAgregar.BackColor = System.Drawing.Color.LightGreen;
-            this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAgregar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAgregar.Location = new System.Drawing.Point(294, 201);
+            this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAgregar.Location = new System.Drawing.Point(260, 199);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(75, 23);
             this.bAgregar.TabIndex = 20;
-            this.bAgregar.Text = "Agregar";
+            this.bAgregar.Text = "Guardar";
             this.bAgregar.UseVisualStyleBackColor = false;
             // 
             // dtpFechaNac
@@ -251,63 +254,77 @@
             // lTipoUsuario
             // 
             this.lTipoUsuario.AutoSize = true;
+            this.lTipoUsuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTipoUsuario.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lTipoUsuario.Location = new System.Drawing.Point(343, 96);
             this.lTipoUsuario.Name = "lTipoUsuario";
-            this.lTipoUsuario.Size = new System.Drawing.Size(82, 13);
+            this.lTipoUsuario.Size = new System.Drawing.Size(89, 15);
             this.lTipoUsuario.TabIndex = 7;
             this.lTipoUsuario.Text = "Tipo de Usuario";
             // 
             // lCorreo
             // 
             this.lCorreo.AutoSize = true;
+            this.lCorreo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lCorreo.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lCorreo.Location = new System.Drawing.Point(343, 68);
             this.lCorreo.Name = "lCorreo";
-            this.lCorreo.Size = new System.Drawing.Size(38, 13);
+            this.lCorreo.Size = new System.Drawing.Size(43, 15);
             this.lCorreo.TabIndex = 6;
             this.lCorreo.Text = "Correo";
             // 
             // lTelefono
             // 
             this.lTelefono.AutoSize = true;
+            this.lTelefono.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTelefono.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lTelefono.Location = new System.Drawing.Point(343, 37);
             this.lTelefono.Name = "lTelefono";
-            this.lTelefono.Size = new System.Drawing.Size(49, 13);
+            this.lTelefono.Size = new System.Drawing.Size(52, 15);
             this.lTelefono.TabIndex = 5;
             this.lTelefono.Text = "Telefono";
             // 
             // lDomicilio
             // 
             this.lDomicilio.AutoSize = true;
+            this.lDomicilio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lDomicilio.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lDomicilio.Location = new System.Drawing.Point(343, 133);
             this.lDomicilio.Name = "lDomicilio";
-            this.lDomicilio.Size = new System.Drawing.Size(49, 13);
+            this.lDomicilio.Size = new System.Drawing.Size(58, 15);
             this.lDomicilio.TabIndex = 4;
             this.lDomicilio.Text = "Domicilio";
             // 
             // lFechaNacimiento
             // 
             this.lFechaNacimiento.AutoSize = true;
-            this.lFechaNacimiento.Location = new System.Drawing.Point(31, 132);
+            this.lFechaNacimiento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFechaNacimiento.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lFechaNacimiento.Location = new System.Drawing.Point(12, 130);
             this.lFechaNacimiento.Name = "lFechaNacimiento";
-            this.lFechaNacimiento.Size = new System.Drawing.Size(108, 13);
+            this.lFechaNacimiento.Size = new System.Drawing.Size(119, 15);
             this.lFechaNacimiento.TabIndex = 3;
             this.lFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
             // lDni
             // 
             this.lDni.AutoSize = true;
-            this.lDni.Location = new System.Drawing.Point(31, 105);
+            this.lDni.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lDni.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lDni.Location = new System.Drawing.Point(12, 103);
             this.lDni.Name = "lDni";
-            this.lDni.Size = new System.Drawing.Size(26, 13);
+            this.lDni.Size = new System.Drawing.Size(27, 15);
             this.lDni.TabIndex = 2;
             this.lDni.Text = "DNI";
             // 
             // lApellido
             // 
             this.lApellido.AutoSize = true;
-            this.lApellido.Location = new System.Drawing.Point(31, 75);
+            this.lApellido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lApellido.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lApellido.Location = new System.Drawing.Point(12, 73);
             this.lApellido.Name = "lApellido";
-            this.lApellido.Size = new System.Drawing.Size(44, 13);
+            this.lApellido.Size = new System.Drawing.Size(51, 15);
             this.lApellido.TabIndex = 1;
             this.lApellido.Text = "Apellido";
             // 
@@ -327,10 +344,10 @@
             this.Rol,
             this.Contraseña});
             this.dgvEmpleados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvEmpleados.Location = new System.Drawing.Point(0, 241);
+            this.dgvEmpleados.Location = new System.Drawing.Point(0, 243);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 51;
-            this.dgvEmpleados.Size = new System.Drawing.Size(811, 151);
+            this.dgvEmpleados.Size = new System.Drawing.Size(811, 149);
             this.dgvEmpleados.TabIndex = 4;
             this.dgvEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellContentClick);
             // 

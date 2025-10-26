@@ -351,6 +351,14 @@ namespace Taller_AppRestaurante
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -98,5 +98,10 @@ namespace RestauranteApp
         {
 
         }
+
+        private void pictureBox1_Usuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
