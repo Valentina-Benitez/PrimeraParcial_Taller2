@@ -52,7 +52,7 @@ namespace PrimeraEntrega
 
                     flowLayoutPanel1.Controls.Clear();
 
-                    // ¡MEJORA! Reemplazamos los Labels por Botones
+                   
                     foreach (DataRow fila in tabla.Rows)
                     {
                         string nombre = fila["nombre"].ToString();
@@ -61,16 +61,18 @@ namespace PrimeraEntrega
 
                         // Panel contenedor tipo fila
                         TableLayoutPanel filaProducto = new TableLayoutPanel();
-                        filaProducto.ColumnCount = 3;
+                        filaProducto.ColumnCount = 4;
                         filaProducto.RowCount = 1;
                         filaProducto.Width = flowLayoutPanel1.Width - 25;
-                        filaProducto.Height = 35;
-                        filaProducto.Margin = new Padding(2);
-                        filaProducto.BackColor = Color.WhiteSmoke;
+                        filaProducto.Height = 40;
+                        filaProducto.Margin = new Padding(3);
+                        filaProducto.BackColor = Color.White;
+                        filaProducto.BorderStyle = BorderStyle.FixedSingle;
 
-                        // Configurar columnas (70% nombre, 20% precio, 10% botón)
-                        filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70));
+                        // Configurar columnas (55% nombre, 20% precio, 15% cantidad, 10% botón)
+                        filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55));
                         filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+                        filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
                         filaProducto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
 
                         // Nombre
@@ -78,29 +80,39 @@ namespace PrimeraEntrega
                         lblNombre.Text = nombre;
                         lblNombre.Dock = DockStyle.Fill;
                         lblNombre.TextAlign = ContentAlignment.MiddleLeft;
-                        lblNombre.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+                        lblNombre.Font = new Font("Segoe UI", 10);
 
                         // Precio
                         Label lblPrecio = new Label();
-                        lblPrecio.Text = $"${precio}";
+                        lblPrecio.Text = precio.ToString("C0");
                         lblPrecio.Dock = DockStyle.Fill;
                         lblPrecio.TextAlign = ContentAlignment.MiddleCenter;
                         lblPrecio.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
+                        // Cantidad NumericUpDown
+                        NumericUpDown nudCantidad = new NumericUpDown();
+                        nudCantidad.Minimum = 1;
+                        nudCantidad.Maximum = 50;
+                        nudCantidad.Value = 1;
+                        nudCantidad.Dock = DockStyle.Fill;
+                        nudCantidad.Tag = idProducto;
+
                         // Botón agregar
                         Button btnAgregar = new Button();
                         btnAgregar.Text = "+";
-                        btnAgregar.Tag = idProducto;
                         btnAgregar.Dock = DockStyle.Fill;
+                        btnAgregar.Tag = new Tuple<int, Label, NumericUpDown>(idProducto, lblPrecio, nudCantidad);
                         btnAgregar.Click += BtnProducto_Click;
 
                         // Agregar controles al panel fila
                         filaProducto.Controls.Add(lblNombre, 0, 0);
                         filaProducto.Controls.Add(lblPrecio, 1, 0);
-                        filaProducto.Controls.Add(btnAgregar, 2, 0);
+                        filaProducto.Controls.Add(nudCantidad, 2, 0);
+                        filaProducto.Controls.Add(btnAgregar, 3, 0);
 
                         // Agregar fila al FlowLayoutPanel
                         flowLayoutPanel1.Controls.Add(filaProducto);
+
                     }
 
                 }
@@ -116,19 +128,34 @@ namespace PrimeraEntrega
         private void BtnProducto_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            int idProducto = (int)btn.Tag;
+            var data = (Tuple<int, Label, NumericUpDown>)btn.Tag;
+
+            int idProducto = data.Item1;
+            decimal precio = decimal.Parse(data.Item2.Text.Replace("$", ""));
+            int cantidad = (int)data.Item3.Value;
+
             string nombre = ((Label)((TableLayoutPanel)btn.Parent).Controls[0]).Text;
-            decimal precio = decimal.Parse(((Label)((TableLayoutPanel)btn.Parent).Controls[1]).Text.Replace("$", ""));
 
-            ProductosSeleccionados.Add(new ProductoSeleccionado
+            // ✅ Si ya existe el producto en la lista, solo actualizamos cantidad
+            var existente = ProductosSeleccionados.FirstOrDefault(p => p.IdProducto == idProducto);
+            if (existente != null)
             {
-                IdProducto = idProducto,
-                Nombre = nombre,
-                Precio = precio
-            });
-            MessageBox.Show($"Producto agregado: {nombre}");
+                existente.Cantidad += cantidad;
+            }
+            else
+            {
+                ProductosSeleccionados.Add(new ProductoSeleccionado
+                {
+                    IdProducto = idProducto,
+                    Nombre = nombre,
+                    Precio = precio, // Precio unitario
+                    Cantidad = cantidad
+                });
+            }
 
+            MessageBox.Show($"{nombre} x{cantidad} agregado ✅");
         }
+
 
 
 

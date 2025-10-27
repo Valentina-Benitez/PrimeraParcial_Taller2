@@ -38,6 +38,8 @@ namespace PrimeraEntrega
                 return;
             }
 
+            CargarDatosPedido();
+
             var listaDeProductos = ObtenerProductosDelPedido(PedidoId);
             // ✅ Calcular el total sumando todos los subtotales
             decimal totalGeneral = listaDeProductos.Sum(x => x.Total);
@@ -76,14 +78,14 @@ namespace PrimeraEntrega
                 {
                     con.Open();
                     string query = @"
-                        SELECT 
-                            p.nombre, 
-                            dp.cantidad, 
-                            (dp.subtotal / NULLIF(dp.cantidad, 0)) AS PrecioUnitario, 
-                            dp.subtotal AS TotalLinea
-                        FROM Detalle_Pedido dp
-                        INNER JOIN Producto p ON dp.id_producto = p.id_producto
-                        WHERE dp.id_pedido = @pedidoId";
+                SELECT 
+                    p.nombre, 
+                    dp.cantidad, 
+                    (dp.subtotal / NULLIF(dp.cantidad, 0)) AS PrecioUnitario, 
+                    dp.subtotal AS TotalLinea
+                FROM Detalle_Pedido dp
+                INNER JOIN Producto p ON dp.id_producto = p.id_producto
+                WHERE dp.id_pedido = @pedidoId";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
@@ -107,12 +109,80 @@ namespace PrimeraEntrega
                 }
             }
 
-            return lista;
+            // ✅ AGRUPAMOS POR PRODUCTO
+            var listaAgrupada = lista
+                .GroupBy(x => x.Nombre)
+                .Select(g => new ProductoDetalle
+                {
+                    Nombre = g.Key,
+                    Cantidad = g.Sum(x => x.Cantidad),
+                    Precio = g.First().Precio, // Mismo precio para todos
+                    Total = g.Sum(x => x.Total)
+                })
+                .ToList();
+
+            return listaAgrupada;
+        }
+
+        private void CargarDatosPedido()
+        {
+            using (SqlConnection con = new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
+            {
+                try
+                {
+                    con.Open();
+
+                    string query = @"
+                SELECT 
+                    p.estado, 
+                    c.dni,
+                    ISNULL(v.tipo_pago, ' --- ') AS tipo_pago
+                FROM Pedido p
+                JOIN Cliente c ON p.id_cliente = c.id_cliente
+                LEFT JOIN Ventas v ON p.id_pedido = v.id_pedido
+                WHERE p.id_pedido = @id";
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@id", PedidoId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        lblEstadoPedido.Text = "Estado: " + reader["estado"].ToString();
+                        lblClientePedido.Text = "Cliente DNI: " + reader["dni"].ToString();
+                        lblTipoPago.Text = "Tipo Pago: " + reader["tipo_pago"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar datos del pedido: " + ex.Message);
+                }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void lblTipoPago_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEstadoPedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblClientePedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

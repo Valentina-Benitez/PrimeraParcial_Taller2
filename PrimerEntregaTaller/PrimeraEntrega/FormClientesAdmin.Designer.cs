@@ -30,14 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dvgClientes = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Colum4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bModificar = new System.Windows.Forms.Button();
@@ -60,9 +52,17 @@
             this.bEliminar = new System.Windows.Forms.Button();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNomCliente = new System.Windows.Forms.Label();
+            this.dvgClientes = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Colum4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,10 +70,262 @@
             this.panel1.Controls.Add(this.dvgClientes);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 450);
+            this.panel1.Size = new System.Drawing.Size(1067, 489);
             this.panel1.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.bCancelar);
+            this.panel2.Controls.Add(this.bModificar);
+            this.panel2.Controls.Add(this.bBuscar);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.dtpFechaNac);
+            this.panel2.Controls.Add(this.txtTipo);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.bGuardar);
+            this.panel2.Controls.Add(this.txtTelefono);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.txtCorreo);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.txtDNI);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txtNombre);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.bEliminar);
+            this.panel2.Controls.Add(this.txtApellido);
+            this.panel2.Controls.Add(this.txtNomCliente);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1067, 321);
+            this.panel2.TabIndex = 10;
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bCancelar.Location = new System.Drawing.Point(952, 43);
+            this.bCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(33, 25);
+            this.bCancelar.TabIndex = 29;
+            this.bCancelar.Text = "X";
+            this.bCancelar.UseVisualStyleBackColor = false;
+            // 
+            // bModificar
+            // 
+            this.bModificar.BackColor = System.Drawing.Color.SkyBlue;
+            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bModificar.Location = new System.Drawing.Point(603, 231);
+            this.bModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(100, 28);
+            this.bModificar.TabIndex = 28;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = false;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.BackColor = System.Drawing.Color.SkyBlue;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(139, 231);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(100, 28);
+            this.bBuscar.TabIndex = 27;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label16.Location = new System.Drawing.Point(15, 11);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(166, 32);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Datos Cliente";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label2.Location = new System.Drawing.Point(0, 289);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(245, 32);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Clientes Registrados";
+            // 
+            // dtpFechaNac
+            // 
+            this.dtpFechaNac.Location = new System.Drawing.Point(181, 167);
+            this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFechaNac.Name = "dtpFechaNac";
+            this.dtpFechaNac.Size = new System.Drawing.Size(212, 22);
+            this.dtpFechaNac.TabIndex = 20;
+            // 
+            // txtTipo
+            // 
+            this.txtTipo.Location = new System.Drawing.Point(667, 128);
+            this.txtTipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(212, 22);
+            this.txtTipo.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label7.Location = new System.Drawing.Point(60, 167);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Fecha-Nac";
+            // 
+            // bGuardar
+            // 
+            this.bGuardar.BackColor = System.Drawing.Color.LightGreen;
+            this.bGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bGuardar.Location = new System.Drawing.Point(363, 231);
+            this.bGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(100, 28);
+            this.bGuardar.TabIndex = 21;
+            this.bGuardar.Text = "Guardar";
+            this.bGuardar.UseVisualStyleBackColor = false;
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(667, 47);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(212, 22);
+            this.txtTelefono.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label5.Location = new System.Drawing.Point(547, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Teléfono";
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(667, 87);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(212, 22);
+            this.txtCorreo.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label10.Location = new System.Drawing.Point(548, 130);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 20);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Tipo";
+            // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(181, 128);
+            this.txtDNI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(212, 22);
+            this.txtDNI.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label6.Location = new System.Drawing.Point(545, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 20);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Correo";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(181, 53);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(212, 22);
+            this.txtNombre.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label4.Location = new System.Drawing.Point(59, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 20);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Apellido";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label9.Location = new System.Drawing.Point(60, 128);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 20);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "DNI";
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bEliminar.Location = new System.Drawing.Point(836, 231);
+            this.bEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(100, 28);
+            this.bEliminar.TabIndex = 22;
+            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.UseVisualStyleBackColor = false;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(181, 90);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(212, 22);
+            this.txtApellido.TabIndex = 25;
+            // 
+            // txtNomCliente
+            // 
+            this.txtNomCliente.AutoSize = true;
+            this.txtNomCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomCliente.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtNomCliente.Location = new System.Drawing.Point(60, 53);
+            this.txtNomCliente.Name = "txtNomCliente";
+            this.txtNomCliente.Size = new System.Drawing.Size(64, 20);
+            this.txtNomCliente.TabIndex = 23;
+            this.txtNomCliente.Text = "Nombre";
             // 
             // dvgClientes
             // 
@@ -96,14 +348,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dvgClientes.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dvgClientes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dvgClientes.Location = new System.Drawing.Point(0, 264);
-            this.dvgClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 323);
+            this.dvgClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersWidth = 51;
             this.dvgClientes.RowTemplate.Height = 24;
-            this.dvgClientes.Size = new System.Drawing.Size(800, 186);
-            this.dvgClientes.TabIndex = 11;
+            this.dvgClientes.Size = new System.Drawing.Size(1064, 166);
+            this.dvgClientes.TabIndex = 12;
             // 
             // Column1
             // 
@@ -148,277 +399,19 @@
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
-            this.panel2.Controls.Add(this.bCancelar);
-            this.panel2.Controls.Add(this.bModificar);
-            this.panel2.Controls.Add(this.bBuscar);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.dtpFechaNac);
-            this.panel2.Controls.Add(this.txtTipo);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.bGuardar);
-            this.panel2.Controls.Add(this.txtTelefono);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.txtCorreo);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.txtDNI);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txtNombre);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.bEliminar);
-            this.panel2.Controls.Add(this.txtApellido);
-            this.panel2.Controls.Add(this.txtNomCliente);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 261);
-            this.panel2.TabIndex = 10;
-            // 
-            // bCancelar
-            // 
-            this.bCancelar.BackColor = System.Drawing.Color.DarkSalmon;
-            this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancelar.Location = new System.Drawing.Point(714, 35);
-            this.bCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(25, 20);
-            this.bCancelar.TabIndex = 29;
-            this.bCancelar.Text = "X";
-            this.bCancelar.UseVisualStyleBackColor = false;
-            // 
-            // bModificar
-            // 
-            this.bModificar.BackColor = System.Drawing.Color.SkyBlue;
-            this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bModificar.Location = new System.Drawing.Point(452, 188);
-            this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(75, 23);
-            this.bModificar.TabIndex = 28;
-            this.bModificar.Text = "Modificar";
-            this.bModificar.UseVisualStyleBackColor = false;
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.BackColor = System.Drawing.Color.SkyBlue;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(104, 188);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(75, 23);
-            this.bBuscar.TabIndex = 27;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label16.Location = new System.Drawing.Point(11, 9);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(129, 25);
-            this.label16.TabIndex = 26;
-            this.label16.Text = "Datos Cliente";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(0, 236);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Clientes Registrados";
-            // 
-            // dtpFechaNac
-            // 
-            this.dtpFechaNac.Location = new System.Drawing.Point(136, 136);
-            this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.Size = new System.Drawing.Size(160, 20);
-            this.dtpFechaNac.TabIndex = 20;
-            // 
-            // txtTipo
-            // 
-            this.txtTipo.Location = new System.Drawing.Point(500, 104);
-            this.txtTipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(160, 20);
-            this.txtTipo.TabIndex = 19;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label7.Location = new System.Drawing.Point(45, 136);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 15);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Fecha-Nac";
-            // 
-            // bGuardar
-            // 
-            this.bGuardar.BackColor = System.Drawing.Color.LightGreen;
-            this.bGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bGuardar.Location = new System.Drawing.Point(272, 188);
-            this.bGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.bGuardar.Name = "bGuardar";
-            this.bGuardar.Size = new System.Drawing.Size(75, 23);
-            this.bGuardar.TabIndex = 21;
-            this.bGuardar.Text = "Guardar";
-            this.bGuardar.UseVisualStyleBackColor = false;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(500, 38);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(160, 20);
-            this.txtTelefono.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label5.Location = new System.Drawing.Point(410, 36);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Teléfono";
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.Location = new System.Drawing.Point(500, 71);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(160, 20);
-            this.txtCorreo.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label10.Location = new System.Drawing.Point(411, 106);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 15);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Tipo";
-            // 
-            // txtDNI
-            // 
-            this.txtDNI.Location = new System.Drawing.Point(136, 104);
-            this.txtDNI.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(160, 20);
-            this.txtDNI.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label6.Location = new System.Drawing.Point(409, 71);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Correo";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(136, 43);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(160, 20);
-            this.txtNombre.TabIndex = 13;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label4.Location = new System.Drawing.Point(44, 73);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 15);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Apellido";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label9.Location = new System.Drawing.Point(45, 104);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(27, 15);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "DNI";
-            // 
-            // bEliminar
-            // 
-            this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
-            this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEliminar.Location = new System.Drawing.Point(627, 188);
-            this.bEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(75, 23);
-            this.bEliminar.TabIndex = 22;
-            this.bEliminar.Text = "Eliminar";
-            this.bEliminar.UseVisualStyleBackColor = false;
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.Location = new System.Drawing.Point(136, 73);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(160, 20);
-            this.txtApellido.TabIndex = 25;
-            // 
-            // txtNomCliente
-            // 
-            this.txtNomCliente.AutoSize = true;
-            this.txtNomCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomCliente.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.txtNomCliente.Location = new System.Drawing.Point(45, 43);
-            this.txtNomCliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtNomCliente.Name = "txtNomCliente";
-            this.txtNomCliente.Size = new System.Drawing.Size(51, 15);
-            this.txtNomCliente.TabIndex = 23;
-            this.txtNomCliente.Text = "Nombre";
-            // 
             // FormClientesAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 500);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormClientesAdmin";
             this.Text = "FormClientesAdmin";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,14 +419,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dvgClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Colum4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bModificar;
@@ -456,5 +441,13 @@
         private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label txtNomCliente;
+        private System.Windows.Forms.DataGridView dvgClientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Colum4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

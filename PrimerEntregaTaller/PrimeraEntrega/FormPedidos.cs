@@ -387,6 +387,12 @@ namespace Taller_AppRestaurante
 
                 try
                 {
+                    // ✅ Obtener id_cliente relacionado
+                    string queryCliente = "SELECT id_cliente FROM Pedido WHERE id_pedido = @id_pedido";
+                    SqlCommand cmdCliente = new SqlCommand(queryCliente, con, tran);
+                    cmdCliente.Parameters.AddWithValue("@id_pedido", pedidoId);
+                    int idCliente = Convert.ToInt32(cmdCliente.ExecuteScalar());
+
                     // ✅ Calcular total real desde DB
                     string queryTotal = @"
                 SELECT SUM(subtotal) 
@@ -397,18 +403,17 @@ namespace Taller_AppRestaurante
                     cmdTotal.Parameters.AddWithValue("@id_pedido", pedidoId);
                     decimal total = Convert.ToDecimal(cmdTotal.ExecuteScalar());
 
-                    // ✅ Insertar en Ventas
+                    // ✅ Insertar en Ventas incluyendo id_cliente
                     string insertVenta = @"
-                INSERT INTO Ventas (id_pedido, fecha, hora, total, tipo_pago, id_usuario)
-                VALUES (@id_pedido, GETDATE(), CONVERT(time, GETDATE()), @total, @pago, @usuario);";
+                INSERT INTO Ventas (id_pedido, fecha, hora, total, tipo_pago, id_usuario, id_cliente)
+                VALUES (@id_pedido, GETDATE(), CONVERT(time, GETDATE()), @total, @pago, @usuario, @id_cliente);";
 
                     SqlCommand cmdVenta = new SqlCommand(insertVenta, con, tran);
                     cmdVenta.Parameters.AddWithValue("@id_pedido", pedidoId);
                     cmdVenta.Parameters.AddWithValue("@total", total);
                     cmdVenta.Parameters.AddWithValue("@pago", tipoPago);
-
-                    // ⚠️ por ahora usuario = 1, después lo cambiamos por el logueado
-                    cmdVenta.Parameters.AddWithValue("@usuario", 1);
+                    cmdVenta.Parameters.AddWithValue("@usuario", 1); // Temporal
+                    cmdVenta.Parameters.AddWithValue("@id_cliente", idCliente);
 
                     cmdVenta.ExecuteNonQuery();
 
@@ -431,6 +436,7 @@ namespace Taller_AppRestaurante
             // ✅ Refrescar grilla
             CargarPedidos();
         }
+
 
     }
 }

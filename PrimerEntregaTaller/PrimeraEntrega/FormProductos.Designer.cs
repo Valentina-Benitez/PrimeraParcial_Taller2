@@ -73,10 +73,11 @@
             this.id_descripcion});
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvProductos.GridColor = System.Drawing.Color.LightBlue;
-            this.dgvProductos.Location = new System.Drawing.Point(0, 274);
+            this.dgvProductos.Location = new System.Drawing.Point(0, 352);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 51;
-            this.dgvProductos.Size = new System.Drawing.Size(823, 152);
+            this.dgvProductos.Size = new System.Drawing.Size(1097, 172);
             this.dgvProductos.TabIndex = 0;
             this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
@@ -121,18 +122,20 @@
             this.lProductos.AutoSize = true;
             this.lProductos.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lProductos.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lProductos.Location = new System.Drawing.Point(643, 165);
+            this.lProductos.Location = new System.Drawing.Point(857, 203);
+            this.lProductos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lProductos.Name = "lProductos";
-            this.lProductos.Size = new System.Drawing.Size(120, 32);
+            this.lProductos.Size = new System.Drawing.Size(153, 41);
             this.lProductos.TabIndex = 1;
             this.lProductos.Text = "Productos";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(639, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(852, 26);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(177, 174);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -142,9 +145,10 @@
             this.lNombreProducto.AutoSize = true;
             this.lNombreProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lNombreProducto.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lNombreProducto.Location = new System.Drawing.Point(66, 51);
+            this.lNombreProducto.Location = new System.Drawing.Point(88, 63);
+            this.lNombreProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lNombreProducto.Name = "lNombreProducto";
-            this.lNombreProducto.Size = new System.Drawing.Size(51, 15);
+            this.lNombreProducto.Size = new System.Drawing.Size(64, 20);
             this.lNombreProducto.TabIndex = 3;
             this.lNombreProducto.Text = "Nombre";
             // 
@@ -153,9 +157,10 @@
             this.lCategoria.AutoSize = true;
             this.lCategoria.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lCategoria.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lCategoria.Location = new System.Drawing.Point(66, 90);
+            this.lCategoria.Location = new System.Drawing.Point(88, 111);
+            this.lCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lCategoria.Name = "lCategoria";
-            this.lCategoria.Size = new System.Drawing.Size(58, 15);
+            this.lCategoria.Size = new System.Drawing.Size(74, 20);
             this.lCategoria.TabIndex = 4;
             this.lCategoria.Text = "Categoria";
             // 
@@ -164,9 +169,10 @@
             this.lDescuento.AutoSize = true;
             this.lDescuento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lDescuento.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lDescuento.Location = new System.Drawing.Point(66, 136);
+            this.lDescuento.Location = new System.Drawing.Point(88, 167);
+            this.lDescuento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lDescuento.Name = "lDescuento";
-            this.lDescuento.Size = new System.Drawing.Size(63, 15);
+            this.lDescuento.Size = new System.Drawing.Size(79, 20);
             this.lDescuento.TabIndex = 5;
             this.lDescuento.Text = "Descuento";
             // 
@@ -175,9 +181,10 @@
             this.lPrecio.AutoSize = true;
             this.lPrecio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lPrecio.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lPrecio.Location = new System.Drawing.Point(257, 51);
+            this.lPrecio.Location = new System.Drawing.Point(343, 63);
+            this.lPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lPrecio.Name = "lPrecio";
-            this.lPrecio.Size = new System.Drawing.Size(40, 15);
+            this.lPrecio.Size = new System.Drawing.Size(50, 20);
             this.lPrecio.TabIndex = 7;
             this.lPrecio.Text = "Precio";
             // 
@@ -186,9 +193,10 @@
             this.lEstado.AutoSize = true;
             this.lEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lEstado.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lEstado.Location = new System.Drawing.Point(257, 90);
+            this.lEstado.Location = new System.Drawing.Point(343, 111);
+            this.lEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lEstado.Name = "lEstado";
-            this.lEstado.Size = new System.Drawing.Size(42, 15);
+            this.lEstado.Size = new System.Drawing.Size(54, 20);
             this.lEstado.TabIndex = 8;
             this.lEstado.Text = "Estado";
             // 
@@ -199,9 +207,10 @@
             this.bAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAgregar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bAgregar.Location = new System.Drawing.Point(190, 199);
+            this.bAgregar.Location = new System.Drawing.Point(253, 245);
+            this.bAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bAgregar.Name = "bAgregar";
-            this.bAgregar.Size = new System.Drawing.Size(75, 23);
+            this.bAgregar.Size = new System.Drawing.Size(100, 28);
             this.bAgregar.TabIndex = 10;
             this.bAgregar.Text = "Guardar";
             this.bAgregar.UseVisualStyleBackColor = false;
@@ -211,9 +220,10 @@
             this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEliminar.Location = new System.Drawing.Point(478, 199);
+            this.bEliminar.Location = new System.Drawing.Point(637, 245);
+            this.bEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(75, 23);
+            this.bEliminar.Size = new System.Drawing.Size(100, 28);
             this.bEliminar.TabIndex = 11;
             this.bEliminar.Text = "Eliminar";
             this.bEliminar.UseVisualStyleBackColor = false;
@@ -221,30 +231,34 @@
             // 
             // textNombreP
             // 
-            this.textNombreP.Location = new System.Drawing.Point(133, 44);
+            this.textNombreP.Location = new System.Drawing.Point(177, 54);
+            this.textNombreP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textNombreP.Name = "textNombreP";
-            this.textNombreP.Size = new System.Drawing.Size(100, 20);
+            this.textNombreP.Size = new System.Drawing.Size(132, 22);
             this.textNombreP.TabIndex = 12;
             // 
             // textCategoriaP
             // 
-            this.textCategoriaP.Location = new System.Drawing.Point(133, 83);
+            this.textCategoriaP.Location = new System.Drawing.Point(177, 102);
+            this.textCategoriaP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textCategoriaP.Name = "textCategoriaP";
-            this.textCategoriaP.Size = new System.Drawing.Size(100, 20);
+            this.textCategoriaP.Size = new System.Drawing.Size(132, 22);
             this.textCategoriaP.TabIndex = 13;
             // 
             // textDescuentoP
             // 
-            this.textDescuentoP.Location = new System.Drawing.Point(133, 129);
+            this.textDescuentoP.Location = new System.Drawing.Point(177, 159);
+            this.textDescuentoP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textDescuentoP.Name = "textDescuentoP";
-            this.textDescuentoP.Size = new System.Drawing.Size(100, 20);
+            this.textDescuentoP.Size = new System.Drawing.Size(132, 22);
             this.textDescuentoP.TabIndex = 14;
             // 
             // textPrecioP
             // 
-            this.textPrecioP.Location = new System.Drawing.Point(332, 48);
+            this.textPrecioP.Location = new System.Drawing.Point(443, 59);
+            this.textPrecioP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textPrecioP.Name = "textPrecioP";
-            this.textPrecioP.Size = new System.Drawing.Size(100, 20);
+            this.textPrecioP.Size = new System.Drawing.Size(132, 22);
             this.textPrecioP.TabIndex = 16;
             // 
             // bModificar
@@ -252,9 +266,10 @@
             this.bModificar.BackColor = System.Drawing.Color.SkyBlue;
             this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bModificar.Location = new System.Drawing.Point(332, 199);
+            this.bModificar.Location = new System.Drawing.Point(443, 245);
+            this.bModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(75, 23);
+            this.bModificar.Size = new System.Drawing.Size(100, 28);
             this.bModificar.TabIndex = 18;
             this.bModificar.Text = "Modificar";
             this.bModificar.UseVisualStyleBackColor = false;
@@ -264,9 +279,10 @@
             this.bBuscar.BackColor = System.Drawing.Color.SkyBlue;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bBuscar.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(54, 199);
+            this.bBuscar.Location = new System.Drawing.Point(72, 245);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(75, 23);
+            this.bBuscar.Size = new System.Drawing.Size(100, 28);
             this.bBuscar.TabIndex = 19;
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = false;
@@ -276,17 +292,19 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(257, 136);
+            this.label1.Location = new System.Drawing.Point(343, 167);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 15);
+            this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 20;
             this.label1.Text = "Descripcion";
             // 
             // textDescripcion
             // 
-            this.textDescripcion.Location = new System.Drawing.Point(332, 133);
+            this.textDescripcion.Location = new System.Drawing.Point(443, 164);
+            this.textDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textDescripcion.Name = "textDescripcion";
-            this.textDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.textDescripcion.Size = new System.Drawing.Size(132, 22);
             this.textDescripcion.TabIndex = 21;
             // 
             // bCancelar
@@ -294,9 +312,10 @@
             this.bCancelar.BackColor = System.Drawing.Color.DarkSalmon;
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancelar.Location = new System.Drawing.Point(490, 49);
+            this.bCancelar.Location = new System.Drawing.Point(653, 60);
+            this.bCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(25, 20);
+            this.bCancelar.Size = new System.Drawing.Size(33, 25);
             this.bCancelar.TabIndex = 22;
             this.bCancelar.Text = "X";
             this.bCancelar.UseVisualStyleBackColor = false;
@@ -304,17 +323,18 @@
             // cbEstadoP
             // 
             this.cbEstadoP.FormattingEnabled = true;
-            this.cbEstadoP.Location = new System.Drawing.Point(332, 90);
+            this.cbEstadoP.Location = new System.Drawing.Point(443, 111);
+            this.cbEstadoP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbEstadoP.Name = "cbEstadoP";
-            this.cbEstadoP.Size = new System.Drawing.Size(100, 21);
+            this.cbEstadoP.Size = new System.Drawing.Size(132, 24);
             this.cbEstadoP.TabIndex = 23;
             // 
             // FormProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(823, 426);
+            this.ClientSize = new System.Drawing.Size(1097, 524);
             this.Controls.Add(this.cbEstadoP);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.textDescripcion);
@@ -336,6 +356,7 @@
             this.Controls.Add(this.lProductos);
             this.Controls.Add(this.dgvProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormProductos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.FormProductos_Load);

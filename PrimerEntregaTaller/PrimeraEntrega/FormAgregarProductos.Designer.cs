@@ -35,8 +35,8 @@ namespace PrimeraEntrega
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAgregarProductos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtBuscaP = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.txtBuscaP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
@@ -53,7 +53,7 @@ namespace PrimeraEntrega
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 100);
+            this.panel1.Size = new System.Drawing.Size(395, 100);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -67,14 +67,6 @@ namespace PrimeraEntrega
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
-            // txtBuscaP
-            // 
-            this.txtBuscaP.Location = new System.Drawing.Point(73, 72);
-            this.txtBuscaP.Name = "txtBuscaP";
-            this.txtBuscaP.Size = new System.Drawing.Size(233, 22);
-            this.txtBuscaP.TabIndex = 2;
-            this.txtBuscaP.TextChanged += new System.EventHandler(this.txtBuscaP_TextChanged_1);
-            // 
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.SpringGreen;
@@ -85,6 +77,14 @@ namespace PrimeraEntrega
             this.btnAceptar.TabIndex = 1;
             this.btnAceptar.Text = "Agregar";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            // 
+            // txtBuscaP
+            // 
+            this.txtBuscaP.Location = new System.Drawing.Point(73, 72);
+            this.txtBuscaP.Name = "txtBuscaP";
+            this.txtBuscaP.Size = new System.Drawing.Size(233, 22);
+            this.txtBuscaP.TabIndex = 2;
+            this.txtBuscaP.TextChanged += new System.EventHandler(this.txtBuscaP_TextChanged_1);
             // 
             // label1
             // 
@@ -102,13 +102,13 @@ namespace PrimeraEntrega
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 100);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(341, 245);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(395, 245);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // FormAgregarProductos
             // 
-            this.ClientSize = new System.Drawing.Size(341, 345);
+            this.ClientSize = new System.Drawing.Size(395, 345);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
