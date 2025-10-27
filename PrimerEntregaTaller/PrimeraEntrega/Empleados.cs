@@ -18,7 +18,7 @@ namespace gerente
 {
     public partial class Empleados : Form
     {
-        private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
         // Roles válidos
         private readonly string[] RolesValidos = new[] { "Empleado", "Gerente", "Administrador" };
 

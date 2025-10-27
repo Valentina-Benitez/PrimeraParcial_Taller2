@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PrimeraEntrega
 {
@@ -12,90 +13,111 @@ namespace PrimeraEntrega
         public ReporteProductos()
         {
             InitializeComponent();
-            this.Load += ReporteProductos_Load;
-            // Asegurar que el botón Filtrar invoque al método correcto
-            this.button1.Click += btnFiltrar_Click;
+            ConfigurarGrafico();
         }
 
-        private void ReporteProductos_Load(object sender, EventArgs e)
+        private void ConfigurarGrafico()
         {
-            CargarProductos();
+            chart1.Series.Clear();
+            chart1.Series.Add("Ventas");
+            chart1.Series["Ventas"].ChartType = SeriesChartType.Column;
+            chart1.Series["Ventas"].IsValueShownAsLabel = true;
+
+            chart1.ChartAreas.Clear();
+            ChartArea area = new ChartArea();
+            area.AxisX.Title = "Producto";
+            area.AxisY.Title = "Cantidad Vendida";
+            area.AxisX.Interval = 1;
+            chart1.ChartAreas.Add(area);
         }
 
-        private void CargarProductos(string filtro = "")
+        private void btnFiltrar_Click(object sender, EventArgs e) => CargarDatos("TODOS");
+        private void btnMasVendido_Click(object sender, EventArgs e) => CargarDatos("MAS_VENDIDO");
+        private void btnMenosVendido_Click(object sender, EventArgs e) => CargarDatos("MENOS_VENDIDO");
+        private void btnAltas_Click(object sender, EventArgs e) => CargarDatos("ALTAS");
+        private void btnBajas_Click(object sender, EventArgs e) => CargarDatos("BAJAS");
+
+        private void CargarDatos(string filtro)
         {
+            DateTime fechaDesde = dateTimePickerDesde.Value.Date;
+            DateTime fechaHasta = dateTimePickerHasta.Value.Date.AddDays(1).AddSeconds(-1);
+
+            string query = @"
+                SELECT 
+                    P.id_producto AS IdProducto,
+                    P.Nombre,
+                    SUM(DP.cantidad) AS nro_ventas
+                FROM Detalle_Pedido DP
+                INNER JOIN Pedido PE ON DP.id_pedido = PE.id_pedido
+                INNER JOIN Producto P ON DP.id_producto = P.id_producto
+                WHERE PE.fecha BETWEEN @desde AND @hasta";
+
+            // Agregar filtros específicos
+            if (filtro == "ALTAS")
+                query += " AND P.Estado = 'Alta'";
+            else if (filtro == "BAJAS")
+                query += " AND P.Estado = 'Baja'";
+
+            query += " GROUP BY P.id_producto, P.Nombre";
+
+            // Ordenar según el filtro
+            switch (filtro)
+            {
+                case "MAS_VENDIDO":
+                case "ALTAS":
+                case "BAJAS":
+                    query += " ORDER BY SUM(DP.cantidad) DESC";
+                    break;
+                case "MENOS_VENDIDO":
+                    query += " ORDER BY SUM(DP.cantidad) ASC";
+                    break;
+                default:
+                    query += " ORDER BY P.Nombre ASC";
+                    break;
+            }
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    string query = @"
-                        SELECT 
-                            p.id_producto,
-                            p.nombre AS nombre,
-                            COUNT(*) AS nro_ventas
-                        FROM ventas v
-                        INNER JOIN producto p ON v.id_producto = p.id_producto
-                        WHERE (@desde IS NULL OR v.fecha >= @desde)
-                          AND (@hasta IS NULL OR v.fecha <= @hasta)
-                        GROUP BY p.id_producto, p.nombre_producto " + filtro;
+                    cmd.Parameters.AddWithValue("@desde", fechaDesde);
+                    cmd.Parameters.AddWithValue("@hasta", fechaHasta);
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        // Si quieres posibilidad de "sin filtro" cambia la lógica de estos parámetros.
-                        object desde = dateTimePicker1 != null ? (object)dateTimePicker1.Value.Date : DBNull.Value;
-                        object hasta = dateTimePicker2 != null ? (object)dateTimePicker2.Value.Date : DBNull.Value;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                        cmd.Parameters.AddWithValue("@desde", desde ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@hasta", hasta ?? DBNull.Value);
+                    dgvProductos.DataSource = dt;
 
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-                            da.Fill(dt);
-                            dataGridView1.DataSource = dt;
-                        }
-                    }
+                    if (dgvProductos.Columns.Contains("IdProducto"))
+                        dgvProductos.Columns["IdProducto"].HeaderText = "ID Producto";
+                    if (dgvProductos.Columns.Contains("Nombre"))
+                        dgvProductos.Columns["Nombre"].HeaderText = "Nombre del Producto";
+                    if (dgvProductos.Columns.Contains("nro_ventas"))
+                        dgvProductos.Columns["nro_ventas"].HeaderText = "Cantidad Vendida";
+
+                    ActualizarGrafico(dt);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar reporte: " + ex.Message);
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        private void ActualizarGrafico(DataTable dt)
         {
-            // Filtra por fechas
-            CargarProductos();
-        }
+            chart1.Series["Ventas"].Points.Clear();
 
-        private void masVendido_Click(object sender, EventArgs e)
-        {
-            // Ordena descendente por ventas
-            CargarProductos("ORDER BY nro_ventas DESC");
-        }
+            if (dt.Rows.Count == 0) return;
 
-        private void menosVendido_Click(object sender, EventArgs e)
-        {
-            // Ordena ascendente por ventas
-            CargarProductos("ORDER BY nro_ventas ASC");
-        }
-
-        private void altaProductos_Click(object sender, EventArgs e)
-        {
-            // Ejemplo: productos con más de 100 ventas
-            CargarProductos("HAVING COUNT(*) >= 100 ORDER BY nro_ventas DESC");
-        }
-
-        private void bajaProductos_Click(object sender, EventArgs e)
-        {
-            // Ejemplo: productos con menos de 50 ventas
-            CargarProductos("HAVING COUNT(*) < 50 ORDER BY nro_ventas ASC");
-        }
-
-        // Método de Paint ya existente en el diseñador
-        private void panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
+            foreach (DataRow row in dt.Rows)
+            {
+                string nombre = row["Nombre"].ToString();
+                int cantidad = Convert.ToInt32(row["nro_ventas"]);
+                chart1.Series["Ventas"].Points.AddXY(nombre, cantidad);
+            }
         }
     }
 }
