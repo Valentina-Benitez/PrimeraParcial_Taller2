@@ -21,7 +21,8 @@ namespace PrimeraEntrega
 
         private SqlConnection ObtenerConexion()
         {
-            return new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True");
+            return new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True");
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

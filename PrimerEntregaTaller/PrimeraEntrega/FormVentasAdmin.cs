@@ -70,7 +70,38 @@ namespace PrimeraEntrega
         
         private void txtPedido_TextChanged(object sender, EventArgs e) { }
         private void txtMesa_TextChanged(object sender, EventArgs e) { }
-        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.RowIndex < 0) return;
+
+            string estadoActual = dgvVentas.Rows[e.RowIndex].Cells["TipoPago"].Value.ToString().ToLower();
+            int pedidoId = Convert.ToInt32(dgvVentas.Rows[e.RowIndex].Cells["nroPedido"].Value);
+
+            if (dgvVentas.Columns[e.ColumnIndex].Name == "VerFactura")
+            {
+                object cellValue = dgvVentas.Rows[e.RowIndex].Cells["nroPedido"].Value;
+
+                //MessageBox.Show($"Valor en celda: {(cellValue ?? "null")}");
+
+                int PedidoId = 0;
+                if (cellValue != null && cellValue != DBNull.Value)
+                {
+                    PedidoId = Convert.ToInt32(cellValue);
+                }
+
+                if (PedidoId > 0)
+                {
+                    FormDetallePedido formDetalle = new FormDetallePedido();
+                    formDetalle.PedidoId = PedidoId;
+                    formDetalle.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo obtener el ID del pedido.");
+                }
+
+            }
+        }
         private void txtVenta_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)) e.Handled = true; }
         private void txtMesa_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)) e.Handled = true; }
         private void txtPedido_KeyDown(object sender, KeyEventArgs e) { }
