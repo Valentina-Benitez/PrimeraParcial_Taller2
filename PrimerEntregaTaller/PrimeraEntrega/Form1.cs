@@ -86,17 +86,22 @@ namespace PrimeraEntrega
                 {
                     conexion.Open();
 
-                    string query = "SELECT rol FROM Usuario WHERE dni = @dni AND contraseña = @pass";
+                    // 🔹 Traemos todos los datos del usuario
+                    string query = "SELECT id_usuario, nombre, apellido, rol FROM Usuario WHERE dni = @dni AND contraseña = @pass";
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("@dni", dni);
                     cmd.Parameters.AddWithValue("@pass", pass);
 
-                    object result = cmd.ExecuteScalar();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (result != null) // encontró usuario
+                    if (reader.Read()) // encontró usuario
                     {
-                        string rol = result.ToString();
+                        // ✅ Guardamos sesión global
+                        SesionActual.IdUsuario = Convert.ToInt32(reader["id_usuario"]);
+                        SesionActual.NombreUsuario = reader["nombre"].ToString() + " " + reader["apellido"].ToString();
+                        SesionActual.Rol = reader["rol"].ToString();
 
+                        string rol = SesionActual.Rol;
                         Form siguienteForm = null;
 
                         switch (rol.ToLower())
@@ -115,8 +120,7 @@ namespace PrimeraEntrega
                                 return;
                         }
 
-                        // 👇 esto es lo importante
-                        // cuando se cierre el form de rol, volver a mostrar el login
+                        // 👇 Cuando se cierre el form de rol, volver al login
                         siguienteForm.FormClosed += (s, args) => this.Show();
 
                         siguienteForm.Show();

@@ -54,6 +54,7 @@
     <Compile Include="BackUp.Designer.cs">
       <DependentUpon>BackUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="FormSeleccionarPago.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -377,7 +377,6 @@ namespace Taller_AppRestaurante
             }
         }
 
-
         private void RegistrarVenta(int pedidoId, string tipoPago)
         {
             using (SqlConnection con = ObtenerConexion())
@@ -412,7 +411,7 @@ namespace Taller_AppRestaurante
                     cmdVenta.Parameters.AddWithValue("@id_pedido", pedidoId);
                     cmdVenta.Parameters.AddWithValue("@total", total);
                     cmdVenta.Parameters.AddWithValue("@pago", tipoPago);
-                    cmdVenta.Parameters.AddWithValue("@usuario", 1); // Temporal
+                    cmdVenta.Parameters.AddWithValue("@usuario", SesionActual.IdUsuario);
                     cmdVenta.Parameters.AddWithValue("@id_cliente", idCliente);
 
                     cmdVenta.ExecuteNonQuery();

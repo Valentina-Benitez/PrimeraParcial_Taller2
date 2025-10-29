@@ -1,5 +1,4 @@
-﻿
-using PrimeraEntrega;
+﻿using PrimeraEntrega;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,29 +60,27 @@ namespace gerente
 
         }
 
+        // Modificar el handler bProductos_Click para llamar al nuevo método
         private void bProductos_Click(object sender, EventArgs e)
         {
-            // se asegura de que no haya otros formularios abiertos
             panelContenedor.Controls.Clear();
 
-            // Crea una nueva instancia del formulario que voy a mostrar
             ReporteProductos formSecundario = new ReporteProductos();
 
             // Configura el formulario para que se comporte como un control
             formSecundario.TopLevel = false;
             formSecundario.FormBorderStyle = FormBorderStyle.None;
-            formSecundario.Dock = DockStyle.Fill; 
+            formSecundario.Dock = DockStyle.Fill;
 
             // Agrega el formulario al panel
             panelContenedor.Controls.Add(formSecundario);
 
+            // —> LLAMADA ADICIONAL: forzar ajuste de layout desde el hijo
+            formSecundario.AjustarLayoutAlHost();
+
             // Muestra el formulario
             formSecundario.Show();
-
         }
-
-       
-        
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {

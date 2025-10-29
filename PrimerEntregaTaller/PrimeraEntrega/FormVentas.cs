@@ -39,8 +39,23 @@ namespace PrimeraEntrega
         {
             // Evitar que se autogenere si ya tenés columnas diseñadas en el diseñador
             dgvVentas.AutoGenerateColumns = false;
+
             CargarVentas();
-           // dgvVentas.Columns["Total"].DefaultCellStyle.Format = "C2";
+
+            // Aplicar estilo al botón existente "VerFactura" (columna definida en el diseñador)
+            if (dgvVentas.Columns.Contains("VerFactura"))
+            {
+                var btnCol = dgvVentas.Columns["VerFactura"] as DataGridViewButtonColumn;
+                if (btnCol != null)
+                {
+                    btnCol.UseColumnTextForButtonValue = true;
+                    btnCol.Text = "Ver";
+                    btnCol.DefaultCellStyle.BackColor = Color.PowderBlue;
+                    btnCol.DefaultCellStyle.ForeColor = Color.Black;
+                    btnCol.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 150, 255);
+                    btnCol.FlatStyle = FlatStyle.Flat;
+                }
+            }
         }
 
         private void CargarVentas()
@@ -78,6 +93,9 @@ namespace PrimeraEntrega
             {
                 MessageBox.Show("Error al cargar ventas: " + ex.Message);
             }
+
+        
+
         }
 
         private void CargarGraficoVentas()
@@ -162,7 +180,125 @@ namespace PrimeraEntrega
                 }
 
             }
+
         }
+        private void FiltrarPorVendedor()
+        {
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+
+                    string query = @"
+                SELECT 
+                    u.nombre + ' ' + u.apellido AS Vendedor,
+                    COUNT(v.id_venta) AS CantidadVentas
+                FROM Ventas v
+                LEFT JOIN Usuario u ON v.id_usuario = u.id_usuario
+                WHERE v.fecha BETWEEN @desde AND @hasta
+                GROUP BY u.nombre, u.apellido
+                ORDER BY CantidadVentas DESC;";
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@desde", dtpDesde.Value.Date);
+                    cmd.Parameters.AddWithValue("@hasta", dtpHasta.Value.Date.AddDays(1));
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                    // 🔹 Limpiar gráfico antes de cargar
+                    chartVentas.Series.Clear();
+                    Series serie = new Series("Ventas por Vendedor");
+                    serie.ChartType = SeriesChartType.Column;
+                    serie.IsValueShownAsLabel = true;
+
+                    Random rand = new Random();
+
+                    while (rd.Read())
+                    {
+                        string vendedor = rd["Vendedor"].ToString();
+                        int cantidad = Convert.ToInt32(rd["CantidadVentas"]);
+
+                        int r = rand.Next(50, 255);
+                        int g = rand.Next(50, 255);
+                        int b = rand.Next(50, 255);
+
+                        int pointIndex = serie.Points.AddXY(vendedor, cantidad);
+                        serie.Points[pointIndex].Color = Color.FromArgb(r, g, b);
+                    }
+
+                    chartVentas.Series.Add(serie);
+                    chartVentas.ChartAreas[0].AxisX.Interval = 1;
+                    chartVentas.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                    chartVentas.ChartAreas[0].BackColor = Color.White;
+                    chartVentas.BackColor = Color.White;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar por vendedor: " + ex.Message);
+            }
+        }
+
+        private void FiltrarPorCliente()
+        {
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+
+                    string query = @"
+                SELECT 
+                    c.nombre + ' ' + c.apellido AS Cliente,
+                    COUNT(v.id_venta) AS CantidadVentas
+                FROM Ventas v
+                INNER JOIN Pedido p ON v.id_pedido = p.id_pedido
+                INNER JOIN Cliente c ON p.id_cliente = c.id_cliente
+                WHERE v.fecha BETWEEN @desde AND @hasta
+                GROUP BY c.nombre, c.apellido
+                ORDER BY CantidadVentas DESC;";
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@desde", dtpDesde.Value.Date);
+                    cmd.Parameters.AddWithValue("@hasta", dtpHasta.Value.Date.AddDays(1));
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                    // 🔹 Limpiar gráfico y configurar serie
+                    chartVentas.Series.Clear();
+                    Series serie = new Series("Ventas por Cliente");
+                    serie.ChartType = SeriesChartType.Column;
+                    serie.IsValueShownAsLabel = true;
+
+                    Random rand = new Random();
+
+                    while (rd.Read())
+                    {
+                        string cliente = rd["Cliente"].ToString();
+                        int cantidad = Convert.ToInt32(rd["CantidadVentas"]);
+
+                        int r = rand.Next(80, 220);
+                        int g = rand.Next(80, 220);
+                        int b = rand.Next(80, 220);
+
+                        int index = serie.Points.AddXY(cliente, cantidad);
+                        serie.Points[index].Color = Color.FromArgb(r, g, b);
+                    }
+
+                    chartVentas.Series.Add(serie);
+                    chartVentas.ChartAreas[0].AxisX.Interval = 1;
+                    chartVentas.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                    chartVentas.ChartAreas[0].BackColor = Color.White;
+                    chartVentas.BackColor = Color.White;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar por cliente: " + ex.Message);
+            }
+        }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -179,6 +315,16 @@ namespace PrimeraEntrega
             CargarVentas();
             CargarGraficoVentas();
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FiltrarPorVendedor();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FiltrarPorCliente();
         }
     }
 }
