@@ -299,6 +299,75 @@ namespace PrimeraEntrega
             }
         }
 
+        private void CargarGraficoPorMetodoPago()
+        {
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+
+                    string query = @"
+                SELECT 
+                    v.tipo_pago AS MetodoPago,
+                    SUM(v.total) AS Total
+                FROM Ventas v
+                WHERE v.fecha BETWEEN @desde AND @hasta
+                GROUP BY v.tipo_pago
+                ORDER BY Total DESC;";
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@desde", dtpDesde.Value.Date);
+                    cmd.Parameters.AddWithValue("@hasta", dtpHasta.Value.Date);
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                    chartVentas.Series.Clear();
+                    chartVentas.Series.Add("Método de Pago");
+
+                    var series = chartVentas.Series["Método de Pago"];
+                    series.ChartType = SeriesChartType.Column;
+                    series.IsValueShownAsLabel = true;
+
+                    // 🎨 Paleta de colores para cada método de pago
+                    Dictionary<string, Color> colores = new Dictionary<string, Color>()
+            {
+                { "Efectivo", Color.FromArgb(46, 204, 113) },      // Verde
+                { "Tarjeta", Color.FromArgb(52, 152, 219) },       // Azul
+                { "MercadoPago", Color.FromArgb(241, 196, 15) },   // Amarillo
+                { "Transferencia", Color.FromArgb(155, 89, 182) }, // Violeta
+                { "Otro", Color.FromArgb(230, 126, 34) }           // Naranja
+            };
+
+                    while (rd.Read())
+                    {
+                        string metodo = rd["MetodoPago"].ToString();
+                        decimal total = Convert.ToDecimal(rd["Total"]);
+
+                        int pointIndex = series.Points.AddXY(metodo, total);
+
+                        // Asigna color si está definido
+                        if (colores.ContainsKey(metodo))
+                            series.Points[pointIndex].Color = colores[metodo];
+                        else
+                            series.Points[pointIndex].Color = Color.FromArgb(149, 165, 166); // Gris por defecto
+                    }
+                }
+
+                
+                chartVentas.ChartAreas[0].AxisX.Interval = 1;
+                chartVentas.ChartAreas[0].AxisX.Title = "Método de Pago";
+                chartVentas.ChartAreas[0].AxisY.Title = "Total Vendido ($)";
+                chartVentas.ChartAreas[0].BackColor = Color.White;
+                chartVentas.BackColor = Color.White;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar gráfico por método de pago: " + ex.Message);
+            }
+        }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -307,7 +376,7 @@ namespace PrimeraEntrega
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            CargarGraficoPorMetodoPago();
         }
 
         private void button1_Click(object sender, EventArgs e)

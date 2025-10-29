@@ -75,8 +75,7 @@ namespace gerente
             // Agrega el formulario al panel
             panelContenedor.Controls.Add(formSecundario);
 
-            // —> LLAMADA ADICIONAL: forzar ajuste de layout desde el hijo
-            formSecundario.AjustarLayoutAlHost();
+           
 
             // Muestra el formulario
             formSecundario.Show();

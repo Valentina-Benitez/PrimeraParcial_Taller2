@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
@@ -63,7 +62,6 @@
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.chartVentas);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.dgvVentas);
@@ -107,17 +105,17 @@
             // 
             // chartVentas
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartVentas.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartVentas.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chartVentas.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartVentas.Legends.Add(legend3);
             this.chartVentas.Location = new System.Drawing.Point(719, 26);
             this.chartVentas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartVentas.Name = "chartVentas";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartVentas.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartVentas.Series.Add(series3);
             this.chartVentas.Size = new System.Drawing.Size(692, 336);
             this.chartVentas.TabIndex = 6;
             this.chartVentas.Text = "chart1";
@@ -135,19 +133,6 @@
             this.button1.Text = "Filtrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(53, 205);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 28);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Turno/Hora";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
@@ -168,7 +153,7 @@
             this.button3.BackColor = System.Drawing.Color.LightBlue;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(53, 261);
+            this.button3.Location = new System.Drawing.Point(53, 236);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(144, 28);
@@ -314,7 +299,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroVenta;
