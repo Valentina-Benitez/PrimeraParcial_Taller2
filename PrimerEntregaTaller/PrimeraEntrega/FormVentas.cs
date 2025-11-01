@@ -93,9 +93,6 @@ namespace PrimeraEntrega
             {
                 MessageBox.Show("Error al cargar ventas: " + ex.Message);
             }
-
-        
-
         }
 
         private void CargarGraficoVentas()
@@ -108,43 +105,79 @@ namespace PrimeraEntrega
 
                     string query = @"
             SELECT 
-                FORMAT(v.fecha, 'yyyy-MM') AS Periodo,
                 DATENAME(MONTH, v.fecha) AS Mes,
                 SUM(v.total) AS Total
             FROM Ventas v
             WHERE v.fecha BETWEEN @desde AND @hasta
-            GROUP BY FORMAT(v.fecha, 'yyyy-MM'), DATENAME(MONTH, v.fecha), MONTH(v.fecha)
-            ORDER BY FORMAT(v.fecha, 'yyyy-MM');";
+            GROUP BY DATENAME(MONTH, v.fecha), MONTH(v.fecha)
+            ORDER BY MONTH(v.fecha);";
 
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@desde", dtpDesde.Value.Date);
                     cmd.Parameters.AddWithValue("@hasta", dtpHasta.Value.Date);
 
-                    SqlDataReader rd = cmd.ExecuteReader();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                    chartVentas.Series.Clear();
-                    chartVentas.Series.Add("Total Ventas");
-
-                    while (rd.Read())
+                    if (dt.Rows.Count == 0)
                     {
-                        chartVentas.Series["Total Ventas"].Points
-                            .AddXY(rd["Mes"].ToString(), Convert.ToDecimal(rd["Total"]));
+                        MessageBox.Show("No hay ventas registradas en el rango de fechas seleccionado.");
+                        chartVentas.Series.Clear();
+                        return;
                     }
+
+                    // 🔹 Limpiar títulos y leyendas y crear la leyenda nueva primero
+                    chartVentas.Titles.Clear();
+                    chartVentas.Legends.Clear();
+                    var legend = new Legend("Leyenda");
+                    legend.Docking = Docking.Bottom;
+                    legend.Alignment = StringAlignment.Center;
+                    legend.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+                    chartVentas.Legends.Add(legend);
+
+                    // 🔹 Limpiar series y agregar serie asignándole explícitamente la leyenda existente
+                    chartVentas.Series.Clear();
+                    var series = new Series("Ventas por Mes");
+                    series.Legend = legend.Name; // <--- asignación explícita de la leyenda
+                    chartVentas.Series.Add(series);
+
+                    // 🔹 Configurar tipo de gráfico: TORTA
+                    series.ChartType = SeriesChartType.Pie;
+                    series["PieLabelStyle"] = "Outside"; // Etiquetas fuera de la torta
+                    series["PieDrawingStyle"] = "SoftEdge"; // Bordes suaves
+                    series.IsValueShownAsLabel = true;
+                    series.LabelForeColor = Color.Black;
+
+                    // 🔹 Mostrar porcentaje
+                    series.Label = "#VALX (#PERCENT{P0})";
+
+                    // 🔹 Paleta de colores llamativa
+                    chartVentas.Palette = ChartColorPalette.BrightPastel;
+
+                    // 🔹 Cargar datos
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string mes = row["Mes"].ToString();
+                        decimal total = Convert.ToDecimal(row["Total"]);
+                        series.Points.AddXY(mes, total);
+                    }
+
+                    // 🔹 Configuración visual
+                    chartVentas.ChartAreas[0].BackColor = Color.White;
+                    chartVentas.BackColor = Color.White;
+
+
+                    // 🔹 Título principal
+                    chartVentas.Titles.Clear();
+                    chartVentas.Titles.Add("Distribución de Ventas por Mes");
+                    chartVentas.Titles[0].Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                    chartVentas.Titles[0].ForeColor = Color.FromArgb(52, 73, 94);
                 }
-
-                // Estilo visual
-                var series = chartVentas.Series["Total Ventas"];
-                series.ChartType = SeriesChartType.Column;
-                series.Color = Color.FromArgb(0, 122, 204);
-                series.IsValueShownAsLabel = true;
-
-                chartVentas.ChartAreas[0].AxisX.Interval = 1;
-                chartVentas.ChartAreas[0].BackColor = Color.White;
-                chartVentas.BackColor = Color.White;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar gráfico: " + ex.Message);
+                MessageBox.Show("Error al generar el gráfico de torta: " + ex.Message);
             }
         }
 
@@ -227,6 +260,16 @@ namespace PrimeraEntrega
                         serie.Points[pointIndex].Color = Color.FromArgb(r, g, b);
                     }
 
+                    // Asegurarse de que exista una leyenda y, si existe, asignarla
+                    if (chartVentas.Legends.Count == 0)
+                    {
+                        var l = new Legend("Leyenda");
+                        l.Docking = Docking.Bottom;
+                        l.Alignment = StringAlignment.Center;
+                        chartVentas.Legends.Add(l);
+                    }
+                    serie.Legend = chartVentas.Legends[0].Name;
+
                     chartVentas.Series.Add(serie);
                     chartVentas.ChartAreas[0].AxisX.Interval = 1;
                     chartVentas.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
@@ -285,6 +328,15 @@ namespace PrimeraEntrega
                         int index = serie.Points.AddXY(cliente, cantidad);
                         serie.Points[index].Color = Color.FromArgb(r, g, b);
                     }
+
+                    if (chartVentas.Legends.Count == 0)
+                    {
+                        var l = new Legend("Leyenda");
+                        l.Docking = Docking.Bottom;
+                        l.Alignment = StringAlignment.Center;
+                        chartVentas.Legends.Add(l);
+                    }
+                    serie.Legend = chartVentas.Legends[0].Name;
 
                     chartVentas.Series.Add(serie);
                     chartVentas.ChartAreas[0].AxisX.Interval = 1;
@@ -354,7 +406,15 @@ namespace PrimeraEntrega
                     }
                 }
 
-                
+                if (chartVentas.Legends.Count == 0)
+                {
+                    var l = new Legend("Leyenda");
+                    l.Docking = Docking.Bottom;
+                    l.Alignment = StringAlignment.Center;
+                    chartVentas.Legends.Add(l);
+                }
+                chartVentas.Series["Método de Pago"].Legend = chartVentas.Legends[0].Name;
+
                 chartVentas.ChartAreas[0].AxisX.Interval = 1;
                 chartVentas.ChartAreas[0].AxisX.Title = "Método de Pago";
                 chartVentas.ChartAreas[0].AxisY.Title = "Total Vendido ($)";

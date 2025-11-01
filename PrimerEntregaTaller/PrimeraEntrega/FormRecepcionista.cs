@@ -183,8 +183,9 @@ namespace Taller_AppRestaurante
                 {
                     con.Open();
 
-                    string sql = "INSERT INTO Reserva (fecha_reserva, dni, hora, mesa, estado, personas) " +
-                                 "VALUES (@fecha, @dni, @hora, @mesa, @estado, @personas)";
+                    string sql = @"
+                    INSERT INTO Reserva (fecha_reserva, dni, hora, mesa, estado, personas, id_usuario)
+                    VALUES (@fecha, @dni, @hora, @mesa, @estado, @personas, @id_usuario)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -194,6 +195,7 @@ namespace Taller_AppRestaurante
                         cmd.Parameters.AddWithValue("@mesa", numericUpDown4.Text.Trim());
                         cmd.Parameters.AddWithValue("@estado", comboEstad.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@personas", personas);
+                        cmd.Parameters.AddWithValue("@id_usuario", SesionActual.IdUsuario);
 
                         int filas = cmd.ExecuteNonQuery();
 
@@ -271,6 +273,7 @@ namespace Taller_AppRestaurante
                         cmd.Parameters.AddWithValue("@estado", comboEstad.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@personas", personas);
                         cmd.Parameters.AddWithValue("@id", idReserva);
+                       
 
                         int filas = cmd.ExecuteNonQuery();
 

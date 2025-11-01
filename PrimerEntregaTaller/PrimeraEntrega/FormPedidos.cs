@@ -295,16 +295,17 @@ namespace Taller_AppRestaurante
 
                 try
                 {
-                    
+
                     string insertPedido = @"
-                    INSERT INTO Pedido (id_cliente, fecha, estado)
-                    VALUES (@id_cliente, @fecha, 'en preparación');
+                    INSERT INTO Pedido (id_cliente, id_usuario, fecha, estado)
+                    VALUES (@id_cliente, @id_usuario, @fecha, 'en preparación');
                     SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmdPedido = new SqlCommand(insertPedido, con, tran);
                     cmdPedido.Parameters.AddWithValue("@id_cliente", ObtenerIdClientePorDni(textBox4.Text, con, tran));
+                    cmdPedido.Parameters.AddWithValue("@id_usuario", SesionActual.IdUsuario); 
                     cmdPedido.Parameters.AddWithValue("@fecha", DateTime.Now);
-                   // cmdPedido.Parameters.AddWithValue("@estado", comboEstado.SelectedItem.ToString());
+
 
                     int idPedido = Convert.ToInt32(cmdPedido.ExecuteScalar());
 
