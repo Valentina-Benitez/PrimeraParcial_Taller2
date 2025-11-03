@@ -71,6 +71,7 @@ namespace PrimeraEntrega
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.SpringGreen;
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Location = new System.Drawing.Point(244, 4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(94, 34);
@@ -82,7 +83,7 @@ namespace PrimeraEntrega
             // 
             this.txtBuscaP.Location = new System.Drawing.Point(73, 72);
             this.txtBuscaP.Name = "txtBuscaP";
-            this.txtBuscaP.Size = new System.Drawing.Size(233, 22);
+            this.txtBuscaP.Size = new System.Drawing.Size(233, 20);
             this.txtBuscaP.TabIndex = 2;
             this.txtBuscaP.TextChanged += new System.EventHandler(this.txtBuscaP_TextChanged_1);
             // 
@@ -92,7 +93,7 @@ namespace PrimeraEntrega
             this.label1.Font = new System.Drawing.Font("Constantia", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 22);
+            this.label1.Size = new System.Drawing.Size(166, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Seleccionar Productos";
             // 

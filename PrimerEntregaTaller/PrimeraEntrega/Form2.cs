@@ -130,5 +130,10 @@ namespace gerente
             formSecundario.Show();
 
         }
+
+        private void ltitulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

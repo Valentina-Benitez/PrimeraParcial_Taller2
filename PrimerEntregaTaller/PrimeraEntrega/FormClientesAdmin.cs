@@ -392,7 +392,15 @@ namespace PrimeraEntrega
 
         }
 
-        
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

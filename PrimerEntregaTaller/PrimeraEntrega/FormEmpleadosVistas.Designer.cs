@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dgvEmpleados);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -85,10 +84,10 @@
             this.Correo,
             this.Rol,
             this.Contraseña});
-            this.dgvEmpleados.Location = new System.Drawing.Point(15, 294);
+            this.dgvEmpleados.Location = new System.Drawing.Point(0, 294);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 51;
-            this.dgvEmpleados.Size = new System.Drawing.Size(1031, 136);
+            this.dgvEmpleados.Size = new System.Drawing.Size(1028, 136);
             this.dgvEmpleados.TabIndex = 8;
             // 
             // Nombre
@@ -157,6 +156,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.dgvEmpleados);
             this.panel2.Controls.Add(this.btnFiltrarMes);
             this.panel2.Controls.Add(this.chartEmpleados);
             this.panel2.Controls.Add(this.dtpDesde);
@@ -190,17 +190,17 @@
             // 
             // chartEmpleados
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartEmpleados.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmpleados.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chartEmpleados.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartEmpleados.Legends.Add(legend3);
             this.chartEmpleados.Location = new System.Drawing.Point(523, 26);
             this.chartEmpleados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chartEmpleados.Name = "chartEmpleados";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEmpleados.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartEmpleados.Series.Add(series3);
             this.chartEmpleados.Size = new System.Drawing.Size(524, 242);
             this.chartEmpleados.TabIndex = 28;
             this.chartEmpleados.Text = "Empleados";
@@ -248,7 +248,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.ForeColor = System.Drawing.Color.LightSlateGray;
             this.label1.Location = new System.Drawing.Point(2, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -278,7 +278,7 @@
             this.VentasRealizadas.Location = new System.Drawing.Point(39, 232);
             this.VentasRealizadas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.VentasRealizadas.Name = "VentasRealizadas";
-            this.VentasRealizadas.Size = new System.Drawing.Size(131, 37);
+            this.VentasRealizadas.Size = new System.Drawing.Size(131, 38);
             this.VentasRealizadas.TabIndex = 22;
             this.VentasRealizadas.Text = "Ventas realizadas";
             this.VentasRealizadas.UseVisualStyleBackColor = false;
@@ -292,7 +292,7 @@
             this.ReservasRegistradas.Location = new System.Drawing.Point(39, 171);
             this.ReservasRegistradas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ReservasRegistradas.Name = "ReservasRegistradas";
-            this.ReservasRegistradas.Size = new System.Drawing.Size(131, 37);
+            this.ReservasRegistradas.Size = new System.Drawing.Size(131, 38);
             this.ReservasRegistradas.TabIndex = 21;
             this.ReservasRegistradas.Text = "Reservas registradas";
             this.ReservasRegistradas.UseVisualStyleBackColor = false;

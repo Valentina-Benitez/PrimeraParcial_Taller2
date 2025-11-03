@@ -162,5 +162,25 @@ namespace PrimeraEntrega
         {
 
         }
+
+        private void lDescuento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textDescuentoP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lEstado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textEstadoP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
