@@ -54,33 +54,34 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.BackColor = System.Drawing.Color.LightCyan;
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(846, 483);
+            this.panel1.Size = new System.Drawing.Size(846, 488);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel4.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel4.BackColor = System.Drawing.Color.LightBlue;
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Location = new System.Drawing.Point(434, 6);
+            this.panel4.Location = new System.Drawing.Point(434, 9);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.panel4.Size = new System.Drawing.Size(408, 471);
             this.panel4.TabIndex = 7;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(125, 47);
+            this.label3.Location = new System.Drawing.Point(136, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 23);
             this.label3.TabIndex = 1;
@@ -92,7 +93,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(7, 86);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(377, 329);
+            this.pictureBox2.Size = new System.Drawing.Size(393, 329);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -100,13 +101,13 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.BackColor = System.Drawing.Color.LightBlue;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.bInicio);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(3, 6);
+            this.panel2.Location = new System.Drawing.Point(3, 9);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.panel2.Size = new System.Drawing.Size(425, 471);
@@ -115,11 +116,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(103, 47);
+            this.label2.Location = new System.Drawing.Point(85, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(288, 20);
+            this.label2.Size = new System.Drawing.Size(307, 22);
             this.label2.TabIndex = 5;
             this.label2.Text = "Inicia sesión para gestionar tu cuenta";
             // 
@@ -137,10 +138,10 @@
             // bInicio
             // 
             this.bInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bInicio.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.bInicio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bInicio.BackColor = System.Drawing.Color.PowderBlue;
+            this.bInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bInicio.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bInicio.ForeColor = System.Drawing.Color.White;
+            this.bInicio.ForeColor = System.Drawing.Color.Black;
             this.bInicio.Location = new System.Drawing.Point(165, 383);
             this.bInicio.Name = "bInicio";
             this.bInicio.Size = new System.Drawing.Size(112, 44);
@@ -169,9 +170,9 @@
             this.panel3.Controls.Add(this.textDni);
             this.panel3.Controls.Add(this.lContraseñaInicio);
             this.panel3.Controls.Add(this.lDniInicio);
-            this.panel3.Location = new System.Drawing.Point(32, 224);
+            this.panel3.Location = new System.Drawing.Point(20, 227);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(372, 135);
+            this.panel3.Size = new System.Drawing.Size(382, 135);
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -180,7 +181,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Location = new System.Drawing.Point(299, 78);
+            this.checkBox1.Location = new System.Drawing.Point(310, 78);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(52, 24);
             this.checkBox1.TabIndex = 4;
@@ -229,7 +230,7 @@
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(846, 483);
+            this.ClientSize = new System.Drawing.Size(846, 488);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
