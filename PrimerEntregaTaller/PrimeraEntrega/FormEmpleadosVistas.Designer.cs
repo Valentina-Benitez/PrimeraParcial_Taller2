@@ -65,9 +65,9 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1419, 533);
+            this.panel1.Size = new System.Drawing.Size(1028, 433);
             this.panel1.TabIndex = 6;
             // 
             // dgvEmpleados
@@ -85,11 +85,10 @@
             this.Correo,
             this.Rol,
             this.Contraseña});
-            this.dgvEmpleados.Location = new System.Drawing.Point(20, 362);
-            this.dgvEmpleados.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEmpleados.Location = new System.Drawing.Point(15, 294);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.RowHeadersWidth = 51;
-            this.dgvEmpleados.Size = new System.Drawing.Size(1375, 167);
+            this.dgvEmpleados.Size = new System.Drawing.Size(1031, 136);
             this.dgvEmpleados.TabIndex = 8;
             // 
             // Nombre
@@ -170,9 +169,8 @@
             this.panel2.Controls.Add(this.ReservasRegistradas);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1419, 533);
+            this.panel2.Size = new System.Drawing.Size(1028, 433);
             this.panel2.TabIndex = 7;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -181,10 +179,10 @@
             this.btnFiltrarMes.BackColor = System.Drawing.Color.LightBlue;
             this.btnFiltrarMes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltrarMes.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrarMes.Location = new System.Drawing.Point(552, 105);
-            this.btnFiltrarMes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFiltrarMes.Location = new System.Drawing.Point(414, 85);
+            this.btnFiltrarMes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFiltrarMes.Name = "btnFiltrarMes";
-            this.btnFiltrarMes.Size = new System.Drawing.Size(109, 34);
+            this.btnFiltrarMes.Size = new System.Drawing.Size(82, 28);
             this.btnFiltrarMes.TabIndex = 29;
             this.btnFiltrarMes.Text = "Por mes";
             this.btnFiltrarMes.UseVisualStyleBackColor = false;
@@ -196,31 +194,33 @@
             this.chartEmpleados.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartEmpleados.Legends.Add(legend1);
-            this.chartEmpleados.Location = new System.Drawing.Point(697, 32);
+            this.chartEmpleados.Location = new System.Drawing.Point(523, 26);
+            this.chartEmpleados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chartEmpleados.Name = "chartEmpleados";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartEmpleados.Series.Add(series1);
-            this.chartEmpleados.Size = new System.Drawing.Size(698, 298);
+            this.chartEmpleados.Size = new System.Drawing.Size(524, 242);
             this.chartEmpleados.TabIndex = 28;
             this.chartEmpleados.Text = "Empleados";
             // 
             // dtpDesde
             // 
-            this.dtpDesde.Location = new System.Drawing.Point(129, 56);
-            this.dtpDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDesde.Location = new System.Drawing.Point(97, 46);
+            this.dtpDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(193, 22);
+            this.dtpDesde.Size = new System.Drawing.Size(146, 20);
             this.dtpDesde.TabIndex = 27;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 55);
+            this.label2.Location = new System.Drawing.Point(12, 45);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 23);
+            this.label2.Size = new System.Drawing.Size(87, 19);
             this.label2.TabIndex = 26;
             this.label2.Text = "Fecha Desde";
             // 
@@ -228,17 +228,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(375, 56);
+            this.label3.Location = new System.Drawing.Point(281, 46);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 23);
+            this.label3.Size = new System.Drawing.Size(84, 19);
             this.label3.TabIndex = 25;
             this.label3.Text = "Fecha Hasta";
             // 
             // dtnHasta
             // 
-            this.dtnHasta.Location = new System.Drawing.Point(485, 57);
+            this.dtnHasta.Location = new System.Drawing.Point(364, 46);
+            this.dtnHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtnHasta.Name = "dtnHasta";
-            this.dtnHasta.Size = new System.Drawing.Size(186, 22);
+            this.dtnHasta.Size = new System.Drawing.Size(140, 20);
             this.dtnHasta.TabIndex = 24;
             // 
             // label1
@@ -247,9 +249,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(5, 3);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(306, 38);
+            this.label1.Size = new System.Drawing.Size(237, 30);
             this.label1.TabIndex = 19;
             this.label1.Text = "Reporte de Empleados";
             // 
@@ -258,10 +261,10 @@
             this.PedidosTomados.BackColor = System.Drawing.Color.LightBlue;
             this.PedidosTomados.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.PedidosTomados.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PedidosTomados.Location = new System.Drawing.Point(52, 134);
-            this.PedidosTomados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PedidosTomados.Location = new System.Drawing.Point(39, 109);
+            this.PedidosTomados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PedidosTomados.Name = "PedidosTomados";
-            this.PedidosTomados.Size = new System.Drawing.Size(175, 47);
+            this.PedidosTomados.Size = new System.Drawing.Size(131, 38);
             this.PedidosTomados.TabIndex = 23;
             this.PedidosTomados.Text = "Pedidos tomados";
             this.PedidosTomados.UseVisualStyleBackColor = false;
@@ -272,10 +275,10 @@
             this.VentasRealizadas.BackColor = System.Drawing.Color.LightBlue;
             this.VentasRealizadas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.VentasRealizadas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VentasRealizadas.Location = new System.Drawing.Point(52, 285);
-            this.VentasRealizadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VentasRealizadas.Location = new System.Drawing.Point(39, 232);
+            this.VentasRealizadas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.VentasRealizadas.Name = "VentasRealizadas";
-            this.VentasRealizadas.Size = new System.Drawing.Size(175, 45);
+            this.VentasRealizadas.Size = new System.Drawing.Size(131, 37);
             this.VentasRealizadas.TabIndex = 22;
             this.VentasRealizadas.Text = "Ventas realizadas";
             this.VentasRealizadas.UseVisualStyleBackColor = false;
@@ -286,10 +289,10 @@
             this.ReservasRegistradas.BackColor = System.Drawing.Color.LightBlue;
             this.ReservasRegistradas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ReservasRegistradas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservasRegistradas.Location = new System.Drawing.Point(52, 211);
-            this.ReservasRegistradas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ReservasRegistradas.Location = new System.Drawing.Point(39, 171);
+            this.ReservasRegistradas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ReservasRegistradas.Name = "ReservasRegistradas";
-            this.ReservasRegistradas.Size = new System.Drawing.Size(175, 45);
+            this.ReservasRegistradas.Size = new System.Drawing.Size(131, 37);
             this.ReservasRegistradas.TabIndex = 21;
             this.ReservasRegistradas.Text = "Reservas registradas";
             this.ReservasRegistradas.UseVisualStyleBackColor = false;
@@ -297,11 +300,10 @@
             // 
             // FormEmpleadosVistas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1419, 533);
+            this.ClientSize = new System.Drawing.Size(1028, 433);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormEmpleadosVistas";
             this.Text = "FormEmpleadosVistas";
             this.panel1.ResumeLayout(false);
