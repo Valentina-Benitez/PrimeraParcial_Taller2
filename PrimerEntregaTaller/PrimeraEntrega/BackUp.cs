@@ -14,7 +14,7 @@ namespace PrimeraEntrega
 {
     public partial class BackUp : Form
     {
-        // Plantillas de cadena de conexión: {0} será reemplazado por el servidor (o '.' para local)
+       
         private const string ConnectionStringTemplate = @"Data Source={0};Initial Catalog=ah;Integrated Security=True;TrustServerCertificate=True";
         private const string ConnectionStringMasterTemplate = @"Data Source={0};Initial Catalog=master;Integrated Security=True;TrustServerCertificate=True";
 
@@ -25,11 +25,11 @@ namespace PrimeraEntrega
 
         private void BackUp_Load(object sender, EventArgs e)
         {
-            // Valores por defecto útiles al abrir el formulario
+            
             if (string.IsNullOrWhiteSpace(txtServidor.Text))
-                txtServidor.Text = "."; // servidor por defecto
+                txtServidor.Text = "(localdb)\\MSSQLLocalDB"; 
             if (string.IsNullOrWhiteSpace(txtBaseDeDatos.Text))
-                txtBaseDeDatos.Text = "RestauranteTallerBD"; // ejemplo: nombre de BD por defecto
+                txtBaseDeDatos.Text = "RestauranteTallerBD"; 
             if (string.IsNullOrWhiteSpace(txtRutaGuardar.Text))
                 txtRutaGuardar.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
@@ -40,7 +40,7 @@ namespace PrimeraEntrega
             return string.IsNullOrWhiteSpace(txtServidor.Text) ? "." : txtServidor.Text.Trim();
         }
 
-        // --- 1. BOTÓN 'CONECTAR' ---
+        // --- BOTÓN 'CONECTAR' ---
         private void btnConectar_Click(object sender, EventArgs e)
         {
             string serverName = GetServerName();
@@ -60,7 +60,7 @@ namespace PrimeraEntrega
             }
         }
 
-        // --- 2. BOTÓN 'EXAMINAR' ---
+        // --- BOTÓN 'EXAMINAR' ---
         private void btnExaminar_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
@@ -73,7 +73,7 @@ namespace PrimeraEntrega
             }
         }
 
-        // --- 3. BOTÓN 'CREAR BACK UP' ---
+        // --- BOTÓN 'CREAR BACK UP' ---
         private void btnCrearBackUp_Click(object sender, EventArgs e)
         {
             string dbName = txtBaseDeDatos.Text.Trim();
@@ -91,17 +91,16 @@ namespace PrimeraEntrega
             string nombreArchivo = $"{dbName}_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
             string rutaCompleta = Path.Combine(rutaGuardar, nombreArchivo);
 
-            // Usar N'...' para soportar rutas con caracteres especiales
             string sqlQuery = $"BACKUP DATABASE [{dbName}] TO DISK = N'{rutaCompleta}' WITH INIT, STATS = 10";
 
             EjecutarComandoSQL(connectionString, sqlQuery, $"¡Back Up creado con éxito!\nArchivo: {rutaCompleta}");
         }
 
-        // --- 4. BOTÓN 'RESTAURAR' ---
+        // --- BOTÓN 'RESTAURAR' ---
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
             string dbName = txtBaseDeDatos.Text.Trim();
-            string rutaBackUp = txtRutaGuardar.Text.Trim(); // Puede ser carpeta o archivo
+            string rutaBackUp = txtRutaGuardar.Text.Trim(); 
 
             if (string.IsNullOrEmpty(dbName))
             {
@@ -109,7 +108,6 @@ namespace PrimeraEntrega
                 return;
             }
 
-            // Si no se pasó un archivo .bak, pedirlo al usuario
             if (string.IsNullOrEmpty(rutaBackUp) || !rutaBackUp.EndsWith(".bak", StringComparison.OrdinalIgnoreCase) || !File.Exists(rutaBackUp))
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
@@ -123,7 +121,7 @@ namespace PrimeraEntrega
                     }
                     else
                     {
-                        return; // cancelado
+                        return; 
                     }
                 }
             }
@@ -131,7 +129,7 @@ namespace PrimeraEntrega
             string serverName = GetServerName();
             string connectionString = string.Format(ConnectionStringMasterTemplate, serverName);
 
-            // Restaurar: poner en SINGLE_USER, RESTORE WITH REPLACE, y volver a MULTI_USER
+            
             string sqlQuery = $@"
 USE master;
 ALTER DATABASE [{dbName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -152,7 +150,7 @@ ALTER DATABASE [{dbName}] SET MULTI_USER;
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                     {
-                        cmd.CommandTimeout = 600; // tiempo mayor para operaciones grandes
+                        cmd.CommandTimeout = 600; 
                         cmd.ExecuteNonQuery();
                     }
 
@@ -171,18 +169,18 @@ ALTER DATABASE [{dbName}] SET MULTI_USER;
 
         private void txtRutaGuardar_TextChanged(object sender, EventArgs e)
         {
-            // Validación ligera: si la ruta no existe no hacemos nada pesado aquí.
+           
         }
 
         private void txtBaseDeDatos_TextChanged(object sender, EventArgs e)
         {
-            // No ejecutar lógica intensiva aquí.
+            
         }
 
-        // NUEVO manejador para txtServidor (vacío por ahora)
+        
         private void txtServidor_TextChanged(object sender, EventArgs e)
         {
-            // opcional: validar formato de instancia (por ejemplo .\SQLEXPRESS)
+        
         }
     }
 }
