@@ -24,6 +24,13 @@ namespace PrimeraEntrega
         private void FormAgregarProductos_Load(object sender, EventArgs e)
         {
             CargarProductos();
+            ActualizarTotal();
+
+
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.WrapContents = false;
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+
         }
 
         private void CargarProductos(string filtro = "")
@@ -101,8 +108,20 @@ namespace PrimeraEntrega
                         Button btnAgregar = new Button();
                         btnAgregar.Text = "+";
                         btnAgregar.Dock = DockStyle.Fill;
+                        btnAgregar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                        btnAgregar.ForeColor = Color.White;
+                        btnAgregar.BackColor = Color.LightGreen;  
+                        btnAgregar.FlatStyle = FlatStyle.Flat;
+                        btnAgregar.FlatAppearance.BorderSize = 0;
+                        btnAgregar.Cursor = Cursors.Hand;
+
+                        // Sombra o efecto hover opcional
+                        btnAgregar.MouseEnter += (s, ev) => btnAgregar.BackColor = Color.FromArgb(100, 200, 100);
+                        btnAgregar.MouseLeave += (s, ev) => btnAgregar.BackColor = Color.FromArgb(144, 238, 144);
+
                         btnAgregar.Tag = new Tuple<int, Label, NumericUpDown>(idProducto, lblPrecio, nudCantidad);
                         btnAgregar.Click += BtnProducto_Click;
+
 
                         // Agregar controles al panel fila
                         filaProducto.Controls.Add(lblNombre, 0, 0);
@@ -154,6 +173,8 @@ namespace PrimeraEntrega
             }
 
             MessageBox.Show($"{nombre} x{cantidad} agregado ✅");
+            ActualizarTotal();
+
         }
 
 
@@ -185,8 +206,18 @@ namespace PrimeraEntrega
         {
 
         }
-        
-       // public List<ProductoSeleccionado> ProductosSeleccionados { get; private set; } = new List<ProductoSeleccionado>();
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void ActualizarTotal()
+        {
+            decimal total = ProductosSeleccionados.Sum(p => p.Cantidad * p.Precio);
+            txtTotal.Text = total.ToString("C2", new System.Globalization.CultureInfo("es-AR"));
+        }
+
+        // public List<ProductoSeleccionado> ProductosSeleccionados { get; private set; } = new List<ProductoSeleccionado>();
 
     }
 }

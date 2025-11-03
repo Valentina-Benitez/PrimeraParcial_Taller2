@@ -172,5 +172,10 @@ namespace PrimeraEntrega
                 textBox4.UseSystemPasswordChar = true;
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

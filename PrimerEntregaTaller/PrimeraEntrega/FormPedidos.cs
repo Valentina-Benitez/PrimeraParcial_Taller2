@@ -39,15 +39,15 @@ namespace Taller_AppRestaurante
                     con.Open();
                     // Consulta que une la tabla Pedido con la tabla Cliente
                     string consulta = @"
-                SELECT
-                    p.id_pedido,
-                    c.dni AS [Cliente],
-                    p.fecha AS [Fecha],
-                    p.estado AS [Estado]
-                FROM
-                    Pedido p
-                JOIN
-                    Cliente c ON p.id_cliente = c.id_cliente;";
+                    SELECT
+                        p.id_pedido,
+                        ISNULL(c.dni, 'Desconocido') AS [Cliente],
+                        p.fecha AS [Fecha],
+                        p.estado AS [Estado]
+                    FROM
+                        Pedido p
+                    LEFT JOIN
+                        Cliente c ON p.id_cliente = c.id_cliente;";
 
                     SqlDataAdapter da = new SqlDataAdapter(consulta, con);
                     DataTable dt = new DataTable();
@@ -284,7 +284,7 @@ namespace Taller_AppRestaurante
         {
             if (productosSeleccionados.Count == 0)
             {
-                MessageBox.Show("Debe agregar al menos un producto.");
+                MessageBox.Show("Debe agregar al menos un producto antes de guardar el pedido.");
                 return;
             }
 
@@ -295,21 +295,35 @@ namespace Taller_AppRestaurante
 
                 try
                 {
+                    // 🔹 Intentar obtener id_cliente (puede ser null si no está registrado)
+                    int? idCliente = null;
 
+                    if (!string.IsNullOrWhiteSpace(textBox4.Text))
+                    {
+                        try
+                        {
+                            idCliente = ObtenerIdClientePorDni(textBox4.Text, con, tran);
+                        }
+                        catch
+                        {
+                            idCliente = null; // si no existe o hay error, se guarda como null
+                        }
+                    }
+
+                    // 🔹 Insertar pedido
                     string insertPedido = @"
-                    INSERT INTO Pedido (id_cliente, id_usuario, fecha, estado)
-                    VALUES (@id_cliente, @id_usuario, @fecha, 'en preparación');
-                    SELECT SCOPE_IDENTITY();";
+                INSERT INTO Pedido (id_cliente, id_usuario, fecha, estado)
+                VALUES (@id_cliente, @id_usuario, @fecha, 'en preparación');
+                SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmdPedido = new SqlCommand(insertPedido, con, tran);
-                    cmdPedido.Parameters.AddWithValue("@id_cliente", ObtenerIdClientePorDni(textBox4.Text, con, tran));
-                    cmdPedido.Parameters.AddWithValue("@id_usuario", SesionActual.IdUsuario); 
+                    cmdPedido.Parameters.AddWithValue("@id_cliente", (object)idCliente ?? DBNull.Value);
+                    cmdPedido.Parameters.AddWithValue("@id_usuario", SesionActual.IdUsuario);
                     cmdPedido.Parameters.AddWithValue("@fecha", DateTime.Now);
-
 
                     int idPedido = Convert.ToInt32(cmdPedido.ExecuteScalar());
 
-                    // Insertar detalles del pedido ✅
+                    // 🔹 Insertar detalles del pedido
                     foreach (var prod in productosSeleccionados)
                     {
                         string insertDetalle = @"
@@ -321,24 +335,34 @@ namespace Taller_AppRestaurante
                         cmdDetalle.Parameters.AddWithValue("@id_producto", prod.IdProducto);
                         cmdDetalle.Parameters.AddWithValue("@cantidad", prod.Cantidad);
                         cmdDetalle.Parameters.AddWithValue("@subtotal", prod.Cantidad * prod.Precio);
-
                         cmdDetalle.ExecuteNonQuery();
                     }
 
-                    tran.Commit();
-                    MessageBox.Show("Pedido guardado correctamente.");
+                    // 🔹 Calcular total y mostrarlo
+                    decimal total = productosSeleccionados.Sum(p => p.Cantidad * p.Precio);
+                    txtTotal.Text = total.ToString("0.00");
 
+                    tran.Commit();
+                    MessageBox.Show("✅ Pedido guardado correctamente.");
+
+                    // 🔹 Limpiar luego de guardar
                     productosSeleccionados.Clear();
                     MostrarProductosEnPedido();
                     ActualizarTotal();
+                    textBox4.Clear();
+                    txtTotal.Text = "0.00";
+
+                    // 🔹 Recargar lista de pedidos
+                    CargarPedidos();
                 }
                 catch (Exception ex)
                 {
                     tran.Rollback();
-                    MessageBox.Show("Error al guardar pedido: " + ex.Message);
+                    MessageBox.Show("❌ Error al guardar pedido: " + ex.Message);
                 }
             }
         }
+
 
 
         private void button1_Click(object sender, EventArgs e)

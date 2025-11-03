@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnAltas = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnBajas = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.idproducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nroVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAltas = new System.Windows.Forms.Button();
-            this.btnBajas = new System.Windows.Forms.Button();
             this.btnMenosVendidos = new System.Windows.Forms.Button();
             this.dateTimePickerHasta = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDesde = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnFiltrar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnMasVendidos = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnMasVendidos = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -70,58 +70,20 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(1, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1028, 433);
+            this.panel2.Size = new System.Drawing.Size(1028, 475);
             this.panel2.TabIndex = 0;
             // 
-            // chart1
+            // label6
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(556, 62);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2);
-            this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(460, 195);
-            this.chart1.TabIndex = 8;
-            this.chart1.Text = "chart1";
-            // 
-            // dgvProductos
-            // 
-            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProductos.BackgroundColor = System.Drawing.Color.LightBlue;
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idproducto,
-            this.nombreProducto,
-            this.nroVentas});
-            this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvProductos.Location = new System.Drawing.Point(0, 297);
-            this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.RowHeadersWidth = 51;
-            this.dgvProductos.Size = new System.Drawing.Size(1028, 136);
-            this.dgvProductos.TabIndex = 7;
-            // 
-            // idproducto
-            // 
-            this.idproducto.HeaderText = "id producto";
-            this.idproducto.Name = "idproducto";
-            // 
-            // nombreProducto
-            // 
-            this.nombreProducto.HeaderText = "Nombre";
-            this.nombreProducto.Name = "nombreProducto";
-            // 
-            // nroVentas
-            // 
-            this.nroVentas.HeaderText = "Nro de Ventas";
-            this.nroVentas.Name = "nroVentas";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.label6.Location = new System.Drawing.Point(154, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(283, 37);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Reporte de Productos";
             // 
             // btnAltas
             // 
@@ -136,6 +98,38 @@
             this.btnAltas.Text = "Altas";
             this.btnAltas.UseVisualStyleBackColor = false;
             // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.BackColor = System.Drawing.Color.LightBlue;
+            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrar.Location = new System.Drawing.Point(217, 190);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(82, 28);
+            this.btnFiltrar.TabIndex = 7;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = false;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(537, 62);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(479, 260);
+            this.chart1.TabIndex = 8;
+            this.chart1.Text = "chart1";
+            // 
             // btnBajas
             // 
             this.btnBajas.BackColor = System.Drawing.Color.LightBlue;
@@ -148,6 +142,41 @@
             this.btnBajas.TabIndex = 11;
             this.btnBajas.Text = "Bajas";
             this.btnBajas.UseVisualStyleBackColor = false;
+            // 
+            // dgvProductos
+            // 
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.BackgroundColor = System.Drawing.Color.LightBlue;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idproducto,
+            this.nombreProducto,
+            this.nroVentas});
+            this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvProductos.Location = new System.Drawing.Point(0, 349);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.RowHeadersWidth = 51;
+            this.dgvProductos.Size = new System.Drawing.Size(1028, 126);
+            this.dgvProductos.TabIndex = 7;
+            // 
+            // idproducto
+            // 
+            this.idproducto.HeaderText = "id producto";
+            this.idproducto.MinimumWidth = 6;
+            this.idproducto.Name = "idproducto";
+            // 
+            // nombreProducto
+            // 
+            this.nombreProducto.HeaderText = "Nombre";
+            this.nombreProducto.MinimumWidth = 6;
+            this.nombreProducto.Name = "nombreProducto";
+            // 
+            // nroVentas
+            // 
+            this.nroVentas.HeaderText = "Nro de Ventas";
+            this.nroVentas.MinimumWidth = 6;
+            this.nroVentas.Name = "nroVentas";
             // 
             // btnMenosVendidos
             // 
@@ -166,52 +195,26 @@
             // 
             this.dateTimePickerHasta.Location = new System.Drawing.Point(365, 96);
             this.dateTimePickerHasta.Name = "dateTimePickerHasta";
-            this.dateTimePickerHasta.Size = new System.Drawing.Size(145, 20);
+            this.dateTimePickerHasta.Size = new System.Drawing.Size(145, 22);
             this.dateTimePickerHasta.TabIndex = 7;
             // 
             // dateTimePickerDesde
             // 
             this.dateTimePickerDesde.Location = new System.Drawing.Point(102, 95);
             this.dateTimePickerDesde.Name = "dateTimePickerDesde";
-            this.dateTimePickerDesde.Size = new System.Drawing.Size(144, 20);
+            this.dateTimePickerDesde.Size = new System.Drawing.Size(144, 22);
             this.dateTimePickerDesde.TabIndex = 7;
             // 
-            // label6
+            // label2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label6.Location = new System.Drawing.Point(154, 8);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(224, 30);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Reporte de Productos";
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFiltrar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Location = new System.Drawing.Point(217, 190);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(82, 28);
-            this.btnFiltrar.TabIndex = 7;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = false;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(276, 95);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Fecha Hasta";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 96);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 23);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Fecha Desde";
             // 
             // btnMasVendidos
             // 
@@ -226,20 +229,20 @@
             this.btnMasVendidos.Text = "Mas Vendido";
             this.btnMasVendidos.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 96);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 19);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Fecha Desde";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(276, 95);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 23);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Fecha Hasta";
             // 
             // ReporteProductos
             // 
-            this.ClientSize = new System.Drawing.Size(1028, 433);
+            this.ClientSize = new System.Drawing.Size(1031, 476);
             this.Controls.Add(this.panel2);
             this.Name = "ReporteProductos";
             this.panel2.ResumeLayout(false);

@@ -35,26 +35,44 @@ namespace Taller_AppRestaurante
             CargarReserva();
         }
 
-           private void CargarReserva()
+        private void CargarReserva()
         {
             try
             {
                 using (SqlConnection con = ConexionDB.ObtenerConexion())
                 {
                     con.Open();
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Reserva", con);
+
+                    string sql = @"
+                SELECT 
+                    r.id_reserva,
+                    r.fecha_reserva,
+                    r.dni,
+                    r.hora,
+                    r.mesa,
+                    r.estado,
+                    r.personas,
+                    u.nombre + ' ' + u.apellido AS Empleado
+                FROM Reserva r
+                LEFT JOIN Usuario u ON r.id_usuario = u.id_usuario
+                ORDER BY r.fecha_reserva DESC;";
+
+                    SqlDataAdapter da = new SqlDataAdapter(sql, con);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    dvgReserva.DataSource = dt;
 
-                    dvgReserva.RowTemplate.Height = 30;
+                    dvgReserva.DataSource = dt;
+                    dvgReserva.ClearSelection(); // evita que quede fila seleccionada
                 }
+
+                dvgReserva.RowTemplate.Height = 30;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar reservas: " + ex.Message);
             }
         }
+
 
         private void bPedido_Click(object sender, EventArgs e)
         {
@@ -90,7 +108,7 @@ namespace Taller_AppRestaurante
             comboEstad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEstad.Items.Clear();
             comboEstad.Items.Add("confirmada");
-            comboEstad.Items.Add("pendiente");
+           // comboEstad.Items.Add("pendiente");
             comboEstad.Items.Add("cancelada");
         }
 
@@ -201,16 +219,19 @@ namespace Taller_AppRestaurante
 
                         if (filas > 0)
                         {
-                            MessageBox.Show("Reserva agregada correctamente.");
-                            CargarReserva();
-                            ClearForm(); // opcional si querés limpiar los campos después
+                            MessageBox.Show("✅ Reserva agregada correctamente.");
                         }
                         else
                         {
                             MessageBox.Show("No se pudo agregar la reserva.");
                         }
+                        CargarReserva();
+                        //ClearForm();
                     }
+                   
                 }
+                
+
             }
             catch (Exception ex)
             {
