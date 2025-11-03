@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -71,9 +71,9 @@
             this.panel1.Controls.Add(this.dtpHasta);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1424, 580);
+            this.panel1.Size = new System.Drawing.Size(1028, 471);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -83,9 +83,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(-18, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 38);
+            this.label1.Size = new System.Drawing.Size(196, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Reporte de Ventas";
             // 
@@ -94,10 +95,10 @@
             this.button5.BackColor = System.Drawing.Color.LightBlue;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(53, 317);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Location = new System.Drawing.Point(40, 258);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(144, 28);
+            this.button5.Size = new System.Drawing.Size(108, 23);
             this.button5.TabIndex = 10;
             this.button5.Text = "Por Tipo de pago";
             this.button5.UseVisualStyleBackColor = false;
@@ -105,18 +106,18 @@
             // 
             // chartVentas
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartVentas.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartVentas.Legends.Add(legend2);
-            this.chartVentas.Location = new System.Drawing.Point(719, 26);
-            this.chartVentas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            chartArea1.Name = "ChartArea1";
+            this.chartVentas.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartVentas.Legends.Add(legend1);
+            this.chartVentas.Location = new System.Drawing.Point(539, 21);
+            this.chartVentas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chartVentas.Name = "chartVentas";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartVentas.Series.Add(series2);
-            this.chartVentas.Size = new System.Drawing.Size(692, 336);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartVentas.Series.Add(series1);
+            this.chartVentas.Size = new System.Drawing.Size(519, 273);
             this.chartVentas.TabIndex = 6;
             this.chartVentas.Text = "chart1";
             // 
@@ -125,10 +126,10 @@
             this.button1.BackColor = System.Drawing.Color.LightBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(570, 101);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(428, 82);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 34);
+            this.button1.Size = new System.Drawing.Size(82, 28);
             this.button1.TabIndex = 7;
             this.button1.Text = "Por mes";
             this.button1.UseVisualStyleBackColor = false;
@@ -139,10 +140,10 @@
             this.button4.BackColor = System.Drawing.Color.LightBlue;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(53, 151);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Location = new System.Drawing.Point(40, 123);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(144, 28);
+            this.button4.Size = new System.Drawing.Size(108, 23);
             this.button4.TabIndex = 9;
             this.button4.Text = "Por vendedor";
             this.button4.UseVisualStyleBackColor = false;
@@ -153,10 +154,10 @@
             this.button3.BackColor = System.Drawing.Color.LightBlue;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(53, 236);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Location = new System.Drawing.Point(40, 192);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(144, 28);
+            this.button3.Size = new System.Drawing.Size(108, 23);
             this.button3.TabIndex = 8;
             this.button3.Text = "Por cliente";
             this.button3.UseVisualStyleBackColor = false;
@@ -176,11 +177,10 @@
             this.TipoPago,
             this.VerFactura});
             this.dgvVentas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvVentas.Location = new System.Drawing.Point(13, 396);
-            this.dgvVentas.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvVentas.Location = new System.Drawing.Point(10, 322);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.RowHeadersWidth = 51;
-            this.dgvVentas.Size = new System.Drawing.Size(1398, 171);
+            this.dgvVentas.Size = new System.Drawing.Size(1048, 139);
             this.dgvVentas.TabIndex = 1;
             this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -235,19 +235,20 @@
             // 
             // dtpDesde
             // 
-            this.dtpDesde.Location = new System.Drawing.Point(135, 49);
-            this.dtpDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDesde.Location = new System.Drawing.Point(101, 40);
+            this.dtpDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(193, 22);
+            this.dtpDesde.Size = new System.Drawing.Size(146, 20);
             this.dtpDesde.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(376, 48);
+            this.label3.Location = new System.Drawing.Point(282, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 23);
+            this.label3.Size = new System.Drawing.Size(84, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "Fecha Hasta";
             // 
@@ -255,27 +256,27 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 49);
+            this.label2.Location = new System.Drawing.Point(16, 40);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 23);
+            this.label2.Size = new System.Drawing.Size(87, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Fecha Desde";
             // 
             // dtpHasta
             // 
-            this.dtpHasta.Location = new System.Drawing.Point(486, 50);
-            this.dtpHasta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpHasta.Location = new System.Drawing.Point(364, 41);
+            this.dtpHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(193, 22);
+            this.dtpHasta.Size = new System.Drawing.Size(146, 20);
             this.dtpHasta.TabIndex = 4;
             // 
             // FormVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 580);
+            this.ClientSize = new System.Drawing.Size(1028, 471);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormVentas";
             this.Text = "Ventas";
             this.Load += new System.EventHandler(this.FormVentas_Load);
