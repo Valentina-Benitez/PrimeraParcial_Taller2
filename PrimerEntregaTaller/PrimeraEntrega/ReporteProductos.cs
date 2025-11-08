@@ -10,6 +10,7 @@ namespace PrimeraEntrega
 {
     public partial class ReporteProductos : Form
     {
+        private string filtroActual = "TODOS";
 
         public ReporteProductos()
         {
@@ -18,38 +19,39 @@ namespace PrimeraEntrega
             ConfigurarGrid();
             ConfigurarGrafico("Ventas por Producto");
 
-            // Suscribir manejadores de Click para los botones (si el diseñador no lo hizo)
-            btnMasVendidos.Click += btnMasVendidos_Click;
-            btnMenosVendidos.Click += btnMenosVendidos_Click;
-            btnAltas.Click += btnAltas_Click;
-            btnBajas.Click += btnBajas_Click;
+            // ---------------- SUSCRIPCIÓN DE EVENTOS ----------------
+            btnMasVendidos.Click += (s, e) => CambiarFiltro("MAS_VENDIDOS", btnMasVendidos);
+            btnMenosVendidos.Click += (s, e) => CambiarFiltro("MENOS_VENDIDOS", btnMenosVendidos);
+            btnAltas.Click += (s, e) => CambiarFiltro("ALTAS", btnAltas);
+            btnBajas.Click += (s, e) => CambiarFiltro("BAJAS", btnBajas);
+            btnMes.Click += (s, e) => CambiarFiltro("MES", btnMes);
 
-            // Cargar datos iniciales (sin filtro aplicado)
-            CargarDatos();
-
-            // Detectar cambios de fecha
+            // ✅ Actualizar automáticamente cuando cambian las fechas
             dateTimePickerDesde.ValueChanged += (s, e) => CargarDatos();
             dateTimePickerHasta.ValueChanged += (s, e) => CargarDatos();
+
+            // Cargar al inicio
+            CargarDatos();
         }
 
+        // -------------------- CONEXIÓN --------------------
         private SqlConnection ObtenerConexion()
         {
-            string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+            string cadena = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
             return new SqlConnection(cadena);
         }
 
-        // ---------------- Configuración ----------------
-
+        // -------------------- GRID --------------------
         private void ConfigurarGrid()
         {
             dgvProductos.Columns.Clear();
-            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "id_producto", HeaderText = "ID Producto", DataPropertyName = "id_producto" });
-            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "nombre", HeaderText = "Nombre", DataPropertyName = "nombre" });
-            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "categoria", HeaderText = "Categoría", DataPropertyName = "categoria" });
-            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "nro_ventas", HeaderText = "Nro de Ventas", DataPropertyName = "nro_ventas" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "nombres", HeaderText = "Nombre", DataPropertyName = "nombre" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "categorias", HeaderText = "Categoría", DataPropertyName = "categoria" });
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "ventas", HeaderText = "Nro de Ventas", DataPropertyName = "nro_ventas" });
             dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "estado", HeaderText = "Estado", DataPropertyName = "estado" });
         }
 
+        // -------------------- GRAFICO --------------------
         private void ConfigurarGrafico(string titulo)
         {
             chart1.Series.Clear();
@@ -58,48 +60,37 @@ namespace PrimeraEntrega
             chart1.Titles.Add(titulo);
 
             ChartArea area = new ChartArea("MainArea");
-            // dejar espacio para leyenda y activar 3D suave
             area.Position = new ElementPosition(8, 8, 70, 84);
             area.BackColor = Color.White;
             area.Area3DStyle.Enable3D = true;
             area.Area3DStyle.Inclination = 40;
-            area.Area3DStyle.IsClustered = false;
-            area.Area3DStyle.Rotation = 0;
             chart1.ChartAreas.Add(area);
 
             chart1.BackColor = Color.White;
             chart1.Legends.Clear();
+
             Legend legend = new Legend("Leyenda")
             {
                 Docking = Docking.Right,
                 Alignment = StringAlignment.Center,
-                LegendStyle = LegendStyle.Table,
-                TableStyle = LegendTableStyle.Auto
+                LegendStyle = LegendStyle.Table
             };
             legend.Font = new Font("Segoe UI", 9);
             chart1.Legends.Add(legend);
 
             chart1.Palette = ChartColorPalette.Pastel;
             chart1.AntiAliasing = AntiAliasingStyles.Graphics;
-            chart1.TextAntiAliasingQuality = TextAntiAliasingQuality.High;
         }
 
-        // ---------------- Filtro ----------------
-        private string filtroActual = "TODOS";
-
-        private void btnMasVendidos_Click(object sender, EventArgs e) => CambiarFiltro("MAS_VENDIDOS", btnMasVendidos);
-        private void btnMenosVendidos_Click(object sender, EventArgs e) => CambiarFiltro("MENOS_VENDIDOS", btnMenosVendidos);
-        private void btnAltas_Click(object sender, EventArgs e) => CambiarFiltro("ALTAS", btnAltas);
-        private void btnBajas_Click(object sender, EventArgs e) => CambiarFiltro("BAJAS", btnBajas);
-
+        // -------------------- FILTROS --------------------
         private void CambiarFiltro(string filtro, Button boton)
         {
             filtroActual = filtro;
 
-            // Reset de colores (recorrer controles anidados)
+            // Reset de colores
             foreach (Control c in GetAllControls(this))
             {
-                if (c is Button btn && btn != btnFiltrar)
+                if (c is Button btn && btn != boton)
                 {
                     btn.BackColor = SystemColors.Control;
                     btn.ForeColor = Color.Black;
@@ -109,8 +100,8 @@ namespace PrimeraEntrega
             boton.BackColor = Color.SteelBlue;
             boton.ForeColor = Color.White;
 
-            // NO llamar a CargarDatos() aquí: el usuario quiere que el filtrado
-            // se aplique solo cuando presione el botón "Filtrar".
+            // Aplicar filtro directamente
+            CargarDatos();
         }
 
         private IEnumerable<Control> GetAllControls(Control parent)
@@ -123,30 +114,29 @@ namespace PrimeraEntrega
             }
         }
 
-        // ---------------- Cargar Datos ----------------
+        // -------------------- CARGA DE DATOS --------------------
         private void CargarDatos()
         {
             DateTime desde = dateTimePickerDesde.Value.Date;
             DateTime hasta = dateTimePickerHasta.Value.Date.AddDays(1).AddSeconds(-1);
 
             string query = @"
-                    SELECT 
-                        p.id_producto,
-                        p.nombre,
-                        p.categoria,
-                        ISNULL(SUM(CASE WHEN v.fecha BETWEEN @desde AND @hasta THEN dp.cantidad ELSE 0 END), 0) AS nro_ventas,
-                        p.estado
-                    FROM Producto p
-                    LEFT JOIN Detalle_Pedido dp ON dp.id_producto = p.id_producto
-                    LEFT JOIN Pedido pe ON pe.id_pedido = dp.id_pedido
-                    LEFT JOIN Ventas v ON v.id_pedido = pe.id_pedido
-                    GROUP BY p.id_producto, p.nombre, p.categoria, p.estado
-                ";
-
-            DataTable dt = new DataTable();
+                SELECT 
+                    p.nombre,
+                    p.categoria,
+                    ISNULL(SUM(CASE WHEN v.fecha BETWEEN @desde AND @hasta THEN dp.cantidad ELSE 0 END), 0) AS nro_ventas,
+                    p.estado,
+                    MAX(v.fecha) AS fechaventa
+                FROM Producto p
+                LEFT JOIN Detalle_Pedido dp ON dp.id_producto = p.id_producto
+                LEFT JOIN Pedido pe ON pe.id_pedido = dp.id_pedido
+                LEFT JOIN Ventas v ON v.id_pedido = pe.id_pedido
+                GROUP BY p.id_producto, p.nombre, p.categoria, p.estado
+                ORDER BY nro_ventas DESC";
 
             try
             {
+                DataTable dt = new DataTable();
                 using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
@@ -154,17 +144,13 @@ namespace PrimeraEntrega
                     {
                         cmd.Parameters.AddWithValue("@desde", desde);
                         cmd.Parameters.AddWithValue("@hasta", hasta);
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            da.Fill(dt);
-                        }
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
                     }
                 }
 
-                DataRow[] filasFiltradas = string.IsNullOrEmpty(GetFiltroExpresion(filtroActual)) ? dt.Select() : dt.Select(GetFiltroExpresion(filtroActual));
-                DataTable dtFiltrado = dt.Clone();
-                foreach (DataRow fila in filasFiltradas)
-                    dtFiltrado.ImportRow(fila);
+                // Aplica el filtro seleccionado
+                DataTable dtFiltrado = AplicarFiltro(dt);
 
                 dgvProductos.DataSource = dtFiltrado;
                 ActualizarGrafico(dtFiltrado);
@@ -175,39 +161,75 @@ namespace PrimeraEntrega
             }
         }
 
-        private string GetFiltroExpresion(string filtro)
+        private DataTable AplicarFiltro(DataTable dt)
         {
-            switch (filtro)
+            DataTable filtrado = dt.Clone();
+
+            foreach (DataRow row in dt.Rows)
             {
-                case "MAS_VENDIDOS": return "nro_ventas >= 6";
-                case "MENOS_VENDIDOS": return "nro_ventas <= 5";
-                case "ALTAS": return "estado = 'Disponible'";
-                case "BAJAS": return "estado = 'No disponible'";
-                default: return ""; // TODOS
+                bool incluir = false;
+
+                switch (filtroActual)
+                {
+                    case "MAS_VENDIDOS":
+                        incluir = Convert.ToInt32(row["nro_ventas"]) >= 6;
+                        break;
+
+                    case "MENOS_VENDIDOS":
+                        incluir = Convert.ToInt32(row["nro_ventas"]) <= 5;
+                        break;
+
+                    case "ALTAS":
+                        {
+                            string estado = row["estado"].ToString().Trim().ToLower();
+                            incluir = estado.Contains("disponible") || estado.Contains("alta") || estado.Contains("activo") || estado == "1" || estado == "true";
+                            break;
+                        }
+
+                    case "BAJAS":
+                        {
+                            string estado = row["estado"].ToString().Trim().ToLower();
+                            incluir = estado.Contains("no disponible") || estado.Contains("baja") || estado.Contains("inactivo") || estado == "0" || estado == "false";
+                            break;
+                        }
+
+                    case "MES":
+                        if (row["fechaventa"] != DBNull.Value)
+                        {
+                            DateTime fecha = Convert.ToDateTime(row["fechaventa"]);
+                            incluir = fecha.Month == DateTime.Now.Month && fecha.Year == DateTime.Now.Year;
+                        }
+                        break;
+
+                    default:
+                        incluir = true;
+                        break;
+                }
+
+                if (incluir)
+                    filtrado.ImportRow(row);
             }
+
+            return filtrado;
         }
 
+        // -------------------- GRAFICO --------------------
         private void ActualizarGrafico(DataTable dt)
         {
             chart1.Series.Clear();
+            ConfigurarGrafico("Ventas por Producto");
 
-            var series = new Series("Ventas")
+            Series series = new Series("Ventas")
             {
                 ChartType = SeriesChartType.Pie,
                 IsValueShownAsLabel = true,
-                // etiquetas fuera de la torta con estilo suave
                 ["PieLabelStyle"] = "Outside",
                 ["PieDrawingStyle"] = "SoftEdge",
                 ["PieStartAngle"] = "270"
             };
-            series.Label = "#VALX\n#PERCENT{P1}";
-            series.LegendText = "#VALX (#VALY)";
-            series["PieLabelStyle"] = "Outside";
-            series.IsVisibleInLegend = true;
 
             chart1.Series.Add(series);
 
-            // Recoger filas con ventas > 0 y ordenar descendente
             var filas = new List<DataRow>();
             foreach (DataRow row in dt.Rows)
             {
@@ -215,11 +237,8 @@ namespace PrimeraEntrega
                 if (cantidad > 0) filas.Add(row);
             }
 
-            filas.Sort((a, b) => Convert.ToInt32(b["nro_ventas"]).CompareTo(Convert.ToInt32(a["nro_ventas"])));
-
             if (filas.Count == 0)
             {
-                // mostrar estado "sin datos" para que la torta no quede vacía
                 int idx = series.Points.AddY(1);
                 DataPoint p = series.Points[idx];
                 p.AxisLabel = "Sin ventas";
@@ -231,7 +250,6 @@ namespace PrimeraEntrega
             int total = 0;
             foreach (var r in filas) total += Convert.ToInt32(r["nro_ventas"]);
 
-            // Añadir puntos con etiquetas y tooltips
             foreach (var row in filas)
             {
                 string nombre = row["nombre"].ToString();
@@ -239,15 +257,9 @@ namespace PrimeraEntrega
                 int idx = series.Points.AddY(cantidad);
                 DataPoint point = series.Points[idx];
                 point.LegendText = nombre;
-                point.Label = $"{nombre}: {cantidad} ({(cantidad * 100.0 / total):F1}%)";
+                point.Label = $"{nombre}\n{(cantidad * 100.0 / total):F1}%";
                 point.ToolTip = $"{nombre}: {cantidad} ventas";
             }
-        }
-
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            // Aplicar el filtro seleccionado (ahora solo se carga al presionar Filtrar)
-            CargarDatos();
         }
     }
 }
