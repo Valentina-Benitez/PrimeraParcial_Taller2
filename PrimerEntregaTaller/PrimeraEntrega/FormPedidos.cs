@@ -251,40 +251,56 @@ namespace Taller_AppRestaurante
         // Método: devuelve id_cliente (o lanza excepción si no existe y no querés crearlo)
         private int ObtenerIdClientePorDni(string dni, SqlConnection con, SqlTransaction tran)
         {
+            // ✅ Validación básica
             if (string.IsNullOrWhiteSpace(dni))
-                throw new ArgumentException("Debe ingresar el DNI del cliente.");
+                throw new Exception("Debe ingresar un DNI válido antes de crear el pedido.");
 
-            string sql = "SELECT id_cliente FROM Cliente WHERE dni = @dni";
-            using (SqlCommand cmd = new SqlCommand(sql, con, tran))
+            // ✅ Buscar cliente existente
+            string sqlSelect = "SELECT id_cliente FROM Cliente WHERE dni = @dni";
+            using (SqlCommand cmdSelect = new SqlCommand(sqlSelect, con, tran))
             {
-                cmd.Parameters.AddWithValue("@dni", dni);
-                object result = cmd.ExecuteScalar();
+                cmdSelect.Parameters.AddWithValue("@dni", dni);
+
+                object result = cmdSelect.ExecuteScalar();
                 if (result != null && result != DBNull.Value)
-                    return Convert.ToInt32(result);
-
-                // Si no existe, podés:
-                // - lanzar error
-                // - o crear el cliente automáticamente (aquí dejo el ejemplo que crea con nombre 'DESCONOCIDO')
-                string insert = "INSERT INTO Cliente (dni, nombre, apellido) VALUES (@dni, @nombre, @apellido); SELECT SCOPE_IDENTITY();";
-                using (SqlCommand cmdIns = new SqlCommand(insert, con, tran))
                 {
-                    cmdIns.Parameters.AddWithValue("@dni", dni);
-                    cmdIns.Parameters.AddWithValue("@nombre", "DESCONOCIDO");
-                    cmdIns.Parameters.AddWithValue("@apellido", "DESCONOCIDO");
-                    object idNew = cmdIns.ExecuteScalar();
-                    return Convert.ToInt32(idNew);
+                    // 🔹 Ya existe → devolver su ID
+                    return Convert.ToInt32(result);
                 }
+            }
 
-                // Si preferís no crear, en vez de insertar podés:
-                // throw new Exception("No se encontró el cliente con ese DNI.");
+            // ✅ Si no existe, crear nuevo
+            string sqlInsert = @"
+        INSERT INTO Cliente (dni, nombre, apellido)
+        VALUES (@dni, @nombre, @apellido);
+        SELECT SCOPE_IDENTITY();";
+
+            using (SqlCommand cmdInsert = new SqlCommand(sqlInsert, con, tran))
+            {
+                cmdInsert.Parameters.AddWithValue("@dni", dni);
+                cmdInsert.Parameters.AddWithValue("@nombre", "DESCONOCIDO");
+                cmdInsert.Parameters.AddWithValue("@apellido", "DESCONOCIDO");
+
+                object newId = cmdInsert.ExecuteScalar();
+                return Convert.ToInt32(newId);
             }
         }
+
+
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (productosSeleccionados.Count == 0)
             {
                 MessageBox.Show("Debe agregar al menos un producto antes de guardar el pedido.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBox4.Text))
+            {
+                MessageBox.Show("Debe ingresar el DNI del cliente antes de crear el pedido.");
                 return;
             }
 
@@ -295,35 +311,26 @@ namespace Taller_AppRestaurante
 
                 try
                 {
-                    // 🔹 Intentar obtener id_cliente (puede ser null si no está registrado)
-                    int? idCliente = null;
+                    string dni = textBox4.Text.Trim();
+                    MessageBox.Show($"DNI capturado: '{dni}'", "Debug DNI"); // 👈 Agregado
 
-                    if (!string.IsNullOrWhiteSpace(textBox4.Text))
-                    {
-                        try
-                        {
-                            idCliente = ObtenerIdClientePorDni(textBox4.Text, con, tran);
-                        }
-                        catch
-                        {
-                            idCliente = null; // si no existe o hay error, se guarda como null
-                        }
-                    }
+                    int idCliente = ObtenerIdClientePorDni(dni, con, tran);
 
-                    // 🔹 Insertar pedido
+
+                    // ✅ Insertar el pedido
                     string insertPedido = @"
                 INSERT INTO Pedido (id_cliente, id_usuario, fecha, estado)
                 VALUES (@id_cliente, @id_usuario, @fecha, 'en preparación');
                 SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmdPedido = new SqlCommand(insertPedido, con, tran);
-                    cmdPedido.Parameters.AddWithValue("@id_cliente", (object)idCliente ?? DBNull.Value);
+                    cmdPedido.Parameters.AddWithValue("@id_cliente", idCliente);
                     cmdPedido.Parameters.AddWithValue("@id_usuario", SesionActual.IdUsuario);
                     cmdPedido.Parameters.AddWithValue("@fecha", DateTime.Now);
 
                     int idPedido = Convert.ToInt32(cmdPedido.ExecuteScalar());
 
-                    // 🔹 Insertar detalles del pedido
+                    // ✅ Insertar detalles
                     foreach (var prod in productosSeleccionados)
                     {
                         string insertDetalle = @"
@@ -338,21 +345,14 @@ namespace Taller_AppRestaurante
                         cmdDetalle.ExecuteNonQuery();
                     }
 
-                    // 🔹 Calcular total y mostrarlo
-                    decimal total = productosSeleccionados.Sum(p => p.Cantidad * p.Precio);
-                    txtTotal.Text = total.ToString("0.00");
-
                     tran.Commit();
                     MessageBox.Show("✅ Pedido guardado correctamente.");
 
-                    // 🔹 Limpiar luego de guardar
                     productosSeleccionados.Clear();
                     MostrarProductosEnPedido();
                     ActualizarTotal();
                     textBox4.Clear();
                     txtTotal.Text = "0.00";
-
-                    // 🔹 Recargar lista de pedidos
                     CargarPedidos();
                 }
                 catch (Exception ex)
@@ -362,6 +362,9 @@ namespace Taller_AppRestaurante
                 }
             }
         }
+
+
+
 
 
 
@@ -429,8 +432,8 @@ namespace Taller_AppRestaurante
 
                     // ✅ Insertar en Ventas incluyendo id_cliente
                     string insertVenta = @"
-                INSERT INTO Ventas (id_pedido, fecha, hora, total, tipo_pago, id_usuario, id_cliente)
-                VALUES (@id_pedido, GETDATE(), CONVERT(time, GETDATE()), @total, @pago, @usuario, @id_cliente);";
+                    INSERT INTO Ventas (id_pedido, fecha, hora, total, tipo_pago, id_usuario, id_cliente)
+                    VALUES (@id_pedido, GETDATE(), CONVERT(time, GETDATE()), @total, @pago, @usuario, @id_cliente);";
 
                     SqlCommand cmdVenta = new SqlCommand(insertVenta, con, tran);
                     cmdVenta.Parameters.AddWithValue("@id_pedido", pedidoId);
@@ -440,6 +443,7 @@ namespace Taller_AppRestaurante
                     cmdVenta.Parameters.AddWithValue("@id_cliente", idCliente);
 
                     cmdVenta.ExecuteNonQuery();
+
 
                     // ✅ Cambiar estado del pedido
                     string updatePedido = "UPDATE Pedido SET estado = 'entregado' WHERE id_pedido = @id";
