@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,6 +20,10 @@ namespace PrimeraEntrega
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            // Aseguro que el TextBox del DNI tenga los manejadores necesarios incluso si no están ligados desde el diseñador
+            this.textDni.KeyPress += textDni_KeyPress;
+            this.textDni.TextChanged += textDni_TextChanged;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,7 +44,7 @@ namespace PrimeraEntrega
 
         private void bInicio_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -59,9 +64,36 @@ namespace PrimeraEntrega
 
         }
 
+        // Valida y normaliza el contenido para que solo queden dígitos
         private void textDni_TextChanged(object sender, EventArgs e)
         {
+            var tb = sender as TextBox;
+            if (tb == null) return;
 
+            string original = tb.Text;
+            string digits = Regex.Replace(original, @"\D+", ""); // elimina todo lo que no sea dígito
+
+            if (digits != original)
+            {
+                int originalSelectionStart = tb.SelectionStart;
+                int removed = original.Length - digits.Length;
+
+                tb.Text = digits;
+
+                // Ajusto la posición del caret intentando mantener la posición esperada
+                int newSelection = Math.Max(0, originalSelectionStart - Math.Max(0, removed));
+                tb.SelectionStart = Math.Min(tb.Text.Length, newSelection);
+            }
+        }
+
+        // Evita la entrada de letras/caracteres especiales desde el teclado
+        private void textDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir controles (Backspace, etc.) y dígitos únicamente
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -153,7 +185,7 @@ namespace PrimeraEntrega
 
         }
 
-        
+
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
