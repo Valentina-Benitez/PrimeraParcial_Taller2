@@ -80,7 +80,7 @@
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.Size = new System.Drawing.Size(1392, 172);
             this.dgvProductos.TabIndex = 0;
-            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
+          //  this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // NombreProducto
             // 
@@ -228,7 +228,7 @@
             this.bEliminar.TabIndex = 11;
             this.bEliminar.Text = "Eliminar";
             this.bEliminar.UseVisualStyleBackColor = false;
-            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click_1);
+          //  this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click_1);
             // 
             // textNombreP
             // 

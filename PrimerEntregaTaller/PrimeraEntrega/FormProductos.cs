@@ -1,16 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -20,7 +8,7 @@ namespace gerente
 {
     public partial class FormProductos : Form
     {
-        private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         public FormProductos()
         {
@@ -37,7 +25,6 @@ namespace gerente
 
             // ------------------- Validaciones -------------------
             textNombreP.KeyPress += SoloLetras;
-           // comboCategoria.KeyPress += SoloLetras;
             textDescuentoP.KeyPress += SoloNumeros;
             textPrecioP.KeyPress += SoloNumeros;
 
@@ -92,21 +79,13 @@ namespace gerente
 
         private void CargarProductos()
         {
-            try
+            using (SqlConnection conexion = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
             {
-                using (SqlConnection conn = ObtenerConexion())
-                {
-                    conn.Open();
-                    string query = "SELECT nombre, categoria, descuento, descripcion, estado, precio FROM Producto";
-                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dgvProductos.DataSource = dt;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string query = "SELECT id_producto, nombre, categoria, descripcion, estado, precio, descuento FROM Producto";
+                SqlDataAdapter adaptador = new SqlDataAdapter(query, conexion);
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+                dgvProductos.DataSource = tabla;
             }
         }
 
@@ -158,70 +137,119 @@ namespace gerente
 
         private void bModificar_Click(object sender, EventArgs e)
         {
+            // 🔸 Verificar selección
             if (dgvProductos.CurrentRow == null)
             {
-                MessageBox.Show("Seleccione un producto para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un producto del listado para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string nombreOriginal = dgvProductos.CurrentRow.Cells["nombre"].Value.ToString();
-            string categoriaOriginal = dgvProductos.CurrentRow.Cells["categoria"].Value.ToString();
-
-            using (SqlConnection conn = ObtenerConexion())
+            // 🔸 Verificar campos completos
+            if (!CamposCompletos())
             {
-                conn.Open();
-                string query = @"UPDATE Producto SET 
-                                nombre=@nombre, categoria=@categoria, descuento=@descuento, descripcion=@descripcion, estado=@estado, precio=@precio
-                                WHERE nombre=@nombreOriginal AND categoria=@categoriaOriginal";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
-                    cmd.Parameters.AddWithValue("@categoria", comboCategoria.Text.Trim());
-                    cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text));
-                    cmd.Parameters.AddWithValue("@descripcion", textDescripcion.Text.Trim());
-                    cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@precio", decimal.Parse(textPrecioP.Text));
-                    cmd.Parameters.AddWithValue("@nombreOriginal", nombreOriginal);
-                    cmd.Parameters.AddWithValue("@categoriaOriginal", categoriaOriginal);
-                    cmd.ExecuteNonQuery();
-                }
+                MessageBox.Show("Debe seleccionar un producto y completar todos los campos antes de modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            MessageBox.Show("Producto modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LimpiarFormulario();
-            CargarProductos();
-        }
+            try
+            {
+                string nombreOriginal = dgvProductos.CurrentRow.Cells["nombre"].Value.ToString();
+                string categoriaOriginal = dgvProductos.CurrentRow.Cells["categoria"].Value.ToString();
 
+                using (SqlConnection conn = ObtenerConexion())
+                {
+                    conn.Open();
+                    string query = @"UPDATE Producto SET 
+                                    nombre=@nombre, categoria=@categoria, descuento=@descuento, descripcion=@descripcion, estado=@estado, precio=@precio
+                                    WHERE nombre=@nombreOriginal AND categoria=@categoriaOriginal";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
+                        cmd.Parameters.AddWithValue("@categoria", comboCategoria.Text.Trim());
+                        cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text));
+                        cmd.Parameters.AddWithValue("@descripcion", textDescripcion.Text.Trim());
+                        cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@precio", decimal.Parse(textPrecioP.Text));
+                        cmd.Parameters.AddWithValue("@nombreOriginal", nombreOriginal);
+                        cmd.Parameters.AddWithValue("@categoriaOriginal", categoriaOriginal);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Producto modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarFormulario();
+                CargarProductos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void bEliminar_Click(object sender, EventArgs e)
         {
+            // Verificar si hay un producto seleccionado
             if (dgvProductos.CurrentRow == null)
             {
-                MessageBox.Show("Seleccione un producto para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un producto para darlo de baja.",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string nombre = dgvProductos.CurrentRow.Cells["nombre"].Value.ToString();
             string categoria = dgvProductos.CurrentRow.Cells["categoria"].Value.ToString();
 
-            var dr = MessageBox.Show("¿Está seguro de eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr != DialogResult.Yes) return;
-
-            using (SqlConnection conn = ObtenerConexion())
+            try
             {
-                conn.Open();
-                string query = "DELETE FROM Producto WHERE nombre=@nombre AND categoria=@categoria";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
-                    cmd.Parameters.AddWithValue("@categoria", categoria);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+
+                    // Verificar estado actual
+                    string queryVerificar = "SELECT estado FROM Producto WHERE nombre=@nombre AND categoria=@categoria";
+                    SqlCommand cmdVerificar = new SqlCommand(queryVerificar, conn);
+                    cmdVerificar.Parameters.AddWithValue("@nombre", nombre);
+                    cmdVerificar.Parameters.AddWithValue("@categoria", categoria);
+
+                    string estadoActual = cmdVerificar.ExecuteScalar()?.ToString();
+
+                    if (estadoActual == "No Disponible")
+                    {
+                        MessageBox.Show("Este producto ya está dado de baja.",
+                                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    // Confirmar acción
+                    DialogResult confirmar = MessageBox.Show(
+                        "¿Está seguro de dar de baja este producto?",
+                        "Confirmar baja",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (confirmar == DialogResult.No) return;
+
+                    // Cambiar estado a No Disponible
+                    string queryActualizar = "UPDATE Producto SET estado='No Disponible' WHERE nombre=@nombre AND categoria=@categoria";
+                    SqlCommand cmdActualizar = new SqlCommand(queryActualizar, conn);
+                    cmdActualizar.Parameters.AddWithValue("@nombre", nombre);
+                    cmdActualizar.Parameters.AddWithValue("@categoria", categoria);
+                    cmdActualizar.ExecuteNonQuery();
+
+                    MessageBox.Show("El producto fue dado de baja correctamente.",
+                                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimpiarFormulario();
+                    CargarProductos();
                 }
             }
-
-            MessageBox.Show("Producto eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LimpiarFormulario();
-            CargarProductos();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar el estado del producto: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         #endregion
 
@@ -263,14 +291,9 @@ namespace gerente
                     da.Fill(dt);
 
                     if (dt.Rows.Count == 0)
-                    {
                         MessageBox.Show("No se encontraron productos con esos datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                       
-                    }
                     else
-                    {
                         dgvProductos.DataSource = dt;
-                    }
                 }
             }
             catch (Exception ex)
@@ -281,9 +304,25 @@ namespace gerente
 
         private void bCancelar_Click(object sender, EventArgs e)
         {
+            // Verifica si el formulario ya está vacío
+            if (!CamposCompletos())
+            {
+                MessageBox.Show("El formulario ya está vacío.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Recarga los productos igualmente por si se había hecho una búsqueda
+                CargarProductos();
+                return;
+            }
+
+            // Limpia los campos
             LimpiarFormulario();
-            MessageBox.Show("Formulario limpiado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Recarga todos los productos (quita el filtro de búsqueda)
+            CargarProductos();
+
+            MessageBox.Show("Formulario limpiado y lista de productos recargada correctamente.",
+                            "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         #endregion
 
@@ -306,30 +345,23 @@ namespace gerente
 
         private bool CamposCompletos()
         {
-            return !string.IsNullOrWhiteSpace(textNombreP.Text) &&
-                   !string.IsNullOrWhiteSpace(comboCategoria.Text) &&
-                   !string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
-                   !string.IsNullOrWhiteSpace(textDescripcion.Text) &&
-                   !string.IsNullOrWhiteSpace(textPrecioP.Text) &&
-                   cbEstadoP.SelectedIndex != -1;
+            return !(string.IsNullOrWhiteSpace(textNombreP.Text) &&
+                     string.IsNullOrWhiteSpace(comboCategoria.Text) &&
+                     string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
+                     string.IsNullOrWhiteSpace(textDescripcion.Text) &&
+                     string.IsNullOrWhiteSpace(textPrecioP.Text) &&
+                     cbEstadoP.SelectedIndex == -1);
         }
 
         private void LimpiarFormulario()
         {
             textNombreP.Clear();
-            //textCategoriaP.Clear();
             textDescuentoP.Clear();
             textDescripcion.Clear();
             textPrecioP.Clear();
             cbEstadoP.SelectedIndex = -1;
+            comboCategoria.SelectedIndex = -1;
             dgvProductos.ClearSelection();
-        }
-
-        #endregion
-
-        private void bEliminar_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
@@ -338,9 +370,6 @@ namespace gerente
             comboCategoria.Items.AddRange(new[] { "Comida", "Bebida" });
         }
 
-        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

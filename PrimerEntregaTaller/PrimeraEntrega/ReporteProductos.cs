@@ -37,7 +37,7 @@ namespace PrimeraEntrega
         // -------------------- CONEXIÓN --------------------
         private SqlConnection ObtenerConexion()
         {
-            string cadena = (@"Data Source = CARPINCHITO\SQLEXPRESS; Initial Catalog = RestauranteTallerBD; Integrated Security = True; TrustServerCertificate = True");
+            string cadena = (@"Data Source =   (localdb)\MSSQLLocalDB; Initial Catalog = RestauranteTallerBD; Integrated Security = True; TrustServerCertificate = True");
             return new SqlConnection(cadena);
         }
 
