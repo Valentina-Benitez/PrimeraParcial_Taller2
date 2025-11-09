@@ -18,8 +18,18 @@ namespace PrimeraEntrega
         {
             InitializeComponent();
 
-            // Validaciones
-            textNombreP.KeyPress += SoloLetras;
+            // Evitar que al asignar DataSource se creen columnas automáticamente (evita duplicados)
+            dgvProductos.AutoGenerateColumns = false;
+
+            // Mapear las columnas del diseñador a los nombres de las columnas de la base de datos
+            NombreProducto.DataPropertyName = "nombre";
+            Categoria.DataPropertyName = "categoria";
+            Descuento.DataPropertyName = "descuento";
+            PrecioProducto.DataPropertyName = "precio";
+            EstadoProducto.DataPropertyName = "estado";
+
+            // Validaciones
+            textNombreP.KeyPress += SoloLetras;
             textCategoriaP.KeyPress += SoloLetras;
             textDescuentoP.KeyPress += SoloNumeros;
             textProvinciaP.KeyPress += SoloLetras;
@@ -30,7 +40,7 @@ namespace PrimeraEntrega
         }
         private SqlConnection ObtenerConexion()
         {
-            string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+            string cadena = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
             return new SqlConnection(cadena);
         }
 
@@ -79,8 +89,8 @@ namespace PrimeraEntrega
 
         private void bBuscar_Click(object sender, EventArgs e)
         {
-            // Validar que al menos un campo tenga valor
-            if (string.IsNullOrWhiteSpace(textNombreP.Text) &&
+            // Validar que al menos un campo tenga valor
+            if (string.IsNullOrWhiteSpace(textNombreP.Text) &&
         string.IsNullOrWhiteSpace(textCategoriaP.Text) &&
         string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
         string.IsNullOrWhiteSpace(textProvinciaP.Text) &&
@@ -91,8 +101,8 @@ namespace PrimeraEntrega
                 return;
             }
 
-            // Construir la consulta SQL dinámica
-            string query = "SELECT * FROM Producto WHERE 1=1 ";
+            // Construir la consulta SQL dinámica
+            string query = "SELECT * FROM Producto WHERE 1=1 ";
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             if (!string.IsNullOrWhiteSpace(textNombreP.Text))
@@ -129,8 +139,8 @@ namespace PrimeraEntrega
                 parameters.Add(new SqlParameter("@precio", "%" + textPrecioP.Text + "%"));
             }
 
-            // Cargar los resultados de la búsqueda
-            try
+            // Cargar los resultados de la búsqueda
+            try
             {
                 using (SqlConnection conn = ObtenerConexion())
                 {
