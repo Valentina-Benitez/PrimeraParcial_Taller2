@@ -31,12 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
-            this.txtTipo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -51,6 +47,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNomCliente = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dvgClientes = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboTipo = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
@@ -67,9 +67,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.comboTipo);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.dtpFechaNac);
-            this.panel2.Controls.Add(this.txtTipo);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.btnGuardar);
             this.panel2.Controls.Add(this.txtTelefono);
@@ -92,19 +92,6 @@
             this.panel2.TabIndex = 7;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(283, 372);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -116,27 +103,6 @@
             this.label16.TabIndex = 26;
             this.label16.Text = "Nuevo Cliente";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label2.Location = new System.Drawing.Point(13, 349);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(245, 32);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Clientes Registrados";
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.Location = new System.Drawing.Point(317, 378);
-            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(263, 22);
-            this.txtBusqueda.TabIndex = 3;
-            this.txtBusqueda.Text = "Buscar clientes";
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged_1);
-            // 
             // dtpFechaNac
             // 
             this.dtpFechaNac.Location = new System.Drawing.Point(383, 188);
@@ -144,15 +110,6 @@
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(212, 22);
             this.dtpFechaNac.TabIndex = 20;
-            // 
-            // txtTipo
-            // 
-            this.txtTipo.Location = new System.Drawing.Point(868, 149);
-            this.txtTipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(212, 22);
-            this.txtTipo.TabIndex = 19;
-            this.txtTipo.TextChanged += new System.EventHandler(this.txtTipo_TextChanged);
             // 
             // label7
             // 
@@ -307,6 +264,40 @@
             this.txtNomCliente.TabIndex = 23;
             this.txtNomCliente.Text = "Nombre";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(283, 372);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.label2.Location = new System.Drawing.Point(13, 349);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(245, 32);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Clientes Registrados";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(317, 378);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(263, 22);
+            this.txtBusqueda.TabIndex = 3;
+            this.txtBusqueda.Text = "Buscar clientes";
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged_1);
+            // 
             // dvgClientes
             // 
             this.dvgClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -381,6 +372,16 @@
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             // 
+            // comboTipo
+            // 
+            this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTipo.FormattingEnabled = true;
+            this.comboTipo.Location = new System.Drawing.Point(868, 155);
+            this.comboTipo.Name = "comboTipo";
+            this.comboTipo.Size = new System.Drawing.Size(212, 24);
+            this.comboTipo.TabIndex = 27;
+            this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -435,6 +436,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.ComboBox comboTipo;
     }
 }

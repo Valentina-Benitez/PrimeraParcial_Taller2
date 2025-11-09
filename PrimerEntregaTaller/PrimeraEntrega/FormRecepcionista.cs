@@ -28,7 +28,7 @@ namespace Taller_AppRestaurante
             Hora2.DataPropertyName = "hora";
             Mesa3.DataPropertyName = "mesa";
             Estado6.DataPropertyName = "estado";
-            Personas5.DataPropertyName = "personas";
+            personas.DataPropertyName = "personas";
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -107,8 +107,9 @@ namespace Taller_AppRestaurante
         {
             comboEstad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEstad.Items.Clear();
+            comboEstad.Items.Add("pendiente");
             comboEstad.Items.Add("confirmada");
-           // comboEstad.Items.Add("pendiente");
+           
             comboEstad.Items.Add("cancelada");
         }
 
@@ -327,51 +328,68 @@ namespace Taller_AppRestaurante
 
         private void dvgReserva_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dvgReserva.CurrentRow != null)
-            {
-                DataGridViewRow fila = dvgReserva.CurrentRow;
+            // Asegurarse de que se ha hecho clic en una fila válida
+            if (e.RowIndex < 0 || dvgReserva.Rows.Count == 0)
+                return;
 
-                // FECHA
+            DataGridViewRow fila = dvgReserva.Rows[e.RowIndex];
+
+            // FECHA
+            if (dvgReserva.Columns.Contains("Fecha1"))
+            {
                 var fechaValor = fila.Cells["Fecha1"].Value;
                 if (fechaValor != null && fechaValor != DBNull.Value && DateTime.TryParse(fechaValor.ToString(), out DateTime fecha))
-                {
                     dateTimePicker4.Value = fecha;
-                }
                 else
-                {
                     dateTimePicker4.Value = DateTime.Today;
-                }
+            }
 
-                // DNI
+            // DNI
+            if (dvgReserva.Columns.Contains("dni"))
                 textBox4.Text = fila.Cells["dni"].Value?.ToString() ?? "";
+            else
+                textBox4.Clear();
 
-                // HORA
+            // HORA
+            if (dvgReserva.Columns.Contains("Hora2"))
                 dateTimePicker3.Text = fila.Cells["Hora2"].Value?.ToString() ?? "";
 
-                // MESA
-                if (fila.Cells["Mesa3"].Value != null && fila.Cells["Mesa3"].Value != DBNull.Value)
-                    numericUpDown4.Value = Convert.ToDecimal(fila.Cells["Mesa3"].Value);
+            // MESA
+            if (dvgReserva.Columns.Contains("Mesa3"))
+            {
+                var mesaVal = fila.Cells["Mesa3"].Value;
+                if (mesaVal != null && mesaVal != DBNull.Value && decimal.TryParse(mesaVal.ToString(), out decimal mesaDec))
+                    numericUpDown4.Value = Math.Min(Math.Max(mesaDec, numericUpDown4.Minimum), numericUpDown4.Maximum);
                 else
                     numericUpDown4.Value = numericUpDown4.Minimum;
+            }
 
-                // ESTADO
+            // ESTADO
+            if (dvgReserva.Columns.Contains("Estado6"))
+            {
                 string estado = fila.Cells["Estado6"].Value?.ToString();
                 if (!string.IsNullOrEmpty(estado) && comboEstad.Items.Contains(estado))
                     comboEstad.SelectedItem = estado;
                 else
                     comboEstad.SelectedIndex = -1;
+            }
+            else
+            {
+                comboEstad.SelectedIndex = -1;
+            }
 
-                // PERSONAS
-                var personasValor = fila.Cells["Personas5"].Value;
+            // PERSONAS
+            if (dvgReserva.Columns.Contains("personas"))
+            {
+                var personasValor = fila.Cells["personas"].Value;
                 if (personasValor != null && decimal.TryParse(personasValor.ToString(), out decimal personas))
-                {
-                    numericUpDown3.Value = personas;
-                }
+                    numericUpDown3.Value = Math.Min(Math.Max(personas, numericUpDown3.Minimum), numericUpDown3.Maximum);
                 else
-                {
                     numericUpDown3.Value = numericUpDown3.Minimum;
-                }
-
+            }
+            else
+            {
+                numericUpDown3.Value = numericUpDown3.Minimum;
             }
         }
 

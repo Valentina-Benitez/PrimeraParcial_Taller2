@@ -11,6 +11,8 @@ namespace Taller_AppRestaurante
         {
             InitializeComponent();
 
+            this.Load += FormAgregarCliente_Load; // engancha el evento
+
             // Desactivar generación automática de columnas
             dvgClientes.AutoGenerateColumns = false;
 
@@ -34,6 +36,15 @@ namespace Taller_AppRestaurante
         {
             string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
             return new SqlConnection(cadena);
+        }
+
+        private void FormAgregarCliente_Load(object sender, EventArgs e)
+        {
+            comboTipo.Items.Add("VIP");
+            comboTipo.Items.Add("Frecuente");
+            comboTipo.Items.Add("Nuevo");
+
+           
         }
 
         private void CargarClientes()
@@ -63,7 +74,7 @@ namespace Taller_AppRestaurante
             string Gmail = txtCorreo.Text.Trim();
             DateTime fecha_nacimiento = dtpFechaNac.Value;
             string dni = txtDNI.Text.Trim();
-            string tipo_cliente = txtTipo.Text.Trim();
+            string tipo_cliente = comboTipo.Text.Trim();
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) || string.IsNullOrEmpty(telefono) ||
                 string.IsNullOrEmpty(Gmail) || string.IsNullOrEmpty(dni) || string.IsNullOrEmpty(tipo_cliente))
@@ -116,7 +127,7 @@ namespace Taller_AppRestaurante
             txtTelefono.Clear();
             txtCorreo.Clear();
             txtDNI.Clear();
-            txtTipo.Clear();
+            //comboTipo.Clear();
             dtpFechaNac.Value = DateTime.Today;
         }
 
@@ -228,6 +239,11 @@ namespace Taller_AppRestaurante
         }
 
         private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
