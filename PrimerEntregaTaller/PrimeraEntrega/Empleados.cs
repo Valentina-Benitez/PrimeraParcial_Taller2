@@ -64,7 +64,7 @@ namespace gerente
 
         private void CrearColumnasDgv()
         {
-            var cId = new DataGridViewTextBoxColumn { Name = "id_usuario", DataPropertyName = "id_usuario", HeaderText = "ID", ReadOnly = true };
+            //var cId = new DataGridViewTextBoxColumn { Name = "id_usuario", DataPropertyName = "id_usuario", HeaderText = "ID", ReadOnly = true };
             var cNombre = new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" };
             var cApellido = new DataGridViewTextBoxColumn { Name = "apellido", DataPropertyName = "apellido", HeaderText = "Apellido" };
             var cDni = new DataGridViewTextBoxColumn { Name = "dni", DataPropertyName = "dni", HeaderText = "DNI" };
@@ -76,7 +76,7 @@ namespace gerente
             // contraseña la traemos con alias "contraseña" (sin ñ) para evitar problemas con nombres
             var cContra = new DataGridViewTextBoxColumn { Name = "contraseña", DataPropertyName = "contraseña", HeaderText = "Contraseña", Visible = false }; // ocultamos la contraseña en la grilla
 
-            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { cId, cNombre, cApellido, cDni, cTelefono, cCorreo, cRol, cFecha, cDomicilio, cContra });
+            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { cNombre, cApellido, cDni, cTelefono, cCorreo, cRol, cFecha, cDomicilio, cContra });
         }
 
         #region Conexión

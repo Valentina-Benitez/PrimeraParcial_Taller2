@@ -56,7 +56,7 @@ namespace PrimeraEntrega
         private void CrearColumnasDgv()
         {
             // Se crean columnas con el mismo nombre que en la tabla SQL
-            var cId = new DataGridViewTextBoxColumn { Name = "id_cliente", DataPropertyName = "id_cliente", HeaderText = "ID", ReadOnly = true };
+            //var cId = new DataGridViewTextBoxColumn { Name = "id_cliente", DataPropertyName = "id_cliente", HeaderText = "ID", ReadOnly = true };
             var cNombre = new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" };
             var cApellido = new DataGridViewTextBoxColumn { Name = "apellido", DataPropertyName = "apellido", HeaderText = "Apellido" };
             var cFecha = new DataGridViewTextBoxColumn { Name = "fecha_nacimiento", DataPropertyName = "fecha_nacimiento", HeaderText = "Fecha Nac." };
@@ -65,7 +65,7 @@ namespace PrimeraEntrega
             var cGmail = new DataGridViewTextBoxColumn { Name = "Gmail", DataPropertyName = "Gmail", HeaderText = "Correo" };
             var cTipo = new DataGridViewTextBoxColumn { Name = "tipo_cliente", DataPropertyName = "tipo_cliente", HeaderText = "Tipo" };
 
-            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { cId, cNombre, cApellido, cFecha, cDni, cTelefono, cGmail, cTipo });
+            dvgClientes.Columns.AddRange(new DataGridViewColumn[] { cNombre, cApellido, cFecha, cDni, cTelefono, cGmail, cTipo });
         }
 
         // ----------------- CONEXIÓN A BASE DE DATOS -----------------

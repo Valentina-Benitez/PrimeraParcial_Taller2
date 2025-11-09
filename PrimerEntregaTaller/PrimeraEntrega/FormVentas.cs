@@ -384,11 +384,11 @@ namespace PrimeraEntrega
                     // 🎨 Paleta de colores para cada método de pago
                     Dictionary<string, Color> colores = new Dictionary<string, Color>()
             {
-                { "Efectivo", Color.FromArgb(46, 204, 113) },      // Verde
-                { "Tarjeta", Color.FromArgb(52, 152, 219) },       // Azul
-                { "MercadoPago", Color.FromArgb(241, 196, 15) },   // Amarillo
-                { "Transferencia", Color.FromArgb(155, 89, 182) }, // Violeta
-                { "Otro", Color.FromArgb(230, 126, 34) }           // Naranja
+                { "Efectivo", Color.Fuchsia},      // Verde
+                { "Tarjeta", Color.Yellow},       // Azul
+                { "MercadoPago", Color.MediumPurple },   // Amarillo
+                { "Transferencia", Color.Turquoise }, // Violeta
+                { "Otro", Color.LightCoral }           // Naranja
             };
 
                     while (rd.Read())

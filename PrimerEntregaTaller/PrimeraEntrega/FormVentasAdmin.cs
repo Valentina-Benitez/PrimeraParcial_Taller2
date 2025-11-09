@@ -15,6 +15,8 @@ namespace PrimeraEntrega
         public FormVentasAdmin()
         {
             InitializeComponent();
+            dgvVentas.CellPainting += dgvVentas_CellPainting;
+
         }
 
         private SqlConnection ObtenerConexion()
@@ -27,6 +29,15 @@ namespace PrimeraEntrega
             dgvVentas.AutoGenerateColumns = false;
             CargarVentas();
             dgvVentas.Columns["Total"].DefaultCellStyle.Format = "C2";
+
+            // --- Agregar columna de botón ---
+            DataGridViewButtonColumn btnVerFactura = new DataGridViewButtonColumn();
+            btnVerFactura.Name = "VerFactura";
+            btnVerFactura.HeaderText = "Factura";
+            btnVerFactura.Text = "Ver";
+            btnVerFactura.UseColumnTextForButtonValue = true;
+            dgvVentas.Columns.Add(btnVerFactura);
+
 
         }
 
@@ -110,5 +121,41 @@ namespace PrimeraEntrega
         private void txtEmpleado_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; }
         private void txtCliente_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; }
         private void txtPago_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; }
+
+        private void dgvVentas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // Verifica que sea la columna del botón y que no sea el encabezado
+            if (e.ColumnIndex >= 0 && dgvVentas.Columns[e.ColumnIndex].Name == "VerFactura" && e.RowIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, true);
+                e.PaintContent(e.CellBounds);
+
+                // Área del botón dentro de la celda
+                Rectangle rect = e.CellBounds;
+                rect.Inflate(-4, -4);
+
+                // Color celeste claro
+                Color colorCeleste = Color.FromArgb(173, 216, 230); // LightBlue
+
+                using (SolidBrush brush = new SolidBrush(colorCeleste))
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+
+                // Texto centrado
+                TextRenderer.DrawText(
+                    e.Graphics,
+                    "Ver",
+                    e.CellStyle.Font,
+                    rect,
+                    Color.Black,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+                );
+
+                e.Handled = true;
+            }
+        }
+
     }
+
 }
