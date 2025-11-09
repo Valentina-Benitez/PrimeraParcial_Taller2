@@ -20,13 +20,16 @@ namespace gerente
     {
         private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
+        // Roles permitidos que pueden asignarse a los usuarios del sistema
         private readonly string[] RolesValidos = new[] { "Empleado", "Gerente", "Administrador" };
 
+        // CONSTRUCTOR DEL FORMULARIO
+        // Configura la interfaz, los eventos y carga inicial de datos
         public Empleados()
         {
             InitializeComponent();
 
-            // Preparación del DataGridView 
+            // Configuración general del DataGridView de empleados
             dgvEmpleados.AutoGenerateColumns = false;
             dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmpleados.MultiSelect = false;
@@ -62,8 +65,12 @@ namespace gerente
             CargarUsuarios();
         }
 
+        // MÉTODO: CrearColumnasDgv()
+        // Define y agrega manualmente las columnas del DataGridView
         private void CrearColumnasDgv()
         {
+
+            // Columna oculta del ID (clave primaria)
             var cId = new DataGridViewTextBoxColumn
             {
                 Name = "id_usuario",
@@ -73,6 +80,7 @@ namespace gerente
                 Visible = false // lo ocultamos si no querés mostrarlo
             };
 
+            // Columnas visibles con los datos principales del empleado
             var cNombre = new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" };
             var cApellido = new DataGridViewTextBoxColumn { Name = "apellido", DataPropertyName = "apellido", HeaderText = "Apellido" };
             var cDni = new DataGridViewTextBoxColumn { Name = "dni", DataPropertyName = "dni", HeaderText = "DNI" };
@@ -84,7 +92,7 @@ namespace gerente
             var cContra = new DataGridViewTextBoxColumn { Name = "contraseña", DataPropertyName = "contraseña", HeaderText = "Contraseña", Visible = false };
             var cActivo = new DataGridViewTextBoxColumn { Name = "activo", DataPropertyName = "activo", HeaderText = "Estado"};
 
-            // ✅ Ahora sí incluimos la columna ID al principio
+            // Agrega todas las columnas al DataGridView
             dgvEmpleados.Columns.AddRange(new DataGridViewColumn[]
             {
         cId, cNombre, cApellido, cDni, cTelefono, cCorreo, cRol, cFecha, cDomicilio, cContra, cActivo
@@ -244,35 +252,42 @@ namespace gerente
             }
         }
 
+        // ===========================================================
+        // MÉTODO: Agregar un nuevo usuario al sistema
+        // ===========================================================
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
+                // Verifica que todos los campos requeridos estén completos
                 if (!CamposCompletos())
                 {
                     MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Valida formato de correo
                 if (!ValidarCorreo(textCorreo.Text))
                 {
                     MessageBox.Show("El correo debe ser válido y terminar en @.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Verifica que se haya seleccionado un rol permitido
                 if (!ValidarRolSeleccionado())
                 {
                     MessageBox.Show("Seleccione un rol válido (Empleado, Gerente, Administrador).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Genera una contraseña aleatoria para el nuevo usuario
                 string contraseñaGenerada = GenerarContraseña();
 
                 using (SqlConnection con = ObtenerConexion())
                 {
                     con.Open();
 
-                    // Evitar duplicados por DNI o correo
+                    // Antes de insertar, se valida que no exista un usuario con el mismo DNI o correo
                     string check = "SELECT COUNT(*) FROM Usuario WHERE dni = @dni OR Correo = @correo";
                     using (SqlCommand checkCmd = new SqlCommand(check, con))
                     {
@@ -286,7 +301,7 @@ namespace gerente
                         }
                     }
 
-                    // Insert (usamos [contraseña] entre corchetes porque tiene ñ)
+                    // Inserta el nuevo registro en la tabla Usuario
                     string insert =
                         "INSERT INTO Usuario (nombre, apellido, dni, telefono, Correo, rol, fecha_nacimiento, domicilio, [contraseña]) " +
                         "VALUES (@nombre, @apellido, @dni, @telefono, @correo, @rol, @fecha_nacimiento, @domicilio, @contraseña)";
@@ -301,16 +316,18 @@ namespace gerente
                         cmd.Parameters.AddWithValue("@rol", cbTipoUsuario.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@fecha_nacimiento", dtpFechaNac.Value.Date);
                         cmd.Parameters.AddWithValue("@domicilio", textDomicilio.Text.Trim());
-                        cmd.Parameters.AddWithValue("@contraseña", contraseñaGenerada); // en produccion, guardar hash en lugar de texto
+                        cmd.Parameters.AddWithValue("@contraseña", contraseñaGenerada); // en producción se debería guardar encriptada
                         cmd.ExecuteNonQuery();
                     }
                 }
 
-                // Enviar contraseña al correo (si falla, el método mostrará la contraseña)
+                // Envía la contraseña generada al correo del empleado
                 EnviarCorreoContraseña(textCorreo.Text.Trim(), textNombre.Text.Trim(), contraseñaGenerada);
 
                 MessageBox.Show($"Usuario agregado correctamente.\nSe envió la contraseña al correo {textCorreo.Text}.",
                                 "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpia los campos y recarga la lista
                 ClearForm();
                 CargarUsuarios();
             }
@@ -320,41 +337,49 @@ namespace gerente
             }
         }
 
+        // ===========================================================
+        // MÉTODO: Modificar un usuario existente
+        // ===========================================================
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
+                // Verifica que haya una fila seleccionada en el DataGridView
                 if (dgvEmpleados.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione un usuario para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Verifica campos completos
                 if (!CamposCompletos())
                 {
                     MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Valida el correo ingresado
                 if (!ValidarCorreo(textCorreo.Text))
                 {
                     MessageBox.Show("El correo debe ser válido y tener @.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Verifica que el rol sea válido
                 if (!ValidarRolSeleccionado())
                 {
                     MessageBox.Show("Seleccione un rol válido (Empleado, Gerente, Administrador).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Obtiene el ID del usuario seleccionado
                 int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
 
                 using (SqlConnection con = ObtenerConexion())
                 {
                     con.Open();
 
-                    // Nota: no modificamos la contraseña aquí. Para cambiarla, usar ResetearContraseñaSeleccionada()
+                    // Actualiza todos los datos del usuario menos la contraseña
                     string update =
                         "UPDATE Usuario SET nombre=@nombre, apellido=@apellido, dni=@dni, telefono=@telefono, correo=@correo, rol=@rol, fecha_nacimiento=@fecha_nacimiento, domicilio=@domicilio " +
                         "WHERE id_usuario=@id";
@@ -379,6 +404,7 @@ namespace gerente
                     }
                 }
 
+                // Limpia el formulario y recarga la tabla
                 ClearForm();
                 CargarUsuarios();
             }
@@ -388,19 +414,24 @@ namespace gerente
             }
         }
 
-        // Método público para resetear la contraseña de la fila seleccionada (puede enlazarse a un botón aparte)
+        // ===========================================================
+        // MÉTODO: Resetear la contraseña del usuario seleccionado
+        // ===========================================================
         public void ResetearContraseñaSeleccionada()
         {
+            // Verifica que haya una fila seleccionada en el DataGridView
             if (dgvEmpleados.CurrentRow == null)
             {
                 MessageBox.Show("Seleccione un usuario para resetear la contraseña.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Obtiene los datos del usuario seleccionado
             int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
             string nombre = GetCellString(dgvEmpleados.CurrentRow, "nombre");
             string mail = GetCellString(dgvEmpleados.CurrentRow, "correo");
 
+            // Genera una nueva contraseña aleatoria
             string nuevaContra = GenerarContraseña();
 
             try
@@ -408,12 +439,16 @@ namespace gerente
                 using (SqlConnection con = ObtenerConexion())
                 {
                     con.Open();
+
+                    // Actualiza la contraseña del usuario en la base de datos
                     string update = "UPDATE Usuario SET [contraseña]=@contraseña WHERE id_usuario=@id";
                     using (SqlCommand cmd = new SqlCommand(update, con))
                     {
                         cmd.Parameters.AddWithValue("@contraseña", nuevaContra);
                         cmd.Parameters.AddWithValue("@id", id);
                         int filas = cmd.ExecuteNonQuery();
+
+                        // Si se actualizó correctamente, envía la nueva contraseña por correo
                         if (filas > 0)
                         {
                             EnviarCorreoContraseña(mail, nombre, nuevaContra);
@@ -433,10 +468,12 @@ namespace gerente
             }
         }
 
-        // ---------------------- BOTÓN BUSCAR ----------------------
+        // ===========================================================
+        // MÉTODO: Buscar empleados según los filtros ingresados
+        // ===========================================================
         private void bBuscar_Click(object sender, EventArgs e)
         {
-            // Verificar si todos los campos están vacíos
+            // Verifica que al menos un campo esté completado
             if (string.IsNullOrWhiteSpace(textNombre.Text) &&
                 string.IsNullOrWhiteSpace(textApellido.Text) &&
                 string.IsNullOrWhiteSpace(textDni.Text) &&
@@ -455,11 +492,12 @@ namespace gerente
                 {
                     con.Open();
 
-                    // Construimos la consulta dinámicamente
+                    // Se arma la consulta de forma dinámica según los campos llenados
                     string query = "SELECT id_usuario, nombre, apellido, dni, telefono, correo, rol, fecha_nacimiento, domicilio, [contraseña] AS contraseña FROM Usuario WHERE 1=1";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
+                    // Agrega condiciones según los campos completados
                     if (!string.IsNullOrWhiteSpace(textNombre.Text))
                     {
                         query += " AND nombre LIKE @nombre";
@@ -496,13 +534,14 @@ namespace gerente
                         cmd.Parameters.AddWithValue("@domicilio", "%" + textDomicilio.Text.Trim() + "%");
                     }
 
+                    // Ejecuta la consulta final
                     cmd.CommandText = query;
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
-                    // 🔹 Comprobar si hay resultados
+                    // Si no hay coincidencias, muestra un mensaje
                     if (dt.Rows.Count == 0)
                     {
                         MessageBox.Show("No hay ningún empleado que tenga esos datos en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -520,10 +559,12 @@ namespace gerente
         }
 
 
-        // ---------------------- BOTÓN CANCELAR ----------------------
+        // ===========================================================
+        // MÉTODO: Cancelar la búsqueda o limpieza del formulario
+        // ===========================================================
         private void bCancelar_Click(object sender, EventArgs e)
         {
-            // Verificar si todos los campos están vacíos
+            // Verifica si el formulario ya está vacío
             if (string.IsNullOrWhiteSpace(textNombre.Text) &&
                 string.IsNullOrWhiteSpace(textApellido.Text) &&
                 string.IsNullOrWhiteSpace(textDni.Text) &&
@@ -536,34 +577,43 @@ namespace gerente
                 return;
             }
 
+            // Limpia los campos y recarga los usuarios
             ClearForm();
             MessageBox.Show("Formulario limpiado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CargarUsuarios();
         }
 
-        // Desactiva el usuario seleccionado en lugar de eliminarlo físicamente
+        // ===========================================================
+        // MÉTODO: Desactivar usuario (no se elimina físicamente)
+        // ===========================================================
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
+                // Verifica que haya una fila seleccionada en el DataGridView
                 if (dgvEmpleados.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione un usuario para desactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Obtiene el ID del usuario a desactivar
                 int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
 
+                // Pide confirmación antes de realizar la acción
                 var dr = MessageBox.Show("¿Está seguro de desactivar este usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr != DialogResult.Yes) return;
 
                 using (SqlConnection con = ObtenerConexion())
                 {
                     con.Open();
+
+                    // Actualiza el campo 'activo' a 0 (usuario desactivado)
                     using (SqlCommand cmd = new SqlCommand("UPDATE Usuario SET activo = 0 WHERE id_usuario=@id", con))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         int filas = cmd.ExecuteNonQuery();
+
                         if (filas > 0)
                             MessageBox.Show("Usuario desactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
@@ -571,6 +621,7 @@ namespace gerente
                     }
                 }
 
+                // Limpia el formulario y recarga los datos
                 ClearForm();
                 CargarUsuarios();
             }
@@ -580,11 +631,64 @@ namespace gerente
             }
         }
 
+        // ===========================================================
+        // MÉTODO: Reactivar usuario previamente desactivado
+        // ===========================================================
+        private void bReactivar_Click(object sender, EventArgs e)
+        {
+            // Verifica que haya un usuario seleccionado
+            if (dgvEmpleados.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un usuario para reactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Verifica que el usuario esté realmente inactivo
+            string estado = GetCellString(dgvEmpleados.CurrentRow, "activo");
+            if (estado == "Activo")
+            {
+                MessageBox.Show("El usuario ya está activo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Obtiene el ID del usuario a reactivar
+            int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
+
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+
+                    // Cambia el estado del usuario a activo nuevamente
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Usuario SET activo = 1 WHERE id_usuario = @id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        int filas = cmd.ExecuteNonQuery();
+
+                        if (filas > 0)
+                            MessageBox.Show("Usuario reactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("No se encontró el usuario para reactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+                // Recarga la tabla para mostrar el cambio de estado
+                CargarUsuarios();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reactivar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         #endregion
 
         #region Helpers UI
-
+        // ===========================================================
+        // MÉTODO: Verifica que todos los campos obligatorios estén completos
+        // ===========================================================
         private bool CamposCompletos()
         {
             return !string.IsNullOrWhiteSpace(textNombre.Text) &&
@@ -596,11 +700,16 @@ namespace gerente
                    !string.IsNullOrWhiteSpace(textDomicilio.Text);
         }
 
+        // ===========================================================
+        // EVENTO: Cuando se hace clic en una celda del DataGridView
+        // Llena los campos del formulario con los datos de la fila seleccionada
+        // ===========================================================
         private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             DataGridViewRow fila = dgvEmpleados.Rows[e.RowIndex];
 
+            // Asigna los valores de cada columna a los controles del formulario
             textNombre.Text = GetCellString(fila, "nombre");
             textApellido.Text = GetCellString(fila, "apellido");
             textDni.Text = GetCellString(fila, "dni");
@@ -608,30 +717,37 @@ namespace gerente
             textCorreo.Text = GetCellString(fila, "Correo");
             cbTipoUsuario.SelectedItem = GetCellString(fila, "rol");
 
-            // Fecha (segura)
+            // Carga la fecha de nacimiento de forma segura
             var val = fila.Cells["fecha_nacimiento"].Value;
             if (val != null && val != DBNull.Value && DateTime.TryParse(val.ToString(), out DateTime fecha))
                 dtpFechaNac.Value = fecha;
             else
                 dtpFechaNac.Value = DateTime.Today;
 
+            // Carga el domicilio
             textDomicilio.Text = GetCellString(fila, "domicilio");
 
-            // No cargamos la contraseña en campos (la mantenemos oculta en la grilla)
+            // Nota: la contraseña no se muestra en el formulario (se mantiene oculta)
         }
 
-        /// <summary>
-        /// Obtiene el valor de una celda como string respetando nulos.
-        /// </summary>
+        // ===========================================================
+        // MÉTODO: Devuelve el valor de una celda como texto, manejando nulos
+        // ===========================================================
         private string GetCellString(DataGridViewRow row, string columnName)
         {
             if (row == null) return string.Empty;
             if (!dgvEmpleados.Columns.Contains(columnName)) return string.Empty;
+
             var cell = row.Cells[columnName];
-            if (cell == null || cell.Value == null || cell.Value == DBNull.Value) return string.Empty;
+            if (cell == null || cell.Value == null || cell.Value == DBNull.Value)
+                return string.Empty;
+
             return cell.Value.ToString();
         }
 
+        // ===========================================================
+        // MÉTODO: Limpia todos los campos del formulario y deselecciona la grilla
+        // ===========================================================
         private void ClearForm()
         {
             textNombre.Clear();
@@ -647,61 +763,10 @@ namespace gerente
 
         #endregion
 
-        private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e){}
+        private void panel1_Paint(object sender, PaintEventArgs e){}
 
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void cbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bReactivar_Click(object sender, EventArgs e)
-        {
-            if (dgvEmpleados.CurrentRow == null)
-            {
-                MessageBox.Show("Seleccione un usuario para reactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string estado = GetCellString(dgvEmpleados.CurrentRow, "activo");
-            if (estado == "Activo")
-            {
-                MessageBox.Show("El usuario ya está activo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
-
-            try
-            {
-                using (SqlConnection con = ObtenerConexion())
-                {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("UPDATE Usuario SET activo = 1 WHERE id_usuario = @id", con))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        int filas = cmd.ExecuteNonQuery();
-                        if (filas > 0)
-                            MessageBox.Show("Usuario reactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        else
-                            MessageBox.Show("No se encontró el usuario para reactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-
-                CargarUsuarios();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al reactivar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        private void cbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e){}
 
     }
 }
