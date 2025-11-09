@@ -37,7 +37,7 @@ namespace gerente
 
             // ------------------- Validaciones -------------------
             textNombreP.KeyPress += SoloLetras;
-            textCategoriaP.KeyPress += SoloLetras;
+           // comboCategoria.KeyPress += SoloLetras;
             textDescuentoP.KeyPress += SoloNumeros;
             textPrecioP.KeyPress += SoloNumeros;
 
@@ -127,7 +127,7 @@ namespace gerente
                 using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                 {
                     checkCmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
-                    checkCmd.Parameters.AddWithValue("@categoria", textCategoriaP.Text.Trim());
+                    checkCmd.Parameters.AddWithValue("@categoria", comboCategoria.Text.Trim());
                     int existe = (int)checkCmd.ExecuteScalar();
                     if (existe > 0)
                     {
@@ -142,7 +142,7 @@ namespace gerente
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
-                    cmd.Parameters.AddWithValue("@categoria", textCategoriaP.Text.Trim());
+                    cmd.Parameters.AddWithValue("@categoria", comboCategoria.Text.Trim());
                     cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text));
                     cmd.Parameters.AddWithValue("@descripcion", textDescripcion.Text.Trim());
                     cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString());
@@ -176,7 +176,7 @@ namespace gerente
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
-                    cmd.Parameters.AddWithValue("@categoria", textCategoriaP.Text.Trim());
+                    cmd.Parameters.AddWithValue("@categoria", comboCategoria.Text.Trim());
                     cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text));
                     cmd.Parameters.AddWithValue("@descripcion", textDescripcion.Text.Trim());
                     cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString());
@@ -230,7 +230,7 @@ namespace gerente
         private void bBuscar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textNombreP.Text) &&
-                string.IsNullOrWhiteSpace(textCategoriaP.Text) &&
+                string.IsNullOrWhiteSpace(comboCategoria.Text) &&
                 string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
                 string.IsNullOrWhiteSpace(textDescripcion.Text) &&
                 string.IsNullOrWhiteSpace(textPrecioP.Text) &&
@@ -250,7 +250,7 @@ namespace gerente
                     cmd.Connection = conn;
 
                     if (!string.IsNullOrWhiteSpace(textNombreP.Text)) { query += " AND nombre LIKE @nombre"; cmd.Parameters.AddWithValue("@nombre", "%" + textNombreP.Text.Trim() + "%"); }
-                    if (!string.IsNullOrWhiteSpace(textCategoriaP.Text)) { query += " AND categoria LIKE @categoria"; cmd.Parameters.AddWithValue("@categoria", "%" + textCategoriaP.Text.Trim() + "%"); }
+                    if (!string.IsNullOrWhiteSpace(comboCategoria.Text)) { query += " AND categoria LIKE @categoria"; cmd.Parameters.AddWithValue("@categoria", "%" + comboCategoria.Text.Trim() + "%"); }
                     if (!string.IsNullOrWhiteSpace(textDescuentoP.Text)) { query += " AND descuento=@descuento"; cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text)); }
                     if (!string.IsNullOrWhiteSpace(textDescripcion.Text)) { query += " AND descripcion LIKE @descripcion"; cmd.Parameters.AddWithValue("@descripcion", "%" + textDescripcion.Text.Trim() + "%"); }
                     if (cbEstadoP.SelectedIndex != -1) { query += " AND estado=@estado"; cmd.Parameters.AddWithValue("@estado", cbEstadoP.SelectedItem.ToString()); }
@@ -295,7 +295,7 @@ namespace gerente
             DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
 
             textNombreP.Text = fila.Cells["nombre"].Value?.ToString();
-            textCategoriaP.Text = fila.Cells["categoria"].Value?.ToString();
+            comboCategoria.Text = fila.Cells["categoria"].Value?.ToString();
             textDescuentoP.Text = fila.Cells["descuento"].Value?.ToString();
             textDescripcion.Text = fila.Cells["descripcion"].Value?.ToString();
             textPrecioP.Text = fila.Cells["precio"].Value?.ToString();
@@ -307,7 +307,7 @@ namespace gerente
         private bool CamposCompletos()
         {
             return !string.IsNullOrWhiteSpace(textNombreP.Text) &&
-                   !string.IsNullOrWhiteSpace(textCategoriaP.Text) &&
+                   !string.IsNullOrWhiteSpace(comboCategoria.Text) &&
                    !string.IsNullOrWhiteSpace(textDescuentoP.Text) &&
                    !string.IsNullOrWhiteSpace(textDescripcion.Text) &&
                    !string.IsNullOrWhiteSpace(textPrecioP.Text) &&
@@ -317,7 +317,7 @@ namespace gerente
         private void LimpiarFormulario()
         {
             textNombreP.Clear();
-            textCategoriaP.Clear();
+            //textCategoriaP.Clear();
             textDescuentoP.Clear();
             textDescripcion.Clear();
             textPrecioP.Clear();
@@ -334,7 +334,8 @@ namespace gerente
 
         private void FormProductos_Load(object sender, EventArgs e)
         {
-
+            comboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboCategoria.Items.AddRange(new[] { "Comida", "Bebida" });
         }
 
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)

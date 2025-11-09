@@ -72,9 +72,8 @@ namespace PrimeraEntrega
             // 
             // btnAceptar
             // 
-            this.btnAceptar.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnAceptar.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(303, 9);
             this.btnAceptar.Name = "btnAceptar";

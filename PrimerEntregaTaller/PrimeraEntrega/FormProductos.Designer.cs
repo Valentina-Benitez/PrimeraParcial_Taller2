@@ -46,7 +46,6 @@
             this.bAgregar = new System.Windows.Forms.Button();
             this.bEliminar = new System.Windows.Forms.Button();
             this.textNombreP = new System.Windows.Forms.TextBox();
-            this.textCategoriaP = new System.Windows.Forms.TextBox();
             this.textDescuentoP = new System.Windows.Forms.TextBox();
             this.textPrecioP = new System.Windows.Forms.TextBox();
             this.bModificar = new System.Windows.Forms.Button();
@@ -56,6 +55,7 @@
             this.bCancelar = new System.Windows.Forms.Button();
             this.cbEstadoP = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.comboCategoria = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +75,7 @@
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvProductos.GridColor = System.Drawing.Color.LightBlue;
             this.dgvProductos.Location = new System.Drawing.Point(0, 409);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.Size = new System.Drawing.Size(1392, 172);
@@ -134,7 +134,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1135, 96);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(177, 174);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -209,7 +209,7 @@
             this.bAgregar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAgregar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bAgregar.Location = new System.Drawing.Point(384, 303);
-            this.bAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.bAgregar.Name = "bAgregar";
             this.bAgregar.Size = new System.Drawing.Size(100, 28);
             this.bAgregar.TabIndex = 10;
@@ -222,7 +222,7 @@
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEliminar.Location = new System.Drawing.Point(768, 303);
-            this.bEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(100, 28);
             this.bEliminar.TabIndex = 11;
@@ -233,23 +233,15 @@
             // textNombreP
             // 
             this.textNombreP.Location = new System.Drawing.Point(203, 96);
-            this.textNombreP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textNombreP.Margin = new System.Windows.Forms.Padding(4);
             this.textNombreP.Name = "textNombreP";
             this.textNombreP.Size = new System.Drawing.Size(132, 22);
             this.textNombreP.TabIndex = 12;
             // 
-            // textCategoriaP
-            // 
-            this.textCategoriaP.Location = new System.Drawing.Point(748, 96);
-            this.textCategoriaP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textCategoriaP.Name = "textCategoriaP";
-            this.textCategoriaP.Size = new System.Drawing.Size(132, 22);
-            this.textCategoriaP.TabIndex = 13;
-            // 
             // textDescuentoP
             // 
             this.textDescuentoP.Location = new System.Drawing.Point(477, 176);
-            this.textDescuentoP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textDescuentoP.Margin = new System.Windows.Forms.Padding(4);
             this.textDescuentoP.Name = "textDescuentoP";
             this.textDescuentoP.Size = new System.Drawing.Size(132, 22);
             this.textDescuentoP.TabIndex = 14;
@@ -257,7 +249,7 @@
             // textPrecioP
             // 
             this.textPrecioP.Location = new System.Drawing.Point(477, 98);
-            this.textPrecioP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textPrecioP.Margin = new System.Windows.Forms.Padding(4);
             this.textPrecioP.Name = "textPrecioP";
             this.textPrecioP.Size = new System.Drawing.Size(132, 22);
             this.textPrecioP.TabIndex = 16;
@@ -268,7 +260,7 @@
             this.bModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bModificar.Location = new System.Drawing.Point(573, 303);
-            this.bModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bModificar.Margin = new System.Windows.Forms.Padding(4);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(100, 28);
             this.bModificar.TabIndex = 18;
@@ -281,7 +273,7 @@
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bBuscar.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.Location = new System.Drawing.Point(203, 303);
-            this.bBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(100, 28);
             this.bBuscar.TabIndex = 19;
@@ -303,7 +295,7 @@
             // textDescripcion
             // 
             this.textDescripcion.Location = new System.Drawing.Point(748, 171);
-            this.textDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.textDescripcion.Name = "textDescripcion";
             this.textDescripcion.Size = new System.Drawing.Size(132, 22);
             this.textDescripcion.TabIndex = 21;
@@ -314,7 +306,7 @@
             this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bCancelar.Font = new System.Drawing.Font("Constantia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCancelar.Location = new System.Drawing.Point(939, 96);
-            this.bCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(33, 25);
             this.bCancelar.TabIndex = 22;
@@ -325,7 +317,7 @@
             // 
             this.cbEstadoP.FormattingEnabled = true;
             this.cbEstadoP.Location = new System.Drawing.Point(203, 176);
-            this.cbEstadoP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbEstadoP.Margin = new System.Windows.Forms.Padding(4);
             this.cbEstadoP.Name = "cbEstadoP";
             this.cbEstadoP.Size = new System.Drawing.Size(132, 24);
             this.cbEstadoP.TabIndex = 23;
@@ -341,12 +333,22 @@
             this.label16.TabIndex = 28;
             this.label16.Text = "Agregar Productos";
             // 
+            // comboCategoria
+            // 
+            this.comboCategoria.FormattingEnabled = true;
+            this.comboCategoria.Location = new System.Drawing.Point(748, 98);
+            this.comboCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.comboCategoria.Name = "comboCategoria";
+            this.comboCategoria.Size = new System.Drawing.Size(132, 24);
+            this.comboCategoria.TabIndex = 29;
+            // 
             // FormProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1392, 581);
+            this.Controls.Add(this.comboCategoria);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.cbEstadoP);
             this.Controls.Add(this.bCancelar);
@@ -356,7 +358,6 @@
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.textPrecioP);
             this.Controls.Add(this.textDescuentoP);
-            this.Controls.Add(this.textCategoriaP);
             this.Controls.Add(this.textNombreP);
             this.Controls.Add(this.bEliminar);
             this.Controls.Add(this.bAgregar);
@@ -369,7 +370,7 @@
             this.Controls.Add(this.lProductos);
             this.Controls.Add(this.dgvProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormProductos";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.FormProductos_Load);
@@ -393,7 +394,6 @@
         private System.Windows.Forms.Button bAgregar;
         private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.TextBox textNombreP;
-        private System.Windows.Forms.TextBox textCategoriaP;
         private System.Windows.Forms.TextBox textDescuentoP;
         private System.Windows.Forms.TextBox textPrecioP;
         private System.Windows.Forms.Button bModificar;
@@ -409,5 +409,6 @@
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.ComboBox cbEstadoP;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox comboCategoria;
     }
 }
