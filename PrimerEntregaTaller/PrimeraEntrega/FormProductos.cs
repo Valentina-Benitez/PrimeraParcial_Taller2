@@ -8,7 +8,7 @@ namespace gerente
 {
     public partial class FormProductos : Form
     {
-        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+        private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         public FormProductos()
         {
@@ -79,7 +79,7 @@ namespace gerente
 
         private void CargarProductos()
         {
-            using (SqlConnection conexion = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
+            using (SqlConnection conexion = new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
             {
                 string query = "SELECT id_producto, nombre, categoria, descripcion, estado, precio, descuento FROM Producto";
                 SqlDataAdapter adaptador = new SqlDataAdapter(query, conexion);
