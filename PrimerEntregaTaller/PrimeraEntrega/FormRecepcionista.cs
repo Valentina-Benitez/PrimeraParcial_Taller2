@@ -19,10 +19,11 @@ namespace Taller_AppRestaurante
         {
             InitializeComponent();
 
-            // Desactivar generación automática de columnas
+            txtBusqueda.DataBindings.Clear();
+            txtBusqueda.Text = string.Empty;
+
             dvgReserva.AutoGenerateColumns = false;
 
-            // Asignar DataPropertyName a cada columna
             Fecha1.DataPropertyName = "fecha_reserva";
             dni.DataPropertyName = "dni";
             Hora2.DataPropertyName = "hora";
@@ -30,9 +31,47 @@ namespace Taller_AppRestaurante
             Estado6.DataPropertyName = "estado";
             personas.DataPropertyName = "personas";
 
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
 
+            ConfigurarDataGridView();
             CargarReserva();
+
+            dvgReserva.CellClick += dvgReserva_CellClick;
+        }
+
+        private void ConfigurarDataGridView()
+        {
+            dvgReserva.AutoGenerateColumns = false;
+            dvgReserva.RowHeadersVisible = false;
+            dvgReserva.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dvgReserva.MultiSelect = false;
+            dvgReserva.AllowUserToAddRows = false;
+            dvgReserva.AllowUserToResizeRows = false;
+            dvgReserva.ReadOnly = true;
+
+            dvgReserva.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dvgReserva.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dvgReserva.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dvgReserva.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dvgReserva.RowTemplate.Height = 35;
+
+            dvgReserva.DefaultCellStyle.BackColor = Color.White;
+            dvgReserva.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dvgReserva.DefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dvgReserva.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            if (!dvgReserva.Columns.Contains("id_reserva"))
+            {
+                DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
+                colId.Name = "id_reserva";
+                colId.DataPropertyName = "id_reserva";
+                colId.Visible = false;
+                dvgReserva.Columns.Add(colId);
+            }
         }
 
         private void CargarReserva()
@@ -44,25 +83,25 @@ namespace Taller_AppRestaurante
                     con.Open();
 
                     string sql = @"
-                SELECT 
-                    r.id_reserva,
-                    r.fecha_reserva,
-                    r.dni,
-                    r.hora,
-                    r.mesa,
-                    r.estado,
-                    r.personas,
-                    u.nombre + ' ' + u.apellido AS Empleado
-                FROM Reserva r
-                LEFT JOIN Usuario u ON r.id_usuario = u.id_usuario
-                ORDER BY r.fecha_reserva DESC;";
+                        SELECT 
+                            r.id_reserva,
+                            r.fecha_reserva,
+                            r.dni,
+                            r.hora,
+                            r.mesa,
+                            r.estado,
+                            r.personas,
+                            u.nombre + ' ' + u.apellido AS Empleado
+                        FROM Reserva r
+                        LEFT JOIN Usuario u ON r.id_usuario = u.id_usuario
+                        ORDER BY r.fecha_reserva DESC;";
 
                     SqlDataAdapter da = new SqlDataAdapter(sql, con);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
                     dvgReserva.DataSource = dt;
-                    dvgReserva.ClearSelection(); // evita que quede fila seleccionada
+                    dvgReserva.ClearSelection();
                 }
 
                 dvgReserva.RowTemplate.Height = 30;
@@ -73,34 +112,10 @@ namespace Taller_AppRestaurante
             }
         }
 
-
         private void bPedido_Click(object sender, EventArgs e)
         {
-            // Crea una INSTANCIA de tu formulario
             FormAgregarProductos formAgregarProductos = new FormAgregarProductos();
-
-            // Llama a ShowDialog() en la INSTANCIA, no en la clase.
             formAgregarProductos.ShowDialog();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-            // Puedes dejarlo vacío si no necesitas lógica personalizada
         }
 
         private void FormRecepcionista_Load(object sender, EventArgs e)
@@ -109,20 +124,13 @@ namespace Taller_AppRestaurante
             comboEstad.Items.Clear();
             comboEstad.Items.Add("pendiente");
             comboEstad.Items.Add("confirmada");
-           
             comboEstad.Items.Add("cancelada");
-        }
-
-        private void dvgReserva_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                // Si ya tenés un DataTable cargado en el DataGridView
                 DataTable dt = dvgReserva.DataSource as DataTable;
 
                 if (dt != null)
@@ -130,16 +138,9 @@ namespace Taller_AppRestaurante
                     string filtro = txtBusqueda.Text.Trim();
 
                     if (string.IsNullOrEmpty(filtro))
-                    {
-                        // Quita el filtro y muestra todo
                         dt.DefaultView.RowFilter = string.Empty;
-                    }
                     else
-                    {
-                        // Filtra por coincidencia parcial en la columna "dni"
                         dt.DefaultView.RowFilter = $"dni LIKE '%{filtro}%'";
-
-                    }
                 }
             }
             catch (Exception ex)
@@ -148,38 +149,24 @@ namespace Taller_AppRestaurante
             }
         }
 
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir solo numeros, tecla de borrado (Backspace) y espacio
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true; // cancela la tecla
-            }
+                e.Handled = true;
         }
 
         private void ClearForm()
         {
             dateTimePicker4.Value = DateTime.Today;
             textBox4.Clear();
-            dateTimePicker3.Value = DateTime.Now; // Corregido: DateTimePicker no tiene Clear, se reinicia el valor
-            numericUpDown4.Value = numericUpDown4.Minimum; // Corregido: NumericUpDown no tiene Clear, se reinicia el valor
+            dateTimePicker3.Value = DateTime.Now;
+            numericUpDown4.Value = numericUpDown4.Minimum;
             comboEstad.SelectedIndex = -1;
-            numericUpDown3.Value = numericUpDown3.Minimum; // Corregido: NumericUpDown no tiene Clear, se reinicia el valor
+            numericUpDown3.Value = numericUpDown3.Minimum;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // ✅ Validar que todos los campos estén completos antes de insertar
             if (string.IsNullOrWhiteSpace(textBox4.Text) ||
                 comboEstad.SelectedIndex == -1 ||
                 string.IsNullOrWhiteSpace(numericUpDown4.Text) ||
@@ -189,7 +176,6 @@ namespace Taller_AppRestaurante
                 return;
             }
 
-            // Validar que el número de personas sea correcto
             if (!int.TryParse(numericUpDown3.Text.Trim(), out int personas) || personas <= 0)
             {
                 MessageBox.Show("Ingrese un número válido de personas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -203,8 +189,8 @@ namespace Taller_AppRestaurante
                     con.Open();
 
                     string sql = @"
-                    INSERT INTO Reserva (fecha_reserva, dni, hora, mesa, estado, personas, id_usuario)
-                    VALUES (@fecha, @dni, @hora, @mesa, @estado, @personas, @id_usuario)";
+                        INSERT INTO Reserva (fecha_reserva, dni, hora, mesa, estado, personas, id_usuario)
+                        VALUES (@fecha, @dni, @hora, @mesa, @estado, @personas, @id_usuario)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -219,20 +205,13 @@ namespace Taller_AppRestaurante
                         int filas = cmd.ExecuteNonQuery();
 
                         if (filas > 0)
-                        {
                             MessageBox.Show("✅ Reserva agregada correctamente.");
-                        }
                         else
-                        {
                             MessageBox.Show("No se pudo agregar la reserva.");
-                        }
-                        CargarReserva();
-                        //ClearForm();
-                    }
-                   
-                }
-                
 
+                        CargarReserva();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -244,14 +223,12 @@ namespace Taller_AppRestaurante
         {
             try
             {
-                // Verificar que haya una fila seleccionada
                 if (dvgReserva.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione una reserva para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Validar que los campos estén completos
                 if (string.IsNullOrWhiteSpace(textBox4.Text) ||
                     string.IsNullOrWhiteSpace(dateTimePicker3.Text) ||
                     string.IsNullOrWhiteSpace(numericUpDown4.Text) ||
@@ -262,14 +239,12 @@ namespace Taller_AppRestaurante
                     return;
                 }
 
-                // Intentar convertir personas a número
                 if (!int.TryParse(numericUpDown3.Text.Trim(), out int personas))
                 {
                     MessageBox.Show("Ingrese un número válido de personas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Obtener el ID de la reserva (supongo que la columna PK se llama id_reserva)
                 int idReserva = Convert.ToInt32(dvgReserva.CurrentRow.Cells["id_reserva"].Value);
 
                 using (SqlConnection con = ConexionDB.ObtenerConexion())
@@ -277,14 +252,14 @@ namespace Taller_AppRestaurante
                     con.Open();
 
                     string update = @"
-                UPDATE Reserva
-                SET fecha_reserva = @fecha,
-                    dni = @dni,
-                    hora = @hora,
-                    mesa = @mesa,
-                    estado = @estado,
-                    personas = @personas
-                WHERE id_reserva = @id";
+                        UPDATE Reserva
+                        SET fecha_reserva = @fecha,
+                            dni = @dni,
+                            hora = @hora,
+                            mesa = @mesa,
+                            estado = @estado,
+                            personas = @personas
+                        WHERE id_reserva = @id";
 
                     using (SqlCommand cmd = new SqlCommand(update, con))
                     {
@@ -295,7 +270,6 @@ namespace Taller_AppRestaurante
                         cmd.Parameters.AddWithValue("@estado", comboEstad.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@personas", personas);
                         cmd.Parameters.AddWithValue("@id", idReserva);
-                       
 
                         int filas = cmd.ExecuteNonQuery();
 
@@ -306,7 +280,6 @@ namespace Taller_AppRestaurante
                     }
                 }
 
-                // Limpiar campos y recargar DataGridView
                 ClearForm();
                 CargarReserva();
             }
@@ -316,91 +289,65 @@ namespace Taller_AppRestaurante
             }
         }
 
+        // 🔹 BOTÓN CANCELAR CON ALERTA SI EL FORM ESTÁ VACÍO
         private void button1_Click(object sender, EventArgs e)
         {
-            // Limpiar todos los campos
+            bool estaVacio =
+                string.IsNullOrWhiteSpace(textBox4.Text) &&
+                comboEstad.SelectedIndex == -1 &&
+                numericUpDown4.Value == numericUpDown4.Minimum &&
+                numericUpDown3.Value == numericUpDown3.Minimum;
+
+            if (estaVacio)
+            {
+                MessageBox.Show("El formulario ya está vacío.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             ClearForm();
 
-            // Deseleccionar cualquier fila del DataGridView
             if (dvgReserva.CurrentRow != null)
                 dvgReserva.ClearSelection();
         }
 
         private void dvgReserva_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Asegurarse de que se ha hecho clic en una fila válida
             if (e.RowIndex < 0 || dvgReserva.Rows.Count == 0)
                 return;
 
             DataGridViewRow fila = dvgReserva.Rows[e.RowIndex];
 
-            // FECHA
-            if (dvgReserva.Columns.Contains("Fecha1"))
+            if (fila.DataBoundItem is DataRowView vista)
             {
-                var fechaValor = fila.Cells["Fecha1"].Value;
-                if (fechaValor != null && fechaValor != DBNull.Value && DateTime.TryParse(fechaValor.ToString(), out DateTime fecha))
+                DataRow row = vista.Row;
+
+                if (row["fecha_reserva"] != DBNull.Value &&
+                    DateTime.TryParse(row["fecha_reserva"].ToString(), out DateTime fecha))
                     dateTimePicker4.Value = fecha;
                 else
                     dateTimePicker4.Value = DateTime.Today;
-            }
 
-            // DNI
-            if (dvgReserva.Columns.Contains("dni"))
-                textBox4.Text = fila.Cells["dni"].Value?.ToString() ?? "";
-            else
-                textBox4.Clear();
+                textBox4.Text = row["dni"]?.ToString() ?? "";
+                dateTimePicker3.Text = row["hora"]?.ToString() ?? "";
 
-            // HORA
-            if (dvgReserva.Columns.Contains("Hora2"))
-                dateTimePicker3.Text = fila.Cells["Hora2"].Value?.ToString() ?? "";
-
-            // MESA
-            if (dvgReserva.Columns.Contains("Mesa3"))
-            {
-                var mesaVal = fila.Cells["Mesa3"].Value;
-                if (mesaVal != null && mesaVal != DBNull.Value && decimal.TryParse(mesaVal.ToString(), out decimal mesaDec))
-                    numericUpDown4.Value = Math.Min(Math.Max(mesaDec, numericUpDown4.Minimum), numericUpDown4.Maximum);
+                if (row["mesa"] != DBNull.Value &&
+                    decimal.TryParse(row["mesa"].ToString(), out decimal mesaVal))
+                    numericUpDown4.Value = Math.Min(Math.Max(mesaVal, numericUpDown4.Minimum), numericUpDown4.Maximum);
                 else
                     numericUpDown4.Value = numericUpDown4.Minimum;
-            }
 
-            // ESTADO
-            if (dvgReserva.Columns.Contains("Estado6"))
-            {
-                string estado = fila.Cells["Estado6"].Value?.ToString();
+                string estado = row["estado"]?.ToString();
                 if (!string.IsNullOrEmpty(estado) && comboEstad.Items.Contains(estado))
                     comboEstad.SelectedItem = estado;
                 else
                     comboEstad.SelectedIndex = -1;
-            }
-            else
-            {
-                comboEstad.SelectedIndex = -1;
-            }
 
-            // PERSONAS
-            if (dvgReserva.Columns.Contains("personas"))
-            {
-                var personasValor = fila.Cells["personas"].Value;
-                if (personasValor != null && decimal.TryParse(personasValor.ToString(), out decimal personas))
-                    numericUpDown3.Value = Math.Min(Math.Max(personas, numericUpDown3.Minimum), numericUpDown3.Maximum);
+                if (row["personas"] != DBNull.Value &&
+                    decimal.TryParse(row["personas"].ToString(), out decimal personasVal))
+                    numericUpDown3.Value = Math.Min(Math.Max(personasVal, numericUpDown3.Minimum), numericUpDown3.Maximum);
                 else
                     numericUpDown3.Value = numericUpDown3.Minimum;
             }
-            else
-            {
-                numericUpDown3.Value = numericUpDown3.Minimum;
-            }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

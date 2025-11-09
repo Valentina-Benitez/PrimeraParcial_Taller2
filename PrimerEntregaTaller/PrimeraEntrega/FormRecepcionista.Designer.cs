@@ -133,7 +133,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(654, 250);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+           // this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Columna1
             // 
@@ -362,7 +362,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1371, 434);
             this.panel1.TabIndex = 6;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
+        //    this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // label17
             // 
@@ -375,7 +375,7 @@
             this.label17.Size = new System.Drawing.Size(237, 41);
             this.label17.TabIndex = 31;
             this.label17.Text = "Reservas de hoy";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
+            //this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // button3
             // 
@@ -423,7 +423,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(263, 22);
             this.txtBusqueda.TabIndex = 7;
-            this.txtBusqueda.Text = "Buscar reservas";
+           
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // label16
@@ -561,7 +561,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(186, 22);
             this.textBox4.TabIndex = 14;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+          //  this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // dateTimePicker3
@@ -626,7 +626,7 @@
             this.dvgReserva.Size = new System.Drawing.Size(1371, 153);
             this.dvgReserva.TabIndex = 0;
             this.dvgReserva.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellClick);
-            this.dvgReserva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellContentClick);
+          // this.dvgReserva.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgReserva_CellContentClick);
             // 
             // dni
             // 

@@ -17,7 +17,7 @@ namespace RestauranteApp
         // Integrated Security=True: usa autenticación de Windows
         // TrustServerCertificate=True: evita errores por certificados no confiables
         private static string connectionString =
-            @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
         // Devuelve una nueva conexión SQL utilizando la cadena configurada
         public static SqlConnection ObtenerConexion()
