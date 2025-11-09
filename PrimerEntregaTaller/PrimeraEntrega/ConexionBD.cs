@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System.Data.SqlClient; //Libreria para trabajar con sql server.
+using System.Data.SqlClient; // Librería para trabajar con SQL Server
 
 namespace RestauranteApp
 {
+    // Clase estática que centraliza la conexión con la base de datos del restaurante.
+    // Permite obtener una conexión lista para usar en cualquier parte del sistema.
     public static class ConexionDB
     {
-        // Acá guardo la cadena de conexión a mi base de datos SQL Server ---- Data Source: nombre del servidor SQL ---- Initial Catalog: nombre de mi base de datos
-        // Integrated Security=True: uso la autenticación de Windows (no usuario/contraseña) --- TrustServerCertificate=True: evita errores de certificado
+        // Cadena de conexión al servidor SQL Server.
+        // Data Source: nombre del servidor
+        // Initial Catalog: nombre de la base de datos
+        // Integrated Security=True: usa autenticación de Windows
+        // TrustServerCertificate=True: evita errores por certificados no confiables
         private static string connectionString =
             @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
-        // Método para obtener la conexión
+        // Devuelve una nueva conexión SQL utilizando la cadena configurada
         public static SqlConnection ObtenerConexion()
         {
             return new SqlConnection(connectionString);
         }
     }
 }
-

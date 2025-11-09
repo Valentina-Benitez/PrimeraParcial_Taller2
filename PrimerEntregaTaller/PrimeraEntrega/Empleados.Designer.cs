@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Empleados));
             this.lNombre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.bCancelar = new System.Windows.Forms.Button();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +64,7 @@
             this.lFechaNacimiento = new System.Windows.Forms.Label();
             this.lDni = new System.Windows.Forms.Label();
             this.lApellido = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.bReactivar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,6 +85,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel1.Controls.Add(this.bReactivar);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.bCancelar);
             this.panel1.Controls.Add(this.dgvEmpleados);
@@ -116,6 +118,17 @@
             this.panel1.Size = new System.Drawing.Size(1392, 581);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.label16.Location = new System.Drawing.Point(30, 21);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(238, 32);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Agregar Empleados";
             // 
             // bCancelar
             // 
@@ -218,7 +231,7 @@
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(100, 28);
             this.bEliminar.TabIndex = 23;
-            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.Text = "Desactivar";
             this.bEliminar.UseVisualStyleBackColor = false;
             // 
             // bModificar
@@ -433,16 +446,19 @@
             this.lApellido.TabIndex = 1;
             this.lApellido.Text = "Apellido";
             // 
-            // label16
+            // bReactivar
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.label16.Location = new System.Drawing.Point(30, 21);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(238, 32);
-            this.label16.TabIndex = 27;
-            this.label16.Text = "Agregar Empleados";
+            this.bReactivar.BackColor = System.Drawing.Color.LimeGreen;
+            this.bReactivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bReactivar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bReactivar.Location = new System.Drawing.Point(965, 302);
+            this.bReactivar.Margin = new System.Windows.Forms.Padding(4);
+            this.bReactivar.Name = "bReactivar";
+            this.bReactivar.Size = new System.Drawing.Size(100, 28);
+            this.bReactivar.TabIndex = 28;
+            this.bReactivar.Text = "Reactivar";
+            this.bReactivar.UseVisualStyleBackColor = false;
+            this.bReactivar.Click += new System.EventHandler(this.bReactivar_Click);
             // 
             // Empleados
             // 
@@ -499,5 +515,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contraseña;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button bReactivar;
     }
 }

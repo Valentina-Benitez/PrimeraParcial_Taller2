@@ -14,7 +14,8 @@ namespace PrimeraEntrega
 {
     public partial class BackUp : Form
     {
-       
+        // --- CADENAS DE CONEXIÓN ---
+        // Plantillas base para conectar a SQL Server con o sin base de datos específica
         private const string ConnectionStringTemplate = @"Data Source={0};Initial Catalog=ah;Integrated Security=True;TrustServerCertificate=True";
         private const string ConnectionStringMasterTemplate = @"Data Source={0};Initial Catalog=master;Integrated Security=True;TrustServerCertificate=True";
 
@@ -23,24 +24,28 @@ namespace PrimeraEntrega
             InitializeComponent();
         }
 
+        // --- EVENTO LOAD ---
+        // Al cargar el formulario, se establecen valores predeterminados si los campos están vacíos
         private void BackUp_Load(object sender, EventArgs e)
         {
-            
             if (string.IsNullOrWhiteSpace(txtServidor.Text))
-                txtServidor.Text = "(localdb)\\MSSQLLocalDB"; 
+                txtServidor.Text = "CARPINCHITO\\SQLEXPRESS";
+
             if (string.IsNullOrWhiteSpace(txtBaseDeDatos.Text))
-                txtBaseDeDatos.Text = "RestauranteTallerBD"; 
+                txtBaseDeDatos.Text = "RestauranteTallerBD";
+
             if (string.IsNullOrWhiteSpace(txtRutaGuardar.Text))
                 txtRutaGuardar.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
 
+        // Devuelve el nombre del servidor ingresado o el local por defecto (.)
         private string GetServerName()
         {
-            // Si el textbox de servidor está vacío se usa '.' (local)
             return string.IsNullOrWhiteSpace(txtServidor.Text) ? "." : txtServidor.Text.Trim();
         }
 
-        // --- BOTÓN 'CONECTAR' ---
+        // --- BOTÓN: CONECTAR ---
+        // Verifica la conexión al servidor SQL ingresado por el usuario
         private void btnConectar_Click(object sender, EventArgs e)
         {
             string serverName = GetServerName();
@@ -60,7 +65,8 @@ namespace PrimeraEntrega
             }
         }
 
-        // --- BOTÓN 'EXAMINAR' ---
+        // --- BOTÓN: EXAMINAR ---
+        // Permite seleccionar la carpeta donde se guardará o buscará el archivo de Back Up
         private void btnExaminar_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
@@ -73,7 +79,8 @@ namespace PrimeraEntrega
             }
         }
 
-        // --- BOTÓN 'CREAR BACK UP' ---
+        // --- BOTÓN: CREAR BACK UP ---
+        // Genera una copia de seguridad (.bak) de la base de datos seleccionada
         private void btnCrearBackUp_Click(object sender, EventArgs e)
         {
             string dbName = txtBaseDeDatos.Text.Trim();
@@ -88,19 +95,22 @@ namespace PrimeraEntrega
             string serverName = GetServerName();
             string connectionString = string.Format(ConnectionStringMasterTemplate, serverName);
 
+            // Se genera un nombre único para el archivo con fecha y hora
             string nombreArchivo = $"{dbName}_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
             string rutaCompleta = Path.Combine(rutaGuardar, nombreArchivo);
 
+            // Comando SQL para crear el backup
             string sqlQuery = $"BACKUP DATABASE [{dbName}] TO DISK = N'{rutaCompleta}' WITH INIT, STATS = 10";
 
             EjecutarComandoSQL(connectionString, sqlQuery, $"¡Back Up creado con éxito!\nArchivo: {rutaCompleta}");
         }
 
-        // --- BOTÓN 'RESTAURAR' ---
+        // --- BOTÓN: RESTAURAR ---
+        // Restaura una base de datos desde un archivo .bak seleccionado
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
             string dbName = txtBaseDeDatos.Text.Trim();
-            string rutaBackUp = txtRutaGuardar.Text.Trim(); 
+            string rutaBackUp = txtRutaGuardar.Text.Trim();
 
             if (string.IsNullOrEmpty(dbName))
             {
@@ -108,6 +118,7 @@ namespace PrimeraEntrega
                 return;
             }
 
+            // Si la ruta no apunta a un .bak, se abre el explorador de archivos
             if (string.IsNullOrEmpty(rutaBackUp) || !rutaBackUp.EndsWith(".bak", StringComparison.OrdinalIgnoreCase) || !File.Exists(rutaBackUp))
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
@@ -121,7 +132,7 @@ namespace PrimeraEntrega
                     }
                     else
                     {
-                        return; 
+                        return;
                     }
                 }
             }
@@ -129,7 +140,7 @@ namespace PrimeraEntrega
             string serverName = GetServerName();
             string connectionString = string.Format(ConnectionStringMasterTemplate, serverName);
 
-            
+            // Script SQL para restaurar la base de datos (modo exclusivo, restauración, y vuelta a multiusuario)
             string sqlQuery = $@"
 USE master;
 ALTER DATABASE [{dbName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -140,7 +151,8 @@ ALTER DATABASE [{dbName}] SET MULTI_USER;
             EjecutarComandoSQL(connectionString, sqlQuery, $"¡Base de Datos [{dbName}] restaurada con éxito desde: {rutaBackUp}");
         }
 
-        // --- EJECUTAR COMANDO SQL ---
+        // --- MÉTODO GENERAL ---
+        // Ejecuta comandos SQL (backup o restore) mostrando mensajes según el resultado
         private void EjecutarComandoSQL(string connectionString, string sqlQuery, string successMessage)
         {
             try
@@ -150,7 +162,7 @@ ALTER DATABASE [{dbName}] SET MULTI_USER;
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                     {
-                        cmd.CommandTimeout = 600; 
+                        cmd.CommandTimeout = 600; // Evita errores por operaciones largas
                         cmd.ExecuteNonQuery();
                     }
 
@@ -167,20 +179,9 @@ ALTER DATABASE [{dbName}] SET MULTI_USER;
             }
         }
 
-        private void txtRutaGuardar_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void txtBaseDeDatos_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        
-        private void txtServidor_TextChanged(object sender, EventArgs e)
-        {
-        
-        }
+        // --- EVENTOS VACÍOS (reservados para validaciones futuras) ---
+        private void txtRutaGuardar_TextChanged(object sender, EventArgs e) { }
+        private void txtBaseDeDatos_TextChanged(object sender, EventArgs e) { }
+        private void txtServidor_TextChanged(object sender, EventArgs e) { }
     }
 }

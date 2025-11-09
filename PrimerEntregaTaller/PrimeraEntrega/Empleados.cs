@@ -64,7 +64,15 @@ namespace gerente
 
         private void CrearColumnasDgv()
         {
-            //var cId = new DataGridViewTextBoxColumn { Name = "id_usuario", DataPropertyName = "id_usuario", HeaderText = "ID", ReadOnly = true };
+            var cId = new DataGridViewTextBoxColumn
+            {
+                Name = "id_usuario",
+                DataPropertyName = "id_usuario",
+                HeaderText = "ID",
+                ReadOnly = true,
+                Visible = false // lo ocultamos si no querés mostrarlo
+            };
+
             var cNombre = new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" };
             var cApellido = new DataGridViewTextBoxColumn { Name = "apellido", DataPropertyName = "apellido", HeaderText = "Apellido" };
             var cDni = new DataGridViewTextBoxColumn { Name = "dni", DataPropertyName = "dni", HeaderText = "DNI" };
@@ -73,10 +81,14 @@ namespace gerente
             var cRol = new DataGridViewTextBoxColumn { Name = "rol", DataPropertyName = "rol", HeaderText = "Rol" };
             var cFecha = new DataGridViewTextBoxColumn { Name = "fecha_nacimiento", DataPropertyName = "fecha_nacimiento", HeaderText = "Fecha Nac." };
             var cDomicilio = new DataGridViewTextBoxColumn { Name = "domicilio", DataPropertyName = "domicilio", HeaderText = "Domicilio" };
-            // contraseña la traemos con alias "contraseña" (sin ñ) para evitar problemas con nombres
-            var cContra = new DataGridViewTextBoxColumn { Name = "contraseña", DataPropertyName = "contraseña", HeaderText = "Contraseña", Visible = false }; // ocultamos la contraseña en la grilla
+            var cContra = new DataGridViewTextBoxColumn { Name = "contraseña", DataPropertyName = "contraseña", HeaderText = "Contraseña", Visible = false };
+            var cActivo = new DataGridViewTextBoxColumn { Name = "activo", DataPropertyName = "activo", HeaderText = "Estado"};
 
-            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { cNombre, cApellido, cDni, cTelefono, cCorreo, cRol, cFecha, cDomicilio, cContra });
+            // ✅ Ahora sí incluimos la columna ID al principio
+            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[]
+            {
+        cId, cNombre, cApellido, cDni, cTelefono, cCorreo, cRol, cFecha, cDomicilio, cContra, cActivo
+            });
         }
 
         #region Conexión
@@ -197,10 +209,7 @@ namespace gerente
 
         #region Operaciones CRUD
 
-        /// <summary>
-        /// Carga todos los usuarios desde la tabla Usuario.
-        /// NOTA: aliasamos [contraseña] AS contraseña para evitar caracteres especiales.
-        /// </summary>
+        // Carga todos los usuarios activos desde la base de datos
         private void CargarUsuarios()
         {
             try
@@ -208,16 +217,24 @@ namespace gerente
                 using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
-
-                    string query =
-                        "SELECT id_usuario, nombre, apellido, dni, telefono, Correo, rol, fecha_nacimiento, domicilio, [contraseña] AS contraseña " +
-                        "FROM Usuario";
+                    string query = @"
+                    SELECT 
+                        id_usuario, 
+                        nombre, 
+                        apellido, 
+                        dni, 
+                        telefono, 
+                        Correo, 
+                        rol, 
+                        fecha_nacimiento, 
+                        domicilio, 
+                        [contraseña] AS contraseña,
+                        CASE WHEN activo = 1 THEN 'Activo' ELSE 'Inactivo' END AS activo
+                    FROM Usuario";
 
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-
-                    dgvEmpleados.DataSource = null;
                     dgvEmpleados.DataSource = dt;
                 }
             }
@@ -524,32 +541,33 @@ namespace gerente
             CargarUsuarios();
         }
 
+        // Desactiva el usuario seleccionado en lugar de eliminarlo físicamente
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (dgvEmpleados.CurrentRow == null)
                 {
-                    MessageBox.Show("Seleccione un usuario para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Seleccione un usuario para desactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
 
-                var dr = MessageBox.Show("¿Está seguro de eliminar este usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var dr = MessageBox.Show("¿Está seguro de desactivar este usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr != DialogResult.Yes) return;
 
                 using (SqlConnection con = ObtenerConexion())
                 {
                     con.Open();
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Usuario WHERE id_usuario=@id", con))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Usuario SET activo = 0 WHERE id_usuario=@id", con))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         int filas = cmd.ExecuteNonQuery();
                         if (filas > 0)
-                            MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Usuario desactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show("No se encontró el usuario para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("No se encontró el usuario para desactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
 
@@ -558,9 +576,10 @@ namespace gerente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al desactivar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         #endregion
 
@@ -642,5 +661,47 @@ namespace gerente
         {
 
         }
+
+        private void bReactivar_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleados.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un usuario para reactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string estado = GetCellString(dgvEmpleados.CurrentRow, "activo");
+            if (estado == "Activo")
+            {
+                MessageBox.Show("El usuario ya está activo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int id = Convert.ToInt32(GetCellString(dgvEmpleados.CurrentRow, "id_usuario"));
+
+            try
+            {
+                using (SqlConnection con = ObtenerConexion())
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Usuario SET activo = 1 WHERE id_usuario = @id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        int filas = cmd.ExecuteNonQuery();
+                        if (filas > 0)
+                            MessageBox.Show("Usuario reactivado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("No se encontró el usuario para reactivar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+                CargarUsuarios();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reactivar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
