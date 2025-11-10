@@ -19,22 +19,19 @@ namespace PrimeraEntrega
             InitializeComponent();
         }
 
+        // Método: ObtenerConexion
+        // Propósito: Crear y devolver una nueva SqlConnection conectada a la BD del restaurante.
         private SqlConnection ObtenerConexion()
         {
             return new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True");
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {}
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e){}
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        // Evento Load del formulario
+        // Propósito: Inicializar opciones de la grilla, cargar ventas y configurar la columna botón "VerFactura".
         private void FormVentas_Load(object sender, EventArgs e)
         {
             // Evitar que se autogenere si ya tenés columnas diseñadas en el diseñador
@@ -58,6 +55,8 @@ namespace PrimeraEntrega
             }
         }
 
+        // Método: CargarVentas
+        // Propósito: Consultar la tabla Ventas y poblar el DataGridView dgvVentas con los datos.
         private void CargarVentas()
         {
             try
@@ -95,6 +94,8 @@ namespace PrimeraEntrega
             }
         }
 
+        // Método: CargarGraficoVentas
+        // Propósito: Construir y mostrar un gráfico de torta con ventas por mes dentro del rango seleccionado.
         private void CargarGraficoVentas()
         {
             try
@@ -181,7 +182,8 @@ namespace PrimeraEntrega
             }
         }
 
-
+        // Evento CellContentClick del DataGridView de ventas
+        // Propósito: Detectar clics en la columna "VerFactura" y abrir detalle de pedido.
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -215,6 +217,9 @@ namespace PrimeraEntrega
             }
 
         }
+
+        // Método: FiltrarPorVendedor
+        // Propósito: Generar gráfico de barras con la cantidad de ventas por vendedor en el rango seleccionado.
         private void FiltrarPorVendedor()
         {
             try
@@ -283,6 +288,8 @@ namespace PrimeraEntrega
             }
         }
 
+        // Método: FiltrarPorCliente
+        // Propósito: Generar gráfico con la cantidad de ventas por cliente en el rango seleccionado.
         private void FiltrarPorCliente()
         {
             try
@@ -351,6 +358,8 @@ namespace PrimeraEntrega
             }
         }
 
+        // Método: CargarGraficoPorMetodoPago
+        // Propósito: Generar gráfico de columnas que muestre total vendido por cada método de pago.
         private void CargarGraficoPorMetodoPago()
         {
             try
@@ -429,11 +438,9 @@ namespace PrimeraEntrega
         }
 
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+        private void panel1_Paint(object sender, PaintEventArgs e) {}
 
-        }
-
+        // Eventos para cargar los graficos por botones de filtros
         private void button5_Click(object sender, EventArgs e)
         {
             CargarGraficoPorMetodoPago();

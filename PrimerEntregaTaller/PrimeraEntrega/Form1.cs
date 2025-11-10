@@ -16,6 +16,8 @@ namespace PrimeraEntrega
 {
     public partial class Form1 : Form
     {
+        // Constructor
+        // Propósito: Inicializar componentes y asociar manejadores para el textbox DNI.
         public Form1()
         {
             InitializeComponent();
@@ -26,45 +28,25 @@ namespace PrimeraEntrega
             this.textDni.TextChanged += textDni_TextChanged;
         }
 
+        // Evento Load del formulario
+        // Propósito: Ajustar el tamaño máximo de la ventana al tamaño del monitor.
         private void Form1_Load(object sender, EventArgs e)
         {
             //this.WindowState = FormWindowState.Maximized;
             this.MaximumSize = SystemInformation.PrimaryMonitorSize;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        private void label1_Click(object sender, EventArgs e){}
+        private void panel1_Paint(object sender, PaintEventArgs e)      {        }
+        private void bInicio_Click(object sender, EventArgs e ){}
+        private void pictureBox1_Click(object sender, EventArgs e)       {       }
 
-        }
+        private void pictureBox1_Click_1(object sender, EventArgs e){}
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)   {}
 
-        }
-
-        private void bInicio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        // Valida y normaliza el contenido para que solo queden dígitos
+        // Evento TextChanged del textbox DNI
+        // Propósito: Normalizar el valor dejando solo dígitos y mantener posición del caret.
         private void textDni_TextChanged(object sender, EventArgs e)
         {
             var tb = sender as TextBox;
@@ -86,7 +68,8 @@ namespace PrimeraEntrega
             }
         }
 
-        // Evita la entrada de letras/caracteres especiales desde el teclado
+        // Evento KeyPress del textbox DNI
+        // Propósito: Evitar la entrada de caracteres no numéricos desde el teclado.
         private void textDni_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir controles (Backspace, etc.) y dígitos únicamente
@@ -101,10 +84,12 @@ namespace PrimeraEntrega
 
         }
 
+        // Evento click del botón de inicio de sesión
+        // Propósito: Validar credenciales, establecer sesión y abrir el formulario según rol.
         private void bInicio_Click_1(object sender, EventArgs e)
         {
-            string dni = textDni.Text.Trim(); //obtengo el dni q escribe el usuario
-            string pass = textBox4.Text.Trim(); //obtengo la contraseña 
+            string dni = textDni.Text.Trim(); // obtengo el dni que escribe el usuario
+            string pass = textBox4.Text.Trim(); // obtengo la contraseña 
 
             if (dni == "" || pass == "")
             {
@@ -118,7 +103,7 @@ namespace PrimeraEntrega
                 {
                     conexion.Open();
 
-                    // 🔹 Traemos todos los datos del usuario
+                    // Traemos todos los datos del usuario
                     string query = "SELECT id_usuario, nombre, apellido, rol FROM Usuario WHERE dni = @dni AND contraseña = @pass";
                     SqlCommand cmd = new SqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("@dni", dni);
@@ -128,7 +113,7 @@ namespace PrimeraEntrega
 
                     if (reader.Read()) // encontró usuario
                     {
-                        // ✅ Guardamos sesión global
+                        // Guardamos sesión global
                         SesionActual.IdUsuario = Convert.ToInt32(reader["id_usuario"]);
                         SesionActual.NombreUsuario = reader["nombre"].ToString() + " " + reader["apellido"].ToString();
                         SesionActual.Rol = reader["rol"].ToString();
@@ -136,6 +121,7 @@ namespace PrimeraEntrega
                         string rol = SesionActual.Rol;
                         Form siguienteForm = null;
 
+                        // Abrir formulario según rol
                         switch (rol.ToLower())
                         {
                             case "empleado":
@@ -152,7 +138,7 @@ namespace PrimeraEntrega
                                 return;
                         }
 
-                        // 👇 Cuando se cierre el form de rol, volver al login
+                        // Al cerrar el form de rol, volver al login
                         siguienteForm.FormClosed += (s, args) => this.Show();
 
                         siguienteForm.Show();
@@ -192,12 +178,13 @@ namespace PrimeraEntrega
 
         }
 
+        // Evento CheckedChanged del CheckBox
+        // Propósito: Mostrar/ocultar caracteres de la contraseña.
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
                 textBox4.UseSystemPasswordChar = false;
-
             }
             else
             {

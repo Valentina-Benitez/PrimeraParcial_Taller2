@@ -8,33 +8,39 @@ namespace gerente
 {
     public partial class FormProductos : Form
     {
+        // ==============================================================
+        // CADENA DE CONEXIÓN PRINCIPAL
+        // ==============================================================
         private string connectionString = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
 
+        // ==============================================================
+        // CONSTRUCTOR: Inicializa componentes, eventos y configuraciones
+        // ==============================================================
         public FormProductos()
         {
             InitializeComponent();
 
-            // ------------------- Configurar DataGridView -------------------
+            // -------- CONFIGURACIÓN DEL DATAGRIDVIEW --------
             dgvProductos.AutoGenerateColumns = false;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.MultiSelect = false;
             dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProductos.AllowUserToAddRows = false;
             dgvProductos.Columns.Clear();
-            CrearColumnasDgv();
+            CrearColumnasDgv(); // crea las columnas manualmente
 
-            // ------------------- Validaciones -------------------
+            // -------- VALIDACIONES DE ENTRADA --------
             textNombreP.KeyPress += SoloLetras;
             textDescuentoP.KeyPress += SoloNumeros;
             textPrecioP.KeyPress += SoloNumeros;
 
-            // ------------------- ComboBox estado -------------------
+            // -------- CONFIGURACIÓN DEL COMBOBOX ESTADO --------
             cbEstadoP.Items.Clear();
             cbEstadoP.Items.Add("Disponible");
             cbEstadoP.Items.Add("No Disponible");
             cbEstadoP.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            // ------------------- Enlazar botones -------------------
+            // -------- ENLAZAR EVENTOS DE BOTONES --------
             bAgregar.Click -= bAgregar_Click; bAgregar.Click += bAgregar_Click;
             bModificar.Click -= bModificar_Click; bModificar.Click += bModificar_Click;
             bEliminar.Click -= bEliminar_Click; bEliminar.Click += bEliminar_Click;
@@ -42,11 +48,13 @@ namespace gerente
             bCancelar.Click -= bCancelar_Click; bCancelar.Click += bCancelar_Click;
             dgvProductos.CellClick -= dgvProductos_CellClick; dgvProductos.CellClick += dgvProductos_CellClick;
 
-            // ------------------- Cargar productos -------------------
+            // -------- CARGA INICIAL DE PRODUCTOS --------
             CargarProductos();
         }
 
-        #region DataGridView Columnas
+        // ==============================================================
+        // SECCIÓN: CREACIÓN DE COLUMNAS DEL DGV
+        // ==============================================================
         private void CrearColumnasDgv()
         {
             dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "nombre", DataPropertyName = "nombre", HeaderText = "Nombre" });
@@ -56,30 +64,34 @@ namespace gerente
             dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "estado", DataPropertyName = "estado", HeaderText = "Estado" });
             dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "precio", DataPropertyName = "precio", HeaderText = "Precio" });
         }
-        #endregion
 
-        #region Conexión
+        // ==============================================================
+        // MÉTODO: ObtenerConexion()
+        // Retorna una conexión a la base de datos.
+        // ==============================================================
         private SqlConnection ObtenerConexion() => new SqlConnection(connectionString);
-        #endregion
 
-        #region Validaciones
+        // ==============================================================
+        // VALIDACIONES DE ENTRADA
+        // ==============================================================
         private void SoloLetras(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
                 e.Handled = true;
         }
+
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 e.Handled = true;
         }
-        #endregion
 
-        #region CRUD Productos
-
+        // ==============================================================
+        // CRUD DE PRODUCTOS
+        // ==============================================================
         private void CargarProductos()
         {
-            using (SqlConnection conexion = new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True"))
+            using (SqlConnection conexion = ObtenerConexion())
             {
                 string query = "SELECT id_producto, nombre, categoria, descripcion, estado, precio, descuento FROM Producto";
                 SqlDataAdapter adaptador = new SqlDataAdapter(query, conexion);
@@ -89,6 +101,9 @@ namespace gerente
             }
         }
 
+        // ==============================================================
+        // BOTÓN: AGREGAR PRODUCTO
+        // ==============================================================
         private void bAgregar_Click(object sender, EventArgs e)
         {
             if (!CamposCompletos())
@@ -101,13 +116,14 @@ namespace gerente
             {
                 conn.Open();
 
-                // Evitar duplicados
+                // Verifica duplicados por nombre y categoría
                 string checkQuery = "SELECT COUNT(*) FROM Producto WHERE nombre=@nombre AND categoria=@categoria";
                 using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                 {
                     checkCmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
                     checkCmd.Parameters.AddWithValue("@categoria", comboCategoria.Text.Trim());
                     int existe = (int)checkCmd.ExecuteScalar();
+
                     if (existe > 0)
                     {
                         MessageBox.Show("El producto ya existe.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -115,7 +131,7 @@ namespace gerente
                     }
                 }
 
-                // Insertar producto
+                // Inserta el nuevo producto
                 string query = @"INSERT INTO Producto (nombre, categoria, descuento, descripcion, estado, precio) 
                                  VALUES (@nombre, @categoria, @descuento, @descripcion, @estado, @precio)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -135,19 +151,20 @@ namespace gerente
             CargarProductos();
         }
 
+        // ==============================================================
+        // BOTÓN: MODIFICAR PRODUCTO
+        // ==============================================================
         private void bModificar_Click(object sender, EventArgs e)
         {
-            // 🔸 Verificar selección
             if (dgvProductos.CurrentRow == null)
             {
                 MessageBox.Show("Debe seleccionar un producto del listado para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 🔸 Verificar campos completos
             if (!CamposCompletos())
             {
-                MessageBox.Show("Debe seleccionar un producto y completar todos los campos antes de modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe completar todos los campos antes de modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -160,8 +177,9 @@ namespace gerente
                 {
                     conn.Open();
                     string query = @"UPDATE Producto SET 
-                                    nombre=@nombre, categoria=@categoria, descuento=@descuento, descripcion=@descripcion, estado=@estado, precio=@precio
-                                    WHERE nombre=@nombreOriginal AND categoria=@categoriaOriginal";
+                                     nombre=@nombre, categoria=@categoria, descuento=@descuento, descripcion=@descripcion, estado=@estado, precio=@precio
+                                     WHERE nombre=@nombreOriginal AND categoria=@categoriaOriginal";
+
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@nombre", textNombreP.Text.Trim());
@@ -185,13 +203,15 @@ namespace gerente
                 MessageBox.Show("Error al modificar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // ==============================================================
+        // BOTÓN: ELIMINAR (DAR DE BAJA)
+        // ==============================================================
         private void bEliminar_Click(object sender, EventArgs e)
         {
-            // Verificar si hay un producto seleccionado
             if (dgvProductos.CurrentRow == null)
             {
-                MessageBox.Show("Debe seleccionar un producto para darlo de baja.",
-                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un producto para darlo de baja.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -200,61 +220,49 @@ namespace gerente
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = ObtenerConexion())
                 {
                     conn.Open();
 
-                    // Verificar estado actual
+                    // Verifica estado actual
                     string queryVerificar = "SELECT estado FROM Producto WHERE nombre=@nombre AND categoria=@categoria";
                     SqlCommand cmdVerificar = new SqlCommand(queryVerificar, conn);
                     cmdVerificar.Parameters.AddWithValue("@nombre", nombre);
                     cmdVerificar.Parameters.AddWithValue("@categoria", categoria);
-
                     string estadoActual = cmdVerificar.ExecuteScalar()?.ToString();
 
                     if (estadoActual == "No Disponible")
                     {
-                        MessageBox.Show("Este producto ya está dado de baja.",
-                                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Este producto ya está dado de baja.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
-                    // Confirmar acción
-                    DialogResult confirmar = MessageBox.Show(
-                        "¿Está seguro de dar de baja este producto?",
-                        "Confirmar baja",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                    );
-
+                    // Confirmación
+                    DialogResult confirmar = MessageBox.Show("¿Está seguro de dar de baja este producto?",
+                                                             "Confirmar baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (confirmar == DialogResult.No) return;
 
-                    // Cambiar estado a No Disponible
+                    // Actualiza estado a "No Disponible"
                     string queryActualizar = "UPDATE Producto SET estado='No Disponible' WHERE nombre=@nombre AND categoria=@categoria";
                     SqlCommand cmdActualizar = new SqlCommand(queryActualizar, conn);
                     cmdActualizar.Parameters.AddWithValue("@nombre", nombre);
                     cmdActualizar.Parameters.AddWithValue("@categoria", categoria);
                     cmdActualizar.ExecuteNonQuery();
 
-                    MessageBox.Show("El producto fue dado de baja correctamente.",
-                                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MessageBox.Show("El producto fue dado de baja correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarFormulario();
                     CargarProductos();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cambiar el estado del producto: " + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cambiar el estado del producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-        #endregion
-
-        #region Buscar y Cancelar
-
+        // ==============================================================
+        // BOTÓN: BUSCAR PRODUCTOS POR CRITERIOS
+        // ==============================================================
         private void bBuscar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textNombreP.Text) &&
@@ -277,6 +285,7 @@ namespace gerente
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
 
+                    // Filtros dinámicos según los campos llenos
                     if (!string.IsNullOrWhiteSpace(textNombreP.Text)) { query += " AND nombre LIKE @nombre"; cmd.Parameters.AddWithValue("@nombre", "%" + textNombreP.Text.Trim() + "%"); }
                     if (!string.IsNullOrWhiteSpace(comboCategoria.Text)) { query += " AND categoria LIKE @categoria"; cmd.Parameters.AddWithValue("@categoria", "%" + comboCategoria.Text.Trim() + "%"); }
                     if (!string.IsNullOrWhiteSpace(textDescuentoP.Text)) { query += " AND descuento=@descuento"; cmd.Parameters.AddWithValue("@descuento", decimal.Parse(textDescuentoP.Text)); }
@@ -302,32 +311,29 @@ namespace gerente
             }
         }
 
+        // ==============================================================
+        // BOTÓN: CANCELAR
+        // Limpia campos y recarga la lista completa
+        // ==============================================================
         private void bCancelar_Click(object sender, EventArgs e)
         {
-            // Verifica si el formulario ya está vacío
             if (!CamposCompletos())
             {
                 MessageBox.Show("El formulario ya está vacío.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Recarga los productos igualmente por si se había hecho una búsqueda
                 CargarProductos();
                 return;
             }
 
-            // Limpia los campos
             LimpiarFormulario();
-
-            // Recarga todos los productos (quita el filtro de búsqueda)
             CargarProductos();
 
             MessageBox.Show("Formulario limpiado y lista de productos recargada correctamente.",
                             "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
-        #endregion
-
-        #region Helpers UI
-
+        // ==============================================================
+        // EVENTO: Al hacer clic en una fila del DGV → llena los campos
+        // ==============================================================
         private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -343,6 +349,9 @@ namespace gerente
             cbEstadoP.SelectedItem = estado;
         }
 
+        // ==============================================================
+        // MÉTODOS AUXILIARES (Helpers UI)
+        // ==============================================================
         private bool CamposCompletos()
         {
             return !(string.IsNullOrWhiteSpace(textNombreP.Text) &&
@@ -364,12 +373,13 @@ namespace gerente
             dgvProductos.ClearSelection();
         }
 
+        // ==============================================================
+        // EVENTO LOAD: configura categorías al abrir el formulario
+        // ==============================================================
         private void FormProductos_Load(object sender, EventArgs e)
         {
             comboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCategoria.Items.AddRange(new[] { "Comida", "Bebida" });
         }
-
-        #endregion
     }
 }

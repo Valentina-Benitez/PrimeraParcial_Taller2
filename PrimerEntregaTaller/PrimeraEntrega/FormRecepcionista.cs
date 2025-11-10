@@ -15,6 +15,10 @@ namespace Taller_AppRestaurante
 {
     public partial class FormRecepcionista : Form
     {
+        // ==============================================================
+        // CONSTRUCTOR PRINCIPAL
+        // Configura la interfaz, el DataGridView y carga las reservas.
+        // ==============================================================
         public FormRecepcionista()
         {
             InitializeComponent();
@@ -24,6 +28,7 @@ namespace Taller_AppRestaurante
 
             dvgReserva.AutoGenerateColumns = false;
 
+            // Asocia las columnas con los campos de la base de datos
             Fecha1.DataPropertyName = "fecha_reserva";
             dni.DataPropertyName = "dni";
             Hora2.DataPropertyName = "hora";
@@ -31,6 +36,7 @@ namespace Taller_AppRestaurante
             Estado6.DataPropertyName = "estado";
             personas.DataPropertyName = "personas";
 
+            // Configuración de ventana
             this.WindowState = FormWindowState.Normal;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -42,6 +48,10 @@ namespace Taller_AppRestaurante
             dvgReserva.CellClick += dvgReserva_CellClick;
         }
 
+        // ==============================================================
+        // MÉTODO: ConfigurarDataGridView()
+        // Define estilo visual, comportamiento y columnas.
+        // ==============================================================
         private void ConfigurarDataGridView()
         {
             dvgReserva.AutoGenerateColumns = false;
@@ -52,6 +62,7 @@ namespace Taller_AppRestaurante
             dvgReserva.AllowUserToResizeRows = false;
             dvgReserva.ReadOnly = true;
 
+            // Estilo visual
             dvgReserva.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             dvgReserva.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dvgReserva.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -59,11 +70,13 @@ namespace Taller_AppRestaurante
             dvgReserva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dvgReserva.RowTemplate.Height = 35;
 
+            // Colores
             dvgReserva.DefaultCellStyle.BackColor = Color.White;
             dvgReserva.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
             dvgReserva.DefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 152, 219);
             dvgReserva.DefaultCellStyle.SelectionForeColor = Color.White;
 
+            // Asegurar columna de ID
             if (!dvgReserva.Columns.Contains("id_reserva"))
             {
                 DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
@@ -74,6 +87,10 @@ namespace Taller_AppRestaurante
             }
         }
 
+        // ==============================================================
+        // MÉTODO: CargarReserva()
+        // Carga todas las reservas desde la base de datos.
+        // ==============================================================
         private void CargarReserva()
         {
             try
@@ -112,12 +129,18 @@ namespace Taller_AppRestaurante
             }
         }
 
+        // ==============================================================
+        // BOTÓN: Agregar Pedido → abre FormAgregarProductos
+        // ==============================================================
         private void bPedido_Click(object sender, EventArgs e)
         {
             FormAgregarProductos formAgregarProductos = new FormAgregarProductos();
             formAgregarProductos.ShowDialog();
         }
 
+        // ==============================================================
+        // EVENTO LOAD: configura el ComboBox de estado
+        // ==============================================================
         private void FormRecepcionista_Load(object sender, EventArgs e)
         {
             comboEstad.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -127,6 +150,10 @@ namespace Taller_AppRestaurante
             comboEstad.Items.Add("cancelada");
         }
 
+        // ==============================================================
+        // EVENTO: txtBusqueda_TextChanged()
+        // Filtra reservas en tiempo real por DNI.
+        // ==============================================================
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             try
@@ -149,12 +176,19 @@ namespace Taller_AppRestaurante
             }
         }
 
+        // ==============================================================
+        // VALIDACIÓN: solo números (para DNI o campos numéricos)
+        // ==============================================================
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
 
+        // ==============================================================
+        // MÉTODO: ClearForm()
+        // Limpia todos los campos del formulario.
+        // ==============================================================
         private void ClearForm()
         {
             dateTimePicker4.Value = DateTime.Today;
@@ -165,6 +199,10 @@ namespace Taller_AppRestaurante
             numericUpDown3.Value = numericUpDown3.Minimum;
         }
 
+        // ==============================================================
+        // BOTÓN: Agregar Reserva
+        // Inserta una nueva reserva en la base de datos.
+        // ==============================================================
         private void button2_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox4.Text) ||
@@ -219,6 +257,10 @@ namespace Taller_AppRestaurante
             }
         }
 
+        // ==============================================================
+        // BOTÓN: Modificar Reserva
+        // Actualiza los datos de una reserva existente.
+        // ==============================================================
         private void button3_Click(object sender, EventArgs e)
         {
             try
@@ -289,7 +331,9 @@ namespace Taller_AppRestaurante
             }
         }
 
-        // 🔹 BOTÓN CANCELAR CON ALERTA SI EL FORM ESTÁ VACÍO
+        // ==============================================================
+        // BOTÓN: Cancelar → limpia los campos con confirmación visual
+        // ==============================================================
         private void button1_Click(object sender, EventArgs e)
         {
             bool estaVacio =
@@ -310,6 +354,10 @@ namespace Taller_AppRestaurante
                 dvgReserva.ClearSelection();
         }
 
+        // ==============================================================
+        // EVENTO: dvgReserva_CellClick()
+        // Carga los datos de la fila seleccionada al formulario.
+        // ==============================================================
         private void dvgReserva_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || dvgReserva.Rows.Count == 0)
@@ -321,27 +369,34 @@ namespace Taller_AppRestaurante
             {
                 DataRow row = vista.Row;
 
+                // Fecha
                 if (row["fecha_reserva"] != DBNull.Value &&
                     DateTime.TryParse(row["fecha_reserva"].ToString(), out DateTime fecha))
                     dateTimePicker4.Value = fecha;
                 else
                     dateTimePicker4.Value = DateTime.Today;
 
+                // DNI
                 textBox4.Text = row["dni"]?.ToString() ?? "";
+
+                // Hora
                 dateTimePicker3.Text = row["hora"]?.ToString() ?? "";
 
+                // Mesa
                 if (row["mesa"] != DBNull.Value &&
                     decimal.TryParse(row["mesa"].ToString(), out decimal mesaVal))
                     numericUpDown4.Value = Math.Min(Math.Max(mesaVal, numericUpDown4.Minimum), numericUpDown4.Maximum);
                 else
                     numericUpDown4.Value = numericUpDown4.Minimum;
 
+                // Estado
                 string estado = row["estado"]?.ToString();
                 if (!string.IsNullOrEmpty(estado) && comboEstad.Items.Contains(estado))
                     comboEstad.SelectedItem = estado;
                 else
                     comboEstad.SelectedIndex = -1;
 
+                // Personas
                 if (row["personas"] != DBNull.Value &&
                     decimal.TryParse(row["personas"].ToString(), out decimal personasVal))
                     numericUpDown3.Value = Math.Min(Math.Max(personasVal, numericUpDown3.Minimum), numericUpDown3.Maximum);

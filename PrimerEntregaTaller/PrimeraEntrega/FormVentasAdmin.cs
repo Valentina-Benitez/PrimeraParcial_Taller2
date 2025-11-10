@@ -12,35 +12,40 @@ namespace PrimeraEntrega
 {
     public partial class FormVentasAdmin : Form
     {
+        
+        // Propósito: Inicializar componentes y asociar el evento de pintado personalizado para la grilla.
         public FormVentasAdmin()
         {
             InitializeComponent();
             dgvVentas.CellPainting += dgvVentas_CellPainting;
-
         }
 
+        // Método: ObtenerConexion
+        // Propósito: Crear y devolver una nueva SqlConnection conectada a la BD del restaurante.
         private SqlConnection ObtenerConexion()
         {
             return new SqlConnection(@"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True");
         }
 
+        // Evento Load del formulario
+        // Propósito: Configurar la grilla (no autogenerar columnas), cargar ventas y ajustar formato/columnas.
         private void FormVentasAdmin_Load(object sender, EventArgs e)
         {
             dgvVentas.AutoGenerateColumns = false;
             CargarVentas();
             dgvVentas.Columns["Total"].DefaultCellStyle.Format = "C2";
 
-            // --- Agregar columna de botón ---
+            // --- Agregar columna de botón "VerFactura" (siempre se añade desde aquí)
             DataGridViewButtonColumn btnVerFactura = new DataGridViewButtonColumn();
             btnVerFactura.Name = "VerFactura";
             btnVerFactura.HeaderText = "Factura";
             btnVerFactura.Text = "Ver";
             btnVerFactura.UseColumnTextForButtonValue = true;
             dgvVentas.Columns.Add(btnVerFactura);
-
-
         }
 
+        // Método: CargarVentas
+        // Propósito: Consultar la tabla Ventas (unida a Pedido, Cliente y Usuario) y poblar el DataGridView con los resultados.
         private void CargarVentas()
         {
             try
@@ -78,10 +83,12 @@ namespace PrimeraEntrega
             }
         }
 
-        
+        // Handler vacío para eventos de texto (pueden usarse para búsquedas)
         private void txtPedido_TextChanged(object sender, EventArgs e) { }
         private void txtMesa_TextChanged(object sender, EventArgs e) { }
 
+        // Evento CellContentClick de dgvVentas
+        // Propósito: Detectar clics sobre la columna de botón "VerFactura" y abrir el formulario con el detalle de pedido.
         private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             if (e.RowIndex < 0) return;
 
@@ -91,8 +98,6 @@ namespace PrimeraEntrega
             if (dgvVentas.Columns[e.ColumnIndex].Name == "VerFactura")
             {
                 object cellValue = dgvVentas.Rows[e.RowIndex].Cells["nroPedido"].Value;
-
-                //MessageBox.Show($"Valor en celda: {(cellValue ?? "null")}");
 
                 int PedidoId = 0;
                 if (cellValue != null && cellValue != DBNull.Value)
@@ -113,6 +118,8 @@ namespace PrimeraEntrega
 
             }
         }
+
+        // Métodos auxiliares de validación de teclas (sin lógica adicional)
         private void txtVenta_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)) e.Handled = true; }
         private void txtMesa_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)) e.Handled = true; }
         private void txtPedido_KeyDown(object sender, KeyEventArgs e) { }
@@ -122,6 +129,8 @@ namespace PrimeraEntrega
         private void txtCliente_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; }
         private void txtPago_KeyPress(object sender, KeyPressEventArgs e) { if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) e.Handled = true; }
 
+        // Evento CellPainting personalizado
+        // Propósito: Dibujar un estilo de botón personalizado para la columna "VerFactura".
         private void dgvVentas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             // Verifica que sea la columna del botón y que no sea el encabezado
@@ -130,11 +139,11 @@ namespace PrimeraEntrega
                 e.PaintBackground(e.CellBounds, true);
                 e.PaintContent(e.CellBounds);
 
-                // Área del botón dentro de la celda
+                // Área del "botón" dentro de la celda (con margen)
                 Rectangle rect = e.CellBounds;
                 rect.Inflate(-4, -4);
 
-                // Color celeste claro
+                // Color celeste claro para el botón
                 Color colorCeleste = Color.FromArgb(173, 216, 230); // LightBlue
 
                 using (SolidBrush brush = new SolidBrush(colorCeleste))
@@ -142,7 +151,7 @@ namespace PrimeraEntrega
                     e.Graphics.FillRectangle(brush, rect);
                 }
 
-                // Texto centrado
+                // Texto centrado "Ver"
                 TextRenderer.DrawText(
                     e.Graphics,
                     "Ver",

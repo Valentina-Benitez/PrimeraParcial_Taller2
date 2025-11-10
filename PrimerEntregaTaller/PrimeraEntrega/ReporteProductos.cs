@@ -10,8 +10,17 @@ namespace PrimeraEntrega
 {
     public partial class ReporteProductos : Form
     {
+        // ==============================================================
+        // VARIABLE DE FILTRO ACTUAL
+        // Indica qué tipo de filtro está aplicado al reporte.
+        // Ej: "MAS_VENDIDOS", "MENOS_VENDIDOS", "ALTAS", "BAJAS", "MES"
+        // ==============================================================
         private string filtroActual = "TODOS";
 
+        // ==============================================================
+        // CONSTRUCTOR PRINCIPAL
+        // Configura el DataGridView, el gráfico y los eventos de los botones.
+        // ==============================================================
         public ReporteProductos()
         {
             InitializeComponent();
@@ -26,22 +35,28 @@ namespace PrimeraEntrega
             btnBajas.Click += (s, e) => CambiarFiltro("BAJAS", btnBajas);
             btnMes.Click += (s, e) => CambiarFiltro("MES", btnMes);
 
-            // ✅ Actualizar automáticamente cuando cambian las fechas
+            // Actualizar automáticamente al cambiar las fechas
             dateTimePickerDesde.ValueChanged += (s, e) => CargarDatos();
             dateTimePickerHasta.ValueChanged += (s, e) => CargarDatos();
 
-            // Cargar al inicio
+            // Cargar datos al iniciar el formulario
             CargarDatos();
         }
 
-        // -------------------- CONEXIÓN --------------------
+        // ==============================================================
+        // MÉTODO: ObtenerConexion()
+        // Devuelve una conexión SQL lista para usar.
+        // ==============================================================
         private SqlConnection ObtenerConexion()
         {
-            string cadena = (@"Data Source = CARPINCHITO\SQLEXPRESS; Initial Catalog = RestauranteTallerBD; Integrated Security = True; TrustServerCertificate = True");
+            string cadena = @"Data Source=CARPINCHITO\SQLEXPRESS;Initial Catalog=RestauranteTallerBD;Integrated Security=True;TrustServerCertificate=True";
             return new SqlConnection(cadena);
         }
 
-        // -------------------- GRID --------------------
+        // ==============================================================
+        // MÉTODO: ConfigurarGrid()
+        // Define las columnas del DataGridView con sus nombres y propiedades.
+        // ==============================================================
         private void ConfigurarGrid()
         {
             dgvProductos.Columns.Clear();
@@ -51,7 +66,10 @@ namespace PrimeraEntrega
             dgvProductos.Columns.Add(new DataGridViewTextBoxColumn { Name = "estado", HeaderText = "Estado", DataPropertyName = "estado" });
         }
 
-        // -------------------- GRAFICO --------------------
+        // ==============================================================
+        // MÉTODO: ConfigurarGrafico()
+        // Inicializa el gráfico con título, área, leyenda y estilo.
+        // ==============================================================
         private void ConfigurarGrafico(string titulo)
         {
             chart1.Series.Clear();
@@ -82,12 +100,15 @@ namespace PrimeraEntrega
             chart1.AntiAliasing = AntiAliasingStyles.Graphics;
         }
 
-        // -------------------- FILTROS --------------------
+        // ==============================================================
+        // MÉTODO: CambiarFiltro()
+        // Cambia el filtro activo y actualiza la vista visual de los botones.
+        // ==============================================================
         private void CambiarFiltro(string filtro, Button boton)
         {
             filtroActual = filtro;
 
-            // Reset de colores
+            // Restaura colores de todos los botones
             foreach (Control c in GetAllControls(this))
             {
                 if (c is Button btn && btn != boton)
@@ -97,13 +118,18 @@ namespace PrimeraEntrega
                 }
             }
 
+            // Destaca el botón del filtro actual
             boton.BackColor = Color.SteelBlue;
             boton.ForeColor = Color.White;
 
-            // Aplicar filtro directamente
+            // Actualiza los datos según el filtro
             CargarDatos();
         }
 
+        // ==============================================================
+        // MÉTODO: GetAllControls()
+        // Devuelve todos los controles del formulario (útil para recorrer botones).
+        // ==============================================================
         private IEnumerable<Control> GetAllControls(Control parent)
         {
             foreach (Control c in parent.Controls)
@@ -114,7 +140,11 @@ namespace PrimeraEntrega
             }
         }
 
-        // -------------------- CARGA DE DATOS --------------------
+        // ==============================================================
+        // MÉTODO: CargarDatos()
+        // Consulta SQL que une Producto, Pedido, Detalle_Pedido y Ventas.
+        // Calcula el total de ventas por producto y aplica el filtro activo.
+        // ==============================================================
         private void CargarDatos()
         {
             DateTime desde = dateTimePickerDesde.Value.Date;
@@ -149,9 +179,10 @@ namespace PrimeraEntrega
                     }
                 }
 
-                // Aplica el filtro seleccionado
+                // Aplica el filtro activo
                 DataTable dtFiltrado = AplicarFiltro(dt);
 
+                // Actualiza el grid y el gráfico
                 dgvProductos.DataSource = dtFiltrado;
                 ActualizarGrafico(dtFiltrado);
             }
@@ -161,6 +192,10 @@ namespace PrimeraEntrega
             }
         }
 
+        // ==============================================================
+        // MÉTODO: AplicarFiltro()
+        // Filtra la tabla según el tipo de filtro seleccionado.
+        // ==============================================================
         private DataTable AplicarFiltro(DataTable dt)
         {
             DataTable filtrado = dt.Clone();
@@ -182,14 +217,16 @@ namespace PrimeraEntrega
                     case "ALTAS":
                         {
                             string estado = row["estado"].ToString().Trim().ToLower();
-                            incluir = estado.Contains("disponible") || estado.Contains("alta") || estado.Contains("activo") || estado == "1" || estado == "true";
+                            incluir = estado.Contains("disponible") || estado.Contains("alta") ||
+                                      estado.Contains("activo") || estado == "1" || estado == "true";
                             break;
                         }
 
                     case "BAJAS":
                         {
                             string estado = row["estado"].ToString().Trim().ToLower();
-                            incluir = estado.Contains("no disponible") || estado.Contains("baja") || estado.Contains("inactivo") || estado == "0" || estado == "false";
+                            incluir = estado.Contains("no disponible") || estado.Contains("baja") ||
+                                      estado.Contains("inactivo") || estado == "0" || estado == "false";
                             break;
                         }
 
@@ -213,7 +250,10 @@ namespace PrimeraEntrega
             return filtrado;
         }
 
-        // -------------------- GRAFICO --------------------
+        // ==============================================================
+        // MÉTODO: ActualizarGrafico()
+        // Crea un gráfico circular con las ventas por producto.
+        // ==============================================================
         private void ActualizarGrafico(DataTable dt)
         {
             chart1.Series.Clear();
@@ -230,6 +270,7 @@ namespace PrimeraEntrega
 
             chart1.Series.Add(series);
 
+            // Solo incluir productos con ventas
             var filas = new List<DataRow>();
             foreach (DataRow row in dt.Rows)
             {
@@ -237,6 +278,7 @@ namespace PrimeraEntrega
                 if (cantidad > 0) filas.Add(row);
             }
 
+            // Si no hay ventas, mostrar un gráfico vacío
             if (filas.Count == 0)
             {
                 int idx = series.Points.AddY(1);
@@ -247,14 +289,17 @@ namespace PrimeraEntrega
                 return;
             }
 
+            // Calcular el total general
             int total = 0;
             foreach (var r in filas) total += Convert.ToInt32(r["nro_ventas"]);
 
+            // Añadir puntos al gráfico con porcentajes
             foreach (var row in filas)
             {
                 string nombre = row["nombre"].ToString();
                 int cantidad = Convert.ToInt32(row["nro_ventas"]);
                 int idx = series.Points.AddY(cantidad);
+
                 DataPoint point = series.Points[idx];
                 point.LegendText = nombre;
                 point.Label = $"{nombre}\n{(cantidad * 100.0 / total):F1}%";
