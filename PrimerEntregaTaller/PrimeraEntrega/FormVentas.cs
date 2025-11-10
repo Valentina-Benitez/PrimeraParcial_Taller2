@@ -70,7 +70,7 @@ namespace PrimeraEntrega
                         v.id_venta AS [NroVenta],
                         v.id_pedido AS [NroPedido],
                         u.nombre + ' ' + u.apellido AS [Empleado],
-                        c.nombre + ' ' + u.apellido AS [Cliente],
+                        c.nombre + ' ' + c.apellido AS [Cliente],
                         v.fecha AS [Fecha],
                         v.total AS [total],
                         v.tipo_pago AS [TipoPago]
@@ -98,6 +98,14 @@ namespace PrimeraEntrega
         // Propósito: Construir y mostrar un gráfico de torta con ventas por mes dentro del rango seleccionado.
         private void CargarGraficoVentas()
         {
+            chartVentas.Series.Clear();
+            chartVentas.Titles.Clear();
+            chartVentas.Legends.Clear();
+
+            // 🔹 Limpia títulos de ejes de un gráfico anterior
+            chartVentas.ChartAreas[0].AxisX.Title = "";
+            chartVentas.ChartAreas[0].AxisY.Title = "";
+
             try
             {
                 using (SqlConnection con = ObtenerConexion())
@@ -139,7 +147,7 @@ namespace PrimeraEntrega
 
                     // 🔹 Limpiar series y agregar serie asignándole explícitamente la leyenda existente
                     chartVentas.Series.Clear();
-                    var series = new Series("Ventas por Mes");
+                    var series = new Series("Ventas realizadas");
                     series.Legend = legend.Name; // <--- asignación explícita de la leyenda
                     chartVentas.Series.Add(series);
 
@@ -171,7 +179,7 @@ namespace PrimeraEntrega
 
                     // 🔹 Título principal
                     chartVentas.Titles.Clear();
-                    chartVentas.Titles.Add("Distribución de Ventas por Mes");
+                    chartVentas.Titles.Add("Distribución de Ventas");
                     chartVentas.Titles[0].Font = new Font("Segoe UI", 11, FontStyle.Bold);
                     chartVentas.Titles[0].ForeColor = Color.FromArgb(52, 73, 94);
                 }
@@ -222,6 +230,14 @@ namespace PrimeraEntrega
         // Propósito: Generar gráfico de barras con la cantidad de ventas por vendedor en el rango seleccionado.
         private void FiltrarPorVendedor()
         {
+            chartVentas.Series.Clear();
+            chartVentas.Titles.Clear();
+            chartVentas.Legends.Clear();
+
+            // 🔹 Limpia títulos de ejes de un gráfico anterior
+            chartVentas.ChartAreas[0].AxisX.Title = "";
+            chartVentas.ChartAreas[0].AxisY.Title = "";
+
             try
             {
                 using (SqlConnection con = ObtenerConexion())
@@ -292,6 +308,14 @@ namespace PrimeraEntrega
         // Propósito: Generar gráfico con la cantidad de ventas por cliente en el rango seleccionado.
         private void FiltrarPorCliente()
         {
+            chartVentas.Series.Clear();
+            chartVentas.Titles.Clear();
+            chartVentas.Legends.Clear();
+
+            // 🔹 Limpia títulos de ejes de un gráfico anterior
+            chartVentas.ChartAreas[0].AxisX.Title = "";
+            chartVentas.ChartAreas[0].AxisY.Title = "";
+
             try
             {
                 using (SqlConnection con = ObtenerConexion())
@@ -364,6 +388,13 @@ namespace PrimeraEntrega
         {
             try
             {
+                // 🔹 Limpieza total antes de dibujar
+                chartVentas.Series.Clear();
+                chartVentas.Titles.Clear();
+                chartVentas.Legends.Clear();
+                chartVentas.ChartAreas[0].AxisX.Title = "";
+                chartVentas.ChartAreas[0].AxisY.Title = "";
+
                 using (SqlConnection con = ObtenerConexion())
                 {
                     con.Open();
