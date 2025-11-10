@@ -216,9 +216,9 @@ namespace PrimeraEntrega
 
                     case "ALTAS":
                         {
-                            string estado = row["estado"].ToString().Trim().ToLower();
-                            incluir = estado.Contains("disponible") || estado.Contains("alta") ||
-                                      estado.Contains("activo") || estado == "1" || estado == "true";
+                            string estado = row["estado"]?.ToString().Trim().ToLower() ?? "";
+                            // Solo productos cuyo estado es exactamente "disponible"
+                            incluir = estado.Equals("disponible");
                             break;
                         }
 
@@ -305,6 +305,11 @@ namespace PrimeraEntrega
                 point.Label = $"{nombre}\n{(cantidad * 100.0 / total):F1}%";
                 point.ToolTip = $"{nombre}: {cantidad} ventas";
             }
+        }
+
+        private void btnAltas_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

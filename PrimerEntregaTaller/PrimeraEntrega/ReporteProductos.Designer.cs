@@ -82,7 +82,7 @@
             this.label6.Location = new System.Drawing.Point(154, 8);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(224, 30);
+            this.label6.Size = new System.Drawing.Size(283, 37);
             this.label6.TabIndex = 9;
             this.label6.Text = "Reporte de Productos";
             // 
@@ -98,6 +98,7 @@
             this.btnAltas.TabIndex = 12;
             this.btnAltas.Text = "Altas";
             this.btnAltas.UseVisualStyleBackColor = false;
+            this.btnAltas.Click += new System.EventHandler(this.btnAltas_Click);
             // 
             // btnMes
             // 
@@ -164,21 +165,25 @@
             // nombres
             // 
             this.nombres.HeaderText = "Nombre";
+            this.nombres.MinimumWidth = 6;
             this.nombres.Name = "nombres";
             // 
             // categorias
             // 
             this.categorias.HeaderText = "Categoria";
+            this.categorias.MinimumWidth = 6;
             this.categorias.Name = "categorias";
             // 
             // ventas
             // 
             this.ventas.HeaderText = "Nro de Ventas";
+            this.ventas.MinimumWidth = 6;
             this.ventas.Name = "ventas";
             // 
             // estado
             // 
             this.estado.HeaderText = "Estado";
+            this.estado.MinimumWidth = 6;
             this.estado.Name = "estado";
             // 
             // btnMenosVendidos
@@ -198,14 +203,14 @@
             // 
             this.dateTimePickerHasta.Location = new System.Drawing.Point(365, 96);
             this.dateTimePickerHasta.Name = "dateTimePickerHasta";
-            this.dateTimePickerHasta.Size = new System.Drawing.Size(145, 20);
+            this.dateTimePickerHasta.Size = new System.Drawing.Size(145, 22);
             this.dateTimePickerHasta.TabIndex = 7;
             // 
             // dateTimePickerDesde
             // 
             this.dateTimePickerDesde.Location = new System.Drawing.Point(102, 95);
             this.dateTimePickerDesde.Name = "dateTimePickerDesde";
-            this.dateTimePickerDesde.Size = new System.Drawing.Size(144, 20);
+            this.dateTimePickerDesde.Size = new System.Drawing.Size(144, 22);
             this.dateTimePickerDesde.TabIndex = 7;
             // 
             // label2
@@ -215,7 +220,7 @@
             this.label2.Location = new System.Drawing.Point(10, 96);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 19);
+            this.label2.Size = new System.Drawing.Size(107, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "Fecha Desde";
             // 
@@ -239,7 +244,7 @@
             this.label3.Location = new System.Drawing.Point(276, 95);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 19);
+            this.label3.Size = new System.Drawing.Size(104, 23);
             this.label3.TabIndex = 6;
             this.label3.Text = "Fecha Hasta";
             // 
