@@ -23,6 +23,7 @@ namespace gerente
         public Form2()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         /// Handler del botón "Empleados".

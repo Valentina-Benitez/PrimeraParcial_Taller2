@@ -14,6 +14,7 @@ namespace RestauranteApp
         public Form3()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // Handler del botón "Reservas":

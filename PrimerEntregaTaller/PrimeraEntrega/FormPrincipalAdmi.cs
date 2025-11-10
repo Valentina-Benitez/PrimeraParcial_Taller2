@@ -16,6 +16,7 @@ namespace PrimeraEntrega
         public FormPrincipalAdmi()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void bEmpleados_Click(object sender, EventArgs e)
