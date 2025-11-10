@@ -100,18 +100,19 @@ namespace Taller_AppRestaurante
                     con.Open();
 
                     string sql = @"
-                        SELECT 
-                            r.id_reserva,
-                            r.fecha_reserva,
-                            r.dni,
-                            r.hora,
-                            r.mesa,
-                            r.estado,
-                            r.personas,
-                            u.nombre + ' ' + u.apellido AS Empleado
-                        FROM Reserva r
-                        LEFT JOIN Usuario u ON r.id_usuario = u.id_usuario
-                        ORDER BY r.fecha_reserva DESC;";
+                SELECT 
+                    r.id_reserva,
+                    r.fecha_reserva,
+                    r.dni,
+                    r.hora,
+                    r.mesa,
+                    r.estado,
+                    r.personas,
+                    u.nombre + ' ' + u.apellido AS Empleado
+                FROM Reserva r
+                LEFT JOIN Usuario u ON r.id_usuario = u.id_usuario
+                WHERE CAST(r.fecha_reserva AS DATE) = CAST(GETDATE() AS DATE)  -- 🔹 Solo las reservas de hoy
+                ORDER BY r.hora ASC;"; // 
 
                     SqlDataAdapter da = new SqlDataAdapter(sql, con);
                     DataTable dt = new DataTable();
@@ -128,6 +129,7 @@ namespace Taller_AppRestaurante
                 MessageBox.Show("Error al cargar reservas: " + ex.Message);
             }
         }
+
 
         // ==============================================================
         // BOTÓN: Agregar Pedido → abre FormAgregarProductos
