@@ -110,9 +110,11 @@ namespace Taller_AppRestaurante
         // ==============================================================
         private void FormPedidos_Load(object sender, EventArgs e)
         {
-            CargarPedidos();
+            // Evitar duplicados
+            dataGridView1.AutoGenerateColumns = false;
 
-            // Agregar columna de botón si no existe
+            // Boton personalizado "Entregar"
+
             if (!dataGridView1.Columns.Contains("btnEntregar"))
             {
                 DataGridViewButtonColumn btnEntregar = new DataGridViewButtonColumn();
@@ -121,13 +123,20 @@ namespace Taller_AppRestaurante
                 btnEntregar.Text = "✔";
                 btnEntregar.UseColumnTextForButtonValue = true;
                 btnEntregar.DefaultCellStyle.BackColor = Color.CadetBlue;
+                btnEntregar.DefaultCellStyle.ForeColor = Color.White;
+                btnEntregar.FlatStyle = FlatStyle.Popup;
                 btnEntregar.Width = 80;
                 dataGridView1.Columns.Add(btnEntregar);
             }
 
+            // cargamos los datos
+            CargarPedidos();
+
+            // Ajustes
             txtTotal.ReadOnly = true;
             dataGridView1.CellPainting += dataGridView1_CellPainting;
         }
+
 
         // ==============================================================
         // EVENTO: txtBusqueda_TextChanged()
@@ -207,7 +216,7 @@ namespace Taller_AppRestaurante
             {
                 object cellValue = dataGridView1.Rows[e.RowIndex].Cells["nroPedido"].Value;
                 int PedidoId = cellValue != null && cellValue != DBNull.Value ? Convert.ToInt32(cellValue) : 0;
-
+                
                 if (PedidoId > 0)
                 {
                     FormDetallePedido formDetalle = new FormDetallePedido();

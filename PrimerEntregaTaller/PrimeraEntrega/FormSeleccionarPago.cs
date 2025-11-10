@@ -19,6 +19,9 @@ namespace PrimeraEntrega
         public FormSeleccionarPago()
         {
             InitializeComponent();
+
+            //Para que se abra en el centro de la pantalla
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // ==============================================================
