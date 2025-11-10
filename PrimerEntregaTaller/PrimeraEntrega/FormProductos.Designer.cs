@@ -80,7 +80,6 @@
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.Size = new System.Drawing.Size(1392, 172);
             this.dgvProductos.TabIndex = 0;
-          //  this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // NombreProducto
             // 
@@ -218,7 +217,7 @@
             // 
             // bEliminar
             // 
-            this.bEliminar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.bEliminar.BackColor = System.Drawing.Color.Salmon;
             this.bEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEliminar.Location = new System.Drawing.Point(768, 303);
@@ -226,9 +225,8 @@
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(100, 28);
             this.bEliminar.TabIndex = 11;
-            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.Text = "Desactivar";
             this.bEliminar.UseVisualStyleBackColor = false;
-          //  this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click_1);
             // 
             // textNombreP
             // 

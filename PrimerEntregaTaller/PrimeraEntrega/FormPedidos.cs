@@ -113,6 +113,9 @@ namespace Taller_AppRestaurante
             // Evitar duplicados
             dataGridView1.AutoGenerateColumns = false;
 
+            // cargamos los datos
+            CargarPedidos();
+
             // Boton personalizado "Entregar"
 
             if (!dataGridView1.Columns.Contains("btnEntregar"))
@@ -128,9 +131,6 @@ namespace Taller_AppRestaurante
                 btnEntregar.Width = 80;
                 dataGridView1.Columns.Add(btnEntregar);
             }
-
-            // cargamos los datos
-            CargarPedidos();
 
             // Ajustes
             txtTotal.ReadOnly = true;
