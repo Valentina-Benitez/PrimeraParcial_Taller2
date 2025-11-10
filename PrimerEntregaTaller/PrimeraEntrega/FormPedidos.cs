@@ -99,18 +99,14 @@ namespace Taller_AppRestaurante
                 btnEntregar.HeaderText = "Entregar";
                 btnEntregar.Text = "✔";
                 btnEntregar.UseColumnTextForButtonValue = true;
-                btnEntregar.DefaultCellStyle.BackColor = Color.LightGreen;
+                btnEntregar.DefaultCellStyle.BackColor = Color.CadetBlue;
                 btnEntregar.Width = 80;
                 dataGridView1.Columns.Add(btnEntregar);
             }
 
             txtTotal.ReadOnly = true;
-           // comboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            //comboEstado.Items.Clear();
-            //comboEstado.Items.Add("pendiente");
-           // comboEstado.Items.Add("en preparación");
-           // comboEstado.Items.Add("Entregado");
-           // comboEstado.Items.Add("Cancelado");
+            dataGridView1.CellPainting += dataGridView1_CellPainting;
+
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -312,8 +308,7 @@ namespace Taller_AppRestaurante
                 try
                 {
                     string dni = textBox4.Text.Trim();
-                    MessageBox.Show($"DNI capturado: '{dni}'", "Debug DNI"); // 👈 Agregado
-
+                    
                     int idCliente = ObtenerIdClientePorDni(dni, con, tran);
 
 
@@ -463,6 +458,69 @@ namespace Taller_AppRestaurante
 
             // ✅ Refrescar grilla
             CargarPedidos();
+        }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            var col = dataGridView1.Columns[e.ColumnIndex];
+            if (col.Name != "btnEntregar") return;
+
+            // Buscar columna "Estado" de manera tolerante (Name, DataPropertyName o HeaderText)
+            var estadoCol = dataGridView1.Columns
+                .Cast<DataGridViewColumn>()
+                .FirstOrDefault(c =>
+                    string.Equals(c.Name, "Estado", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(c.DataPropertyName, "estado", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(c.HeaderText, "Estado", StringComparison.OrdinalIgnoreCase));
+
+            // Fallback: buscar por contenido parcial en HeaderText
+            if (estadoCol == null)
+            {
+                estadoCol = dataGridView1.Columns
+                    .Cast<DataGridViewColumn>()
+                    .FirstOrDefault(c => !string.IsNullOrEmpty(c.HeaderText) &&
+                                         c.HeaderText.IndexOf("estado", StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+            // Obtener el estado de la fila actual (si no se encuentra, queda null)
+            string estado = null;
+            if (estadoCol != null)
+            {
+                object val = dataGridView1.Rows[e.RowIndex].Cells[estadoCol.Index].Value;
+                estado = val?.ToString()?.ToLowerInvariant();
+            }
+
+            e.Handled = true;
+            e.PaintBackground(e.CellBounds, true);
+
+            // Color según estado
+            Color colorBoton = Color.LightGray;
+            if (!string.IsNullOrEmpty(estado))
+            {
+                if (estado.Contains("en preparación") || estado.Contains("en preparacion"))
+                    colorBoton = Color.LightPink;
+                else if (estado.Contains("entregado"))
+                    colorBoton = Color.LightGreen;
+            }
+
+            using (SolidBrush brush = new SolidBrush(colorBoton))
+            {
+                e.Graphics.FillRectangle(brush, e.CellBounds);
+            }
+
+            TextRenderer.DrawText(
+                e.Graphics,
+                "✔",
+                e.CellStyle.Font,
+                e.CellBounds,
+                Color.Black,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+
+            // Dibujar borde
+            e.Paint(e.CellBounds, DataGridViewPaintParts.Border);
         }
 
 

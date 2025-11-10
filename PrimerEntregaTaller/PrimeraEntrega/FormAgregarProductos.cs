@@ -50,14 +50,15 @@ namespace PrimeraEntrega
                 {
                     conexion.Open();
 
-                    // Consulta SQL (con opción de filtro por nombre)
-                    string consulta = "SELECT id_producto, nombre, precio FROM producto";
+                    // Consulta SQL: solo productos con estado 'disponible'
+                    string consulta = "SELECT id_producto, nombre, precio FROM producto WHERE estado = @estado";
                     if (!string.IsNullOrEmpty(filtro))
                     {
-                        consulta += " WHERE nombre LIKE @filtro";
+                        consulta += " AND nombre LIKE @filtro";
                     }
 
                     SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                    adaptador.SelectCommand.Parameters.AddWithValue("@estado", "disponible");
                     if (!string.IsNullOrEmpty(filtro))
                     {
                         adaptador.SelectCommand.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
